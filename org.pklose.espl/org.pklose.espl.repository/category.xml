@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.pklose.espl.sdk" version="0.1.0.qualifier">
+      <category name="org.pklose.espl.category"/>
+   </feature>
+   <category-def name="org.pklose.espl.category" label="Easy specification language">
+      <description>
+         Easy specification language
+      </description>
+   </category-def>
+</site>

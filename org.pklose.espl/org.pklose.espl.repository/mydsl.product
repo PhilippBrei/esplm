@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Easy specification language" 
+         uid="org.pklose.espl.product.uid" 
+         id="org.pklose.espl.product" 
+         application="org.pklose.espl.application"
+         version="0.1.0.qualifier" 
+         useFeatures="true" 
+         includeLaunchers="false">
+
+   <configIni use="default" />
+
+   <launcherArgs />
+
+   <windowImages />
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm />
+
+   <plugins />
+
+   <features>
+      <feature id="org.pklose.espl.sdk" version="0.1.0.qualifier"/>
+   </features>
+
+
+</product>

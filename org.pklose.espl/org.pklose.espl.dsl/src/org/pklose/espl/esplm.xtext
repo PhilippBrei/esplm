@@ -1,0 +1,76 @@
+grammar org.pklose.espl.Esplm with org.eclipse.xtext.common.Terminals
+
+generate esplm "http://www.org.pklose/esplm"
+
+Model:
+	elements += Element
+;
+
+Element:
+	EnumDeclaration | Diagram | Domain 
+;
+
+Import: 'Import' importedNamespace=FqnWithWildCard;
+
+FqnWithWildCard: FQN('.*')?;
+
+Diagram:	
+	 imports += Import*
+	'Diagram' name = ID '{'	
+		includes += Include*		
+	 '}'
+;
+
+Include:
+	'Include' entity = [Entity|FQN] ('with' '{'
+			fields += [Property|FQN]*
+		'}')?
+;
+
+EnumDeclaration:
+	'Enumeration' name = ID '{'
+		values += ID ("," ID)*		
+	'}'
+;
+
+FQN: ID ("." ID)*;
+
+
+
+
+Entity:
+	'Entity' name = ID '{'properties += Property*'}'
+;
+
+Domain:
+	imports += Import*
+	'Domain' name = ID 'Description: ' description = STRING '{'
+	    entities += Entity+
+	 '}'
+;
+
+Property:
+	Field | Association
+;
+
+
+Association:
+	 'Relation'  name = ID ':' type = [Entity|FQN] multiplicity = Multiplicty
+;
+
+Multiplicty:
+	{Multiplicty} name= '1..N' | {Multiplicty} name= '0..N' | {Multiplicty} name= '1' | {Multiplicty} name= '1..0'  
+;
+
+
+
+Field:
+	'Field' name = ID ':' literal = Literal;
+
+Literal:
+	{Literal} name= 'Decimal' | {Literal} name= 'Money' | {Literal} name= 'Text' |{Literal} name= 'Boolean' |{Literal} name= 'Int' | Enum
+;
+
+Enum:
+	'Enum' type = [EnumDeclaration]
+;
