@@ -113,6 +113,61 @@ public interface EsplmPackage extends EPackage
   int ELEMENT_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.ActivityImpl <em>Activity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.ActivityImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getActivity()
+   * @generated
+   */
+  int ACTIVITY = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY__NAME = ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Predecessor</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY__PREDECESSOR = ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Sucessors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY__SUCESSORS = ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY__DESCRIPTION = ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Activity</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTIVITY_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link org.pklose.espl.esplm.impl.ImportImpl <em>Import</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -120,7 +175,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 2;
+  int IMPORT = 3;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -148,7 +203,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getDiagram()
    * @generated
    */
-  int DIAGRAM = 3;
+  int DIAGRAM = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -194,7 +249,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getInclude()
    * @generated
    */
-  int INCLUDE = 4;
+  int INCLUDE = 5;
 
   /**
    * The feature id for the '<em><b>Entity</b></em>' reference.
@@ -231,7 +286,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEnumDeclaration()
    * @generated
    */
-  int ENUM_DECLARATION = 5;
+  int ENUM_DECLARATION = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -268,7 +323,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEntity()
    * @generated
    */
-  int ENTITY = 6;
+  int ENTITY = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -305,7 +360,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getDomain()
    * @generated
    */
-  int DOMAIN = 7;
+  int DOMAIN = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -360,7 +415,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 8;
+  int PROPERTY = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -388,7 +443,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getAssociation()
    * @generated
    */
-  int ASSOCIATION = 9;
+  int ASSOCIATION = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -434,7 +489,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getMultiplicty()
    * @generated
    */
-  int MULTIPLICTY = 10;
+  int MULTIPLICTY = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -462,7 +517,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getField()
    * @generated
    */
-  int FIELD = 11;
+  int FIELD = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -499,7 +554,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 12;
+  int LITERAL = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -527,7 +582,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEnum()
    * @generated
    */
-  int ENUM = 13;
+  int ENUM = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -598,6 +653,49 @@ public interface EsplmPackage extends EPackage
    * @generated
    */
   EAttribute getElement_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.Activity <em>Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Activity</em>'.
+   * @see org.pklose.espl.esplm.Activity
+   * @generated
+   */
+  EClass getActivity();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.pklose.espl.esplm.Activity#getPredecessor <em>Predecessor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Predecessor</em>'.
+   * @see org.pklose.espl.esplm.Activity#getPredecessor()
+   * @see #getActivity()
+   * @generated
+   */
+  EReference getActivity_Predecessor();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.pklose.espl.esplm.Activity#getSucessors <em>Sucessors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Sucessors</em>'.
+   * @see org.pklose.espl.esplm.Activity#getSucessors()
+   * @see #getActivity()
+   * @generated
+   */
+  EReference getActivity_Sucessors();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.Activity#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.pklose.espl.esplm.Activity#getDescription()
+   * @see #getActivity()
+   * @generated
+   */
+  EAttribute getActivity_Description();
 
   /**
    * Returns the meta object for class '{@link org.pklose.espl.esplm.Import <em>Import</em>}'.
@@ -975,6 +1073,40 @@ public interface EsplmPackage extends EPackage
      * @generated
      */
     EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.ActivityImpl <em>Activity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.ActivityImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getActivity()
+     * @generated
+     */
+    EClass ACTIVITY = eINSTANCE.getActivity();
+
+    /**
+     * The meta object literal for the '<em><b>Predecessor</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTIVITY__PREDECESSOR = eINSTANCE.getActivity_Predecessor();
+
+    /**
+     * The meta object literal for the '<em><b>Sucessors</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTIVITY__SUCESSORS = eINSTANCE.getActivity_Sucessors();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ACTIVITY__DESCRIPTION = eINSTANCE.getActivity_Description();
 
     /**
      * The meta object literal for the '{@link org.pklose.espl.esplm.impl.ImportImpl <em>Import</em>}' class.

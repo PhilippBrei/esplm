@@ -22,13 +22,11 @@ public class EsplmSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EsplmGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a;
-	protected AbstractElementAlias match_Include___WithKeyword_2_0_LeftCurlyBracketKeyword_2_1_RightCurlyBracketKeyword_2_3__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EsplmGrammarAccess) access;
 		match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getEnumDeclarationAccess().getIDTerminalRuleCall_4_1()));
-		match_Include___WithKeyword_2_0_LeftCurlyBracketKeyword_2_1_RightCurlyBracketKeyword_2_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getIncludeAccess().getWithKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getIncludeAccess().getLeftCurlyBracketKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_2_3()));
 	}
 	
 	@Override
@@ -55,8 +53,6 @@ public class EsplmSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a.equals(syntax))
 				emit_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Include___WithKeyword_2_0_LeftCurlyBracketKeyword_2_1_RightCurlyBracketKeyword_2_3__q.equals(syntax))
-				emit_Include___WithKeyword_2_0_LeftCurlyBracketKeyword_2_1_RightCurlyBracketKeyword_2_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -69,17 +65,6 @@ public class EsplmSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     values+=ID (ambiguity) '}' (rule end)
 	 */
 	protected void emit_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('with' '{' '}')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     entity=[Entity|FQN] (ambiguity) (rule end)
-	 */
-	protected void emit_Include___WithKeyword_2_0_LeftCurlyBracketKeyword_2_1_RightCurlyBracketKeyword_2_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

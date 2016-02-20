@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -80,6 +81,7 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
     {
       case EsplmPackage.MODEL: return createModel();
       case EsplmPackage.ELEMENT: return createElement();
+      case EsplmPackage.ACTIVITY: return createActivity();
       case EsplmPackage.IMPORT: return createImport();
       case EsplmPackage.DIAGRAM: return createDiagram();
       case EsplmPackage.INCLUDE: return createInclude();
@@ -117,6 +119,17 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
   {
     ElementImpl element = new ElementImpl();
     return element;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Activity createActivity()
+  {
+    ActivityImpl activity = new ActivityImpl();
+    return activity;
   }
 
   /**

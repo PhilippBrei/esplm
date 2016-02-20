@@ -41,6 +41,15 @@ public interface EsplmFactory extends EFactory
   Element createElement();
 
   /**
+   * Returns a new object of class '<em>Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Activity</em>'.
+   * @generated
+   */
+  Activity createActivity();
+
+  /**
    * Returns a new object of class '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

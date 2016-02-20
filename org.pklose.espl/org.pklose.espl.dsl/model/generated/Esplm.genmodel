@@ -13,6 +13,11 @@
     <genClasses ecoreClass="Esplm.ecore#//Element">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Element/name"/>
     </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//Activity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Activity/predecessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Activity/sucessors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Activity/description"/>
+    </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Import/importedNamespace"/>
     </genClasses>

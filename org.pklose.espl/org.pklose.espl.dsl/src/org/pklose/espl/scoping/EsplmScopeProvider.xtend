@@ -3,6 +3,16 @@
  */
 package org.pklose.espl.scoping
 
+import org.eclipse.xtext.scoping.IScope
+import org.pklose.espl.esplm.Include
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.emf.ecore.EReference
+import java.util.List
+import org.eclipse.emf.ecore.EObject
+import java.util.ArrayList
+import org.pklose.espl.esplm.Field
+import org.pklose.espl.esplm.Association
+
 /**
  * This class contains custom scoping description.
  * 
@@ -11,5 +21,14 @@ package org.pklose.espl.scoping
  *
  */
 class EsplmScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+	
+	def IScope scope_Include_fields (Include include, EReference ref) {
+		val List<EObject> scopeObjects = new ArrayList();
+		val fields = include.entity.properties.filter(typeof (Field));		
+		val references = include.entity.properties.filter(typeof (Association));
+		scopeObjects.addAll(fields);
+		scopeObjects.addAll(references)		
+		return Scopes.scopeFor(include.entity.properties);
+	}
 
 }

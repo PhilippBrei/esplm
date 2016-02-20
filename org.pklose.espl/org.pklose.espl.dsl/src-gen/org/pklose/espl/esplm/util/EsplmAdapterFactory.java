@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -96,6 +97,11 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
       public Adapter caseElement(Element object)
       {
         return createElementAdapter();
+      }
+      @Override
+      public Adapter caseActivity(Activity object)
+      {
+        return createActivityAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -205,6 +211,21 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.Activity <em>Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.Activity
+   * @generated
+   */
+  public Adapter createActivityAdapter()
   {
     return null;
   }

@@ -2,12 +2,21 @@ grammar org.pklose.espl.Esplm with org.eclipse.xtext.common.Terminals
 
 generate esplm "http://www.org.pklose/esplm"
 
+
 Model:
 	elements += Element
 ;
 
 Element:
-	EnumDeclaration | Diagram | Domain 
+	EnumDeclaration | Diagram | Domain | Activity
+;
+
+Activity:
+	'Activity' name= ID '{'
+		'Predecessors' '['predecessor += [Activity] (',' predecessor += [Activity])*']'
+		'Successors'   '['sucessors += [Activity] (',' sucessors += [Activity])*']'
+		'Description' description = STRING		
+	'}'
 ;
 
 Import: 'Import' importedNamespace=FqnWithWildCard;
@@ -23,8 +32,8 @@ Diagram:
 
 Include:
 	'Include' entity = [Entity|FQN] ('with' '{'
-			fields += [Property|FQN]*
-		'}')?
+			fields += [Property] (',' fields += [Property])*
+		'}')
 ;
 
 EnumDeclaration:
@@ -35,11 +44,10 @@ EnumDeclaration:
 
 FQN: ID ("." ID)*;
 
-
-
-
 Entity:
-	'Entity' name = ID '{'properties += Property*'}'
+	'Entity' name = ID '{'
+		(properties += Property)*
+	'}'
 ;
 
 Domain:

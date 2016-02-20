@@ -16,6 +16,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -39,6 +40,9 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	@Override
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == EsplmPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case EsplmPackage.ACTIVITY:
+				sequence_Activity(context, (Activity) semanticObject); 
+				return; 
 			case EsplmPackage.ASSOCIATION:
 				sequence_Association(context, (Association) semanticObject); 
 				return; 
@@ -78,6 +82,22 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         predecessor+=[Activity|ID] 
+	 *         predecessor+=[Activity|ID]* 
+	 *         sucessors+=[Activity|ID] 
+	 *         sucessors+=[Activity|ID]* 
+	 *         description=STRING
+	 *     )
+	 */
+	protected void sequence_Activity(EObject context, Activity semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Constraint:
@@ -183,7 +203,7 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (entity=[Entity|FQN] fields+=[Property|FQN]*)
+	 *     (entity=[Entity|FQN] fields+=[Property|ID] fields+=[Property|ID]*)
 	 */
 	protected void sequence_Include(EObject context, Include semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

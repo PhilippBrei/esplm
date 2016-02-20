@@ -3,7 +3,20 @@
  */
 package org.pklose.espl.scoping;
 
+import com.google.common.collect.Iterables;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.Field;
+import org.pklose.espl.esplm.Include;
+import org.pklose.espl.esplm.Property;
 
 /**
  * This class contains custom scoping description.
@@ -13,4 +26,18 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 @SuppressWarnings("all")
 public class EsplmScopeProvider extends AbstractDeclarativeScopeProvider {
+  public IScope scope_Include_fields(final Include include, final EReference ref) {
+    final List<EObject> scopeObjects = new ArrayList<EObject>();
+    Entity _entity = include.getEntity();
+    EList<Property> _properties = _entity.getProperties();
+    final Iterable<Field> fields = Iterables.<Field>filter(_properties, Field.class);
+    Entity _entity_1 = include.getEntity();
+    EList<Property> _properties_1 = _entity_1.getProperties();
+    final Iterable<Association> references = Iterables.<Association>filter(_properties_1, Association.class);
+    Iterables.<EObject>addAll(scopeObjects, fields);
+    Iterables.<EObject>addAll(scopeObjects, references);
+    Entity _entity_2 = include.getEntity();
+    EList<Property> _properties_2 = _entity_2.getProperties();
+    return Scopes.scopeFor(_properties_2);
+  }
 }

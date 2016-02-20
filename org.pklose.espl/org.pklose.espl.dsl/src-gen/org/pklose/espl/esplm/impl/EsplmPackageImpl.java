@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -46,6 +47,13 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * @generated
    */
   private EClass elementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass activityEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -232,6 +240,46 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
   public EAttribute getElement_Name()
   {
     return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getActivity()
+  {
+    return activityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActivity_Predecessor()
+  {
+    return (EReference)activityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getActivity_Sucessors()
+  {
+    return (EReference)activityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getActivity_Description()
+  {
+    return (EAttribute)activityEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -570,6 +618,11 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     elementEClass = createEClass(ELEMENT);
     createEAttribute(elementEClass, ELEMENT__NAME);
 
+    activityEClass = createEClass(ACTIVITY);
+    createEReference(activityEClass, ACTIVITY__PREDECESSOR);
+    createEReference(activityEClass, ACTIVITY__SUCESSORS);
+    createEAttribute(activityEClass, ACTIVITY__DESCRIPTION);
+
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
@@ -642,6 +695,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    activityEClass.getESuperTypes().add(this.getElement());
     diagramEClass.getESuperTypes().add(this.getElement());
     enumDeclarationEClass.getESuperTypes().add(this.getElement());
     domainEClass.getESuperTypes().add(this.getElement());
@@ -655,6 +709,11 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
 
     initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getActivity_Predecessor(), this.getActivity(), null, "predecessor", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getActivity_Sucessors(), this.getActivity(), null, "sucessors", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getActivity_Description(), ecorePackage.getEString(), "description", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

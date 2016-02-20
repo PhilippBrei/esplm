@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -96,6 +97,14 @@ public class EsplmSwitch<T> extends Switch<T>
       {
         Element element = (Element)theEObject;
         T result = caseElement(element);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.ACTIVITY:
+      {
+        Activity activity = (Activity)theEObject;
+        T result = caseActivity(activity);
+        if (result == null) result = caseElement(activity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -221,6 +230,22 @@ public class EsplmSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseElement(Element object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActivity(Activity object)
   {
     return null;
   }
