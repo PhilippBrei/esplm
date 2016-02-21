@@ -15,25 +15,25 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.pklose.espl.esplm.Activity;
-import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.EsplmPackage;
+import org.pklose.espl.esplm.Flow;
 import org.pklose.espl.esplm.Import;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Activity Diagram</b></em>'.
+ * An implementation of the model object '<em><b>Flow</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.pklose.espl.esplm.impl.ActivityDiagramImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.impl.ActivityDiagramImpl#getActivities <em>Activities</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.impl.FlowImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.impl.FlowImpl#getActivities <em>Activities</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
+public class FlowImpl extends ElementImpl implements Flow
 {
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -60,7 +60,7 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ActivityDiagramImpl()
+  protected FlowImpl()
   {
     super();
   }
@@ -73,7 +73,7 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   @Override
   protected EClass eStaticClass()
   {
-    return EsplmPackage.Literals.ACTIVITY_DIAGRAM;
+    return EsplmPackage.Literals.FLOW;
   }
 
   /**
@@ -85,7 +85,7 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     if (imports == null)
     {
-      imports = new EObjectContainmentEList<Import>(Import.class, this, EsplmPackage.ACTIVITY_DIAGRAM__IMPORTS);
+      imports = new EObjectContainmentEList<Import>(Import.class, this, EsplmPackage.FLOW__IMPORTS);
     }
     return imports;
   }
@@ -99,7 +99,7 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     if (activities == null)
     {
-      activities = new EObjectContainmentEList<Activity>(Activity.class, this, EsplmPackage.ACTIVITY_DIAGRAM__ACTIVITIES);
+      activities = new EObjectContainmentEList<Activity>(Activity.class, this, EsplmPackage.FLOW__ACTIVITIES);
     }
     return activities;
   }
@@ -114,9 +114,9 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     switch (featureID)
     {
-      case EsplmPackage.ACTIVITY_DIAGRAM__IMPORTS:
+      case EsplmPackage.FLOW__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case EsplmPackage.ACTIVITY_DIAGRAM__ACTIVITIES:
+      case EsplmPackage.FLOW__ACTIVITIES:
         return ((InternalEList<?>)getActivities()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -132,9 +132,9 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     switch (featureID)
     {
-      case EsplmPackage.ACTIVITY_DIAGRAM__IMPORTS:
+      case EsplmPackage.FLOW__IMPORTS:
         return getImports();
-      case EsplmPackage.ACTIVITY_DIAGRAM__ACTIVITIES:
+      case EsplmPackage.FLOW__ACTIVITIES:
         return getActivities();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -151,11 +151,11 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     switch (featureID)
     {
-      case EsplmPackage.ACTIVITY_DIAGRAM__IMPORTS:
+      case EsplmPackage.FLOW__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
         return;
-      case EsplmPackage.ACTIVITY_DIAGRAM__ACTIVITIES:
+      case EsplmPackage.FLOW__ACTIVITIES:
         getActivities().clear();
         getActivities().addAll((Collection<? extends Activity>)newValue);
         return;
@@ -173,10 +173,10 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     switch (featureID)
     {
-      case EsplmPackage.ACTIVITY_DIAGRAM__IMPORTS:
+      case EsplmPackage.FLOW__IMPORTS:
         getImports().clear();
         return;
-      case EsplmPackage.ACTIVITY_DIAGRAM__ACTIVITIES:
+      case EsplmPackage.FLOW__ACTIVITIES:
         getActivities().clear();
         return;
     }
@@ -193,12 +193,12 @@ public class ActivityDiagramImpl extends ElementImpl implements ActivityDiagram
   {
     switch (featureID)
     {
-      case EsplmPackage.ACTIVITY_DIAGRAM__IMPORTS:
+      case EsplmPackage.FLOW__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case EsplmPackage.ACTIVITY_DIAGRAM__ACTIVITIES:
+      case EsplmPackage.FLOW__ACTIVITIES:
         return activities != null && !activities.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ActivityDiagramImpl
+} //FlowImpl

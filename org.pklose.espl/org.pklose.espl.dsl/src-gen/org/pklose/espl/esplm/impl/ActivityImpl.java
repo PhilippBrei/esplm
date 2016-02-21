@@ -29,7 +29,6 @@ import org.pklose.espl.esplm.EsplmPackage;
  * </p>
  * <ul>
  *   <li>{@link org.pklose.espl.esplm.impl.ActivityImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.impl.ActivityImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.ActivityImpl#getSucessors <em>Sucessors</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.ActivityImpl#getBusinessRule <em>Business Rule</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.ActivityImpl#getDescription <em>Description</em>}</li>
@@ -58,16 +57,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPredecessor()
-   * @generated
-   * @ordered
-   */
-  protected EList<Activity> predecessor;
 
   /**
    * The cached value of the '{@link #getSucessors() <em>Sucessors</em>}' reference list.
@@ -151,20 +140,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ACTIVITY__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Activity> getPredecessor()
-  {
-    if (predecessor == null)
-    {
-      predecessor = new EObjectResolvingEList<Activity>(Activity.class, this, EsplmPackage.ACTIVITY__PREDECESSOR);
-    }
-    return predecessor;
   }
 
   /**
@@ -259,8 +234,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
     {
       case EsplmPackage.ACTIVITY__NAME:
         return getName();
-      case EsplmPackage.ACTIVITY__PREDECESSOR:
-        return getPredecessor();
       case EsplmPackage.ACTIVITY__SUCESSORS:
         return getSucessors();
       case EsplmPackage.ACTIVITY__BUSINESS_RULE:
@@ -285,10 +258,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
     {
       case EsplmPackage.ACTIVITY__NAME:
         setName((String)newValue);
-        return;
-      case EsplmPackage.ACTIVITY__PREDECESSOR:
-        getPredecessor().clear();
-        getPredecessor().addAll((Collection<? extends Activity>)newValue);
         return;
       case EsplmPackage.ACTIVITY__SUCESSORS:
         getSucessors().clear();
@@ -317,9 +286,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
       case EsplmPackage.ACTIVITY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case EsplmPackage.ACTIVITY__PREDECESSOR:
-        getPredecessor().clear();
-        return;
       case EsplmPackage.ACTIVITY__SUCESSORS:
         getSucessors().clear();
         return;
@@ -345,8 +311,6 @@ public class ActivityImpl extends MinimalEObjectImpl.Container implements Activi
     {
       case EsplmPackage.ACTIVITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case EsplmPackage.ACTIVITY__PREDECESSOR:
-        return predecessor != null && !predecessor.isEmpty();
       case EsplmPackage.ACTIVITY__SUCESSORS:
         return sucessors != null && !sucessors.isEmpty();
       case EsplmPackage.ACTIVITY__BUSINESS_RULE:

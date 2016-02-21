@@ -41,13 +41,13 @@ public interface EsplmFactory extends EFactory
   Element createElement();
 
   /**
-   * Returns a new object of class '<em>Activity Diagram</em>'.
+   * Returns a new object of class '<em>Flow</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Activity Diagram</em>'.
+   * @return a new object of class '<em>Flow</em>'.
    * @generated
    */
-  ActivityDiagram createActivityDiagram();
+  Flow createFlow();
 
   /**
    * Returns a new object of class '<em>Activity</em>'.

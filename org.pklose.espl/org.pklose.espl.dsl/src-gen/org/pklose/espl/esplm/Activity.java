@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.pklose.espl.esplm.Activity#getName <em>Name</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.Activity#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.Activity#getSucessors <em>Sucessors</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.Activity#getBusinessRule <em>Business Rule</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.Activity#getDescription <em>Description</em>}</li>
@@ -53,22 +52,6 @@ public interface Activity extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Predecessor</b></em>' reference list.
-   * The list contents are of type {@link org.pklose.espl.esplm.Activity}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Predecessor</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Predecessor</em>' reference list.
-   * @see org.pklose.espl.esplm.EsplmPackage#getActivity_Predecessor()
-   * @model
-   * @generated
-   */
-  EList<Activity> getPredecessor();
 
   /**
    * Returns the value of the '<em><b>Sucessors</b></em>' reference list.

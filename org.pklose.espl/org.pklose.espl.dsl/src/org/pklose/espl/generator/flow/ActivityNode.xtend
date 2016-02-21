@@ -2,7 +2,7 @@ package org.pklose.espl.generator.flow
 
 import org.pklose.espl.esplm.Activity
 
-public class AcivityNode {
+public class ActivityNode {
 	
 	val final Activity activity;
 	
@@ -12,7 +12,7 @@ public class AcivityNode {
 	
 	def String getAsJson () {
 		return '''
-			{ "id":«activity.name» ,  "text": "«activity.description»" },
+			{ "id": "«activity.name»" , text: "«activity.description»" }
 		'''
 	}
 	

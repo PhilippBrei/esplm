@@ -3,6 +3,7 @@
  */
 package org.pklose.espl.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.List;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -14,6 +15,9 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.Flow;
+import org.pklose.espl.generator.flow.FlowBody;
+import org.pklose.espl.generator.flow.FlowDiagramFactory;
 import org.pklose.espl.generator.uml.DiagrammBody;
 import org.pklose.espl.generator.uml.Link;
 import org.pklose.espl.generator.uml.Node;
@@ -33,12 +37,29 @@ public class EsplmGenerator implements IGenerator {
     Iterable<Entity> _filter = Iterables.<Entity>filter(_iterable, Entity.class);
     final List<Entity> entities = IterableExtensions.<Entity>toList(_filter);
     final List<Node> nodes = NodeFactory.createNodes(entities);
-    final List<Link> links = NodeFactory.createLinks(entities);
-    final DiagrammBody diagramm = new DiagrammBody("Test", nodes, links);
-    URI _uRI = resource.getURI();
-    String _path = _uRI.path();
-    final String fileName = _path.replace(".esplm", ".html");
-    String _asHTML = diagramm.getAsHTML();
-    fsa.generateFile(fileName, _asHTML);
+    boolean _isEmpty = nodes.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      final List<Link> links = NodeFactory.createLinks(entities);
+      final DiagrammBody diagramm = new DiagrammBody("Test", nodes, links);
+      URI _uRI = resource.getURI();
+      String _path = _uRI.path();
+      final String fileName = _path.replace(".esplm", ".html");
+      String _asHTML = diagramm.getAsHTML();
+      fsa.generateFile(fileName, _asHTML);
+    }
+    TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+    Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
+    Iterable<Flow> _filter_1 = Iterables.<Flow>filter(_iterable_1, Flow.class);
+    final Flow diagram = IterableExtensions.<Flow>last(_filter_1);
+    boolean _notEquals = (!Objects.equal(diagram, null));
+    if (_notEquals) {
+      final FlowBody flowDiagramm = FlowDiagramFactory.createFlowDiagram(diagram);
+      URI _uRI_1 = resource.getURI();
+      String _path_1 = _uRI_1.path();
+      final String fileName_1 = _path_1.replace(".esplm", ".html");
+      String _asHTML_1 = flowDiagramm.getAsHTML();
+      fsa.generateFile(fileName_1, _asHTML_1);
+    }
   }
 }

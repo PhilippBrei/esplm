@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.pklose.espl.esplm.Activity;
-import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
@@ -18,6 +17,7 @@ import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
+import org.pklose.espl.esplm.Flow;
 import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
@@ -102,11 +102,11 @@ public class EsplmSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EsplmPackage.ACTIVITY_DIAGRAM:
+      case EsplmPackage.FLOW:
       {
-        ActivityDiagram activityDiagram = (ActivityDiagram)theEObject;
-        T result = caseActivityDiagram(activityDiagram);
-        if (result == null) result = caseElement(activityDiagram);
+        Flow flow = (Flow)theEObject;
+        T result = caseFlow(flow);
+        if (result == null) result = caseElement(flow);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -252,17 +252,17 @@ public class EsplmSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Activity Diagram</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Flow</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Activity Diagram</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Flow</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseActivityDiagram(ActivityDiagram object)
+  public T caseFlow(Flow object)
   {
     return null;
   }

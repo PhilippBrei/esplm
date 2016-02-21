@@ -6,22 +6,22 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Activity Diagram</b></em>'.
+ * A representation of the model object '<em><b>Flow</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.pklose.espl.esplm.ActivityDiagram#getImports <em>Imports</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.ActivityDiagram#getActivities <em>Activities</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.Flow#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.Flow#getActivities <em>Activities</em>}</li>
  * </ul>
  *
- * @see org.pklose.espl.esplm.EsplmPackage#getActivityDiagram()
+ * @see org.pklose.espl.esplm.EsplmPackage#getFlow()
  * @model
  * @generated
  */
-public interface ActivityDiagram extends Element
+public interface Flow extends Element
 {
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
@@ -33,7 +33,7 @@ public interface ActivityDiagram extends Element
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see org.pklose.espl.esplm.EsplmPackage#getActivityDiagram_Imports()
+   * @see org.pklose.espl.esplm.EsplmPackage#getFlow_Imports()
    * @model containment="true"
    * @generated
    */
@@ -49,10 +49,10 @@ public interface ActivityDiagram extends Element
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Activities</em>' containment reference list.
-   * @see org.pklose.espl.esplm.EsplmPackage#getActivityDiagram_Activities()
+   * @see org.pklose.espl.esplm.EsplmPackage#getFlow_Activities()
    * @model containment="true"
    * @generated
    */
   EList<Activity> getActivities();
 
-} // ActivityDiagram
+} // Flow

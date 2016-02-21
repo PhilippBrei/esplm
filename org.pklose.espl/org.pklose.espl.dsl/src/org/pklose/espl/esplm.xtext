@@ -8,14 +8,14 @@ Model:
 ;
 
 Element:
-	EnumDeclaration | Diagram | Domain | ActivityDiagram | BusinessRule
+	EnumDeclaration | Diagram | Domain | Flow | BusinessRule
 ;
 
 
 
 
 
-ActivityDiagram:
+Flow:
 	 imports += Import*
 	'Flow' name = ID '{'
 	  (activities+=Activity)*
@@ -23,8 +23,7 @@ ActivityDiagram:
 ;
 
 Activity:
-	'Activity' name= ID '{'
-		('Predecessors' '['predecessor += [Activity] (',' predecessor += [Activity])*']')?
+	'Activity' name= ID '{'		
 		('Successors'   '['sucessors += [Activity] (',' sucessors += [Activity])*']')?
 		('Calls' businessRule = [BusinessRule|FQN])?
 		'Description' description = STRING		

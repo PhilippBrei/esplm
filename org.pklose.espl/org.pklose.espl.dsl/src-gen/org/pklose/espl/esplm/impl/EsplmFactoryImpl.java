@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.pklose.espl.esplm.Activity;
-import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
@@ -22,6 +21,7 @@ import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmFactory;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
+import org.pklose.espl.esplm.Flow;
 import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
@@ -83,7 +83,7 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
     {
       case EsplmPackage.MODEL: return createModel();
       case EsplmPackage.ELEMENT: return createElement();
-      case EsplmPackage.ACTIVITY_DIAGRAM: return createActivityDiagram();
+      case EsplmPackage.FLOW: return createFlow();
       case EsplmPackage.ACTIVITY: return createActivity();
       case EsplmPackage.BUSINESS_RULE: return createBusinessRule();
       case EsplmPackage.IMPORT: return createImport();
@@ -130,10 +130,10 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ActivityDiagram createActivityDiagram()
+  public Flow createFlow()
   {
-    ActivityDiagramImpl activityDiagram = new ActivityDiagramImpl();
-    return activityDiagram;
+    FlowImpl flow = new FlowImpl();
+    return flow;
   }
 
   /**

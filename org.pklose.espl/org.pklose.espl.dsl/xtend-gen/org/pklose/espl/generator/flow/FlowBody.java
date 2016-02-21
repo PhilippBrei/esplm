@@ -1,14 +1,24 @@
 package org.pklose.espl.generator.flow;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.pklose.espl.generator.HTMLGenerator;
+import org.pklose.espl.generator.flow.ActivityLink;
+import org.pklose.espl.generator.flow.ActivityNode;
 
 @SuppressWarnings("all")
 public class FlowBody implements HTMLGenerator {
   private final String flowName;
   
-  public FlowBody(final String flowName) {
+  private final List<ActivityLink> links = new ArrayList<ActivityLink>();
+  
+  private final List<ActivityNode> nodes = new ArrayList<ActivityNode>();
+  
+  public FlowBody(final String flowName, final List<ActivityLink> links, final List<ActivityNode> nodes) {
     this.flowName = flowName;
+    this.links.addAll(links);
+    this.nodes.addAll(nodes);
   }
   
   public Object getHTML() {
@@ -24,8 +34,10 @@ public class FlowBody implements HTMLGenerator {
     _builder.newLine();
     _builder.append("<head>");
     _builder.newLine();
-    _builder.append("<title>State Chart</title>");
-    _builder.newLine();
+    _builder.append("<title>");
+    _builder.append(this.flowName, "");
+    _builder.append("</title>");
+    _builder.newLineIfNotEmpty();
     _builder.append("<meta name=\"description\" content=\"A finite state machine chart with editable and interactive features.\" />");
     _builder.newLine();
     _builder.append("<!-- /* Copyright 1998-2016 by Northwoods Software Corporation. */ -->");
@@ -46,8 +58,10 @@ public class FlowBody implements HTMLGenerator {
     _builder.append("myDiagram =");
     _builder.newLine();
     _builder.append("      ");
-    _builder.append("$(go.Diagram, \"myDiagram\",  // must name or refer to the DIV HTML element");
-    _builder.newLine();
+    _builder.append("$(go.Diagram, \"");
+    _builder.append(this.flowName, "      ");
+    _builder.append("\",  // must name or refer to the DIV HTML element");
+    _builder.newLineIfNotEmpty();
     _builder.append("        ");
     _builder.append("{");
     _builder.newLine();
@@ -247,62 +261,42 @@ public class FlowBody implements HTMLGenerator {
     _builder.append("  ");
     _builder.append("\"nodeDataArray\": [");
     _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"id\": 0, \"loc\": \"120 120\", \"text\": \"Initial\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"id\": 1, \"loc\": \"330 120\", \"text\": \"First down\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"id\": 2, \"loc\": \"226 376\", \"text\": \"First up\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"id\": 3, \"loc\": \"60 276\", \"text\": \"Second down\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"id\": 4, \"loc\": \"226 226\", \"text\": \"Wait\" }");
-    _builder.newLine();
+    {
+      boolean _hasElements = false;
+      for(final ActivityNode node : this.nodes) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(",", "    ");
+        }
+        _builder.append("    ");
+        String _asJson = node.getAsJson();
+        _builder.append(_asJson, "    ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("  ");
     _builder.append("],");
     _builder.newLine();
     _builder.append("  ");
     _builder.append("\"linkDataArray\": [");
     _builder.newLine();
+    {
+      boolean _hasElements_1 = false;
+      for(final ActivityLink link : this.links) {
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
+        } else {
+          _builder.appendImmediate(",", "  \t");
+        }
+        _builder.append("  \t");
+        String _asJson_1 = link.asJson();
+        _builder.append(_asJson_1, "  \t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("    ");
-    _builder.append("{ \"from\": 0, \"to\": 0, \"text\": \"up or timer\", \"curviness\": -20 },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 0, \"to\": 1, \"text\": \"down\", \"curviness\": 20 },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 1, \"to\": 0, \"text\": \"up (moved)\\nPOST\", \"curviness\": 20 },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 1, \"to\": 1, \"text\": \"down\", \"curviness\": -20 },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 1, \"to\": 2, \"text\": \"up (no move)\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 1, \"to\": 4, \"text\": \"timer\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 2, \"to\": 0, \"text\": \"timer\\nPOST\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 2, \"to\": 3, \"text\": \"down\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 3, \"to\": 0, \"text\": \"up\\nPOST\\n(dblclick\\nif no move)\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 3, \"to\": 3, \"text\": \"down or timer\", \"curviness\": 20 },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 4, \"to\": 0, \"text\": \"up\\nPOST\" },");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("{ \"from\": 4, \"to\": 4, \"text\": \"down\" }]");
+    _builder.append("]");
     _builder.newLine();
     _builder.append("  ");
     _builder.append("});");
@@ -318,8 +312,10 @@ public class FlowBody implements HTMLGenerator {
     _builder.append("<div id=\"sample\">");
     _builder.newLine();
     _builder.append("  ");
-    _builder.append("<div id=\"myDiagram\" style=\"background-color: whitesmoke; border: solid 1px black; width: 100%; height: 400px\"></div>");
-    _builder.newLine();
+    _builder.append("<div id=\"");
+    _builder.append(this.flowName, "  ");
+    _builder.append("\" style=\"background-color: whitesmoke; border: solid 1px black; width: 100%; height: 400px\"></div>");
+    _builder.newLineIfNotEmpty();
     _builder.append("</div>");
     _builder.newLine();
     _builder.append("</body>");

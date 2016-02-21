@@ -9,6 +9,8 @@ import org.eclipse.xtext.generator.IGenerator
 import org.pklose.espl.esplm.Entity
 import org.pklose.espl.generator.uml.NodeFactory
 import org.pklose.espl.generator.uml.DiagrammBody
+import org.pklose.espl.esplm.Flow
+import org.pklose.espl.generator.flow.FlowDiagramFactory
 
 /**
  * Generates code from your model files on save.
@@ -20,10 +22,24 @@ class EsplmGenerator implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {		
 		val entities = resource.allContents.toIterable.filter(typeof(Entity)).toList
 		val nodes = NodeFactory.createNodes(entities)
-		val links = NodeFactory.createLinks(entities)		
-		val diagramm = new DiagrammBody("Test", nodes ,links)
-		val fileName = resource.URI.path.replace(".esplm", ".html")
-		fsa.generateFile(fileName, diagramm.asHTML);
+		
+		if (!nodes.isEmpty) {
+			val links = NodeFactory.createLinks(entities)		
+			val diagramm = new DiagrammBody("Test", nodes ,links)
+			val fileName = resource.URI.path.replace(".esplm", ".html")
+			fsa.generateFile(fileName, diagramm.asHTML);
+		}
+		
+		
+		
+		val diagram = resource.allContents.toIterable.filter(typeof(Flow)).last;
+		if (diagram != null) {
+			val flowDiagramm = FlowDiagramFactory::createFlowDiagram(diagram);
+			val fileName = resource.URI.path.replace(".esplm", ".html");
+			fsa.generateFile(fileName, flowDiagramm.asHTML);
+		}
+			
+		
 	}
 	
 	

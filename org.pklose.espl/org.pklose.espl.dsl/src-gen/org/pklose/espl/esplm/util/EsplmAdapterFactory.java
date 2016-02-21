@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.pklose.espl.esplm.Activity;
-import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
@@ -20,6 +19,7 @@ import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
+import org.pklose.espl.esplm.Flow;
 import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
@@ -101,9 +101,9 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
         return createElementAdapter();
       }
       @Override
-      public Adapter caseActivityDiagram(ActivityDiagram object)
+      public Adapter caseFlow(Flow object)
       {
-        return createActivityDiagramAdapter();
+        return createFlowAdapter();
       }
       @Override
       public Adapter caseActivity(Activity object)
@@ -228,16 +228,16 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.ActivityDiagram <em>Activity Diagram</em>}'.
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.Flow <em>Flow</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.pklose.espl.esplm.ActivityDiagram
+   * @see org.pklose.espl.esplm.Flow
    * @generated
    */
-  public Adapter createActivityDiagramAdapter()
+  public Adapter createFlowAdapter()
   {
     return null;
   }

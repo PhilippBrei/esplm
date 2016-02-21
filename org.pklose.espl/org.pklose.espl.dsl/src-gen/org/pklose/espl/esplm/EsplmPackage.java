@@ -113,14 +113,14 @@ public interface EsplmPackage extends EPackage
   int ELEMENT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.pklose.espl.esplm.impl.ActivityDiagramImpl <em>Activity Diagram</em>}' class.
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.FlowImpl <em>Flow</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.pklose.espl.esplm.impl.ActivityDiagramImpl
-   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getActivityDiagram()
+   * @see org.pklose.espl.esplm.impl.FlowImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getFlow()
    * @generated
    */
-  int ACTIVITY_DIAGRAM = 2;
+  int FLOW = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -129,7 +129,7 @@ public interface EsplmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY_DIAGRAM__NAME = ELEMENT__NAME;
+  int FLOW__NAME = ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -138,7 +138,7 @@ public interface EsplmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY_DIAGRAM__IMPORTS = ELEMENT_FEATURE_COUNT + 0;
+  int FLOW__IMPORTS = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Activities</b></em>' containment reference list.
@@ -147,16 +147,16 @@ public interface EsplmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY_DIAGRAM__ACTIVITIES = ELEMENT_FEATURE_COUNT + 1;
+  int FLOW__ACTIVITIES = ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Activity Diagram</em>' class.
+   * The number of structural features of the '<em>Flow</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTIVITY_DIAGRAM_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+  int FLOW_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.pklose.espl.esplm.impl.ActivityImpl <em>Activity</em>}' class.
@@ -178,22 +178,13 @@ public interface EsplmPackage extends EPackage
   int ACTIVITY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Predecessor</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ACTIVITY__PREDECESSOR = 1;
-
-  /**
    * The feature id for the '<em><b>Sucessors</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTIVITY__SUCESSORS = 2;
+  int ACTIVITY__SUCESSORS = 1;
 
   /**
    * The feature id for the '<em><b>Business Rule</b></em>' reference.
@@ -202,7 +193,7 @@ public interface EsplmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY__BUSINESS_RULE = 3;
+  int ACTIVITY__BUSINESS_RULE = 2;
 
   /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -211,7 +202,7 @@ public interface EsplmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY__DESCRIPTION = 4;
+  int ACTIVITY__DESCRIPTION = 3;
 
   /**
    * The number of structural features of the '<em>Activity</em>' class.
@@ -220,7 +211,7 @@ public interface EsplmPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTIVITY_FEATURE_COUNT = 5;
+  int ACTIVITY_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.pklose.espl.esplm.impl.BusinessRuleImpl <em>Business Rule</em>}' class.
@@ -747,36 +738,36 @@ public interface EsplmPackage extends EPackage
   EAttribute getElement_Name();
 
   /**
-   * Returns the meta object for class '{@link org.pklose.espl.esplm.ActivityDiagram <em>Activity Diagram</em>}'.
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.Flow <em>Flow</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Activity Diagram</em>'.
-   * @see org.pklose.espl.esplm.ActivityDiagram
+   * @return the meta object for class '<em>Flow</em>'.
+   * @see org.pklose.espl.esplm.Flow
    * @generated
    */
-  EClass getActivityDiagram();
+  EClass getFlow();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.ActivityDiagram#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.Flow#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see org.pklose.espl.esplm.ActivityDiagram#getImports()
-   * @see #getActivityDiagram()
+   * @see org.pklose.espl.esplm.Flow#getImports()
+   * @see #getFlow()
    * @generated
    */
-  EReference getActivityDiagram_Imports();
+  EReference getFlow_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.ActivityDiagram#getActivities <em>Activities</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.Flow#getActivities <em>Activities</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Activities</em>'.
-   * @see org.pklose.espl.esplm.ActivityDiagram#getActivities()
-   * @see #getActivityDiagram()
+   * @see org.pklose.espl.esplm.Flow#getActivities()
+   * @see #getFlow()
    * @generated
    */
-  EReference getActivityDiagram_Activities();
+  EReference getFlow_Activities();
 
   /**
    * Returns the meta object for class '{@link org.pklose.espl.esplm.Activity <em>Activity</em>}'.
@@ -798,17 +789,6 @@ public interface EsplmPackage extends EPackage
    * @generated
    */
   EAttribute getActivity_Name();
-
-  /**
-   * Returns the meta object for the reference list '{@link org.pklose.espl.esplm.Activity#getPredecessor <em>Predecessor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Predecessor</em>'.
-   * @see org.pklose.espl.esplm.Activity#getPredecessor()
-   * @see #getActivity()
-   * @generated
-   */
-  EReference getActivity_Predecessor();
 
   /**
    * Returns the meta object for the reference list '{@link org.pklose.espl.esplm.Activity#getSucessors <em>Sucessors</em>}'.
@@ -1242,14 +1222,14 @@ public interface EsplmPackage extends EPackage
     EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
 
     /**
-     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.ActivityDiagramImpl <em>Activity Diagram</em>}' class.
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.FlowImpl <em>Flow</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.pklose.espl.esplm.impl.ActivityDiagramImpl
-     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getActivityDiagram()
+     * @see org.pklose.espl.esplm.impl.FlowImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getFlow()
      * @generated
      */
-    EClass ACTIVITY_DIAGRAM = eINSTANCE.getActivityDiagram();
+    EClass FLOW = eINSTANCE.getFlow();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -1257,7 +1237,7 @@ public interface EsplmPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ACTIVITY_DIAGRAM__IMPORTS = eINSTANCE.getActivityDiagram_Imports();
+    EReference FLOW__IMPORTS = eINSTANCE.getFlow_Imports();
 
     /**
      * The meta object literal for the '<em><b>Activities</b></em>' containment reference list feature.
@@ -1265,7 +1245,7 @@ public interface EsplmPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ACTIVITY_DIAGRAM__ACTIVITIES = eINSTANCE.getActivityDiagram_Activities();
+    EReference FLOW__ACTIVITIES = eINSTANCE.getFlow_Activities();
 
     /**
      * The meta object literal for the '{@link org.pklose.espl.esplm.impl.ActivityImpl <em>Activity</em>}' class.
@@ -1284,14 +1264,6 @@ public interface EsplmPackage extends EPackage
      * @generated
      */
     EAttribute ACTIVITY__NAME = eINSTANCE.getActivity_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Predecessor</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ACTIVITY__PREDECESSOR = eINSTANCE.getActivity_Predecessor();
 
     /**
      * The meta object literal for the '<em><b>Sucessors</b></em>' reference list feature.

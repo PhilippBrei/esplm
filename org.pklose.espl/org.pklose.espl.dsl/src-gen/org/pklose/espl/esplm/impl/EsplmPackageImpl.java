@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.pklose.espl.esplm.Activity;
-import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
@@ -21,6 +20,7 @@ import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmFactory;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
+import org.pklose.espl.esplm.Flow;
 import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
@@ -55,7 +55,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass activityDiagramEClass = null;
+  private EClass flowEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -263,9 +263,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getActivityDiagram()
+  public EClass getFlow()
   {
-    return activityDiagramEClass;
+    return flowEClass;
   }
 
   /**
@@ -273,9 +273,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActivityDiagram_Imports()
+  public EReference getFlow_Imports()
   {
-    return (EReference)activityDiagramEClass.getEStructuralFeatures().get(0);
+    return (EReference)flowEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -283,9 +283,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActivityDiagram_Activities()
+  public EReference getFlow_Activities()
   {
-    return (EReference)activityDiagramEClass.getEStructuralFeatures().get(1);
+    return (EReference)flowEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -313,7 +313,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActivity_Predecessor()
+  public EReference getActivity_Sucessors()
   {
     return (EReference)activityEClass.getEStructuralFeatures().get(1);
   }
@@ -323,7 +323,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActivity_Sucessors()
+  public EReference getActivity_BusinessRule()
   {
     return (EReference)activityEClass.getEStructuralFeatures().get(2);
   }
@@ -333,19 +333,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getActivity_BusinessRule()
-  {
-    return (EReference)activityEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getActivity_Description()
   {
-    return (EAttribute)activityEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)activityEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -704,13 +694,12 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     elementEClass = createEClass(ELEMENT);
     createEAttribute(elementEClass, ELEMENT__NAME);
 
-    activityDiagramEClass = createEClass(ACTIVITY_DIAGRAM);
-    createEReference(activityDiagramEClass, ACTIVITY_DIAGRAM__IMPORTS);
-    createEReference(activityDiagramEClass, ACTIVITY_DIAGRAM__ACTIVITIES);
+    flowEClass = createEClass(FLOW);
+    createEReference(flowEClass, FLOW__IMPORTS);
+    createEReference(flowEClass, FLOW__ACTIVITIES);
 
     activityEClass = createEClass(ACTIVITY);
     createEAttribute(activityEClass, ACTIVITY__NAME);
-    createEReference(activityEClass, ACTIVITY__PREDECESSOR);
     createEReference(activityEClass, ACTIVITY__SUCESSORS);
     createEReference(activityEClass, ACTIVITY__BUSINESS_RULE);
     createEAttribute(activityEClass, ACTIVITY__DESCRIPTION);
@@ -790,7 +779,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    activityDiagramEClass.getESuperTypes().add(this.getElement());
+    flowEClass.getESuperTypes().add(this.getElement());
     businessRuleEClass.getESuperTypes().add(this.getElement());
     diagramEClass.getESuperTypes().add(this.getElement());
     enumDeclarationEClass.getESuperTypes().add(this.getElement());
@@ -806,13 +795,12 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(activityDiagramEClass, ActivityDiagram.class, "ActivityDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getActivityDiagram_Imports(), this.getImport(), null, "imports", null, 0, -1, ActivityDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActivityDiagram_Activities(), this.getActivity(), null, "activities", null, 0, -1, ActivityDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(flowEClass, Flow.class, "Flow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFlow_Imports(), this.getImport(), null, "imports", null, 0, -1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFlow_Activities(), this.getActivity(), null, "activities", null, 0, -1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getActivity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getActivity_Predecessor(), this.getActivity(), null, "predecessor", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActivity_Sucessors(), this.getActivity(), null, "sucessors", null, 0, -1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getActivity_BusinessRule(), this.getBusinessRule(), null, "businessRule", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getActivity_Description(), ecorePackage.getEString(), "description", null, 0, 1, Activity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

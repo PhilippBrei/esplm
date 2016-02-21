@@ -1,12 +1,19 @@
 package org.pklose.espl.generator.flow
 
 import org.pklose.espl.generator.HTMLGenerator
+import java.util.ArrayList
+import java.util.List
 
 public class FlowBody implements HTMLGenerator {
 	val final String flowName;
 	
-	public new (String flowName) {
+	val final List<ActivityLink> links = new ArrayList();
+	val final List<ActivityNode> nodes = new ArrayList();
+	
+	public new (String flowName, List<ActivityLink> links, List<ActivityNode> nodes) {
 		this.flowName = flowName;
+		this.links.addAll(links);
+		this.nodes.addAll(nodes);
 	}
 	
 	public def getHTML () {
@@ -18,7 +25,7 @@ public class FlowBody implements HTMLGenerator {
 <!DOCTYPE html>
 <html>
 <head>
-<title>State Chart</title>
+<title>«flowName»</title>
 <meta name="description" content="A finite state machine chart with editable and interactive features." />
 <!-- /* Copyright 1998-2016 by Northwoods Software Corporation. */ -->
 <meta charset="UTF-8">
@@ -27,7 +34,7 @@ public class FlowBody implements HTMLGenerator {
   function init() {
     var $ = go.GraphObject.make;  // for conciseness in defining templates
     myDiagram =
-      $(go.Diagram, "myDiagram",  // must name or refer to the DIV HTML element
+      $(go.Diagram, "«flowName»",  // must name or refer to the DIV HTML element
         {
           // start everything in the middle of the viewport
           initialContentAlignment: go.Spot.Left,
@@ -95,32 +102,22 @@ public class FlowBody implements HTMLGenerator {
     myDiagram.model = go.Model.fromJson(
   { "nodeKeyProperty": "id",
   "nodeDataArray": [
-    { "id": 0, "loc": "120 120", "text": "Initial" },
-    { "id": 1, "loc": "330 120", "text": "First down" },
-    { "id": 2, "loc": "226 376", "text": "First up" },
-    { "id": 3, "loc": "60 276", "text": "Second down" },
-    { "id": 4, "loc": "226 226", "text": "Wait" }
+    «FOR node : nodes SEPARATOR ","»
+    	«node.asJson»
+    «ENDFOR»
   ],
   "linkDataArray": [
-    { "from": 0, "to": 0, "text": "up or timer", "curviness": -20 },
-    { "from": 0, "to": 1, "text": "down", "curviness": 20 },
-    { "from": 1, "to": 0, "text": "up (moved)\nPOST", "curviness": 20 },
-    { "from": 1, "to": 1, "text": "down", "curviness": -20 },
-    { "from": 1, "to": 2, "text": "up (no move)" },
-    { "from": 1, "to": 4, "text": "timer" },
-    { "from": 2, "to": 0, "text": "timer\nPOST" },
-    { "from": 2, "to": 3, "text": "down" },
-    { "from": 3, "to": 0, "text": "up\nPOST\n(dblclick\nif no move)" },
-    { "from": 3, "to": 3, "text": "down or timer", "curviness": 20 },
-    { "from": 4, "to": 0, "text": "up\nPOST" },
-    { "from": 4, "to": 4, "text": "down" }]
+  	«FOR link : links SEPARATOR ","»
+  	«link.asJson»
+  	«ENDFOR»
+    ]
   });
 }
 </script>
 </head>
 <body onload="init()">
 <div id="sample">
-  <div id="myDiagram" style="background-color: whitesmoke; border: solid 1px black; width: 100%; height: 400px"></div>
+  <div id="«this.flowName»" style="background-color: whitesmoke; border: solid 1px black; width: 100%; height: 400px"></div>
 </div>
 </body>
 </html>
