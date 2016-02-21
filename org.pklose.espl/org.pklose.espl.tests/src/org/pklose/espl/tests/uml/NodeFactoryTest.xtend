@@ -1,19 +1,17 @@
-package org.pklose.espl.tests
+package org.pklose.espl.tests.uml
 
 import javax.inject.Inject
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.junit.Test
-import org.pklose.espl.esplm.Model
-import org.pklose.espl.generator.Node
-import org.pklose.espl.esplm.Entity
-import org.pklose.espl.esplm.Field
-import org.junit.Assert
-import org.junit.runner.RunWith
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.junit.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
 import org.pklose.espl.EsplmInjectorProvider
-import org.pklose.espl.generator.NodeFactory
+import org.pklose.espl.esplm.Entity
+import org.pklose.espl.esplm.Model
+import org.pklose.espl.generator.uml.NodeFactory
 
 @RunWith(XtextRunner)
 @InjectWith(EsplmInjectorProvider)
@@ -43,7 +41,7 @@ class NodeFactoryTest {
 		
 		validationTester.assertNoIssues(model);		
 		val entities = model.eAllContents.toIterable.filter(typeof(Entity));
-		val nodes = NodeFactory.createNodes(entities.toList);
+		val nodes = NodeFactory::createNodes(entities.toList);
 		Assert.assertEquals(2, nodes.size);
 		Assert.assertFalse(nodes.last.asJson.isEmpty);		
 	}

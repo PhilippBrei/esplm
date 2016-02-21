@@ -1,4 +1,4 @@
-package org.pklose.espl.generator;
+package org.pklose.espl.generator.uml;
 
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;

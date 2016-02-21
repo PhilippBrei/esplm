@@ -17,7 +17,9 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.pklose.espl.esplm.Activity;
+import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Entity;
@@ -43,8 +45,14 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case EsplmPackage.ACTIVITY:
 				sequence_Activity(context, (Activity) semanticObject); 
 				return; 
+			case EsplmPackage.ACTIVITY_DIAGRAM:
+				sequence_ActivityDiagram(context, (ActivityDiagram) semanticObject); 
+				return; 
 			case EsplmPackage.ASSOCIATION:
 				sequence_Association(context, (Association) semanticObject); 
+				return; 
+			case EsplmPackage.BUSINESS_RULE:
+				sequence_BusinessRule(context, (BusinessRule) semanticObject); 
 				return; 
 			case EsplmPackage.DIAGRAM:
 				sequence_Diagram(context, (Diagram) semanticObject); 
@@ -85,12 +93,20 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
+	 *     (imports+=Import* name=ID activities+=Activity*)
+	 */
+	protected void sequence_ActivityDiagram(EObject context, ActivityDiagram semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         predecessor+=[Activity|ID] 
-	 *         predecessor+=[Activity|ID]* 
-	 *         sucessors+=[Activity|ID] 
-	 *         sucessors+=[Activity|ID]* 
+	 *         (predecessor+=[Activity|ID] predecessor+=[Activity|ID]*)? 
+	 *         (sucessors+=[Activity|ID] sucessors+=[Activity|ID]*)? 
+	 *         businessRule=[BusinessRule|FQN]? 
 	 *         description=STRING
 	 *     )
 	 */
@@ -117,6 +133,22 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		feeder.accept(grammarAccess.getAssociationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getAssociationAccess().getTypeEntityFQNParserRuleCall_3_0_1(), semanticObject.getType());
 		feeder.accept(grammarAccess.getAssociationAccess().getMultiplicityMultiplictyParserRuleCall_4_0(), semanticObject.getMultiplicity());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_BusinessRule(EObject context, BusinessRule semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.ELEMENT__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBusinessRuleAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -203,7 +235,7 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (entity=[Entity|FQN] fields+=[Property|ID] fields+=[Property|ID]*)
+	 *     ((include='Include' | include='Exclude') entity=[Entity|FQN] fields+=[Property|ID] fields+=[Property|ID]*)
 	 */
 	protected void sequence_Include(EObject context, Include semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

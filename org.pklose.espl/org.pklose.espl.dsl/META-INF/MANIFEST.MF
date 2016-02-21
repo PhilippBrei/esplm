@@ -33,6 +33,7 @@ Export-Package: org.pklose.espl,
  org.pklose.espl.validation,
  org.pklose.espl.scoping,
  org.pklose.espl.generator,
+  org.pklose.espl.generator.uml,
  org.pklose.espl.formatting
 Bundle-ClassPath: lib/gs-core-1.3.jar,
  .,

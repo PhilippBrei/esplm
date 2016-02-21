@@ -2,7 +2,6 @@ package org.pklose.espl.tests;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import java.io.FileOutputStream;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -18,7 +17,6 @@ import org.junit.runner.RunWith;
 import org.pklose.espl.EsplmInjectorProvider;
 import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.Model;
-import org.pklose.espl.generator.ShowAllEntitiesGraph;
 
 @RunWith(XtextRunner.class)
 @InjectWith(EsplmInjectorProvider.class)
@@ -73,9 +71,6 @@ public class LanguageTest {
       TreeIterator<EObject> _eAllContents = model.eAllContents();
       Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_eAllContents);
       final Iterable<Entity> entities = Iterables.<Entity>filter(_iterable, Entity.class);
-      ShowAllEntitiesGraph _showAllEntitiesGraph = new ShowAllEntitiesGraph(entities);
-      FileOutputStream _fileOutputStream = new FileOutputStream("resources/result.svg");
-      _showAllEntitiesGraph.write(_fileOutputStream);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

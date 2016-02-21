@@ -1,9 +1,9 @@
-package org.pklose.espl.generator
+package org.pklose.espl.generator.uml
 
 import org.pklose.espl.esplm.Association
 import org.pklose.espl.esplm.Entity
 
-class Link {
+public class Link {
 	val Association association;
 	val Entity entity;
 	

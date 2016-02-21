@@ -10,7 +10,9 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.pklose.espl.esplm.Activity;
+import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Element;
@@ -99,9 +101,19 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
         return createElementAdapter();
       }
       @Override
+      public Adapter caseActivityDiagram(ActivityDiagram object)
+      {
+        return createActivityDiagramAdapter();
+      }
+      @Override
       public Adapter caseActivity(Activity object)
       {
         return createActivityAdapter();
+      }
+      @Override
+      public Adapter caseBusinessRule(BusinessRule object)
+      {
+        return createBusinessRuleAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -216,6 +228,21 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.ActivityDiagram <em>Activity Diagram</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.ActivityDiagram
+   * @generated
+   */
+  public Adapter createActivityDiagramAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.Activity <em>Activity</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -226,6 +253,21 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createActivityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.BusinessRule <em>Business Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.BusinessRule
+   * @generated
+   */
+  public Adapter createBusinessRuleAdapter()
   {
     return null;
   }

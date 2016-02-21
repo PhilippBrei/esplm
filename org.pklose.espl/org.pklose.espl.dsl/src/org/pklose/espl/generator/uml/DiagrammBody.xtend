@@ -1,16 +1,16 @@
-package org.pklose.espl.generator
+package org.pklose.espl.generator.uml
 
 import java.util.ArrayList
 import java.util.List
 
-class DiagrammBody {
+public class DiagrammBody {
 
 	final val String title;
 
 	final val List<Node> nodes = new ArrayList();	
 	final val List<Link> links = new ArrayList();
 
-	new(String title, Iterable<Node> nodes, Iterable<Link> links) {
+	public new(String title, Iterable<Node> nodes, Iterable<Link> links) {
 		this.title = title;
 		this.nodes.addAll(nodes);
 		this.links.addAll(links);

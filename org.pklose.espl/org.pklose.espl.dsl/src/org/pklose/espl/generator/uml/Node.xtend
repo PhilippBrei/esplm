@@ -1,15 +1,15 @@
-package org.pklose.espl.generator
+package org.pklose.espl.generator.uml
 
 import java.util.ArrayList
 import java.util.List
 import org.pklose.espl.esplm.Field
 
-class Node {
+public class Node {
 	
 	val final String name;
 	val final List<Field> fields = new ArrayList();
 	
-	new (String name,Iterable<Field> fields) {
+	public new (String name,Iterable<Field> fields) {
 		this.name = name;
 		this.fields.addAll(fields);
 	}

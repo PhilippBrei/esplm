@@ -13,11 +13,18 @@
     <genClasses ecoreClass="Esplm.ecore#//Element">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Element/name"/>
     </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//ActivityDiagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//ActivityDiagram/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//ActivityDiagram/activities"/>
+    </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//Activity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Activity/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Activity/predecessor"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Activity/sucessors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Activity/businessRule"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Activity/description"/>
     </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//BusinessRule"/>
     <genClasses ecoreClass="Esplm.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Import/importedNamespace"/>
     </genClasses>
@@ -26,6 +33,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//Diagram/includes"/>
     </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//Include">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Include/include"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Include/entity"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Include/fields"/>
     </genClasses>

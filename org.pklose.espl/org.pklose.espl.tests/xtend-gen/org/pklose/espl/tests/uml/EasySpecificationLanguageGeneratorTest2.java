@@ -1,8 +1,10 @@
-package org.pklose.espl.tests;
+package org.pklose.espl.tests.uml;
 
 import com.google.common.collect.Iterables;
-import java.util.List;
+import com.google.common.collect.Iterators;
+import java.util.Iterator;
 import javax.inject.Inject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -12,6 +14,7 @@ import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.junit.Assert;
@@ -19,14 +22,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.pklose.espl.EsplmInjectorProvider;
 import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.Field;
 import org.pklose.espl.esplm.Model;
-import org.pklose.espl.generator.Node;
-import org.pklose.espl.generator.NodeFactory;
+import org.pklose.espl.esplm.Property;
+import org.pklose.espl.generator.uml.Node;
 
 @RunWith(XtextRunner.class)
 @InjectWith(EsplmInjectorProvider.class)
 @SuppressWarnings("all")
-public class NodeFactoryTest {
+public class EasySpecificationLanguageGeneratorTest2 {
   @Inject
   @Extension
   private ParseHelper<Model> _parseHelper;
@@ -74,16 +78,49 @@ public class NodeFactoryTest {
       final Model model = this._parseHelper.parse(_builder);
       this.validationTester.assertNoIssues(model);
       TreeIterator<EObject> _eAllContents = model.eAllContents();
-      Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_eAllContents);
-      final Iterable<Entity> entities = Iterables.<Entity>filter(_iterable, Entity.class);
-      List<Entity> _list = IterableExtensions.<Entity>toList(entities);
-      final List<Node> nodes = NodeFactory.createNodes(_list);
-      int _size = nodes.size();
-      Assert.assertEquals(2, _size);
-      Node _last = IterableExtensions.<Node>last(nodes);
-      String _asJson = _last.getAsJson();
-      boolean _isEmpty = _asJson.isEmpty();
+      Iterator<Entity> _filter = Iterators.<Entity>filter(_eAllContents, Entity.class);
+      final Function1<Entity, Boolean> _function = new Function1<Entity, Boolean>() {
+        @Override
+        public Boolean apply(final Entity it) {
+          String _name = it.getName();
+          return Boolean.valueOf(_name.equals("Geschaeftspartner"));
+        }
+      };
+      final Entity geschaeftspartner = IteratorExtensions.<Entity>findFirst(_filter, _function);
+      EList<Property> _properties = geschaeftspartner.getProperties();
+      final Iterable<Field> partnerFields = Iterables.<Field>filter(_properties, Field.class);
+      Assert.assertNotNull(geschaeftspartner);
+      Assert.assertNotNull(partnerFields);
+      boolean _isEmpty = IterableExtensions.isEmpty(partnerFields);
       Assert.assertFalse(_isEmpty);
+      String _name = geschaeftspartner.getName();
+      final Node node = new Node(_name, partnerFields);
+      String _asJson = node.getAsJson();
+      String _string = _asJson.toString();
+      final String json = _string.trim();
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("{");
+      _builder_1.newLine();
+      _builder_1.append("\t            ");
+      _builder_1.append("key: \"Geschaeftspartner\",");
+      _builder_1.newLine();
+      _builder_1.append("\t            ");
+      _builder_1.append("name: \"Geschaeftspartner\",");
+      _builder_1.newLine();
+      _builder_1.append("\t            ");
+      _builder_1.append("properties: [\t            \t");
+      _builder_1.newLine();
+      _builder_1.append("\t            \t");
+      _builder_1.append("{ name: \"Name\", type: \"Text\", visibility: \"public\" }                      ");
+      _builder_1.newLine();
+      _builder_1.append("\t            \t");
+      _builder_1.append("]");
+      _builder_1.newLine();
+      _builder_1.append("            ");
+      _builder_1.append("}");
+      String _string_1 = _builder_1.toString();
+      String expected = _string_1.trim();
+      Assert.assertEquals(expected, json);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

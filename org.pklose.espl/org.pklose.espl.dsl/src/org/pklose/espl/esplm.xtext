@@ -8,16 +8,35 @@ Model:
 ;
 
 Element:
-	EnumDeclaration | Diagram | Domain | Activity
+	EnumDeclaration | Diagram | Domain | ActivityDiagram | BusinessRule
+;
+
+
+
+
+
+ActivityDiagram:
+	 imports += Import*
+	'Flow' name = ID '{'
+	  (activities+=Activity)*
+	'}'
 ;
 
 Activity:
 	'Activity' name= ID '{'
-		'Predecessors' '['predecessor += [Activity] (',' predecessor += [Activity])*']'
-		'Successors'   '['sucessors += [Activity] (',' sucessors += [Activity])*']'
+		('Predecessors' '['predecessor += [Activity] (',' predecessor += [Activity])*']')?
+		('Successors'   '['sucessors += [Activity] (',' sucessors += [Activity])*']')?
+		('Calls' businessRule = [BusinessRule|FQN])?
 		'Description' description = STRING		
 	'}'
 ;
+
+BusinessRule:
+	'BusinessRule' name=ID '{'
+		
+	'}'
+;
+
 
 Import: 'Import' importedNamespace=FqnWithWildCard;
 
@@ -31,7 +50,7 @@ Diagram:
 ;
 
 Include:
-	'Include' entity = [Entity|FQN] ('with' '{'
+	include = ('Include'|'Exclude') entity = [Entity|FQN] ('with' '{'
 			fields += [Property] (',' fields += [Property])*
 		'}')
 ;

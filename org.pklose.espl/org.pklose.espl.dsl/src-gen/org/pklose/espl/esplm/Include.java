@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.pklose.espl.esplm.Include#getInclude <em>Include</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.Include#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.Include#getFields <em>Fields</em>}</li>
  * </ul>
@@ -25,6 +26,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Include extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Include</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Include</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Include</em>' attribute.
+   * @see #setInclude(String)
+   * @see org.pklose.espl.esplm.EsplmPackage#getInclude_Include()
+   * @model
+   * @generated
+   */
+  String getInclude();
+
+  /**
+   * Sets the value of the '{@link org.pklose.espl.esplm.Include#getInclude <em>Include</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Include</em>' attribute.
+   * @see #getInclude()
+   * @generated
+   */
+  void setInclude(String value);
+
   /**
    * Returns the value of the '<em><b>Entity</b></em>' reference.
    * <!-- begin-user-doc -->

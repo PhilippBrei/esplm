@@ -8,7 +8,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.pklose.espl.esplm.Activity;
+import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Element;
@@ -100,11 +102,26 @@ public class EsplmSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EsplmPackage.ACTIVITY_DIAGRAM:
+      {
+        ActivityDiagram activityDiagram = (ActivityDiagram)theEObject;
+        T result = caseActivityDiagram(activityDiagram);
+        if (result == null) result = caseElement(activityDiagram);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case EsplmPackage.ACTIVITY:
       {
         Activity activity = (Activity)theEObject;
         T result = caseActivity(activity);
-        if (result == null) result = caseElement(activity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.BUSINESS_RULE:
+      {
+        BusinessRule businessRule = (BusinessRule)theEObject;
+        T result = caseBusinessRule(businessRule);
+        if (result == null) result = caseElement(businessRule);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -235,6 +252,22 @@ public class EsplmSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Activity Diagram</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Activity Diagram</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseActivityDiagram(ActivityDiagram object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -246,6 +279,22 @@ public class EsplmSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseActivity(Activity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Business Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Business Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBusinessRule(BusinessRule object)
   {
     return null;
   }

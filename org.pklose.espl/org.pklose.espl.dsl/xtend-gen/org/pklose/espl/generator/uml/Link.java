@@ -1,4 +1,4 @@
-package org.pklose.espl.generator;
+package org.pklose.espl.generator.uml;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.pklose.espl.esplm.Association;

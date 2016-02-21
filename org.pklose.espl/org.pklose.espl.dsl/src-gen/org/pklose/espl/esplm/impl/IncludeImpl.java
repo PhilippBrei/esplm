@@ -29,6 +29,7 @@ import org.pklose.espl.esplm.Property;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.pklose.espl.esplm.impl.IncludeImpl#getInclude <em>Include</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.IncludeImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.IncludeImpl#getFields <em>Fields</em>}</li>
  * </ul>
@@ -37,6 +38,26 @@ import org.pklose.espl.esplm.Property;
  */
 public class IncludeImpl extends MinimalEObjectImpl.Container implements Include
 {
+  /**
+   * The default value of the '{@link #getInclude() <em>Include</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInclude()
+   * @generated
+   * @ordered
+   */
+  protected static final String INCLUDE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getInclude() <em>Include</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInclude()
+   * @generated
+   * @ordered
+   */
+  protected String include = INCLUDE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getEntity() <em>Entity</em>}' reference.
    * <!-- begin-user-doc -->
@@ -76,6 +97,29 @@ public class IncludeImpl extends MinimalEObjectImpl.Container implements Include
   protected EClass eStaticClass()
   {
     return EsplmPackage.Literals.INCLUDE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getInclude()
+  {
+    return include;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInclude(String newInclude)
+  {
+    String oldInclude = include;
+    include = newInclude;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.INCLUDE__INCLUDE, oldInclude, include));
   }
 
   /**
@@ -145,6 +189,8 @@ public class IncludeImpl extends MinimalEObjectImpl.Container implements Include
   {
     switch (featureID)
     {
+      case EsplmPackage.INCLUDE__INCLUDE:
+        return getInclude();
       case EsplmPackage.INCLUDE__ENTITY:
         if (resolve) return getEntity();
         return basicGetEntity();
@@ -165,6 +211,9 @@ public class IncludeImpl extends MinimalEObjectImpl.Container implements Include
   {
     switch (featureID)
     {
+      case EsplmPackage.INCLUDE__INCLUDE:
+        setInclude((String)newValue);
+        return;
       case EsplmPackage.INCLUDE__ENTITY:
         setEntity((Entity)newValue);
         return;
@@ -186,6 +235,9 @@ public class IncludeImpl extends MinimalEObjectImpl.Container implements Include
   {
     switch (featureID)
     {
+      case EsplmPackage.INCLUDE__INCLUDE:
+        setInclude(INCLUDE_EDEFAULT);
+        return;
       case EsplmPackage.INCLUDE__ENTITY:
         setEntity((Entity)null);
         return;
@@ -206,12 +258,31 @@ public class IncludeImpl extends MinimalEObjectImpl.Container implements Include
   {
     switch (featureID)
     {
+      case EsplmPackage.INCLUDE__INCLUDE:
+        return INCLUDE_EDEFAULT == null ? include != null : !INCLUDE_EDEFAULT.equals(include);
       case EsplmPackage.INCLUDE__ENTITY:
         return entity != null;
       case EsplmPackage.INCLUDE__FIELDS:
         return fields != null && !fields.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (include: ");
+    result.append(include);
+    result.append(')');
+    return result.toString();
   }
 
 } //IncludeImpl

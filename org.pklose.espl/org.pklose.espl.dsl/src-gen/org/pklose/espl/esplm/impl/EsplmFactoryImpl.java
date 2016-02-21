@@ -11,7 +11,9 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.pklose.espl.esplm.Activity;
+import org.pklose.espl.esplm.ActivityDiagram;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Element;
@@ -81,7 +83,9 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
     {
       case EsplmPackage.MODEL: return createModel();
       case EsplmPackage.ELEMENT: return createElement();
+      case EsplmPackage.ACTIVITY_DIAGRAM: return createActivityDiagram();
       case EsplmPackage.ACTIVITY: return createActivity();
+      case EsplmPackage.BUSINESS_RULE: return createBusinessRule();
       case EsplmPackage.IMPORT: return createImport();
       case EsplmPackage.DIAGRAM: return createDiagram();
       case EsplmPackage.INCLUDE: return createInclude();
@@ -126,10 +130,32 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ActivityDiagram createActivityDiagram()
+  {
+    ActivityDiagramImpl activityDiagram = new ActivityDiagramImpl();
+    return activityDiagram;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Activity createActivity()
   {
     ActivityImpl activity = new ActivityImpl();
     return activity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BusinessRule createBusinessRule()
+  {
+    BusinessRuleImpl businessRule = new BusinessRuleImpl();
+    return businessRule;
   }
 
   /**

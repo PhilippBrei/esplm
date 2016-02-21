@@ -7,7 +7,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.pklose.espl.esplm.Entity
-
+import org.pklose.espl.generator.uml.NodeFactory
+import org.pklose.espl.generator.uml.DiagrammBody
 
 /**
  * Generates code from your model files on save.

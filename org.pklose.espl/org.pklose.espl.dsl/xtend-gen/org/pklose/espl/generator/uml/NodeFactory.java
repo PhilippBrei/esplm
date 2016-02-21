@@ -1,4 +1,4 @@
-package org.pklose.espl.generator;
+package org.pklose.espl.generator.uml;
 
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.Field;
 import org.pklose.espl.esplm.Property;
-import org.pklose.espl.generator.Link;
-import org.pklose.espl.generator.Node;
+import org.pklose.espl.generator.uml.Link;
+import org.pklose.espl.generator.uml.Node;
 
 @SuppressWarnings("all")
 public class NodeFactory {

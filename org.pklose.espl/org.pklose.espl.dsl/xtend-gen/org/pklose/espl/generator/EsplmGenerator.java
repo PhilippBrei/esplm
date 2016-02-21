@@ -14,10 +14,10 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.pklose.espl.esplm.Entity;
-import org.pklose.espl.generator.DiagrammBody;
-import org.pklose.espl.generator.Link;
-import org.pklose.espl.generator.Node;
-import org.pklose.espl.generator.NodeFactory;
+import org.pklose.espl.generator.uml.DiagrammBody;
+import org.pklose.espl.generator.uml.Link;
+import org.pklose.espl.generator.uml.Node;
+import org.pklose.espl.generator.uml.NodeFactory;
 
 /**
  * Generates code from your model files on save.
