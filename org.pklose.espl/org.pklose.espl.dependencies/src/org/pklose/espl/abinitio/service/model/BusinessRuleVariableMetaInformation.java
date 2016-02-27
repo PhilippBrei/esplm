@@ -15,4 +15,38 @@ public class BusinessRuleVariableMetaInformation {
 	@SerializedName ("num_subfields")
 	private Integer subFields;
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getVartype() {
+		return vartype;
+	}
+
+	public void setVartype(String vartype) {
+		this.vartype = vartype;
+	}
+
+	public Integer getIsHidden() {
+		return isHidden;
+	}
+
+	public void setIsHidden(Integer isHidden) {
+		this.isHidden = isHidden;
+	}
+
+	public Integer getSubFields() {
+		return subFields;
+	}
+
+	public void setSubFields(Integer subFields) {
+		this.subFields = subFields;
+	}
+	
+	
+
 }
