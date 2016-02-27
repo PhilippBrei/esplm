@@ -1,5 +1,9 @@
 package org.pklose.espl.abinitio.service;
 
-public interface AbinitionBREService {
+import org.pklose.espl.abinitio.service.model.BusinessRuleMetaInformation;
 
+public interface AbinitionBREService  {
+	
+	public BusinessRuleMetaInformation getBusinessRuleMetaInformation (String BusinessRuleName);
+	
 }
