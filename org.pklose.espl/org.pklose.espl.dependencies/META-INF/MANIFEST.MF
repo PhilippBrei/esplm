@@ -4,7 +4,7 @@ Bundle-Name: Dependencies
 Bundle-SymbolicName: org.pklose.espl.abinition
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Philipp Klose
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Export-Package: org.pklose.espl.abinitio.service
 Require-Bundle: com.google.gson;bundle-version="2.2.4",

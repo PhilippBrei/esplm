@@ -12,6 +12,10 @@ public class BusinessRuleMetaInformation {
 	@SerializedName ("inputs")
 	private List<BusinessRuleInputMetaInformation> inputs;
 
+	public List<BusinessRuleInputMetaInformation> getInputs() {
+		return inputs;
+	}
+
 	public String getName() {
 		return name;
 	}
