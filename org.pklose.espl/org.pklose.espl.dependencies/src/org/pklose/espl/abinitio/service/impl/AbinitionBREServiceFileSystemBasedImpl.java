@@ -4,7 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Map;
 
 import org.pklose.espl.abinitio.service.AbinitionBREService;
 import org.pklose.espl.abinitio.service.BusinessRule;
@@ -37,34 +41,47 @@ public class AbinitionBREServiceFileSystemBasedImpl implements AbinitionBREServi
 		BusinessRule businessRule = new BusinessRule(breMetaInformation.getName(), new ArrayList<>());
 		
 		for (BusinessRuleInputMetaInformation inputMetaInformation : breMetaInformation.getInputs()) {
-			 
-			for (int i = 0; i < inputMetaInformation.getVariables().size(); i++) {
-				BusinessRuleVariableMetaInformation businessRuleVariableMetaInformation = inputMetaInformation.getVariables().get(i);
+			
+			BusinessRuleEntity entity =  null;
+			for (BusinessRuleVariableMetaInformation businessRuleVariableMetaInformation : inputMetaInformation.getVariables()) {
+				
+				if (businessRuleVariableMetaInformation.getIsHidden() > 0) {
+					continue;
+				}
+				
+				if (entity == null && businessRuleVariableMetaInformation.getSubFields() == 0) {
+					businessRule.getInputElements().add(new BusinessRuleEntity(businessRuleVariableMetaInformation.getName()));
+					continue;
+				}
+				
 				
 				if (businessRuleVariableMetaInformation.getSubFields() > 0) {
-					BusinessRuleEntity businessRuleEntity = new BusinessRuleEntity(businessRuleVariableMetaInformation.getName());
-					
-					if ((i + 1) < inputMetaInformation.getVariables().size() && 
-							inputMetaInformation.getVariables().get(i + 1).getSubFields() == 0) {
-						i++;
-						
-						for (int k = 0;i < inputMetaInformation.getVariables().size() && k < businessRuleVariableMetaInformation.getSubFields();k++) {
-							BusinessRuleVariableMetaInformation breSubRecord = inputMetaInformation.getVariables().get(i);
-							businessRuleEntity.getFields().add(new BusinessRuleField(breSubRecord.getName()));
-							i++;
-						}
-					}
-					
-					businessRule.getInputElements().add(businessRuleEntity);
-					
+					entity = new BusinessRuleEntity(businessRuleVariableMetaInformation.getName());
+					businessRule.getInputElements().add(entity);
 				}
+				
+				if (businessRuleVariableMetaInformation.getSubFields() == 0) {
+					entity.getFields().add(new BusinessRuleField(businessRuleVariableMetaInformation.getName()));
+				}			
+	
 			}
-			
 		}
-		
-		
+			
 		return businessRule;
 		
+	}
+
+	private void seekToNextLeaf(ListIterator<BusinessRuleVariableMetaInformation> variableInterator) {
+		while (variableInterator.hasNext()) {
+			BusinessRuleVariableMetaInformation next = variableInterator.next();
+			if (next.getSubFields() == 0) {
+				return;
+			}
+		}
+	}
+
+	private boolean isLeaf(BusinessRuleVariableMetaInformation variableMetaInformation) {
+		return variableMetaInformation.getSubFields() == 0;
 	}
 	
 	

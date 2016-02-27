@@ -46,6 +46,14 @@ public class BusinessRuleVariableMetaInformation {
 	public void setSubFields(Integer subFields) {
 		this.subFields = subFields;
 	}
+
+	@Override
+	public String toString() {
+		return "BusinessRuleVariableMetaInformation [name=" + name + ", vartype=" + vartype + ", isHidden=" + isHidden
+				+ ", subFields=" + subFields + "]";
+	}
+	
+	
 	
 	
 
