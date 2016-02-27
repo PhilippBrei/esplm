@@ -5,8 +5,8 @@ import java.net.URL;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.pklose.espl.abinitio.service.BusinessRule;
 import org.pklose.espl.abinitio.service.impl.AbinitionBREServiceFileSystemBasedImpl;
+import org.pklose.espl.abinitio.service.model.BusinessRuleMetaInformation;
 
 
 
@@ -24,7 +24,7 @@ public class AbinitionBREServiceFileSystemBasedImplTest {
 	@Test 
 	public void parseJson () throws FileNotFoundException {
 		AbinitionBREServiceFileSystemBasedImpl service = new AbinitionBREServiceFileSystemBasedImpl();
-		BusinessRule bre = service.parseRule(service.getRessourceAsURL("calypso_neuanlage").getFile());
+		BusinessRuleMetaInformation bre = service.parseRule(service.getRessourceAsURL("calypso_neuanlage").getFile());
 		Assert.assertNotNull(bre);
 		Assert.assertEquals("calypso_neuanlage",bre.getName());
 	}
