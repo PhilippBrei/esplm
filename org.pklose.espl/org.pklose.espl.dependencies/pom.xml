@@ -9,7 +9,7 @@
     </parent>
   
   <groupId>org.pklose.espl.abinition</groupId>
-  <artifactId>AbinitionService</artifactId>
+  <artifactId>org.pklose.espl.abinition</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 	
