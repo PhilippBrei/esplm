@@ -29,6 +29,7 @@ public class AbinitionBREServiceFileSystemBasedImplTest {
 		Assert.assertNotNull(bre);
 		Assert.assertEquals("calypso_neuanlage", bre.getName());
 		Assert.assertFalse(bre.getInputElements().isEmpty());
+		Assert.assertEquals("IST_AUSZAHLUNG", bre.getInputElements().get(2).getFields().get(2).getName());
 	}
 	
 	@Test 

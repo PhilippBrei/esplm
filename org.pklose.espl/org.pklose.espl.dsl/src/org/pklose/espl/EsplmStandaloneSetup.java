@@ -3,6 +3,10 @@
  */
 package org.pklose.espl;
 
+import org.pklose.espl.abinitio.service.AbinitionServicesModule;
+
+import com.google.inject.Injector;
+
 /**
  * Initialization support for running Xtext languages 
  * without equinox extension registry
@@ -10,7 +14,8 @@ package org.pklose.espl;
 public class EsplmStandaloneSetup extends EsplmStandaloneSetupGenerated{
 
 	public static void doSetup() {
-		new EsplmStandaloneSetup().createInjectorAndDoEMFRegistration();
+		Injector createInjectorAndDoEMFRegistration = new EsplmStandaloneSetup().createInjectorAndDoEMFRegistration();
+		createInjectorAndDoEMFRegistration.createChildInjector(new AbinitionServicesModule());
 	}
 }
 

@@ -4,11 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Map;
 
 import org.pklose.espl.abinitio.service.AbinitionBREService;
 import org.pklose.espl.abinitio.service.BusinessRule;
@@ -22,7 +17,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+import com.google.inject.Singleton;
 
+
+@Singleton //TODO move impl to protected package
 public class AbinitionBREServiceFileSystemBasedImpl implements AbinitionBREService {
 	
 	private final Gson gson = new Gson();
@@ -67,25 +65,9 @@ public class AbinitionBREServiceFileSystemBasedImpl implements AbinitionBREServi
 			}
 		}
 			
-		return businessRule;
-		
+		return businessRule;		
 	}
 
-	private void seekToNextLeaf(ListIterator<BusinessRuleVariableMetaInformation> variableInterator) {
-		while (variableInterator.hasNext()) {
-			BusinessRuleVariableMetaInformation next = variableInterator.next();
-			if (next.getSubFields() == 0) {
-				return;
-			}
-		}
-	}
-
-	private boolean isLeaf(BusinessRuleVariableMetaInformation variableMetaInformation) {
-		return variableMetaInformation.getSubFields() == 0;
-	}
-	
-	
-	
 	public BusinessRuleMetaInformation parseRule (String file) throws FileNotFoundException {
 		JsonReader jsonReader = new JsonReader(new FileReader(file));		
 		JsonParser jsonParser = new JsonParser();

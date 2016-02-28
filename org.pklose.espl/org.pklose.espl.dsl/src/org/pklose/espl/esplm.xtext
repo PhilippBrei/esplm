@@ -26,15 +26,47 @@ Activity:
 	'Activity' name= ID '{'		
 		('Successors'   '['sucessors += [Activity] (',' sucessors += [Activity])*']')?
 		('Calls' businessRule = [BusinessRule|FQN])?
-		'Description' description = STRING		
+		'Description' description = '"' -> '"'		
 	'}'
 ;
 
 BusinessRule:
-	'BusinessRule' name=ID '{'
+	imports += Import*
+	type = (SrcToBizRule | BizToBiz | BizToOut)
+;
+
+BizToOut:
+	'BizToOut' name = ID '{'
 		
 	'}'
 ;
+
+BizToBiz:
+	'BizToBiz' name = ID '{'
+		
+	'}'
+;
+
+SrcToBizRule:
+	'SrcToBiz' name = ID '{'
+		 'BizEntität' entity = [Entity|FQN]
+		 'Quell-Entitäten'
+	'}'
+;
+
+
+SrcSystem:
+	'SourceSystem' name = ID '{'
+		srcEntities+=SrcEntity
+	'}'
+;
+
+SrcEntity:
+	'Name' name=ID 'Format' format = STRING
+;
+
+
+
 
 
 Import: 'Import' importedNamespace=FqnWithWildCard;
@@ -84,8 +116,8 @@ Association:
 	 'Relation'  name = ID ':' type = [Entity|FQN] multiplicity = Multiplicty
 ;
 
-Multiplicty:
-	{Multiplicty} name= '1..N' | {Multiplicty} name= '0..N' | {Multiplicty} name= '1' | {Multiplicty} name= '1..0'  
+enum Multiplicty:
+	OneToMany = '1..N' | ZeroToMany = '0..N' | OneToOne= '1' 
 ;
 
 
