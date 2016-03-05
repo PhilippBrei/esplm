@@ -32,7 +32,7 @@ BusinessRule:
 		   (systemInputs += (BreSystemEntityInput | BreEntityInput))* 
 		 ']'
 		 'Output' '['
-		 	output = ([Entity|FQN] | [SystemEntity|FQN])
+		 	output = [Entity|FQN] | output = [SystemEntity|FQN]
 		 ']'
 	'}'
 ;
@@ -83,7 +83,7 @@ System:
 ;
 
 SystemEntity:
-	'Name' name=ID 'Format' format = STRING
+	'SystemEntität' name=ID 'Format' format = STRING
 ;
 
 

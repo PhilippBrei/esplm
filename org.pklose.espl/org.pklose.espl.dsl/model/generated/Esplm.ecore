@@ -27,7 +27,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="typ" eType="#//BREType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemInputs" upperBound="-1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BreSystemEntityInput">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputElement" eType="#//SystemEntity"/>

@@ -97,12 +97,12 @@ public interface BusinessRule extends Element
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Output</em>' reference.
-   * @see #setOutput(Entity)
+   * @see #setOutput(EObject)
    * @see org.pklose.espl.esplm.EsplmPackage#getBusinessRule_Output()
    * @model
    * @generated
    */
-  Entity getOutput();
+  EObject getOutput();
 
   /**
    * Sets the value of the '{@link org.pklose.espl.esplm.BusinessRule#getOutput <em>Output</em>}' reference.
@@ -112,6 +112,6 @@ public interface BusinessRule extends Element
    * @see #getOutput()
    * @generated
    */
-  void setOutput(Entity value);
+  void setOutput(EObject value);
 
 } // BusinessRule

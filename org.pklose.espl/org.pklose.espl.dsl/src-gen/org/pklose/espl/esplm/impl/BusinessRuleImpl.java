@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.pklose.espl.esplm.BREType;
 import org.pklose.espl.esplm.BusinessRule;
-import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Import;
 
@@ -90,7 +89,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * @generated
    * @ordered
    */
-  protected Entity output;
+  protected EObject output;
 
   /**
    * <!-- begin-user-doc -->
@@ -169,12 +168,12 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public Entity getOutput()
+  public EObject getOutput()
   {
     if (output != null && output.eIsProxy())
     {
       InternalEObject oldOutput = (InternalEObject)output;
-      output = (Entity)eResolveProxy(oldOutput);
+      output = eResolveProxy(oldOutput);
       if (output != oldOutput)
       {
         if (eNotificationRequired())
@@ -189,7 +188,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public Entity basicGetOutput()
+  public EObject basicGetOutput()
   {
     return output;
   }
@@ -199,9 +198,9 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOutput(Entity newOutput)
+  public void setOutput(EObject newOutput)
   {
-    Entity oldOutput = output;
+    EObject oldOutput = output;
     output = newOutput;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.BUSINESS_RULE__OUTPUT, oldOutput, output));
@@ -271,7 +270,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         getSystemInputs().addAll((Collection<? extends EObject>)newValue);
         return;
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
-        setOutput((Entity)newValue);
+        setOutput((EObject)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -297,7 +296,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         getSystemInputs().clear();
         return;
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
-        setOutput((Entity)null);
+        setOutput((EObject)null);
         return;
     }
     super.eUnset(featureID);

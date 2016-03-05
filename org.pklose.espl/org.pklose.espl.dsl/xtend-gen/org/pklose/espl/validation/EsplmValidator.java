@@ -3,11 +3,11 @@
  */
 package org.pklose.espl.validation;
 
+import com.google.common.collect.Iterables;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.lib.macro.services.Problem;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.pklose.espl.esplm.BREType;
 import org.pklose.espl.esplm.BreEntityInput;
 import org.pklose.espl.esplm.BreSystemEntityInput;
@@ -22,42 +22,30 @@ import org.pklose.espl.validation.AbstractEsplmValidator;
  */
 @SuppressWarnings("all")
 public class EsplmValidator extends AbstractEsplmValidator {
+  private final String SRC_TO_BIZ_ERROR = "Für SrcToBiz sind nur Src Entitäten als Input erlaubt";
+  
+  private final String BIZ_TO_BIZ_ERROR = "Für BizToBiz sind nur Entitäten als Input erlaubt";
+  
   @Check
   public void checkBREInputTypesMatch(final BusinessRule businessRule) {
     BREType _typ = businessRule.getTyp();
     boolean _equals = BREType.BIZ_TO_BIZ.equals(_typ);
     if (_equals) {
       EList<EObject> _systemInputs = businessRule.getSystemInputs();
-      final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
-        @Override
-        public Boolean apply(final EObject it) {
-          return Boolean.valueOf((it instanceof BreEntityInput));
-        }
-      };
-      boolean _forall = IterableExtensions.<EObject>forall(_systemInputs, _function);
-      boolean _not = (!_forall);
-      if (_not) {
-        this.error("Für BizToBiz sind nur Entitäten als Input erlaubt", EsplmPackage.Literals.BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT);
+      Iterable<BreEntityInput> _filter = Iterables.<BreEntityInput>filter(_systemInputs, BreEntityInput.class);
+      for (final BreEntityInput bre : _filter) {
+        String _name = Problem.Severity.ERROR.name();
+        this.addIssue(this.BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT, _name);
       }
     }
     BREType _typ_1 = businessRule.getTyp();
     boolean _equals_1 = BREType.SRC_TO_BIZ.equals(_typ_1);
     if (_equals_1) {
-      BREType _typ_2 = businessRule.getTyp();
-      boolean _equals_2 = BREType.SRC_TO_BIZ.equals(_typ_2);
-      if (_equals_2) {
-        EList<EObject> _systemInputs_1 = businessRule.getSystemInputs();
-        final Function1<EObject, Boolean> _function_1 = new Function1<EObject, Boolean>() {
-          @Override
-          public Boolean apply(final EObject it) {
-            return Boolean.valueOf((it instanceof BreSystemEntityInput));
-          }
-        };
-        boolean _forall_1 = IterableExtensions.<EObject>forall(_systemInputs_1, _function_1);
-        boolean _not_1 = (!_forall_1);
-        if (_not_1) {
-          this.error("Für SrcToBiz sind nur Src Entitäten als Input erlaubt", EsplmPackage.Literals.BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT);
-        }
+      EList<EObject> _systemInputs_1 = businessRule.getSystemInputs();
+      Iterable<BreSystemEntityInput> _filter_1 = Iterables.<BreSystemEntityInput>filter(_systemInputs_1, BreSystemEntityInput.class);
+      for (final BreSystemEntityInput bre_1 : _filter_1) {
+        String _name_1 = Problem.Severity.ERROR.name();
+        this.addIssue(this.SRC_TO_BIZ_ERROR, bre_1, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT, _name_1);
       }
     }
   }

@@ -112,7 +112,7 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (sucessors+=[Activity|ID] sucessors+=[Activity|ID]*)? businessRule=[BusinessRule|FQN]? description='"')
+	 *     (name=ID (sucessors+=[Activity|ID] sucessors+=[Activity|ID]*)? businessRule=[BusinessRule|FQN]? description=STRING)
 	 */
 	protected void sequence_Activity(EObject context, Activity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -161,7 +161,10 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (imports+=Import* name=ID typ=BREType (systemInputs+=BreSystemEntityInput | systemInputs+=BreEntityInput)* output=[Entity|FQN])
+	 *     (
+	 *         (imports+=Import* name=ID typ=BREType (systemInputs+=BreSystemEntityInput | systemInputs+=BreEntityInput)* output=[Entity|FQN]) | 
+	 *         output=[SystemEntity|FQN]
+	 *     )
 	 */
 	protected void sequence_BusinessRule(EObject context, BusinessRule semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

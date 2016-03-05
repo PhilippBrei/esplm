@@ -38,7 +38,8 @@ public class EsplmParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
-					put(grammarAccess.getBusinessRuleAccess().getSystemInputsAlternatives_8_0(), "rule__BusinessRule__SystemInputsAlternatives_8_0");
+					put(grammarAccess.getBusinessRuleAccess().getAlternatives(), "rule__BusinessRule__Alternatives");
+					put(grammarAccess.getBusinessRuleAccess().getSystemInputsAlternatives_0_8_0(), "rule__BusinessRule__SystemInputsAlternatives_0_8_0");
 					put(grammarAccess.getIncludeAccess().getIncludeAlternatives_0_0(), "rule__Include__IncludeAlternatives_0_0");
 					put(grammarAccess.getPropertyAccess().getAlternatives(), "rule__Property__Alternatives");
 					put(grammarAccess.getLiteralAccess().getAlternatives(), "rule__Literal__Alternatives");
@@ -50,7 +51,8 @@ public class EsplmParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActivityAccess().getGroup_3(), "rule__Activity__Group_3__0");
 					put(grammarAccess.getActivityAccess().getGroup_3_3(), "rule__Activity__Group_3_3__0");
 					put(grammarAccess.getActivityAccess().getGroup_4(), "rule__Activity__Group_4__0");
-					put(grammarAccess.getBusinessRuleAccess().getGroup(), "rule__BusinessRule__Group__0");
+					put(grammarAccess.getBusinessRuleAccess().getGroup_0(), "rule__BusinessRule__Group_0__0");
+					put(grammarAccess.getBusinessRuleAccess().getGroup_1(), "rule__BusinessRule__Group_1__0");
 					put(grammarAccess.getBreSystemEntityInputAccess().getGroup(), "rule__BreSystemEntityInput__Group__0");
 					put(grammarAccess.getBreEntityInputAccess().getGroup(), "rule__BreEntityInput__Group__0");
 					put(grammarAccess.getSystemEntityConfigurationAccess().getGroup(), "rule__SystemEntityConfiguration__Group__0");
@@ -88,11 +90,12 @@ public class EsplmParser extends AbstractContentAssistParser {
 					put(grammarAccess.getActivityAccess().getSucessorsAssignment_3_3_1(), "rule__Activity__SucessorsAssignment_3_3_1");
 					put(grammarAccess.getActivityAccess().getBusinessRuleAssignment_4_1(), "rule__Activity__BusinessRuleAssignment_4_1");
 					put(grammarAccess.getActivityAccess().getDescriptionAssignment_6(), "rule__Activity__DescriptionAssignment_6");
-					put(grammarAccess.getBusinessRuleAccess().getImportsAssignment_0(), "rule__BusinessRule__ImportsAssignment_0");
-					put(grammarAccess.getBusinessRuleAccess().getNameAssignment_2(), "rule__BusinessRule__NameAssignment_2");
-					put(grammarAccess.getBusinessRuleAccess().getTypAssignment_4(), "rule__BusinessRule__TypAssignment_4");
-					put(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_8(), "rule__BusinessRule__SystemInputsAssignment_8");
-					put(grammarAccess.getBusinessRuleAccess().getOutputAssignment_12(), "rule__BusinessRule__OutputAssignment_12");
+					put(grammarAccess.getBusinessRuleAccess().getImportsAssignment_0_0(), "rule__BusinessRule__ImportsAssignment_0_0");
+					put(grammarAccess.getBusinessRuleAccess().getNameAssignment_0_2(), "rule__BusinessRule__NameAssignment_0_2");
+					put(grammarAccess.getBusinessRuleAccess().getTypAssignment_0_4(), "rule__BusinessRule__TypAssignment_0_4");
+					put(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_0_8(), "rule__BusinessRule__SystemInputsAssignment_0_8");
+					put(grammarAccess.getBusinessRuleAccess().getOutputAssignment_0_12(), "rule__BusinessRule__OutputAssignment_0_12");
+					put(grammarAccess.getBusinessRuleAccess().getOutputAssignment_1_0(), "rule__BusinessRule__OutputAssignment_1_0");
 					put(grammarAccess.getBreSystemEntityInputAccess().getInputElementAssignment_0(), "rule__BreSystemEntityInput__InputElementAssignment_0");
 					put(grammarAccess.getBreSystemEntityInputAccess().getConfigurationAssignment_1(), "rule__BreSystemEntityInput__ConfigurationAssignment_1");
 					put(grammarAccess.getBreEntityInputAccess().getInputElementAssignment_0(), "rule__BreEntityInput__InputElementAssignment_0");

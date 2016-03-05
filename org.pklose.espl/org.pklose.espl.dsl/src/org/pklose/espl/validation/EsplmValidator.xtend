@@ -9,15 +9,18 @@ import org.pklose.espl.esplm.BREType
 import org.pklose.espl.esplm.BreEntityInput
 import org.pklose.espl.esplm.EsplmPackage
 import org.pklose.espl.esplm.BreSystemEntityInput
+import org.eclipse.xtend.lib.macro.services.Problem.Severity
 
 //import org.eclipse.xtext.validation.Check
-
 /**
  * This class contains custom validation rules. 
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class EsplmValidator extends AbstractEsplmValidator {
+
+	final val SRC_TO_BIZ_ERROR = 'Für SrcToBiz sind nur Src Entitäten als Input erlaubt'
+	final val BIZ_TO_BIZ_ERROR = 'Für BizToBiz sind nur Entitäten als Input erlaubt'
 
 //  public static val INVALID_NAME = 'invalidName'
 //
@@ -29,21 +32,21 @@ class EsplmValidator extends AbstractEsplmValidator {
 //					INVALID_NAME)
 //		}
 //	}
-
 	@Check
-	def checkBREInputTypesMatch (BusinessRule businessRule) {
-		if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {			
-			if (!businessRule.systemInputs.forall[it instanceof BreEntityInput]) {
-				error('Für BizToBiz sind nur Entitäten als Input erlaubt', EsplmPackage.Literals.BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT);
+	def checkBREInputTypesMatch(BusinessRule businessRule) {
+		if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {
+			for (bre : businessRule.systemInputs.filter(typeof(BreEntityInput))) {
+				addIssue(BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT,
+					Severity::ERROR.name);
 			}
 		}
-		
+
 		if (BREType.SRC_TO_BIZ.equals(businessRule.typ)) {
-			if (BREType.SRC_TO_BIZ.equals(businessRule.typ)) {
-				if (!businessRule.systemInputs.forall[it instanceof BreSystemEntityInput]) {
-					error ('Für SrcToBiz sind nur Src Entitäten als Input erlaubt', EsplmPackage.Literals.BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT)
-				}
-			}		
+			for (bre : businessRule.systemInputs.filter(typeof(BreSystemEntityInput))) {
+				addIssue(SRC_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT,
+					Severity::ERROR.name);
+			}
 		}
 	}
 }
+
