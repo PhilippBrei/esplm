@@ -7,6 +7,8 @@ import org.eclipse.xtext.validation.Check
 import org.pklose.espl.esplm.BusinessRule
 import org.pklose.espl.esplm.BREType
 import org.pklose.espl.esplm.BreEntityInput
+import org.pklose.espl.esplm.EsplmPackage
+import org.pklose.espl.esplm.BreSystemEntityInput
 
 //import org.eclipse.xtext.validation.Check
 
@@ -32,8 +34,16 @@ class EsplmValidator extends AbstractEsplmValidator {
 	def checkBREInputTypesMatch (BusinessRule businessRule) {
 		if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {			
 			if (!businessRule.systemInputs.forall[it instanceof BreEntityInput]) {
-				
+				error('Für BizToBiz sind nur Entitäten als Input erlaubt', EsplmPackage.Literals.BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT);
 			}
+		}
+		
+		if (BREType.SRC_TO_BIZ.equals(businessRule.typ)) {
+			if (BREType.SRC_TO_BIZ.equals(businessRule.typ)) {
+				if (!businessRule.systemInputs.forall[it instanceof BreSystemEntityInput]) {
+					error ('Für SrcToBiz sind nur Src Entitäten als Input erlaubt', EsplmPackage.Literals.BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT)
+				}
+			}		
 		}
 	}
 }
