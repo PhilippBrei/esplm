@@ -11,11 +11,14 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BreEntityInput;
+import org.pklose.espl.esplm.BreSystemEntityInput;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Element;
 import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.EntityConfiguration;
 import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
@@ -24,8 +27,9 @@ import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
-import org.pklose.espl.esplm.Multiplicty;
 import org.pklose.espl.esplm.Property;
+import org.pklose.espl.esplm.SystemEntity;
+import org.pklose.espl.esplm.SystemEntityConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -116,6 +120,36 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
         return createBusinessRuleAdapter();
       }
       @Override
+      public Adapter caseBreSystemEntityInput(BreSystemEntityInput object)
+      {
+        return createBreSystemEntityInputAdapter();
+      }
+      @Override
+      public Adapter caseBreEntityInput(BreEntityInput object)
+      {
+        return createBreEntityInputAdapter();
+      }
+      @Override
+      public Adapter caseSystemEntityConfiguration(SystemEntityConfiguration object)
+      {
+        return createSystemEntityConfigurationAdapter();
+      }
+      @Override
+      public Adapter caseEntityConfiguration(EntityConfiguration object)
+      {
+        return createEntityConfigurationAdapter();
+      }
+      @Override
+      public Adapter caseSystem(org.pklose.espl.esplm.System object)
+      {
+        return createSystemAdapter();
+      }
+      @Override
+      public Adapter caseSystemEntity(SystemEntity object)
+      {
+        return createSystemEntityAdapter();
+      }
+      @Override
       public Adapter caseImport(Import object)
       {
         return createImportAdapter();
@@ -154,11 +188,6 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAssociation(Association object)
       {
         return createAssociationAdapter();
-      }
-      @Override
-      public Adapter caseMultiplicty(Multiplicty object)
-      {
-        return createMultiplictyAdapter();
       }
       @Override
       public Adapter caseField(Field object)
@@ -268,6 +297,96 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBusinessRuleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.BreSystemEntityInput <em>Bre System Entity Input</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.BreSystemEntityInput
+   * @generated
+   */
+  public Adapter createBreSystemEntityInputAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.BreEntityInput <em>Bre Entity Input</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.BreEntityInput
+   * @generated
+   */
+  public Adapter createBreEntityInputAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.SystemEntityConfiguration <em>System Entity Configuration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.SystemEntityConfiguration
+   * @generated
+   */
+  public Adapter createSystemEntityConfigurationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.EntityConfiguration <em>Entity Configuration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.EntityConfiguration
+   * @generated
+   */
+  public Adapter createEntityConfigurationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.System <em>System</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.System
+   * @generated
+   */
+  public Adapter createSystemAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.SystemEntity <em>System Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.pklose.espl.esplm.SystemEntity
+   * @generated
+   */
+  public Adapter createSystemEntityAdapter()
   {
     return null;
   }
@@ -388,21 +507,6 @@ public class EsplmAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAssociationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.pklose.espl.esplm.Multiplicty <em>Multiplicty</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.pklose.espl.esplm.Multiplicty
-   * @generated
-   */
-  public Adapter createMultiplictyAdapter()
   {
     return null;
   }

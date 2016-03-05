@@ -9,11 +9,14 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BreEntityInput;
+import org.pklose.espl.esplm.BreSystemEntityInput;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Element;
 import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.EntityConfiguration;
 import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
@@ -22,8 +25,9 @@ import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
-import org.pklose.espl.esplm.Multiplicty;
 import org.pklose.espl.esplm.Property;
+import org.pklose.espl.esplm.SystemEntity;
+import org.pklose.espl.esplm.SystemEntityConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -125,6 +129,49 @@ public class EsplmSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EsplmPackage.BRE_SYSTEM_ENTITY_INPUT:
+      {
+        BreSystemEntityInput breSystemEntityInput = (BreSystemEntityInput)theEObject;
+        T result = caseBreSystemEntityInput(breSystemEntityInput);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.BRE_ENTITY_INPUT:
+      {
+        BreEntityInput breEntityInput = (BreEntityInput)theEObject;
+        T result = caseBreEntityInput(breEntityInput);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.SYSTEM_ENTITY_CONFIGURATION:
+      {
+        SystemEntityConfiguration systemEntityConfiguration = (SystemEntityConfiguration)theEObject;
+        T result = caseSystemEntityConfiguration(systemEntityConfiguration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.ENTITY_CONFIGURATION:
+      {
+        EntityConfiguration entityConfiguration = (EntityConfiguration)theEObject;
+        T result = caseEntityConfiguration(entityConfiguration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.SYSTEM:
+      {
+        org.pklose.espl.esplm.System system = (org.pklose.espl.esplm.System)theEObject;
+        T result = caseSystem(system);
+        if (result == null) result = caseElement(system);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.SYSTEM_ENTITY:
+      {
+        SystemEntity systemEntity = (SystemEntity)theEObject;
+        T result = caseSystemEntity(systemEntity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case EsplmPackage.IMPORT:
       {
         Import import_ = (Import)theEObject;
@@ -182,13 +229,6 @@ public class EsplmSwitch<T> extends Switch<T>
         Association association = (Association)theEObject;
         T result = caseAssociation(association);
         if (result == null) result = caseProperty(association);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EsplmPackage.MULTIPLICTY:
-      {
-        Multiplicty multiplicty = (Multiplicty)theEObject;
-        T result = caseMultiplicty(multiplicty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -295,6 +335,102 @@ public class EsplmSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBusinessRule(BusinessRule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bre System Entity Input</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bre System Entity Input</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBreSystemEntityInput(BreSystemEntityInput object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bre Entity Input</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bre Entity Input</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBreEntityInput(BreEntityInput object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>System Entity Configuration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>System Entity Configuration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSystemEntityConfiguration(SystemEntityConfiguration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Entity Configuration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Entity Configuration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEntityConfiguration(EntityConfiguration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>System</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>System</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSystem(org.pklose.espl.esplm.System object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>System Entity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>System Entity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSystemEntity(SystemEntity object)
   {
     return null;
   }
@@ -423,22 +559,6 @@ public class EsplmSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAssociation(Association object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Multiplicty</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Multiplicty</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMultiplicty(Multiplicty object)
   {
     return null;
   }

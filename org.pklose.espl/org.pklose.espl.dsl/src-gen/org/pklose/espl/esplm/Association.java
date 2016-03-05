@@ -49,26 +49,29 @@ public interface Association extends Property
   void setType(Entity value);
 
   /**
-   * Returns the value of the '<em><b>Multiplicity</b></em>' containment reference.
+   * Returns the value of the '<em><b>Multiplicity</b></em>' attribute.
+   * The literals are from the enumeration {@link org.pklose.espl.esplm.Multiplicty}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Multiplicity</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Multiplicity</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Multiplicity</em>' containment reference.
+   * @return the value of the '<em>Multiplicity</em>' attribute.
+   * @see org.pklose.espl.esplm.Multiplicty
    * @see #setMultiplicity(Multiplicty)
    * @see org.pklose.espl.esplm.EsplmPackage#getAssociation_Multiplicity()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Multiplicty getMultiplicity();
 
   /**
-   * Sets the value of the '{@link org.pklose.espl.esplm.Association#getMultiplicity <em>Multiplicity</em>}' containment reference.
+   * Sets the value of the '{@link org.pklose.espl.esplm.Association#getMultiplicity <em>Multiplicity</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Multiplicity</em>' containment reference.
+   * @param value the new value of the '<em>Multiplicity</em>' attribute.
+   * @see org.pklose.espl.esplm.Multiplicty
    * @see #getMultiplicity()
    * @generated
    */

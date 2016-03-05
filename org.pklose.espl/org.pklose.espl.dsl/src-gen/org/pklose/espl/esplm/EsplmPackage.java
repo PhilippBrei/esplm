@@ -4,6 +4,7 @@ package org.pklose.espl.esplm;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -233,13 +234,307 @@ public interface EsplmPackage extends EPackage
   int BUSINESS_RULE__NAME = ELEMENT__NAME;
 
   /**
+   * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUSINESS_RULE__IMPORTS = ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Typ</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUSINESS_RULE__TYP = ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>System Inputs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUSINESS_RULE__SYSTEM_INPUTS = ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Output</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUSINESS_RULE__OUTPUT = ELEMENT_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Business Rule</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUSINESS_RULE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+  int BUSINESS_RULE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.BreSystemEntityInputImpl <em>Bre System Entity Input</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.BreSystemEntityInputImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBreSystemEntityInput()
+   * @generated
+   */
+  int BRE_SYSTEM_ENTITY_INPUT = 5;
+
+  /**
+   * The feature id for the '<em><b>Input Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT = 0;
+
+  /**
+   * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRE_SYSTEM_ENTITY_INPUT__CONFIGURATION = 1;
+
+  /**
+   * The number of structural features of the '<em>Bre System Entity Input</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRE_SYSTEM_ENTITY_INPUT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.BreEntityInputImpl <em>Bre Entity Input</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.BreEntityInputImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBreEntityInput()
+   * @generated
+   */
+  int BRE_ENTITY_INPUT = 6;
+
+  /**
+   * The feature id for the '<em><b>Input Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRE_ENTITY_INPUT__INPUT_ELEMENT = 0;
+
+  /**
+   * The feature id for the '<em><b>Configuration</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRE_ENTITY_INPUT__CONFIGURATION = 1;
+
+  /**
+   * The number of structural features of the '<em>Bre Entity Input</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRE_ENTITY_INPUT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.SystemEntityConfigurationImpl <em>System Entity Configuration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.SystemEntityConfigurationImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getSystemEntityConfiguration()
+   * @generated
+   */
+  int SYSTEM_ENTITY_CONFIGURATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Primary</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY_CONFIGURATION__PRIMARY = 0;
+
+  /**
+   * The feature id for the '<em><b>Obligatorisch</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY_CONFIGURATION__OBLIGATORISCH = 1;
+
+  /**
+   * The feature id for the '<em><b>Multiple</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY_CONFIGURATION__MULTIPLE = 2;
+
+  /**
+   * The feature id for the '<em><b>Join Criteria</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY_CONFIGURATION__JOIN_CRITERIA = 3;
+
+  /**
+   * The number of structural features of the '<em>System Entity Configuration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY_CONFIGURATION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl <em>Entity Configuration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.EntityConfigurationImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEntityConfiguration()
+   * @generated
+   */
+  int ENTITY_CONFIGURATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Primary</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_CONFIGURATION__PRIMARY = 0;
+
+  /**
+   * The feature id for the '<em><b>Obligatorisch</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_CONFIGURATION__OBLIGATORISCH = 1;
+
+  /**
+   * The feature id for the '<em><b>Multiple</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_CONFIGURATION__MULTIPLE = 2;
+
+  /**
+   * The feature id for the '<em><b>Path</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_CONFIGURATION__PATH = 3;
+
+  /**
+   * The number of structural features of the '<em>Entity Configuration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_CONFIGURATION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.SystemImpl <em>System</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.SystemImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getSystem()
+   * @generated
+   */
+  int SYSTEM = 9;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM__NAME = ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Src Entities</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM__SRC_ENTITIES = ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>System</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.impl.SystemEntityImpl <em>System Entity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.impl.SystemEntityImpl
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getSystemEntity()
+   * @generated
+   */
+  int SYSTEM_ENTITY = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Format</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY__FORMAT = 1;
+
+  /**
+   * The number of structural features of the '<em>System Entity</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYSTEM_ENTITY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.pklose.espl.esplm.impl.ImportImpl <em>Import</em>}' class.
@@ -249,7 +544,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 5;
+  int IMPORT = 11;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -277,7 +572,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getDiagram()
    * @generated
    */
-  int DIAGRAM = 6;
+  int DIAGRAM = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -323,7 +618,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getInclude()
    * @generated
    */
-  int INCLUDE = 7;
+  int INCLUDE = 13;
 
   /**
    * The feature id for the '<em><b>Include</b></em>' attribute.
@@ -369,7 +664,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEnumDeclaration()
    * @generated
    */
-  int ENUM_DECLARATION = 8;
+  int ENUM_DECLARATION = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -406,7 +701,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEntity()
    * @generated
    */
-  int ENTITY = 9;
+  int ENTITY = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -443,7 +738,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getDomain()
    * @generated
    */
-  int DOMAIN = 10;
+  int DOMAIN = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -498,7 +793,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 11;
+  int PROPERTY = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -526,7 +821,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getAssociation()
    * @generated
    */
-  int ASSOCIATION = 12;
+  int ASSOCIATION = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -547,7 +842,7 @@ public interface EsplmPackage extends EPackage
   int ASSOCIATION__TYPE = PROPERTY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
+   * The feature id for the '<em><b>Multiplicity</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -565,34 +860,6 @@ public interface EsplmPackage extends EPackage
   int ASSOCIATION_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.pklose.espl.esplm.impl.MultiplictyImpl <em>Multiplicty</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.pklose.espl.esplm.impl.MultiplictyImpl
-   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getMultiplicty()
-   * @generated
-   */
-  int MULTIPLICTY = 13;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICTY__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Multiplicty</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICTY_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link org.pklose.espl.esplm.impl.FieldImpl <em>Field</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -600,7 +867,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getField()
    * @generated
    */
-  int FIELD = 14;
+  int FIELD = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -637,7 +904,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 15;
+  int LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -665,7 +932,7 @@ public interface EsplmPackage extends EPackage
    * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEnum()
    * @generated
    */
-  int ENUM = 16;
+  int ENUM = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -693,6 +960,36 @@ public interface EsplmPackage extends EPackage
    * @ordered
    */
   int ENUM_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.Boolean <em>Boolean</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.Boolean
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBoolean()
+   * @generated
+   */
+  int BOOLEAN = 22;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.BREType <em>BRE Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.BREType
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBREType()
+   * @generated
+   */
+  int BRE_TYPE = 23;
+
+  /**
+   * The meta object id for the '{@link org.pklose.espl.esplm.Multiplicty <em>Multiplicty</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.pklose.espl.esplm.Multiplicty
+   * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getMultiplicty()
+   * @generated
+   */
+  int MULTIPLICTY = 24;
 
 
   /**
@@ -832,6 +1129,275 @@ public interface EsplmPackage extends EPackage
    * @generated
    */
   EClass getBusinessRule();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.BusinessRule#getImports <em>Imports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Imports</em>'.
+   * @see org.pklose.espl.esplm.BusinessRule#getImports()
+   * @see #getBusinessRule()
+   * @generated
+   */
+  EReference getBusinessRule_Imports();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.BusinessRule#getTyp <em>Typ</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Typ</em>'.
+   * @see org.pklose.espl.esplm.BusinessRule#getTyp()
+   * @see #getBusinessRule()
+   * @generated
+   */
+  EAttribute getBusinessRule_Typ();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.BusinessRule#getSystemInputs <em>System Inputs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>System Inputs</em>'.
+   * @see org.pklose.espl.esplm.BusinessRule#getSystemInputs()
+   * @see #getBusinessRule()
+   * @generated
+   */
+  EReference getBusinessRule_SystemInputs();
+
+  /**
+   * Returns the meta object for the reference '{@link org.pklose.espl.esplm.BusinessRule#getOutput <em>Output</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Output</em>'.
+   * @see org.pklose.espl.esplm.BusinessRule#getOutput()
+   * @see #getBusinessRule()
+   * @generated
+   */
+  EReference getBusinessRule_Output();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.BreSystemEntityInput <em>Bre System Entity Input</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bre System Entity Input</em>'.
+   * @see org.pklose.espl.esplm.BreSystemEntityInput
+   * @generated
+   */
+  EClass getBreSystemEntityInput();
+
+  /**
+   * Returns the meta object for the reference '{@link org.pklose.espl.esplm.BreSystemEntityInput#getInputElement <em>Input Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Input Element</em>'.
+   * @see org.pklose.espl.esplm.BreSystemEntityInput#getInputElement()
+   * @see #getBreSystemEntityInput()
+   * @generated
+   */
+  EReference getBreSystemEntityInput_InputElement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.BreSystemEntityInput#getConfiguration <em>Configuration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Configuration</em>'.
+   * @see org.pklose.espl.esplm.BreSystemEntityInput#getConfiguration()
+   * @see #getBreSystemEntityInput()
+   * @generated
+   */
+  EReference getBreSystemEntityInput_Configuration();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.BreEntityInput <em>Bre Entity Input</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bre Entity Input</em>'.
+   * @see org.pklose.espl.esplm.BreEntityInput
+   * @generated
+   */
+  EClass getBreEntityInput();
+
+  /**
+   * Returns the meta object for the reference '{@link org.pklose.espl.esplm.BreEntityInput#getInputElement <em>Input Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Input Element</em>'.
+   * @see org.pklose.espl.esplm.BreEntityInput#getInputElement()
+   * @see #getBreEntityInput()
+   * @generated
+   */
+  EReference getBreEntityInput_InputElement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.BreEntityInput#getConfiguration <em>Configuration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Configuration</em>'.
+   * @see org.pklose.espl.esplm.BreEntityInput#getConfiguration()
+   * @see #getBreEntityInput()
+   * @generated
+   */
+  EReference getBreEntityInput_Configuration();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.SystemEntityConfiguration <em>System Entity Configuration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>System Entity Configuration</em>'.
+   * @see org.pklose.espl.esplm.SystemEntityConfiguration
+   * @generated
+   */
+  EClass getSystemEntityConfiguration();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.SystemEntityConfiguration#getPrimary <em>Primary</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Primary</em>'.
+   * @see org.pklose.espl.esplm.SystemEntityConfiguration#getPrimary()
+   * @see #getSystemEntityConfiguration()
+   * @generated
+   */
+  EAttribute getSystemEntityConfiguration_Primary();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.SystemEntityConfiguration#getObligatorisch <em>Obligatorisch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Obligatorisch</em>'.
+   * @see org.pklose.espl.esplm.SystemEntityConfiguration#getObligatorisch()
+   * @see #getSystemEntityConfiguration()
+   * @generated
+   */
+  EAttribute getSystemEntityConfiguration_Obligatorisch();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.SystemEntityConfiguration#getMultiple <em>Multiple</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multiple</em>'.
+   * @see org.pklose.espl.esplm.SystemEntityConfiguration#getMultiple()
+   * @see #getSystemEntityConfiguration()
+   * @generated
+   */
+  EAttribute getSystemEntityConfiguration_Multiple();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.SystemEntityConfiguration#getJoinCriteria <em>Join Criteria</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Join Criteria</em>'.
+   * @see org.pklose.espl.esplm.SystemEntityConfiguration#getJoinCriteria()
+   * @see #getSystemEntityConfiguration()
+   * @generated
+   */
+  EAttribute getSystemEntityConfiguration_JoinCriteria();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.EntityConfiguration <em>Entity Configuration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entity Configuration</em>'.
+   * @see org.pklose.espl.esplm.EntityConfiguration
+   * @generated
+   */
+  EClass getEntityConfiguration();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.EntityConfiguration#getPrimary <em>Primary</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Primary</em>'.
+   * @see org.pklose.espl.esplm.EntityConfiguration#getPrimary()
+   * @see #getEntityConfiguration()
+   * @generated
+   */
+  EAttribute getEntityConfiguration_Primary();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.EntityConfiguration#getObligatorisch <em>Obligatorisch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Obligatorisch</em>'.
+   * @see org.pklose.espl.esplm.EntityConfiguration#getObligatorisch()
+   * @see #getEntityConfiguration()
+   * @generated
+   */
+  EAttribute getEntityConfiguration_Obligatorisch();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.EntityConfiguration#getMultiple <em>Multiple</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multiple</em>'.
+   * @see org.pklose.espl.esplm.EntityConfiguration#getMultiple()
+   * @see #getEntityConfiguration()
+   * @generated
+   */
+  EAttribute getEntityConfiguration_Multiple();
+
+  /**
+   * Returns the meta object for the reference '{@link org.pklose.espl.esplm.EntityConfiguration#getPath <em>Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Path</em>'.
+   * @see org.pklose.espl.esplm.EntityConfiguration#getPath()
+   * @see #getEntityConfiguration()
+   * @generated
+   */
+  EReference getEntityConfiguration_Path();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.System <em>System</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>System</em>'.
+   * @see org.pklose.espl.esplm.System
+   * @generated
+   */
+  EClass getSystem();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.System#getSrcEntities <em>Src Entities</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Src Entities</em>'.
+   * @see org.pklose.espl.esplm.System#getSrcEntities()
+   * @see #getSystem()
+   * @generated
+   */
+  EReference getSystem_SrcEntities();
+
+  /**
+   * Returns the meta object for class '{@link org.pklose.espl.esplm.SystemEntity <em>System Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>System Entity</em>'.
+   * @see org.pklose.espl.esplm.SystemEntity
+   * @generated
+   */
+  EClass getSystemEntity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.SystemEntity#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.pklose.espl.esplm.SystemEntity#getName()
+   * @see #getSystemEntity()
+   * @generated
+   */
+  EAttribute getSystemEntity_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.SystemEntity#getFormat <em>Format</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Format</em>'.
+   * @see org.pklose.espl.esplm.SystemEntity#getFormat()
+   * @see #getSystemEntity()
+   * @generated
+   */
+  EAttribute getSystemEntity_Format();
 
   /**
    * Returns the meta object for class '{@link org.pklose.espl.esplm.Import <em>Import</em>}'.
@@ -1068,36 +1634,15 @@ public interface EsplmPackage extends EPackage
   EReference getAssociation_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.pklose.espl.esplm.Association#getMultiplicity <em>Multiplicity</em>}'.
+   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.Association#getMultiplicity <em>Multiplicity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Multiplicity</em>'.
+   * @return the meta object for the attribute '<em>Multiplicity</em>'.
    * @see org.pklose.espl.esplm.Association#getMultiplicity()
    * @see #getAssociation()
    * @generated
    */
-  EReference getAssociation_Multiplicity();
-
-  /**
-   * Returns the meta object for class '{@link org.pklose.espl.esplm.Multiplicty <em>Multiplicty</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Multiplicty</em>'.
-   * @see org.pklose.espl.esplm.Multiplicty
-   * @generated
-   */
-  EClass getMultiplicty();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.pklose.espl.esplm.Multiplicty#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.pklose.espl.esplm.Multiplicty#getName()
-   * @see #getMultiplicty()
-   * @generated
-   */
-  EAttribute getMultiplicty_Name();
+  EAttribute getAssociation_Multiplicity();
 
   /**
    * Returns the meta object for class '{@link org.pklose.espl.esplm.Field <em>Field</em>}'.
@@ -1161,6 +1706,36 @@ public interface EsplmPackage extends EPackage
    * @generated
    */
   EReference getEnum_Type();
+
+  /**
+   * Returns the meta object for enum '{@link org.pklose.espl.esplm.Boolean <em>Boolean</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Boolean</em>'.
+   * @see org.pklose.espl.esplm.Boolean
+   * @generated
+   */
+  EEnum getBoolean();
+
+  /**
+   * Returns the meta object for enum '{@link org.pklose.espl.esplm.BREType <em>BRE Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>BRE Type</em>'.
+   * @see org.pklose.espl.esplm.BREType
+   * @generated
+   */
+  EEnum getBREType();
+
+  /**
+   * Returns the meta object for enum '{@link org.pklose.espl.esplm.Multiplicty <em>Multiplicty</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Multiplicty</em>'.
+   * @see org.pklose.espl.esplm.Multiplicty
+   * @generated
+   */
+  EEnum getMultiplicty();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1298,6 +1873,218 @@ public interface EsplmPackage extends EPackage
      * @generated
      */
     EClass BUSINESS_RULE = eINSTANCE.getBusinessRule();
+
+    /**
+     * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUSINESS_RULE__IMPORTS = eINSTANCE.getBusinessRule_Imports();
+
+    /**
+     * The meta object literal for the '<em><b>Typ</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUSINESS_RULE__TYP = eINSTANCE.getBusinessRule_Typ();
+
+    /**
+     * The meta object literal for the '<em><b>System Inputs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUSINESS_RULE__SYSTEM_INPUTS = eINSTANCE.getBusinessRule_SystemInputs();
+
+    /**
+     * The meta object literal for the '<em><b>Output</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUSINESS_RULE__OUTPUT = eINSTANCE.getBusinessRule_Output();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.BreSystemEntityInputImpl <em>Bre System Entity Input</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.BreSystemEntityInputImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBreSystemEntityInput()
+     * @generated
+     */
+    EClass BRE_SYSTEM_ENTITY_INPUT = eINSTANCE.getBreSystemEntityInput();
+
+    /**
+     * The meta object literal for the '<em><b>Input Element</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT = eINSTANCE.getBreSystemEntityInput_InputElement();
+
+    /**
+     * The meta object literal for the '<em><b>Configuration</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BRE_SYSTEM_ENTITY_INPUT__CONFIGURATION = eINSTANCE.getBreSystemEntityInput_Configuration();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.BreEntityInputImpl <em>Bre Entity Input</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.BreEntityInputImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBreEntityInput()
+     * @generated
+     */
+    EClass BRE_ENTITY_INPUT = eINSTANCE.getBreEntityInput();
+
+    /**
+     * The meta object literal for the '<em><b>Input Element</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BRE_ENTITY_INPUT__INPUT_ELEMENT = eINSTANCE.getBreEntityInput_InputElement();
+
+    /**
+     * The meta object literal for the '<em><b>Configuration</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BRE_ENTITY_INPUT__CONFIGURATION = eINSTANCE.getBreEntityInput_Configuration();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.SystemEntityConfigurationImpl <em>System Entity Configuration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.SystemEntityConfigurationImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getSystemEntityConfiguration()
+     * @generated
+     */
+    EClass SYSTEM_ENTITY_CONFIGURATION = eINSTANCE.getSystemEntityConfiguration();
+
+    /**
+     * The meta object literal for the '<em><b>Primary</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYSTEM_ENTITY_CONFIGURATION__PRIMARY = eINSTANCE.getSystemEntityConfiguration_Primary();
+
+    /**
+     * The meta object literal for the '<em><b>Obligatorisch</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYSTEM_ENTITY_CONFIGURATION__OBLIGATORISCH = eINSTANCE.getSystemEntityConfiguration_Obligatorisch();
+
+    /**
+     * The meta object literal for the '<em><b>Multiple</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYSTEM_ENTITY_CONFIGURATION__MULTIPLE = eINSTANCE.getSystemEntityConfiguration_Multiple();
+
+    /**
+     * The meta object literal for the '<em><b>Join Criteria</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYSTEM_ENTITY_CONFIGURATION__JOIN_CRITERIA = eINSTANCE.getSystemEntityConfiguration_JoinCriteria();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl <em>Entity Configuration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.EntityConfigurationImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getEntityConfiguration()
+     * @generated
+     */
+    EClass ENTITY_CONFIGURATION = eINSTANCE.getEntityConfiguration();
+
+    /**
+     * The meta object literal for the '<em><b>Primary</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_CONFIGURATION__PRIMARY = eINSTANCE.getEntityConfiguration_Primary();
+
+    /**
+     * The meta object literal for the '<em><b>Obligatorisch</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_CONFIGURATION__OBLIGATORISCH = eINSTANCE.getEntityConfiguration_Obligatorisch();
+
+    /**
+     * The meta object literal for the '<em><b>Multiple</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_CONFIGURATION__MULTIPLE = eINSTANCE.getEntityConfiguration_Multiple();
+
+    /**
+     * The meta object literal for the '<em><b>Path</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY_CONFIGURATION__PATH = eINSTANCE.getEntityConfiguration_Path();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.SystemImpl <em>System</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.SystemImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getSystem()
+     * @generated
+     */
+    EClass SYSTEM = eINSTANCE.getSystem();
+
+    /**
+     * The meta object literal for the '<em><b>Src Entities</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SYSTEM__SRC_ENTITIES = eINSTANCE.getSystem_SrcEntities();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.SystemEntityImpl <em>System Entity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.impl.SystemEntityImpl
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getSystemEntity()
+     * @generated
+     */
+    EClass SYSTEM_ENTITY = eINSTANCE.getSystemEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYSTEM_ENTITY__NAME = eINSTANCE.getSystemEntity_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SYSTEM_ENTITY__FORMAT = eINSTANCE.getSystemEntity_Format();
 
     /**
      * The meta object literal for the '{@link org.pklose.espl.esplm.impl.ImportImpl <em>Import</em>}' class.
@@ -1492,30 +2279,12 @@ public interface EsplmPackage extends EPackage
     EReference ASSOCIATION__TYPE = eINSTANCE.getAssociation_Type();
 
     /**
-     * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Multiplicity</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ASSOCIATION__MULTIPLICITY = eINSTANCE.getAssociation_Multiplicity();
-
-    /**
-     * The meta object literal for the '{@link org.pklose.espl.esplm.impl.MultiplictyImpl <em>Multiplicty</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.pklose.espl.esplm.impl.MultiplictyImpl
-     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getMultiplicty()
-     * @generated
-     */
-    EClass MULTIPLICTY = eINSTANCE.getMultiplicty();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MULTIPLICTY__NAME = eINSTANCE.getMultiplicty_Name();
+    EAttribute ASSOCIATION__MULTIPLICITY = eINSTANCE.getAssociation_Multiplicity();
 
     /**
      * The meta object literal for the '{@link org.pklose.espl.esplm.impl.FieldImpl <em>Field</em>}' class.
@@ -1570,6 +2339,36 @@ public interface EsplmPackage extends EPackage
      * @generated
      */
     EReference ENUM__TYPE = eINSTANCE.getEnum_Type();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.Boolean <em>Boolean</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.Boolean
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBoolean()
+     * @generated
+     */
+    EEnum BOOLEAN = eINSTANCE.getBoolean();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.BREType <em>BRE Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.BREType
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getBREType()
+     * @generated
+     */
+    EEnum BRE_TYPE = eINSTANCE.getBREType();
+
+    /**
+     * The meta object literal for the '{@link org.pklose.espl.esplm.Multiplicty <em>Multiplicty</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.pklose.espl.esplm.Multiplicty
+     * @see org.pklose.espl.esplm.impl.EsplmPackageImpl#getMultiplicty()
+     * @generated
+     */
+    EEnum MULTIPLICTY = eINSTANCE.getMultiplicty();
 
   }
 

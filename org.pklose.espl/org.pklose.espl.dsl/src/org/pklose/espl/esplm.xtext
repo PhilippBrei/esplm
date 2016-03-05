@@ -2,18 +2,13 @@ grammar org.pklose.espl.Esplm with org.eclipse.xtext.common.Terminals
 
 generate esplm "http://www.org.pklose/esplm"
 
-
 Model:
 	elements += Element
 ;
 
 Element:
-	EnumDeclaration | Diagram | Domain | Flow | BusinessRule
+	EnumDeclaration | Diagram | Domain | Flow | BusinessRule | System
 ;
-
-
-
-
 
 Flow:
 	 imports += Import*
@@ -26,42 +21,68 @@ Activity:
 	'Activity' name= ID '{'		
 		('Successors'   '['sucessors += [Activity] (',' sucessors += [Activity])*']')?
 		('Calls' businessRule = [BusinessRule|FQN])?
-		'Description' description = '"' -> '"'		
+		'Description' description = STRING		
 	'}'
 ;
 
 BusinessRule:
 	imports += Import*
-	type = (SrcToBizRule | BizToBiz | BizToOut)
-;
-
-BizToOut:
-	'BizToOut' name = ID '{'
-		
+	'BusinessRule' name=ID 'type' typ = BREType '{'
+		 'Input' '[' 
+		   (systemInputs += (BreSystemEntityInput | BreEntityInput))* 
+		 ']'
+		 'Output' '['
+		 	output = ([Entity|FQN] | [SystemEntity|FQN])
+		 ']'
 	'}'
 ;
 
-BizToBiz:
-	'BizToBiz' name = ID '{'
-		
-	'}'
+BreSystemEntityInput:
+	inputElement = [SystemEntity|FQN]
+	configuration += SystemEntityConfiguration
 ;
 
-SrcToBizRule:
-	'SrcToBiz' name = ID '{'
-		 'BizEntität' entity = [Entity|FQN]
-		 'Quell-Entitäten'
-	'}'
+BreEntityInput:
+	inputElement = [Entity|FQN]
+	configuration += EntityConfiguration
+;
+
+SystemEntityConfiguration:
+	{SystemEntityConfiguration}  '{''primär' '=' primary = Boolean ',' 
+								 'obligatorisch' '=' obligatorisch = Boolean ',' 
+								 'mehrfach' '=' multiple = Boolean 
+								 (',''join Pfad' '=' joinCriteria = STRING)?
+;
+
+EntityConfiguration:
+	{EntityConfiguration}  '{''primär' '=' primary = Boolean 
+							',''obligatorisch' '=' obligatorisch = Boolean 
+							',''mehrfach' '=' multiple = Boolean 
+							(',''Pfad' '=' path = [Association|FQN])?						
+							'}'
 ;
 
 
-SrcSystem:
+enum Boolean: 
+	true = 'J' | false = 'F'
+;
+
+
+
+enum BREType:
+	BizToBiz = 'BizToBiz' | SrcToBiz = 'SrcToBiz' | BizToOut = 'BizToOut'
+;
+
+
+
+
+System:
 	'SourceSystem' name = ID '{'
-		srcEntities+=SrcEntity
+		srcEntities+=SystemEntity
 	'}'
 ;
 
-SrcEntity:
+SystemEntity:
 	'Name' name=ID 'Format' format = STRING
 ;
 

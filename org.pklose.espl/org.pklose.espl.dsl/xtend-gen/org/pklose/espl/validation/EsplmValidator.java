@@ -3,6 +3,14 @@
  */
 package org.pklose.espl.validation;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.pklose.espl.esplm.BREType;
+import org.pklose.espl.esplm.BreEntityInput;
+import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.validation.AbstractEsplmValidator;
 
 /**
@@ -12,4 +20,27 @@ import org.pklose.espl.validation.AbstractEsplmValidator;
  */
 @SuppressWarnings("all")
 public class EsplmValidator extends AbstractEsplmValidator {
+  @Check
+  public Object checkBREInputTypesMatch(final BusinessRule businessRule) {
+    Object _xifexpression = null;
+    BREType _typ = businessRule.getTyp();
+    boolean _equals = BREType.BIZ_TO_BIZ.equals(_typ);
+    if (_equals) {
+      Object _xifexpression_1 = null;
+      EList<EObject> _systemInputs = businessRule.getSystemInputs();
+      final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
+        @Override
+        public Boolean apply(final EObject it) {
+          return Boolean.valueOf((it instanceof BreEntityInput));
+        }
+      };
+      boolean _forall = IterableExtensions.<EObject>forall(_systemInputs, _function);
+      boolean _not = (!_forall);
+      if (_not) {
+        _xifexpression_1 = null;
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
+  }
 }

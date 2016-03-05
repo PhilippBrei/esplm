@@ -18,10 +18,13 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BreEntityInput;
+import org.pklose.espl.esplm.BreSystemEntityInput;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
 import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.EntityConfiguration;
 import org.pklose.espl.esplm.EnumDeclaration;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Field;
@@ -30,7 +33,8 @@ import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
-import org.pklose.espl.esplm.Multiplicty;
+import org.pklose.espl.esplm.SystemEntity;
+import org.pklose.espl.esplm.SystemEntityConfiguration;
 import org.pklose.espl.services.EsplmGrammarAccess;
 
 @SuppressWarnings("all")
@@ -48,6 +52,12 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case EsplmPackage.ASSOCIATION:
 				sequence_Association(context, (Association) semanticObject); 
 				return; 
+			case EsplmPackage.BRE_ENTITY_INPUT:
+				sequence_BreEntityInput(context, (BreEntityInput) semanticObject); 
+				return; 
+			case EsplmPackage.BRE_SYSTEM_ENTITY_INPUT:
+				sequence_BreSystemEntityInput(context, (BreSystemEntityInput) semanticObject); 
+				return; 
 			case EsplmPackage.BUSINESS_RULE:
 				sequence_BusinessRule(context, (BusinessRule) semanticObject); 
 				return; 
@@ -59,6 +69,9 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case EsplmPackage.ENTITY:
 				sequence_Entity(context, (Entity) semanticObject); 
+				return; 
+			case EsplmPackage.ENTITY_CONFIGURATION:
+				sequence_EntityConfiguration(context, (EntityConfiguration) semanticObject); 
 				return; 
 			case EsplmPackage.ENUM:
 				sequence_Enum(context, (org.pklose.espl.esplm.Enum) semanticObject); 
@@ -84,8 +97,14 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case EsplmPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
-			case EsplmPackage.MULTIPLICTY:
-				sequence_Multiplicty(context, (Multiplicty) semanticObject); 
+			case EsplmPackage.SYSTEM:
+				sequence_System(context, (org.pklose.espl.esplm.System) semanticObject); 
+				return; 
+			case EsplmPackage.SYSTEM_ENTITY:
+				sequence_SystemEntity(context, (SystemEntity) semanticObject); 
+				return; 
+			case EsplmPackage.SYSTEM_ENTITY_CONFIGURATION:
+				sequence_SystemEntityConfiguration(context, (SystemEntityConfiguration) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -93,7 +112,7 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (sucessors+=[Activity|ID] sucessors+=[Activity|ID]*)? businessRule=[BusinessRule|FQN]? description=STRING)
+	 *     (name=ID (sucessors+=[Activity|ID] sucessors+=[Activity|ID]*)? businessRule=[BusinessRule|FQN]? description='"')
 	 */
 	protected void sequence_Activity(EObject context, Activity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -117,24 +136,35 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getAssociationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getAssociationAccess().getTypeEntityFQNParserRuleCall_3_0_1(), semanticObject.getType());
-		feeder.accept(grammarAccess.getAssociationAccess().getMultiplicityMultiplictyParserRuleCall_4_0(), semanticObject.getMultiplicity());
+		feeder.accept(grammarAccess.getAssociationAccess().getMultiplicityMultiplictyEnumRuleCall_4_0(), semanticObject.getMultiplicity());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     (inputElement=[Entity|FQN] configuration+=EntityConfiguration)
+	 */
+	protected void sequence_BreEntityInput(EObject context, BreEntityInput semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (inputElement=[SystemEntity|FQN] configuration+=SystemEntityConfiguration)
+	 */
+	protected void sequence_BreSystemEntityInput(EObject context, BreSystemEntityInput semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (imports+=Import* name=ID typ=BREType (systemInputs+=BreSystemEntityInput | systemInputs+=BreEntityInput)* output=[Entity|FQN])
 	 */
 	protected void sequence_BusinessRule(EObject context, BusinessRule semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.ELEMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.ELEMENT__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBusinessRuleAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -152,6 +182,15 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     (imports+=Import* name=ID description=STRING entities+=Entity+)
 	 */
 	protected void sequence_Domain(EObject context, Domain semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (primary=Boolean obligatorisch=Boolean multiple=Boolean path=[Association|FQN]?)
+	 */
+	protected void sequence_EntityConfiguration(EObject context, EntityConfiguration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -256,9 +295,37 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (name='1..N' | name='0..N' | name='1' | name='1..0')
+	 *     (primary=Boolean obligatorisch=Boolean multiple=Boolean joinCriteria=STRING?)
 	 */
-	protected void sequence_Multiplicty(EObject context, Multiplicty semanticObject) {
+	protected void sequence_SystemEntityConfiguration(EObject context, SystemEntityConfiguration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID format=STRING)
+	 */
+	protected void sequence_SystemEntity(EObject context, SystemEntity semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__NAME));
+			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__FORMAT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__FORMAT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getSystemEntityAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getSystemEntityAccess().getFormatSTRINGTerminalRuleCall_3_0(), semanticObject.getFormat());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID srcEntities+=SystemEntity)
+	 */
+	protected void sequence_System(EObject context, org.pklose.espl.esplm.System semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -9,14 +9,18 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.pklose.espl.esplm.Association;
+import org.pklose.espl.esplm.BREType;
+import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.Field;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Property;
+import org.pklose.espl.esplm.SystemEntity;
 
 /**
  * This class contains custom scoping description.
@@ -39,5 +43,24 @@ public class EsplmScopeProvider extends AbstractDeclarativeScopeProvider {
     Entity _entity_2 = include.getEntity();
     EList<Property> _properties_2 = _entity_2.getProperties();
     return Scopes.scopeFor(_properties_2);
+  }
+  
+  public IScope scope_BusinessRule_systemInputs(final BusinessRule bre, final EReference ref) {
+    final EObject rootElement = EcoreUtil2.getRootContainer(bre);
+    List<? extends EObject> scopeElements = new ArrayList<EObject>();
+    BREType _typ = bre.getTyp();
+    boolean _equals = _typ.equals(BREType.BIZ_TO_BIZ);
+    if (_equals) {
+      List<Entity> _allContentsOfType = EcoreUtil2.<Entity>getAllContentsOfType(rootElement, Entity.class);
+      scopeElements = _allContentsOfType;
+    } else {
+      BREType _typ_1 = bre.getTyp();
+      boolean _equals_1 = _typ_1.equals(BREType.SRC_TO_BIZ);
+      if (_equals_1) {
+        List<SystemEntity> _allContentsOfType_1 = EcoreUtil2.<SystemEntity>getAllContentsOfType(rootElement, SystemEntity.class);
+        scopeElements = _allContentsOfType_1;
+      }
+    }
+    return Scopes.scopeFor(scopeElements);
   }
 }

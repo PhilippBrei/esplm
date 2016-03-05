@@ -68,6 +68,60 @@ public interface EsplmFactory extends EFactory
   BusinessRule createBusinessRule();
 
   /**
+   * Returns a new object of class '<em>Bre System Entity Input</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bre System Entity Input</em>'.
+   * @generated
+   */
+  BreSystemEntityInput createBreSystemEntityInput();
+
+  /**
+   * Returns a new object of class '<em>Bre Entity Input</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bre Entity Input</em>'.
+   * @generated
+   */
+  BreEntityInput createBreEntityInput();
+
+  /**
+   * Returns a new object of class '<em>System Entity Configuration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>System Entity Configuration</em>'.
+   * @generated
+   */
+  SystemEntityConfiguration createSystemEntityConfiguration();
+
+  /**
+   * Returns a new object of class '<em>Entity Configuration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity Configuration</em>'.
+   * @generated
+   */
+  EntityConfiguration createEntityConfiguration();
+
+  /**
+   * Returns a new object of class '<em>System</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>System</em>'.
+   * @generated
+   */
+  System createSystem();
+
+  /**
+   * Returns a new object of class '<em>System Entity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>System Entity</em>'.
+   * @generated
+   */
+  SystemEntity createSystemEntity();
+
+  /**
    * Returns a new object of class '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -138,15 +192,6 @@ public interface EsplmFactory extends EFactory
    * @generated
    */
   Association createAssociation();
-
-  /**
-   * Returns a new object of class '<em>Multiplicty</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Multiplicty</em>'.
-   * @generated
-   */
-  Multiplicty createMultiplicty();
 
   /**
    * Returns a new object of class '<em>Field</em>'.

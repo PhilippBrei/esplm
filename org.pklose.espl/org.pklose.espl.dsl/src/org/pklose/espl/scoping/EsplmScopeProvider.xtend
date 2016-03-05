@@ -12,6 +12,11 @@ import org.eclipse.emf.ecore.EObject
 import java.util.ArrayList
 import org.pklose.espl.esplm.Field
 import org.pklose.espl.esplm.Association
+import org.pklose.espl.esplm.BusinessRule
+import org.eclipse.xtext.EcoreUtil2
+import org.pklose.espl.esplm.Entity
+import org.pklose.espl.esplm.BREType
+import org.pklose.espl.esplm.SystemEntity
 
 /**
  * This class contains custom scoping description.
@@ -28,7 +33,25 @@ class EsplmScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarat
 		val references = include.entity.properties.filter(typeof (Association));
 		scopeObjects.addAll(fields);
 		scopeObjects.addAll(references)		
-		return Scopes.scopeFor(include.entity.properties);
+		return Scopes::scopeFor(include.entity.properties);
+	}
+	
+	
+	//TODO test required!
+	def IScope scope_BusinessRule_systemInputs (BusinessRule bre, EReference ref) {
+		
+		
+		val rootElement = EcoreUtil2.getRootContainer(bre);
+		
+		var List<? extends EObject> scopeElements = new ArrayList ();
+		if (bre.typ.equals(BREType.BIZ_TO_BIZ)) {
+			scopeElements =  EcoreUtil2.getAllContentsOfType(rootElement, Entity);		
+		} else if (bre.typ.equals(BREType.SRC_TO_BIZ)) {
+			scopeElements = EcoreUtil2.getAllContentsOfType(rootElement, SystemEntity);
+		}		
+		
+		return Scopes::scopeFor(scopeElements);
+				
 	}
 
 }

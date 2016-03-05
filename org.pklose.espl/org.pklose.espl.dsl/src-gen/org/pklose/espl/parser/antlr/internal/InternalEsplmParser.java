@@ -5,6 +5,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -17,55 +18,73 @@ import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Map;
+import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalEsplmParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Flow'", "'{'", "'}'", "'Activity'", "'Successors'", "'['", "','", "']'", "'Calls'", "'Description'", "'BusinessRule'", "'Import'", "'.*'", "'Diagram'", "'Include'", "'Exclude'", "'with'", "'Enumeration'", "'.'", "'Entity'", "'Domain'", "'Description: '", "'Relation'", "':'", "'1..N'", "'0..N'", "'1'", "'1..0'", "'Field'", "'Decimal'", "'Money'", "'Text'", "'Boolean'", "'Int'", "'Enum'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Flow'", "'{'", "'}'", "'Activity'", "'Successors'", "'['", "','", "']'", "'Calls'", "'Description'", "'\"'", "'BusinessRule'", "'type'", "'Input'", "'Output'", "'prim\\u00E4r'", "'='", "'obligatorisch'", "'mehrfach'", "'join Pfad'", "'Pfad'", "'SourceSystem'", "'Name'", "'Format'", "'Import'", "'.*'", "'Diagram'", "'Include'", "'Exclude'", "'with'", "'Enumeration'", "'.'", "'Entity'", "'Domain'", "'Description: '", "'Relation'", "':'", "'Field'", "'Decimal'", "'Money'", "'Text'", "'Boolean'", "'Int'", "'Enum'", "'J'", "'F'", "'BizToBiz'", "'SrcToBiz'", "'BizToOut'", "'1..N'", "'0..N'", "'1'"
     };
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__11=11;
-    public static final int T__12=12;
-    public static final int T__13=13;
-    public static final int T__14=14;
     public static final int RULE_ID=4;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=6;
     public static final int T__29=29;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__23=23;
-    public static final int T__24=24;
+    public static final int T__28=28;
+    public static final int T__62=62;
+    public static final int T__27=27;
+    public static final int T__26=26;
     public static final int T__25=25;
-    public static final int T__20=20;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
-    public static final int RULE_STRING=5;
+    public static final int T__20=20;
+    public static final int T__61=61;
+    public static final int T__60=60;
+    public static final int EOF=-1;
+    public static final int T__55=55;
+    public static final int T__56=56;
+    public static final int T__19=19;
+    public static final int T__57=57;
+    public static final int T__58=58;
+    public static final int T__51=51;
+    public static final int T__16=16;
+    public static final int T__52=52;
+    public static final int T__15=15;
+    public static final int T__53=53;
+    public static final int T__18=18;
+    public static final int T__54=54;
+    public static final int T__17=17;
+    public static final int T__12=12;
+    public static final int T__11=11;
+    public static final int T__14=14;
+    public static final int T__13=13;
+    public static final int T__59=59;
+    public static final int RULE_INT=6;
+    public static final int T__50=50;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__48=48;
+    public static final int T__49=49;
     public static final int RULE_SL_COMMENT=8;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int RULE_STRING=5;
+    public static final int T__32=32;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__42=42;
-    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -106,7 +125,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleModel"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:67:1: entryRuleModel returns [EObject current=null] : iv_ruleModel= ruleModel EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:68:1: entryRuleModel returns [EObject current=null] : iv_ruleModel= ruleModel EOF ;
     public final EObject entryRuleModel() throws RecognitionException {
         EObject current = null;
 
@@ -114,17 +133,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:68:2: (iv_ruleModel= ruleModel EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:69:2: iv_ruleModel= ruleModel EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:69:2: (iv_ruleModel= ruleModel EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:70:2: iv_ruleModel= ruleModel EOF
             {
-             newCompositeNode(grammarAccess.getModelRule()); 
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getModelRule()); 
+            }
             pushFollow(FOLLOW_ruleModel_in_entryRuleModel75);
             iv_ruleModel=ruleModel();
 
             state._fsp--;
-
-             current =iv_ruleModel; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModel85); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleModel; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleModel85); if (state.failed) return current;
 
             }
 
@@ -142,7 +165,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModel"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:76:1: ruleModel returns [EObject current=null] : ( (lv_elements_0_0= ruleElement ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:77:1: ruleModel returns [EObject current=null] : ( (lv_elements_0_0= ruleElement ) ) ;
     public final EObject ruleModel() throws RecognitionException {
         EObject current = null;
 
@@ -152,34 +175,38 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:79:28: ( ( (lv_elements_0_0= ruleElement ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:80:1: ( (lv_elements_0_0= ruleElement ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:80:28: ( ( (lv_elements_0_0= ruleElement ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:81:1: ( (lv_elements_0_0= ruleElement ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:80:1: ( (lv_elements_0_0= ruleElement ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:81:1: (lv_elements_0_0= ruleElement )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:81:1: ( (lv_elements_0_0= ruleElement ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:82:1: (lv_elements_0_0= ruleElement )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:81:1: (lv_elements_0_0= ruleElement )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:82:3: lv_elements_0_0= ruleElement
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:82:1: (lv_elements_0_0= ruleElement )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:83:3: lv_elements_0_0= ruleElement
             {
-             
-            	        newCompositeNode(grammarAccess.getModelAccess().getElementsElementParserRuleCall_0()); 
-            	    
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getModelAccess().getElementsElementParserRuleCall_0()); 
+              	    
+            }
             pushFollow(FOLLOW_ruleElement_in_ruleModel130);
             lv_elements_0_0=ruleElement();
 
             state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getModelRule());
-            	        }
-                   		add(
-                   			current, 
-                   			"elements",
-                    		lv_elements_0_0, 
-                    		"Element");
-            	        afterParserOrEnumRuleCall();
-            	    
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getModelRule());
+              	        }
+                     		add(
+                     			current, 
+                     			"elements",
+                      		lv_elements_0_0, 
+                      		"Element");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
@@ -189,7 +216,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -204,7 +233,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleElement"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:106:1: entryRuleElement returns [EObject current=null] : iv_ruleElement= ruleElement EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:107:1: entryRuleElement returns [EObject current=null] : iv_ruleElement= ruleElement EOF ;
     public final EObject entryRuleElement() throws RecognitionException {
         EObject current = null;
 
@@ -212,17 +241,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:107:2: (iv_ruleElement= ruleElement EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:108:2: iv_ruleElement= ruleElement EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:108:2: (iv_ruleElement= ruleElement EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:109:2: iv_ruleElement= ruleElement EOF
             {
-             newCompositeNode(grammarAccess.getElementRule()); 
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getElementRule()); 
+            }
             pushFollow(FOLLOW_ruleElement_in_entryRuleElement165);
             iv_ruleElement=ruleElement();
 
             state._fsp--;
-
-             current =iv_ruleElement; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleElement175); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleElement; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleElement175); if (state.failed) return current;
 
             }
 
@@ -240,7 +273,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleElement"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:115:1: ruleElement returns [EObject current=null] : (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:116:1: ruleElement returns [EObject current=null] : (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule | this_System_5= ruleSystem ) ;
     public final EObject ruleElement() throws RecognitionException {
         EObject current = null;
 
@@ -254,104 +287,148 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
         EObject this_BusinessRule_4 = null;
 
+        EObject this_System_5 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:118:28: ( (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:119:1: (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:119:28: ( (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule | this_System_5= ruleSystem ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:120:1: (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule | this_System_5= ruleSystem )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:119:1: (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule )
-            int alt1=5;
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:120:1: (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule | this_System_5= ruleSystem )
+            int alt1=6;
             alt1 = dfa1.predict(input);
             switch (alt1) {
                 case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:120:5: this_EnumDeclaration_0= ruleEnumDeclaration
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:121:5: this_EnumDeclaration_0= ruleEnumDeclaration
                     {
-                     
-                            newCompositeNode(grammarAccess.getElementAccess().getEnumDeclarationParserRuleCall_0()); 
-                        
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getElementAccess().getEnumDeclarationParserRuleCall_0()); 
+                          
+                    }
                     pushFollow(FOLLOW_ruleEnumDeclaration_in_ruleElement222);
                     this_EnumDeclaration_0=ruleEnumDeclaration();
 
                     state._fsp--;
-
-                     
-                            current = this_EnumDeclaration_0; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_EnumDeclaration_0; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
                 case 2 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:130:5: this_Diagram_1= ruleDiagram
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:131:5: this_Diagram_1= ruleDiagram
                     {
-                     
-                            newCompositeNode(grammarAccess.getElementAccess().getDiagramParserRuleCall_1()); 
-                        
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getElementAccess().getDiagramParserRuleCall_1()); 
+                          
+                    }
                     pushFollow(FOLLOW_ruleDiagram_in_ruleElement249);
                     this_Diagram_1=ruleDiagram();
 
                     state._fsp--;
-
-                     
-                            current = this_Diagram_1; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_Diagram_1; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
                 case 3 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:140:5: this_Domain_2= ruleDomain
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:141:5: this_Domain_2= ruleDomain
                     {
-                     
-                            newCompositeNode(grammarAccess.getElementAccess().getDomainParserRuleCall_2()); 
-                        
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getElementAccess().getDomainParserRuleCall_2()); 
+                          
+                    }
                     pushFollow(FOLLOW_ruleDomain_in_ruleElement276);
                     this_Domain_2=ruleDomain();
 
                     state._fsp--;
-
-                     
-                            current = this_Domain_2; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_Domain_2; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
                 case 4 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:150:5: this_Flow_3= ruleFlow
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:151:5: this_Flow_3= ruleFlow
                     {
-                     
-                            newCompositeNode(grammarAccess.getElementAccess().getFlowParserRuleCall_3()); 
-                        
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getElementAccess().getFlowParserRuleCall_3()); 
+                          
+                    }
                     pushFollow(FOLLOW_ruleFlow_in_ruleElement303);
                     this_Flow_3=ruleFlow();
 
                     state._fsp--;
-
-                     
-                            current = this_Flow_3; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_Flow_3; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
                 case 5 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:160:5: this_BusinessRule_4= ruleBusinessRule
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:161:5: this_BusinessRule_4= ruleBusinessRule
                     {
-                     
-                            newCompositeNode(grammarAccess.getElementAccess().getBusinessRuleParserRuleCall_4()); 
-                        
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getElementAccess().getBusinessRuleParserRuleCall_4()); 
+                          
+                    }
                     pushFollow(FOLLOW_ruleBusinessRule_in_ruleElement330);
                     this_BusinessRule_4=ruleBusinessRule();
 
                     state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_BusinessRule_4; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
-                     
-                            current = this_BusinessRule_4; 
-                            afterParserOrEnumRuleCall();
-                        
+                    }
+                    break;
+                case 6 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:171:5: this_System_5= ruleSystem
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getElementAccess().getSystemParserRuleCall_5()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleSystem_in_ruleElement357);
+                    this_System_5=ruleSystem();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_System_5; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
@@ -361,7 +438,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -376,7 +455,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFlow"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:176:1: entryRuleFlow returns [EObject current=null] : iv_ruleFlow= ruleFlow EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:187:1: entryRuleFlow returns [EObject current=null] : iv_ruleFlow= ruleFlow EOF ;
     public final EObject entryRuleFlow() throws RecognitionException {
         EObject current = null;
 
@@ -384,17 +463,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:177:2: (iv_ruleFlow= ruleFlow EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:178:2: iv_ruleFlow= ruleFlow EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:188:2: (iv_ruleFlow= ruleFlow EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:189:2: iv_ruleFlow= ruleFlow EOF
             {
-             newCompositeNode(grammarAccess.getFlowRule()); 
-            pushFollow(FOLLOW_ruleFlow_in_entryRuleFlow365);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getFlowRule()); 
+            }
+            pushFollow(FOLLOW_ruleFlow_in_entryRuleFlow392);
             iv_ruleFlow=ruleFlow();
 
             state._fsp--;
-
-             current =iv_ruleFlow; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFlow375); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleFlow; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFlow402); if (state.failed) return current;
 
             }
 
@@ -412,7 +495,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFlow"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:185:1: ruleFlow returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:196:1: ruleFlow returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' ) ;
     public final EObject ruleFlow() throws RecognitionException {
         EObject current = null;
 
@@ -428,49 +511,53 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:188:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:189:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:199:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:200:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:189:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:189:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:200:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:200:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Flow' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_activities_4_0= ruleActivity ) )* otherlv_5= '}'
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:189:2: ( (lv_imports_0_0= ruleImport ) )*
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:200:2: ( (lv_imports_0_0= ruleImport ) )*
             loop2:
             do {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==22) ) {
+                if ( (LA2_0==35) ) {
                     alt2=1;
                 }
 
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:190:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:201:1: (lv_imports_0_0= ruleImport )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:190:1: (lv_imports_0_0= ruleImport )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:191:3: lv_imports_0_0= ruleImport
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:201:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:202:3: lv_imports_0_0= ruleImport
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getFlowAccess().getImportsImportParserRuleCall_0_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleImport_in_ruleFlow421);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getFlowAccess().getImportsImportParserRuleCall_0_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleImport_in_ruleFlow448);
             	    lv_imports_0_0=ruleImport();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getFlowRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"imports",
-            	            		lv_imports_0_0, 
-            	            		"Import");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getFlowRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"imports",
+            	              		lv_imports_0_0, 
+            	              		"Import");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -483,41 +570,49 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_1=(Token)match(input,11,FOLLOW_11_in_ruleFlow434); 
+            otherlv_1=(Token)match(input,11,FOLLOW_11_in_ruleFlow461); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_1, grammarAccess.getFlowAccess().getFlowKeyword_1());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:211:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:212:1: (lv_name_2_0= RULE_ID )
+                  	newLeafNode(otherlv_1, grammarAccess.getFlowAccess().getFlowKeyword_1());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:222:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:223:1: (lv_name_2_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:212:1: (lv_name_2_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:213:3: lv_name_2_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:223:1: (lv_name_2_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:224:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFlow451); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFlow478); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_2_0, grammarAccess.getFlowAccess().getNameIDTerminalRuleCall_2_0()); 
-            		
+              			newLeafNode(lv_name_2_0, grammarAccess.getFlowAccess().getNameIDTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getFlowRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_2_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getFlowRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_2_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_3=(Token)match(input,12,FOLLOW_12_in_ruleFlow468); 
+            otherlv_3=(Token)match(input,12,FOLLOW_12_in_ruleFlow495); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_3, grammarAccess.getFlowAccess().getLeftCurlyBracketKeyword_3());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:233:1: ( (lv_activities_4_0= ruleActivity ) )*
+                  	newLeafNode(otherlv_3, grammarAccess.getFlowAccess().getLeftCurlyBracketKeyword_3());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:244:1: ( (lv_activities_4_0= ruleActivity ) )*
             loop3:
             do {
                 int alt3=2;
@@ -530,30 +625,34 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:234:1: (lv_activities_4_0= ruleActivity )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:245:1: (lv_activities_4_0= ruleActivity )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:234:1: (lv_activities_4_0= ruleActivity )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:235:3: lv_activities_4_0= ruleActivity
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:245:1: (lv_activities_4_0= ruleActivity )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:246:3: lv_activities_4_0= ruleActivity
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getFlowAccess().getActivitiesActivityParserRuleCall_4_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleActivity_in_ruleFlow489);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getFlowAccess().getActivitiesActivityParserRuleCall_4_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleActivity_in_ruleFlow516);
             	    lv_activities_4_0=ruleActivity();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getFlowRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"activities",
-            	            		lv_activities_4_0, 
-            	            		"Activity");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getFlowRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"activities",
+            	              		lv_activities_4_0, 
+            	              		"Activity");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -566,17 +665,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,13,FOLLOW_13_in_ruleFlow502); 
+            otherlv_5=(Token)match(input,13,FOLLOW_13_in_ruleFlow529); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_5, grammarAccess.getFlowAccess().getRightCurlyBracketKeyword_5());
-                
+                  	newLeafNode(otherlv_5, grammarAccess.getFlowAccess().getRightCurlyBracketKeyword_5());
+                  
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -591,7 +694,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleActivity"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:263:1: entryRuleActivity returns [EObject current=null] : iv_ruleActivity= ruleActivity EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:274:1: entryRuleActivity returns [EObject current=null] : iv_ruleActivity= ruleActivity EOF ;
     public final EObject entryRuleActivity() throws RecognitionException {
         EObject current = null;
 
@@ -599,17 +702,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:264:2: (iv_ruleActivity= ruleActivity EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:265:2: iv_ruleActivity= ruleActivity EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:275:2: (iv_ruleActivity= ruleActivity EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:276:2: iv_ruleActivity= ruleActivity EOF
             {
-             newCompositeNode(grammarAccess.getActivityRule()); 
-            pushFollow(FOLLOW_ruleActivity_in_entryRuleActivity538);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getActivityRule()); 
+            }
+            pushFollow(FOLLOW_ruleActivity_in_entryRuleActivity565);
             iv_ruleActivity=ruleActivity();
 
             state._fsp--;
-
-             current =iv_ruleActivity; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleActivity548); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleActivity; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleActivity575); if (state.failed) return current;
 
             }
 
@@ -627,7 +734,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleActivity"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:272:1: ruleActivity returns [EObject current=null] : (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= RULE_STRING ) ) otherlv_13= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:283:1: ruleActivity returns [EObject current=null] : (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= '\"' ) ) ( ( '\"' )=>otherlv_13= '\"' ) otherlv_14= '}' ) ;
     public final EObject ruleActivity() throws RecognitionException {
         EObject current = null;
 
@@ -644,51 +751,60 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
         Token otherlv_11=null;
         Token lv_description_12_0=null;
         Token otherlv_13=null;
+        Token otherlv_14=null;
 
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:275:28: ( (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= RULE_STRING ) ) otherlv_13= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:276:1: (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= RULE_STRING ) ) otherlv_13= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:286:28: ( (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= '\"' ) ) ( ( '\"' )=>otherlv_13= '\"' ) otherlv_14= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:287:1: (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= '\"' ) ) ( ( '\"' )=>otherlv_13= '\"' ) otherlv_14= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:276:1: (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= RULE_STRING ) ) otherlv_13= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:276:3: otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= RULE_STRING ) ) otherlv_13= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:287:1: (otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= '\"' ) ) ( ( '\"' )=>otherlv_13= '\"' ) otherlv_14= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:287:3: otherlv_0= 'Activity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )? (otherlv_9= 'Calls' ( ( ruleFQN ) ) )? otherlv_11= 'Description' ( (lv_description_12_0= '\"' ) ) ( ( '\"' )=>otherlv_13= '\"' ) otherlv_14= '}'
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleActivity585); 
+            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleActivity612); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getActivityAccess().getActivityKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:280:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:281:1: (lv_name_1_0= RULE_ID )
+                  	newLeafNode(otherlv_0, grammarAccess.getActivityAccess().getActivityKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:291:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:292:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:281:1: (lv_name_1_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:282:3: lv_name_1_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:292:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:293:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleActivity602); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleActivity629); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getActivityAccess().getNameIDTerminalRuleCall_1_0()); 
-            		
+              			newLeafNode(lv_name_1_0, grammarAccess.getActivityAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getActivityRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getActivityRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleActivity619); 
+            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleActivity646); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getActivityAccess().getLeftCurlyBracketKeyword_2());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:302:1: (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )?
+                  	newLeafNode(otherlv_2, grammarAccess.getActivityAccess().getLeftCurlyBracketKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:313:1: (otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -697,38 +813,46 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:302:3: otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:313:3: otherlv_3= 'Successors' otherlv_4= '[' ( (otherlv_5= RULE_ID ) ) (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )* otherlv_8= ']'
                     {
-                    otherlv_3=(Token)match(input,15,FOLLOW_15_in_ruleActivity632); 
+                    otherlv_3=(Token)match(input,15,FOLLOW_15_in_ruleActivity659); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                        	newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getSuccessorsKeyword_3_0());
-                        
-                    otherlv_4=(Token)match(input,16,FOLLOW_16_in_ruleActivity644); 
+                          	newLeafNode(otherlv_3, grammarAccess.getActivityAccess().getSuccessorsKeyword_3_0());
+                          
+                    }
+                    otherlv_4=(Token)match(input,16,FOLLOW_16_in_ruleActivity671); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                        	newLeafNode(otherlv_4, grammarAccess.getActivityAccess().getLeftSquareBracketKeyword_3_1());
-                        
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:310:1: ( (otherlv_5= RULE_ID ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:311:1: (otherlv_5= RULE_ID )
+                          	newLeafNode(otherlv_4, grammarAccess.getActivityAccess().getLeftSquareBracketKeyword_3_1());
+                          
+                    }
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:321:1: ( (otherlv_5= RULE_ID ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:322:1: (otherlv_5= RULE_ID )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:311:1: (otherlv_5= RULE_ID )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:312:3: otherlv_5= RULE_ID
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:322:1: (otherlv_5= RULE_ID )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:323:3: otherlv_5= RULE_ID
                     {
+                    if ( state.backtracking==0 ) {
 
-                    			if (current==null) {
-                    	            current = createModelElement(grammarAccess.getActivityRule());
-                    	        }
-                            
-                    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleActivity664); 
+                      			if (current==null) {
+                      	            current = createModelElement(grammarAccess.getActivityRule());
+                      	        }
+                              
+                    }
+                    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleActivity691); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                    		newLeafNode(otherlv_5, grammarAccess.getActivityAccess().getSucessorsActivityCrossReference_3_2_0()); 
-                    	
+                      		newLeafNode(otherlv_5, grammarAccess.getActivityAccess().getSucessorsActivityCrossReference_3_2_0()); 
+                      	
+                    }
 
                     }
 
 
                     }
 
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:323:2: (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )*
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:334:2: (otherlv_6= ',' ( (otherlv_7= RULE_ID ) ) )*
                     loop4:
                     do {
                         int alt4=2;
@@ -741,27 +865,33 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:323:4: otherlv_6= ',' ( (otherlv_7= RULE_ID ) )
+                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:334:4: otherlv_6= ',' ( (otherlv_7= RULE_ID ) )
                     	    {
-                    	    otherlv_6=(Token)match(input,17,FOLLOW_17_in_ruleActivity677); 
+                    	    otherlv_6=(Token)match(input,17,FOLLOW_17_in_ruleActivity704); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
 
-                    	        	newLeafNode(otherlv_6, grammarAccess.getActivityAccess().getCommaKeyword_3_3_0());
-                    	        
-                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:327:1: ( (otherlv_7= RULE_ID ) )
-                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:328:1: (otherlv_7= RULE_ID )
+                    	          	newLeafNode(otherlv_6, grammarAccess.getActivityAccess().getCommaKeyword_3_3_0());
+                    	          
+                    	    }
+                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:338:1: ( (otherlv_7= RULE_ID ) )
+                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:339:1: (otherlv_7= RULE_ID )
                     	    {
-                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:328:1: (otherlv_7= RULE_ID )
-                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:329:3: otherlv_7= RULE_ID
+                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:339:1: (otherlv_7= RULE_ID )
+                    	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:340:3: otherlv_7= RULE_ID
                     	    {
+                    	    if ( state.backtracking==0 ) {
 
-                    	    			if (current==null) {
-                    	    	            current = createModelElement(grammarAccess.getActivityRule());
-                    	    	        }
-                    	            
-                    	    otherlv_7=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleActivity697); 
+                    	      			if (current==null) {
+                    	      	            current = createModelElement(grammarAccess.getActivityRule());
+                    	      	        }
+                    	              
+                    	    }
+                    	    otherlv_7=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleActivity724); if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
 
-                    	    		newLeafNode(otherlv_7, grammarAccess.getActivityAccess().getSucessorsActivityCrossReference_3_3_1_0()); 
-                    	    	
+                    	      		newLeafNode(otherlv_7, grammarAccess.getActivityAccess().getSucessorsActivityCrossReference_3_3_1_0()); 
+                    	      	
+                    	    }
 
                     	    }
 
@@ -777,17 +907,19 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_8=(Token)match(input,18,FOLLOW_18_in_ruleActivity711); 
+                    otherlv_8=(Token)match(input,18,FOLLOW_18_in_ruleActivity738); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                        	newLeafNode(otherlv_8, grammarAccess.getActivityAccess().getRightSquareBracketKeyword_3_4());
-                        
+                          	newLeafNode(otherlv_8, grammarAccess.getActivityAccess().getRightSquareBracketKeyword_3_4());
+                          
+                    }
 
                     }
                     break;
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:344:3: (otherlv_9= 'Calls' ( ( ruleFQN ) ) )?
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:355:3: (otherlv_9= 'Calls' ( ( ruleFQN ) ) )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -796,34 +928,42 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:344:5: otherlv_9= 'Calls' ( ( ruleFQN ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:355:5: otherlv_9= 'Calls' ( ( ruleFQN ) )
                     {
-                    otherlv_9=(Token)match(input,19,FOLLOW_19_in_ruleActivity726); 
+                    otherlv_9=(Token)match(input,19,FOLLOW_19_in_ruleActivity753); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                        	newLeafNode(otherlv_9, grammarAccess.getActivityAccess().getCallsKeyword_4_0());
-                        
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:348:1: ( ( ruleFQN ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:349:1: ( ruleFQN )
+                          	newLeafNode(otherlv_9, grammarAccess.getActivityAccess().getCallsKeyword_4_0());
+                          
+                    }
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:359:1: ( ( ruleFQN ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:360:1: ( ruleFQN )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:349:1: ( ruleFQN )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:350:3: ruleFQN
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:360:1: ( ruleFQN )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:361:3: ruleFQN
                     {
+                    if ( state.backtracking==0 ) {
 
-                    			if (current==null) {
-                    	            current = createModelElement(grammarAccess.getActivityRule());
-                    	        }
-                            
-                     
-                    	        newCompositeNode(grammarAccess.getActivityAccess().getBusinessRuleBusinessRuleCrossReference_4_1_0()); 
-                    	    
-                    pushFollow(FOLLOW_ruleFQN_in_ruleActivity749);
+                      			if (current==null) {
+                      	            current = createModelElement(grammarAccess.getActivityRule());
+                      	        }
+                              
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getActivityAccess().getBusinessRuleBusinessRuleCrossReference_4_1_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleFQN_in_ruleActivity776);
                     ruleFQN();
 
                     state._fsp--;
-
-                     
-                    	        afterParserOrEnumRuleCall();
-                    	    
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
 
                     }
 
@@ -836,47 +976,65 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_11=(Token)match(input,20,FOLLOW_20_in_ruleActivity763); 
+            otherlv_11=(Token)match(input,20,FOLLOW_20_in_ruleActivity790); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_11, grammarAccess.getActivityAccess().getDescriptionKeyword_5());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:367:1: ( (lv_description_12_0= RULE_STRING ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:368:1: (lv_description_12_0= RULE_STRING )
+                  	newLeafNode(otherlv_11, grammarAccess.getActivityAccess().getDescriptionKeyword_5());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:378:1: ( (lv_description_12_0= '\"' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:379:1: (lv_description_12_0= '\"' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:368:1: (lv_description_12_0= RULE_STRING )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:369:3: lv_description_12_0= RULE_STRING
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:379:1: (lv_description_12_0= '\"' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:380:3: lv_description_12_0= '\"'
             {
-            lv_description_12_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleActivity780); 
+            lv_description_12_0=(Token)match(input,21,FOLLOW_21_in_ruleActivity808); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_description_12_0, grammarAccess.getActivityAccess().getDescriptionSTRINGTerminalRuleCall_6_0()); 
-            		
+                      newLeafNode(lv_description_12_0, grammarAccess.getActivityAccess().getDescriptionQuotationMarkKeyword_6_0());
+                  
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getActivityRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"description",
-                    		lv_description_12_0, 
-                    		"STRING");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getActivityRule());
+              	        }
+                     		setWithLastConsumed(current, "description", lv_description_12_0, "\"");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_13=(Token)match(input,13,FOLLOW_13_in_ruleActivity797); 
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:393:2: ( ( '\"' )=>otherlv_13= '\"' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:393:3: ( '\"' )=>otherlv_13= '\"'
+            {
+            otherlv_13=(Token)match(input,21,FOLLOW_21_in_ruleActivity841); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_13, grammarAccess.getActivityAccess().getRightCurlyBracketKeyword_7());
-                
+                  	newLeafNode(otherlv_13, grammarAccess.getActivityAccess().getQuotationMarkKeyword_7());
+                  
+            }
+
+            }
+
+            otherlv_14=(Token)match(input,13,FOLLOW_13_in_ruleActivity854); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_14, grammarAccess.getActivityAccess().getRightCurlyBracketKeyword_8());
+                  
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -891,7 +1049,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBusinessRule"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:397:1: entryRuleBusinessRule returns [EObject current=null] : iv_ruleBusinessRule= ruleBusinessRule EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:410:1: entryRuleBusinessRule returns [EObject current=null] : iv_ruleBusinessRule= ruleBusinessRule EOF ;
     public final EObject entryRuleBusinessRule() throws RecognitionException {
         EObject current = null;
 
@@ -899,17 +1057,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:398:2: (iv_ruleBusinessRule= ruleBusinessRule EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:399:2: iv_ruleBusinessRule= ruleBusinessRule EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:411:2: (iv_ruleBusinessRule= ruleBusinessRule EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:412:2: iv_ruleBusinessRule= ruleBusinessRule EOF
             {
-             newCompositeNode(grammarAccess.getBusinessRuleRule()); 
-            pushFollow(FOLLOW_ruleBusinessRule_in_entryRuleBusinessRule833);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getBusinessRuleRule()); 
+            }
+            pushFollow(FOLLOW_ruleBusinessRule_in_entryRuleBusinessRule890);
             iv_ruleBusinessRule=ruleBusinessRule();
 
             state._fsp--;
-
-             current =iv_ruleBusinessRule; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBusinessRule843); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleBusinessRule; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBusinessRule900); if (state.failed) return current;
 
             }
 
@@ -927,69 +1089,355 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBusinessRule"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:406:1: ruleBusinessRule returns [EObject current=null] : (otherlv_0= 'BusinessRule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:419:1: ruleBusinessRule returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) ) )* otherlv_9= ']' otherlv_10= 'Output' otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' otherlv_14= '}' ) ;
     public final EObject ruleBusinessRule() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
-        Token lv_name_1_0=null;
-        Token otherlv_2=null;
+        Token otherlv_1=null;
+        Token lv_name_2_0=null;
         Token otherlv_3=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        EObject lv_imports_0_0 = null;
+
+        Enumerator lv_typ_4_0 = null;
+
+        EObject lv_systemInputs_8_1 = null;
+
+        EObject lv_systemInputs_8_2 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:409:28: ( (otherlv_0= 'BusinessRule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:410:1: (otherlv_0= 'BusinessRule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:422:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) ) )* otherlv_9= ']' otherlv_10= 'Output' otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' otherlv_14= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:423:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) ) )* otherlv_9= ']' otherlv_10= 'Output' otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' otherlv_14= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:410:1: (otherlv_0= 'BusinessRule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:410:3: otherlv_0= 'BusinessRule' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:423:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) ) )* otherlv_9= ']' otherlv_10= 'Output' otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' otherlv_14= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:423:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) ) )* otherlv_9= ']' otherlv_10= 'Output' otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' otherlv_14= '}'
             {
-            otherlv_0=(Token)match(input,21,FOLLOW_21_in_ruleBusinessRule880); 
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:423:2: ( (lv_imports_0_0= ruleImport ) )*
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                	newLeafNode(otherlv_0, grammarAccess.getBusinessRuleAccess().getBusinessRuleKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:414:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:415:1: (lv_name_1_0= RULE_ID )
-            {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:415:1: (lv_name_1_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:416:3: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBusinessRule897); 
+                if ( (LA7_0==35) ) {
+                    alt7=1;
+                }
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getBusinessRuleAccess().getNameIDTerminalRuleCall_1_0()); 
-            		
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getBusinessRuleRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"ID");
-            	    
+                switch (alt7) {
+            	case 1 :
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:424:1: (lv_imports_0_0= ruleImport )
+            	    {
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:424:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:425:3: lv_imports_0_0= ruleImport
+            	    {
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getImportsImportParserRuleCall_0_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleImport_in_ruleBusinessRule946);
+            	    lv_imports_0_0=ruleImport();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getBusinessRuleRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"imports",
+            	              		lv_imports_0_0, 
+            	              		"Import");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop7;
+                }
+            } while (true);
+
+            otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleBusinessRule959); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getBusinessRuleAccess().getBusinessRuleKeyword_1());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:445:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:446:1: (lv_name_2_0= RULE_ID )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:446:1: (lv_name_2_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:447:3: lv_name_2_0= RULE_ID
+            {
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleBusinessRule976); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_name_2_0, grammarAccess.getBusinessRuleAccess().getNameIDTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getBusinessRuleRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_2_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleBusinessRule914); 
+            otherlv_3=(Token)match(input,23,FOLLOW_23_in_ruleBusinessRule993); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getBusinessRuleAccess().getLeftCurlyBracketKeyword_2());
-                
-            otherlv_3=(Token)match(input,13,FOLLOW_13_in_ruleBusinessRule926); 
+                  	newLeafNode(otherlv_3, grammarAccess.getBusinessRuleAccess().getTypeKeyword_3());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:467:1: ( (lv_typ_4_0= ruleBREType ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:468:1: (lv_typ_4_0= ruleBREType )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:468:1: (lv_typ_4_0= ruleBREType )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:469:3: lv_typ_4_0= ruleBREType
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getTypBRETypeEnumRuleCall_4_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBREType_in_ruleBusinessRule1014);
+            lv_typ_4_0=ruleBREType();
 
-                	newLeafNode(otherlv_3, grammarAccess.getBusinessRuleAccess().getRightCurlyBracketKeyword_3());
-                
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getBusinessRuleRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"typ",
+                      		lv_typ_4_0, 
+                      		"BREType");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            otherlv_5=(Token)match(input,12,FOLLOW_12_in_ruleBusinessRule1026); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_5, grammarAccess.getBusinessRuleAccess().getLeftCurlyBracketKeyword_5());
+                  
+            }
+            otherlv_6=(Token)match(input,24,FOLLOW_24_in_ruleBusinessRule1038); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_6, grammarAccess.getBusinessRuleAccess().getInputKeyword_6());
+                  
+            }
+            otherlv_7=(Token)match(input,16,FOLLOW_16_in_ruleBusinessRule1050); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_7, grammarAccess.getBusinessRuleAccess().getLeftSquareBracketKeyword_7());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:497:1: ( ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) ) )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
+
+                if ( (LA9_0==RULE_ID) ) {
+                    alt9=1;
+                }
+
+
+                switch (alt9) {
+            	case 1 :
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:498:1: ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) )
+            	    {
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:498:1: ( (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput ) )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:499:1: (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput )
+            	    {
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:499:1: (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput )
+            	    int alt8=2;
+            	    alt8 = dfa8.predict(input);
+            	    switch (alt8) {
+            	        case 1 :
+            	            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:500:3: lv_systemInputs_8_1= ruleBreSystemEntityInput
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getSystemInputsBreSystemEntityInputParserRuleCall_8_0_0()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleBreSystemEntityInput_in_ruleBusinessRule1073);
+            	            lv_systemInputs_8_1=ruleBreSystemEntityInput();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getBusinessRuleRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"systemInputs",
+            	                      		lv_systemInputs_8_1, 
+            	                      		"BreSystemEntityInput");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:515:8: lv_systemInputs_8_2= ruleBreEntityInput
+            	            {
+            	            if ( state.backtracking==0 ) {
+            	               
+            	              	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_8_0_1()); 
+            	              	    
+            	            }
+            	            pushFollow(FOLLOW_ruleBreEntityInput_in_ruleBusinessRule1092);
+            	            lv_systemInputs_8_2=ruleBreEntityInput();
+
+            	            state._fsp--;
+            	            if (state.failed) return current;
+            	            if ( state.backtracking==0 ) {
+
+            	              	        if (current==null) {
+            	              	            current = createModelElementForParent(grammarAccess.getBusinessRuleRule());
+            	              	        }
+            	                     		add(
+            	                     			current, 
+            	                     			"systemInputs",
+            	                      		lv_systemInputs_8_2, 
+            	                      		"BreEntityInput");
+            	              	        afterParserOrEnumRuleCall();
+            	              	    
+            	            }
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
+                }
+            } while (true);
+
+            otherlv_9=(Token)match(input,18,FOLLOW_18_in_ruleBusinessRule1108); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_9, grammarAccess.getBusinessRuleAccess().getRightSquareBracketKeyword_9());
+                  
+            }
+            otherlv_10=(Token)match(input,25,FOLLOW_25_in_ruleBusinessRule1120); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_10, grammarAccess.getBusinessRuleAccess().getOutputKeyword_10());
+                  
+            }
+            otherlv_11=(Token)match(input,16,FOLLOW_16_in_ruleBusinessRule1132); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_11, grammarAccess.getBusinessRuleAccess().getLeftSquareBracketKeyword_11());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:545:1: ( ( ruleFQN ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:546:1: ( ruleFQN )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:546:1: ( ruleFQN )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:547:3: ruleFQN
+            {
+            if ( state.backtracking==0 ) {
+
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getBusinessRuleRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getOutputEntityCrossReference_12_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFQN_in_ruleBusinessRule1155);
+            ruleFQN();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_13=(Token)match(input,18,FOLLOW_18_in_ruleBusinessRule1167); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_13, grammarAccess.getBusinessRuleAccess().getRightSquareBracketKeyword_13());
+                  
+            }
+            otherlv_14=(Token)match(input,13,FOLLOW_13_in_ruleBusinessRule1179); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_14, grammarAccess.getBusinessRuleAccess().getRightCurlyBracketKeyword_14());
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1003,8 +1451,1299 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleBusinessRule"
 
 
+    // $ANTLR start "entryRuleBreSystemEntityInput"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:576:1: entryRuleBreSystemEntityInput returns [EObject current=null] : iv_ruleBreSystemEntityInput= ruleBreSystemEntityInput EOF ;
+    public final EObject entryRuleBreSystemEntityInput() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleBreSystemEntityInput = null;
+
+
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:577:2: (iv_ruleBreSystemEntityInput= ruleBreSystemEntityInput EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:578:2: iv_ruleBreSystemEntityInput= ruleBreSystemEntityInput EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getBreSystemEntityInputRule()); 
+            }
+            pushFollow(FOLLOW_ruleBreSystemEntityInput_in_entryRuleBreSystemEntityInput1215);
+            iv_ruleBreSystemEntityInput=ruleBreSystemEntityInput();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleBreSystemEntityInput; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBreSystemEntityInput1225); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleBreSystemEntityInput"
+
+
+    // $ANTLR start "ruleBreSystemEntityInput"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:585:1: ruleBreSystemEntityInput returns [EObject current=null] : ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleSystemEntityConfiguration ) ) ) ;
+    public final EObject ruleBreSystemEntityInput() throws RecognitionException {
+        EObject current = null;
+
+        EObject lv_configuration_1_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:588:28: ( ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleSystemEntityConfiguration ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:589:1: ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleSystemEntityConfiguration ) ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:589:1: ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleSystemEntityConfiguration ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:589:2: ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleSystemEntityConfiguration ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:589:2: ( ( ruleFQN ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:590:1: ( ruleFQN )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:590:1: ( ruleFQN )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:591:3: ruleFQN
+            {
+            if ( state.backtracking==0 ) {
+
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getBreSystemEntityInputRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getBreSystemEntityInputAccess().getInputElementSystemEntityCrossReference_0_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFQN_in_ruleBreSystemEntityInput1273);
+            ruleFQN();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:604:2: ( (lv_configuration_1_0= ruleSystemEntityConfiguration ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:605:1: (lv_configuration_1_0= ruleSystemEntityConfiguration )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:605:1: (lv_configuration_1_0= ruleSystemEntityConfiguration )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:606:3: lv_configuration_1_0= ruleSystemEntityConfiguration
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getBreSystemEntityInputAccess().getConfigurationSystemEntityConfigurationParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleSystemEntityConfiguration_in_ruleBreSystemEntityInput1294);
+            lv_configuration_1_0=ruleSystemEntityConfiguration();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getBreSystemEntityInputRule());
+              	        }
+                     		add(
+                     			current, 
+                     			"configuration",
+                      		lv_configuration_1_0, 
+                      		"SystemEntityConfiguration");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBreSystemEntityInput"
+
+
+    // $ANTLR start "entryRuleBreEntityInput"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:630:1: entryRuleBreEntityInput returns [EObject current=null] : iv_ruleBreEntityInput= ruleBreEntityInput EOF ;
+    public final EObject entryRuleBreEntityInput() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleBreEntityInput = null;
+
+
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:631:2: (iv_ruleBreEntityInput= ruleBreEntityInput EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:632:2: iv_ruleBreEntityInput= ruleBreEntityInput EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getBreEntityInputRule()); 
+            }
+            pushFollow(FOLLOW_ruleBreEntityInput_in_entryRuleBreEntityInput1330);
+            iv_ruleBreEntityInput=ruleBreEntityInput();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleBreEntityInput; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleBreEntityInput1340); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleBreEntityInput"
+
+
+    // $ANTLR start "ruleBreEntityInput"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:639:1: ruleBreEntityInput returns [EObject current=null] : ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleEntityConfiguration ) ) ) ;
+    public final EObject ruleBreEntityInput() throws RecognitionException {
+        EObject current = null;
+
+        EObject lv_configuration_1_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:642:28: ( ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleEntityConfiguration ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:643:1: ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleEntityConfiguration ) ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:643:1: ( ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleEntityConfiguration ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:643:2: ( ( ruleFQN ) ) ( (lv_configuration_1_0= ruleEntityConfiguration ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:643:2: ( ( ruleFQN ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:644:1: ( ruleFQN )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:644:1: ( ruleFQN )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:645:3: ruleFQN
+            {
+            if ( state.backtracking==0 ) {
+
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getBreEntityInputRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getBreEntityInputAccess().getInputElementEntityCrossReference_0_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFQN_in_ruleBreEntityInput1388);
+            ruleFQN();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:658:2: ( (lv_configuration_1_0= ruleEntityConfiguration ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:659:1: (lv_configuration_1_0= ruleEntityConfiguration )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:659:1: (lv_configuration_1_0= ruleEntityConfiguration )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:660:3: lv_configuration_1_0= ruleEntityConfiguration
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getBreEntityInputAccess().getConfigurationEntityConfigurationParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleEntityConfiguration_in_ruleBreEntityInput1409);
+            lv_configuration_1_0=ruleEntityConfiguration();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getBreEntityInputRule());
+              	        }
+                     		add(
+                     			current, 
+                     			"configuration",
+                      		lv_configuration_1_0, 
+                      		"EntityConfiguration");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBreEntityInput"
+
+
+    // $ANTLR start "entryRuleSystemEntityConfiguration"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:684:1: entryRuleSystemEntityConfiguration returns [EObject current=null] : iv_ruleSystemEntityConfiguration= ruleSystemEntityConfiguration EOF ;
+    public final EObject entryRuleSystemEntityConfiguration() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleSystemEntityConfiguration = null;
+
+
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:685:2: (iv_ruleSystemEntityConfiguration= ruleSystemEntityConfiguration EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:686:2: iv_ruleSystemEntityConfiguration= ruleSystemEntityConfiguration EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getSystemEntityConfigurationRule()); 
+            }
+            pushFollow(FOLLOW_ruleSystemEntityConfiguration_in_entryRuleSystemEntityConfiguration1445);
+            iv_ruleSystemEntityConfiguration=ruleSystemEntityConfiguration();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleSystemEntityConfiguration; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSystemEntityConfiguration1455); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSystemEntityConfiguration"
+
+
+    // $ANTLR start "ruleSystemEntityConfiguration"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:693:1: ruleSystemEntityConfiguration returns [EObject current=null] : ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) ) )? ) ;
+    public final EObject ruleSystemEntityConfiguration() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        Token otherlv_15=null;
+        Token lv_joinCriteria_16_0=null;
+        Enumerator lv_primary_4_0 = null;
+
+        Enumerator lv_obligatorisch_8_0 = null;
+
+        Enumerator lv_multiple_12_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:696:28: ( ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) ) )? ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:697:1: ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) ) )? )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:697:1: ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) ) )? )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:697:2: () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) ) )?
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:697:2: ()
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:698:5: 
+            {
+            if ( state.backtracking==0 ) {
+
+                      current = forceCreateModelElement(
+                          grammarAccess.getSystemEntityConfigurationAccess().getSystemEntityConfigurationAction_0(),
+                          current);
+                  
+            }
+
+            }
+
+            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleSystemEntityConfiguration1501); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getSystemEntityConfigurationAccess().getLeftCurlyBracketKeyword_1());
+                  
+            }
+            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleSystemEntityConfiguration1513); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_2, grammarAccess.getSystemEntityConfigurationAccess().getPrimärKeyword_2());
+                  
+            }
+            otherlv_3=(Token)match(input,27,FOLLOW_27_in_ruleSystemEntityConfiguration1525); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_3, grammarAccess.getSystemEntityConfigurationAccess().getEqualsSignKeyword_3());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:715:1: ( (lv_primary_4_0= ruleBoolean ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:716:1: (lv_primary_4_0= ruleBoolean )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:716:1: (lv_primary_4_0= ruleBoolean )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:717:3: lv_primary_4_0= ruleBoolean
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getSystemEntityConfigurationAccess().getPrimaryBooleanEnumRuleCall_4_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBoolean_in_ruleSystemEntityConfiguration1546);
+            lv_primary_4_0=ruleBoolean();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getSystemEntityConfigurationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"primary",
+                      		lv_primary_4_0, 
+                      		"Boolean");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_5=(Token)match(input,17,FOLLOW_17_in_ruleSystemEntityConfiguration1558); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_5, grammarAccess.getSystemEntityConfigurationAccess().getCommaKeyword_5());
+                  
+            }
+            otherlv_6=(Token)match(input,28,FOLLOW_28_in_ruleSystemEntityConfiguration1570); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_6, grammarAccess.getSystemEntityConfigurationAccess().getObligatorischKeyword_6());
+                  
+            }
+            otherlv_7=(Token)match(input,27,FOLLOW_27_in_ruleSystemEntityConfiguration1582); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_7, grammarAccess.getSystemEntityConfigurationAccess().getEqualsSignKeyword_7());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:745:1: ( (lv_obligatorisch_8_0= ruleBoolean ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:746:1: (lv_obligatorisch_8_0= ruleBoolean )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:746:1: (lv_obligatorisch_8_0= ruleBoolean )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:747:3: lv_obligatorisch_8_0= ruleBoolean
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getSystemEntityConfigurationAccess().getObligatorischBooleanEnumRuleCall_8_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBoolean_in_ruleSystemEntityConfiguration1603);
+            lv_obligatorisch_8_0=ruleBoolean();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getSystemEntityConfigurationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"obligatorisch",
+                      		lv_obligatorisch_8_0, 
+                      		"Boolean");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleSystemEntityConfiguration1615); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_9, grammarAccess.getSystemEntityConfigurationAccess().getCommaKeyword_9());
+                  
+            }
+            otherlv_10=(Token)match(input,29,FOLLOW_29_in_ruleSystemEntityConfiguration1627); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_10, grammarAccess.getSystemEntityConfigurationAccess().getMehrfachKeyword_10());
+                  
+            }
+            otherlv_11=(Token)match(input,27,FOLLOW_27_in_ruleSystemEntityConfiguration1639); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_11, grammarAccess.getSystemEntityConfigurationAccess().getEqualsSignKeyword_11());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:775:1: ( (lv_multiple_12_0= ruleBoolean ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:776:1: (lv_multiple_12_0= ruleBoolean )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:776:1: (lv_multiple_12_0= ruleBoolean )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:777:3: lv_multiple_12_0= ruleBoolean
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getSystemEntityConfigurationAccess().getMultipleBooleanEnumRuleCall_12_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBoolean_in_ruleSystemEntityConfiguration1660);
+            lv_multiple_12_0=ruleBoolean();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getSystemEntityConfigurationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"multiple",
+                      		lv_multiple_12_0, 
+                      		"Boolean");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:793:2: (otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) ) )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
+
+            if ( (LA10_0==17) ) {
+                alt10=1;
+            }
+            switch (alt10) {
+                case 1 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:793:4: otherlv_13= ',' otherlv_14= 'join Pfad' otherlv_15= '=' ( (lv_joinCriteria_16_0= RULE_STRING ) )
+                    {
+                    otherlv_13=(Token)match(input,17,FOLLOW_17_in_ruleSystemEntityConfiguration1673); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_13, grammarAccess.getSystemEntityConfigurationAccess().getCommaKeyword_13_0());
+                          
+                    }
+                    otherlv_14=(Token)match(input,30,FOLLOW_30_in_ruleSystemEntityConfiguration1685); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_14, grammarAccess.getSystemEntityConfigurationAccess().getJoinPfadKeyword_13_1());
+                          
+                    }
+                    otherlv_15=(Token)match(input,27,FOLLOW_27_in_ruleSystemEntityConfiguration1697); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_15, grammarAccess.getSystemEntityConfigurationAccess().getEqualsSignKeyword_13_2());
+                          
+                    }
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:805:1: ( (lv_joinCriteria_16_0= RULE_STRING ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:806:1: (lv_joinCriteria_16_0= RULE_STRING )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:806:1: (lv_joinCriteria_16_0= RULE_STRING )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:807:3: lv_joinCriteria_16_0= RULE_STRING
+                    {
+                    lv_joinCriteria_16_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSystemEntityConfiguration1714); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			newLeafNode(lv_joinCriteria_16_0, grammarAccess.getSystemEntityConfigurationAccess().getJoinCriteriaSTRINGTerminalRuleCall_13_3_0()); 
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getSystemEntityConfigurationRule());
+                      	        }
+                             		setWithLastConsumed(
+                             			current, 
+                             			"joinCriteria",
+                              		lv_joinCriteria_16_0, 
+                              		"STRING");
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSystemEntityConfiguration"
+
+
+    // $ANTLR start "entryRuleEntityConfiguration"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:831:1: entryRuleEntityConfiguration returns [EObject current=null] : iv_ruleEntityConfiguration= ruleEntityConfiguration EOF ;
+    public final EObject entryRuleEntityConfiguration() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleEntityConfiguration = null;
+
+
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:832:2: (iv_ruleEntityConfiguration= ruleEntityConfiguration EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:833:2: iv_ruleEntityConfiguration= ruleEntityConfiguration EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getEntityConfigurationRule()); 
+            }
+            pushFollow(FOLLOW_ruleEntityConfiguration_in_entryRuleEntityConfiguration1757);
+            iv_ruleEntityConfiguration=ruleEntityConfiguration();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleEntityConfiguration; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEntityConfiguration1767); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEntityConfiguration"
+
+
+    // $ANTLR start "ruleEntityConfiguration"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:840:1: ruleEntityConfiguration returns [EObject current=null] : ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) ) )? otherlv_17= '}' ) ;
+    public final EObject ruleEntityConfiguration() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        Token otherlv_15=null;
+        Token otherlv_17=null;
+        Enumerator lv_primary_4_0 = null;
+
+        Enumerator lv_obligatorisch_8_0 = null;
+
+        Enumerator lv_multiple_12_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:843:28: ( ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) ) )? otherlv_17= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:844:1: ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) ) )? otherlv_17= '}' )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:844:1: ( () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) ) )? otherlv_17= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:844:2: () otherlv_1= '{' otherlv_2= 'prim\\u00E4r' otherlv_3= '=' ( (lv_primary_4_0= ruleBoolean ) ) otherlv_5= ',' otherlv_6= 'obligatorisch' otherlv_7= '=' ( (lv_obligatorisch_8_0= ruleBoolean ) ) otherlv_9= ',' otherlv_10= 'mehrfach' otherlv_11= '=' ( (lv_multiple_12_0= ruleBoolean ) ) (otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) ) )? otherlv_17= '}'
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:844:2: ()
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:845:5: 
+            {
+            if ( state.backtracking==0 ) {
+
+                      current = forceCreateModelElement(
+                          grammarAccess.getEntityConfigurationAccess().getEntityConfigurationAction_0(),
+                          current);
+                  
+            }
+
+            }
+
+            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleEntityConfiguration1813); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getEntityConfigurationAccess().getLeftCurlyBracketKeyword_1());
+                  
+            }
+            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleEntityConfiguration1825); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_2, grammarAccess.getEntityConfigurationAccess().getPrimärKeyword_2());
+                  
+            }
+            otherlv_3=(Token)match(input,27,FOLLOW_27_in_ruleEntityConfiguration1837); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_3, grammarAccess.getEntityConfigurationAccess().getEqualsSignKeyword_3());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:862:1: ( (lv_primary_4_0= ruleBoolean ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:863:1: (lv_primary_4_0= ruleBoolean )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:863:1: (lv_primary_4_0= ruleBoolean )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:864:3: lv_primary_4_0= ruleBoolean
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getEntityConfigurationAccess().getPrimaryBooleanEnumRuleCall_4_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBoolean_in_ruleEntityConfiguration1858);
+            lv_primary_4_0=ruleBoolean();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getEntityConfigurationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"primary",
+                      		lv_primary_4_0, 
+                      		"Boolean");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_5=(Token)match(input,17,FOLLOW_17_in_ruleEntityConfiguration1870); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_5, grammarAccess.getEntityConfigurationAccess().getCommaKeyword_5());
+                  
+            }
+            otherlv_6=(Token)match(input,28,FOLLOW_28_in_ruleEntityConfiguration1882); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_6, grammarAccess.getEntityConfigurationAccess().getObligatorischKeyword_6());
+                  
+            }
+            otherlv_7=(Token)match(input,27,FOLLOW_27_in_ruleEntityConfiguration1894); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_7, grammarAccess.getEntityConfigurationAccess().getEqualsSignKeyword_7());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:892:1: ( (lv_obligatorisch_8_0= ruleBoolean ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:893:1: (lv_obligatorisch_8_0= ruleBoolean )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:893:1: (lv_obligatorisch_8_0= ruleBoolean )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:894:3: lv_obligatorisch_8_0= ruleBoolean
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getEntityConfigurationAccess().getObligatorischBooleanEnumRuleCall_8_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBoolean_in_ruleEntityConfiguration1915);
+            lv_obligatorisch_8_0=ruleBoolean();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getEntityConfigurationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"obligatorisch",
+                      		lv_obligatorisch_8_0, 
+                      		"Boolean");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleEntityConfiguration1927); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_9, grammarAccess.getEntityConfigurationAccess().getCommaKeyword_9());
+                  
+            }
+            otherlv_10=(Token)match(input,29,FOLLOW_29_in_ruleEntityConfiguration1939); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_10, grammarAccess.getEntityConfigurationAccess().getMehrfachKeyword_10());
+                  
+            }
+            otherlv_11=(Token)match(input,27,FOLLOW_27_in_ruleEntityConfiguration1951); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_11, grammarAccess.getEntityConfigurationAccess().getEqualsSignKeyword_11());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:922:1: ( (lv_multiple_12_0= ruleBoolean ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:923:1: (lv_multiple_12_0= ruleBoolean )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:923:1: (lv_multiple_12_0= ruleBoolean )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:924:3: lv_multiple_12_0= ruleBoolean
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getEntityConfigurationAccess().getMultipleBooleanEnumRuleCall_12_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleBoolean_in_ruleEntityConfiguration1972);
+            lv_multiple_12_0=ruleBoolean();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getEntityConfigurationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"multiple",
+                      		lv_multiple_12_0, 
+                      		"Boolean");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:940:2: (otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) ) )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
+
+            if ( (LA11_0==17) ) {
+                alt11=1;
+            }
+            switch (alt11) {
+                case 1 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:940:4: otherlv_13= ',' otherlv_14= 'Pfad' otherlv_15= '=' ( ( ruleFQN ) )
+                    {
+                    otherlv_13=(Token)match(input,17,FOLLOW_17_in_ruleEntityConfiguration1985); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_13, grammarAccess.getEntityConfigurationAccess().getCommaKeyword_13_0());
+                          
+                    }
+                    otherlv_14=(Token)match(input,31,FOLLOW_31_in_ruleEntityConfiguration1997); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_14, grammarAccess.getEntityConfigurationAccess().getPfadKeyword_13_1());
+                          
+                    }
+                    otherlv_15=(Token)match(input,27,FOLLOW_27_in_ruleEntityConfiguration2009); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_15, grammarAccess.getEntityConfigurationAccess().getEqualsSignKeyword_13_2());
+                          
+                    }
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:952:1: ( ( ruleFQN ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:953:1: ( ruleFQN )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:953:1: ( ruleFQN )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:954:3: ruleFQN
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			if (current==null) {
+                      	            current = createModelElement(grammarAccess.getEntityConfigurationRule());
+                      	        }
+                              
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getEntityConfigurationAccess().getPathAssociationCrossReference_13_3_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleFQN_in_ruleEntityConfiguration2032);
+                    ruleFQN();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_17=(Token)match(input,13,FOLLOW_13_in_ruleEntityConfiguration2046); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_17, grammarAccess.getEntityConfigurationAccess().getRightCurlyBracketKeyword_14());
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEntityConfiguration"
+
+
+    // $ANTLR start "entryRuleSystem"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:979:1: entryRuleSystem returns [EObject current=null] : iv_ruleSystem= ruleSystem EOF ;
+    public final EObject entryRuleSystem() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleSystem = null;
+
+
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:980:2: (iv_ruleSystem= ruleSystem EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:981:2: iv_ruleSystem= ruleSystem EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getSystemRule()); 
+            }
+            pushFollow(FOLLOW_ruleSystem_in_entryRuleSystem2082);
+            iv_ruleSystem=ruleSystem();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleSystem; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSystem2092); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSystem"
+
+
+    // $ANTLR start "ruleSystem"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:988:1: ruleSystem returns [EObject current=null] : (otherlv_0= 'SourceSystem' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_srcEntities_3_0= ruleSystemEntity ) ) otherlv_4= '}' ) ;
+    public final EObject ruleSystem() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        EObject lv_srcEntities_3_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:991:28: ( (otherlv_0= 'SourceSystem' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_srcEntities_3_0= ruleSystemEntity ) ) otherlv_4= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:992:1: (otherlv_0= 'SourceSystem' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_srcEntities_3_0= ruleSystemEntity ) ) otherlv_4= '}' )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:992:1: (otherlv_0= 'SourceSystem' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_srcEntities_3_0= ruleSystemEntity ) ) otherlv_4= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:992:3: otherlv_0= 'SourceSystem' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_srcEntities_3_0= ruleSystemEntity ) ) otherlv_4= '}'
+            {
+            otherlv_0=(Token)match(input,32,FOLLOW_32_in_ruleSystem2129); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getSystemAccess().getSourceSystemKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:996:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:997:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:997:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:998:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSystem2146); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_name_1_0, grammarAccess.getSystemAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getSystemRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleSystem2163); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_2, grammarAccess.getSystemAccess().getLeftCurlyBracketKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1018:1: ( (lv_srcEntities_3_0= ruleSystemEntity ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1019:1: (lv_srcEntities_3_0= ruleSystemEntity )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1019:1: (lv_srcEntities_3_0= ruleSystemEntity )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1020:3: lv_srcEntities_3_0= ruleSystemEntity
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getSystemAccess().getSrcEntitiesSystemEntityParserRuleCall_3_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleSystemEntity_in_ruleSystem2184);
+            lv_srcEntities_3_0=ruleSystemEntity();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getSystemRule());
+              	        }
+                     		add(
+                     			current, 
+                     			"srcEntities",
+                      		lv_srcEntities_3_0, 
+                      		"SystemEntity");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_4=(Token)match(input,13,FOLLOW_13_in_ruleSystem2196); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_4, grammarAccess.getSystemAccess().getRightCurlyBracketKeyword_4());
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSystem"
+
+
+    // $ANTLR start "entryRuleSystemEntity"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1048:1: entryRuleSystemEntity returns [EObject current=null] : iv_ruleSystemEntity= ruleSystemEntity EOF ;
+    public final EObject entryRuleSystemEntity() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleSystemEntity = null;
+
+
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1049:2: (iv_ruleSystemEntity= ruleSystemEntity EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1050:2: iv_ruleSystemEntity= ruleSystemEntity EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getSystemEntityRule()); 
+            }
+            pushFollow(FOLLOW_ruleSystemEntity_in_entryRuleSystemEntity2232);
+            iv_ruleSystemEntity=ruleSystemEntity();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleSystemEntity; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSystemEntity2242); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSystemEntity"
+
+
+    // $ANTLR start "ruleSystemEntity"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1057:1: ruleSystemEntity returns [EObject current=null] : (otherlv_0= 'Name' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Format' ( (lv_format_3_0= RULE_STRING ) ) ) ;
+    public final EObject ruleSystemEntity() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token lv_format_3_0=null;
+
+         enterRule(); 
+            
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1060:28: ( (otherlv_0= 'Name' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Format' ( (lv_format_3_0= RULE_STRING ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1061:1: (otherlv_0= 'Name' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Format' ( (lv_format_3_0= RULE_STRING ) ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1061:1: (otherlv_0= 'Name' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Format' ( (lv_format_3_0= RULE_STRING ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1061:3: otherlv_0= 'Name' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'Format' ( (lv_format_3_0= RULE_STRING ) )
+            {
+            otherlv_0=(Token)match(input,33,FOLLOW_33_in_ruleSystemEntity2279); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getSystemEntityAccess().getNameKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1065:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1066:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1066:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1067:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSystemEntity2296); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_name_1_0, grammarAccess.getSystemEntityAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getSystemEntityRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleSystemEntity2313); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_2, grammarAccess.getSystemEntityAccess().getFormatKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1087:1: ( (lv_format_3_0= RULE_STRING ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1088:1: (lv_format_3_0= RULE_STRING )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1088:1: (lv_format_3_0= RULE_STRING )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1089:3: lv_format_3_0= RULE_STRING
+            {
+            lv_format_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleSystemEntity2330); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_format_3_0, grammarAccess.getSystemEntityAccess().getFormatSTRINGTerminalRuleCall_3_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getSystemEntityRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"format",
+                      		lv_format_3_0, 
+                      		"STRING");
+              	    
+            }
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSystemEntity"
+
+
     // $ANTLR start "entryRuleImport"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:448:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1113:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -1012,17 +2751,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:449:2: (iv_ruleImport= ruleImport EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:450:2: iv_ruleImport= ruleImport EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1114:2: (iv_ruleImport= ruleImport EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1115:2: iv_ruleImport= ruleImport EOF
             {
-             newCompositeNode(grammarAccess.getImportRule()); 
-            pushFollow(FOLLOW_ruleImport_in_entryRuleImport962);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getImportRule()); 
+            }
+            pushFollow(FOLLOW_ruleImport_in_entryRuleImport2371);
             iv_ruleImport=ruleImport();
 
             state._fsp--;
-
-             current =iv_ruleImport; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleImport972); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleImport; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleImport2381); if (state.failed) return current;
 
             }
 
@@ -1040,7 +2783,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:457:1: ruleImport returns [EObject current=null] : (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1122:1: ruleImport returns [EObject current=null] : (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) ) ;
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
@@ -1051,41 +2794,47 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:460:28: ( (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:461:1: (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1125:28: ( (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1126:1: (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:461:1: (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:461:3: otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1126:1: (otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1126:3: otherlv_0= 'Import' ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) )
             {
-            otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleImport1009); 
+            otherlv_0=(Token)match(input,35,FOLLOW_35_in_ruleImport2418); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:465:1: ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:466:1: (lv_importedNamespace_1_0= ruleFqnWithWildCard )
+                  	newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1130:1: ( (lv_importedNamespace_1_0= ruleFqnWithWildCard ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1131:1: (lv_importedNamespace_1_0= ruleFqnWithWildCard )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:466:1: (lv_importedNamespace_1_0= ruleFqnWithWildCard )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:467:3: lv_importedNamespace_1_0= ruleFqnWithWildCard
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1131:1: (lv_importedNamespace_1_0= ruleFqnWithWildCard )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1132:3: lv_importedNamespace_1_0= ruleFqnWithWildCard
             {
-             
-            	        newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceFqnWithWildCardParserRuleCall_1_0()); 
-            	    
-            pushFollow(FOLLOW_ruleFqnWithWildCard_in_ruleImport1030);
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceFqnWithWildCardParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFqnWithWildCard_in_ruleImport2439);
             lv_importedNamespace_1_0=ruleFqnWithWildCard();
 
             state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getImportRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"importedNamespace",
-                    		lv_importedNamespace_1_0, 
-                    		"FqnWithWildCard");
-            	        afterParserOrEnumRuleCall();
-            	    
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getImportRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"importedNamespace",
+                      		lv_importedNamespace_1_0, 
+                      		"FqnWithWildCard");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
@@ -1098,7 +2847,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1113,7 +2864,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFqnWithWildCard"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:491:1: entryRuleFqnWithWildCard returns [String current=null] : iv_ruleFqnWithWildCard= ruleFqnWithWildCard EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1156:1: entryRuleFqnWithWildCard returns [String current=null] : iv_ruleFqnWithWildCard= ruleFqnWithWildCard EOF ;
     public final String entryRuleFqnWithWildCard() throws RecognitionException {
         String current = null;
 
@@ -1121,17 +2872,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:492:2: (iv_ruleFqnWithWildCard= ruleFqnWithWildCard EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:493:2: iv_ruleFqnWithWildCard= ruleFqnWithWildCard EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1157:2: (iv_ruleFqnWithWildCard= ruleFqnWithWildCard EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1158:2: iv_ruleFqnWithWildCard= ruleFqnWithWildCard EOF
             {
-             newCompositeNode(grammarAccess.getFqnWithWildCardRule()); 
-            pushFollow(FOLLOW_ruleFqnWithWildCard_in_entryRuleFqnWithWildCard1067);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getFqnWithWildCardRule()); 
+            }
+            pushFollow(FOLLOW_ruleFqnWithWildCard_in_entryRuleFqnWithWildCard2476);
             iv_ruleFqnWithWildCard=ruleFqnWithWildCard();
 
             state._fsp--;
-
-             current =iv_ruleFqnWithWildCard.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFqnWithWildCard1078); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleFqnWithWildCard.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFqnWithWildCard2487); if (state.failed) return current;
 
             }
 
@@ -1149,7 +2904,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFqnWithWildCard"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:500:1: ruleFqnWithWildCard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_FQN_0= ruleFQN (kw= '.*' )? ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1165:1: ruleFqnWithWildCard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_FQN_0= ruleFQN (kw= '.*' )? ) ;
     public final AntlrDatatypeRuleToken ruleFqnWithWildCard() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1160,42 +2915,50 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:503:28: ( (this_FQN_0= ruleFQN (kw= '.*' )? ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:504:1: (this_FQN_0= ruleFQN (kw= '.*' )? )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1168:28: ( (this_FQN_0= ruleFQN (kw= '.*' )? ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1169:1: (this_FQN_0= ruleFQN (kw= '.*' )? )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:504:1: (this_FQN_0= ruleFQN (kw= '.*' )? )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:505:5: this_FQN_0= ruleFQN (kw= '.*' )?
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1169:1: (this_FQN_0= ruleFQN (kw= '.*' )? )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1170:5: this_FQN_0= ruleFQN (kw= '.*' )?
             {
-             
-                    newCompositeNode(grammarAccess.getFqnWithWildCardAccess().getFQNParserRuleCall_0()); 
-                
-            pushFollow(FOLLOW_ruleFQN_in_ruleFqnWithWildCard1125);
+            if ( state.backtracking==0 ) {
+               
+                      newCompositeNode(grammarAccess.getFqnWithWildCardAccess().getFQNParserRuleCall_0()); 
+                  
+            }
+            pushFollow(FOLLOW_ruleFQN_in_ruleFqnWithWildCard2534);
             this_FQN_0=ruleFQN();
 
             state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-
-            		current.merge(this_FQN_0);
-                
-             
-                    afterParserOrEnumRuleCall();
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:515:1: (kw= '.*' )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
-
-            if ( (LA7_0==23) ) {
-                alt7=1;
+              		current.merge(this_FQN_0);
+                  
             }
-            switch (alt7) {
-                case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:516:2: kw= '.*'
-                    {
-                    kw=(Token)match(input,23,FOLLOW_23_in_ruleFqnWithWildCard1144); 
+            if ( state.backtracking==0 ) {
+               
+                      afterParserOrEnumRuleCall();
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1180:1: (kw= '.*' )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-                            current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getFqnWithWildCardAccess().getFullStopAsteriskKeyword_1()); 
-                        
+            if ( (LA12_0==36) ) {
+                alt12=1;
+            }
+            switch (alt12) {
+                case 1 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1181:2: kw= '.*'
+                    {
+                    kw=(Token)match(input,36,FOLLOW_36_in_ruleFqnWithWildCard2553); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getFqnWithWildCardAccess().getFullStopAsteriskKeyword_1()); 
+                          
+                    }
 
                     }
                     break;
@@ -1208,7 +2971,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1223,7 +2988,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDiagram"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:529:1: entryRuleDiagram returns [EObject current=null] : iv_ruleDiagram= ruleDiagram EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1194:1: entryRuleDiagram returns [EObject current=null] : iv_ruleDiagram= ruleDiagram EOF ;
     public final EObject entryRuleDiagram() throws RecognitionException {
         EObject current = null;
 
@@ -1231,17 +2996,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:530:2: (iv_ruleDiagram= ruleDiagram EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:531:2: iv_ruleDiagram= ruleDiagram EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1195:2: (iv_ruleDiagram= ruleDiagram EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1196:2: iv_ruleDiagram= ruleDiagram EOF
             {
-             newCompositeNode(grammarAccess.getDiagramRule()); 
-            pushFollow(FOLLOW_ruleDiagram_in_entryRuleDiagram1186);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getDiagramRule()); 
+            }
+            pushFollow(FOLLOW_ruleDiagram_in_entryRuleDiagram2595);
             iv_ruleDiagram=ruleDiagram();
 
             state._fsp--;
-
-             current =iv_ruleDiagram; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDiagram1196); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleDiagram; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDiagram2605); if (state.failed) return current;
 
             }
 
@@ -1259,7 +3028,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDiagram"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:538:1: ruleDiagram returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1203:1: ruleDiagram returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' ) ;
     public final EObject ruleDiagram() throws RecognitionException {
         EObject current = null;
 
@@ -1275,49 +3044,53 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:541:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:542:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1206:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1207:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:542:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:542:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1207:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1207:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Diagram' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '{' ( (lv_includes_4_0= ruleInclude ) )* otherlv_5= '}'
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:542:2: ( (lv_imports_0_0= ruleImport ) )*
-            loop8:
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1207:2: ( (lv_imports_0_0= ruleImport ) )*
+            loop13:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA8_0==22) ) {
-                    alt8=1;
+                if ( (LA13_0==35) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt13) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:543:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1208:1: (lv_imports_0_0= ruleImport )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:543:1: (lv_imports_0_0= ruleImport )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:544:3: lv_imports_0_0= ruleImport
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1208:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1209:3: lv_imports_0_0= ruleImport
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getDiagramAccess().getImportsImportParserRuleCall_0_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleImport_in_ruleDiagram1242);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getDiagramAccess().getImportsImportParserRuleCall_0_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleImport_in_ruleDiagram2651);
             	    lv_imports_0_0=ruleImport();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getDiagramRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"imports",
-            	            		lv_imports_0_0, 
-            	            		"Import");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getDiagramRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"imports",
+            	              		lv_imports_0_0, 
+            	              		"Import");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -1326,81 +3099,93 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop13;
                 }
             } while (true);
 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleDiagram1255); 
+            otherlv_1=(Token)match(input,37,FOLLOW_37_in_ruleDiagram2664); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_1, grammarAccess.getDiagramAccess().getDiagramKeyword_1());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:564:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:565:1: (lv_name_2_0= RULE_ID )
+                  	newLeafNode(otherlv_1, grammarAccess.getDiagramAccess().getDiagramKeyword_1());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1229:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1230:1: (lv_name_2_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:565:1: (lv_name_2_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:566:3: lv_name_2_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1230:1: (lv_name_2_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1231:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDiagram1272); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDiagram2681); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_2_0, grammarAccess.getDiagramAccess().getNameIDTerminalRuleCall_2_0()); 
-            		
+              			newLeafNode(lv_name_2_0, grammarAccess.getDiagramAccess().getNameIDTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getDiagramRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_2_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getDiagramRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_2_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_3=(Token)match(input,12,FOLLOW_12_in_ruleDiagram1289); 
+            otherlv_3=(Token)match(input,12,FOLLOW_12_in_ruleDiagram2698); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_3, grammarAccess.getDiagramAccess().getLeftCurlyBracketKeyword_3());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:586:1: ( (lv_includes_4_0= ruleInclude ) )*
-            loop9:
+                  	newLeafNode(otherlv_3, grammarAccess.getDiagramAccess().getLeftCurlyBracketKeyword_3());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1251:1: ( (lv_includes_4_0= ruleInclude ) )*
+            loop14:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                if ( ((LA9_0>=25 && LA9_0<=26)) ) {
-                    alt9=1;
+                if ( ((LA14_0>=38 && LA14_0<=39)) ) {
+                    alt14=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt14) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:587:1: (lv_includes_4_0= ruleInclude )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1252:1: (lv_includes_4_0= ruleInclude )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:587:1: (lv_includes_4_0= ruleInclude )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:588:3: lv_includes_4_0= ruleInclude
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1252:1: (lv_includes_4_0= ruleInclude )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1253:3: lv_includes_4_0= ruleInclude
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getDiagramAccess().getIncludesIncludeParserRuleCall_4_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleInclude_in_ruleDiagram1310);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getDiagramAccess().getIncludesIncludeParserRuleCall_4_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleInclude_in_ruleDiagram2719);
             	    lv_includes_4_0=ruleInclude();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getDiagramRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"includes",
-            	            		lv_includes_4_0, 
-            	            		"Include");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getDiagramRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"includes",
+            	              		lv_includes_4_0, 
+            	              		"Include");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -1409,21 +3194,25 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop14;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,13,FOLLOW_13_in_ruleDiagram1323); 
+            otherlv_5=(Token)match(input,13,FOLLOW_13_in_ruleDiagram2732); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_5, grammarAccess.getDiagramAccess().getRightCurlyBracketKeyword_5());
-                
+                  	newLeafNode(otherlv_5, grammarAccess.getDiagramAccess().getRightCurlyBracketKeyword_5());
+                  
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1438,7 +3227,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInclude"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:616:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1281:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
     public final EObject entryRuleInclude() throws RecognitionException {
         EObject current = null;
 
@@ -1446,17 +3235,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:617:2: (iv_ruleInclude= ruleInclude EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:618:2: iv_ruleInclude= ruleInclude EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1282:2: (iv_ruleInclude= ruleInclude EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1283:2: iv_ruleInclude= ruleInclude EOF
             {
-             newCompositeNode(grammarAccess.getIncludeRule()); 
-            pushFollow(FOLLOW_ruleInclude_in_entryRuleInclude1359);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getIncludeRule()); 
+            }
+            pushFollow(FOLLOW_ruleInclude_in_entryRuleInclude2768);
             iv_ruleInclude=ruleInclude();
 
             state._fsp--;
-
-             current =iv_ruleInclude; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInclude1369); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleInclude; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInclude2778); if (state.failed) return current;
 
             }
 
@@ -1474,7 +3267,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInclude"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:625:1: ruleInclude returns [EObject current=null] : ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1290:1: ruleInclude returns [EObject current=null] : ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) ) ;
     public final EObject ruleInclude() throws RecognitionException {
         EObject current = null;
 
@@ -1490,64 +3283,73 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:628:28: ( ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:629:1: ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1293:28: ( ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1294:1: ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:629:1: ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:629:2: ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1294:1: ( ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1294:2: ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) ) ( ( ruleFQN ) ) (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:629:2: ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:630:1: ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1294:2: ( ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1295:1: ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:630:1: ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:631:1: (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1295:1: ( (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1296:1: (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:631:1: (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' )
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1296:1: (lv_include_0_1= 'Include' | lv_include_0_2= 'Exclude' )
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA10_0==25) ) {
-                alt10=1;
+            if ( (LA15_0==38) ) {
+                alt15=1;
             }
-            else if ( (LA10_0==26) ) {
-                alt10=2;
+            else if ( (LA15_0==39) ) {
+                alt15=2;
             }
             else {
+                if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
-            switch (alt10) {
+            switch (alt15) {
                 case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:632:3: lv_include_0_1= 'Include'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1297:3: lv_include_0_1= 'Include'
                     {
-                    lv_include_0_1=(Token)match(input,25,FOLLOW_25_in_ruleInclude1414); 
+                    lv_include_0_1=(Token)match(input,38,FOLLOW_38_in_ruleInclude2823); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_include_0_1, grammarAccess.getIncludeAccess().getIncludeIncludeKeyword_0_0_0());
-                        
+                              newLeafNode(lv_include_0_1, grammarAccess.getIncludeAccess().getIncludeIncludeKeyword_0_0_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getIncludeRule());
-                    	        }
-                           		setWithLastConsumed(current, "include", lv_include_0_1, null);
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getIncludeRule());
+                      	        }
+                             		setWithLastConsumed(current, "include", lv_include_0_1, null);
+                      	    
+                    }
 
                     }
                     break;
                 case 2 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:644:8: lv_include_0_2= 'Exclude'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1309:8: lv_include_0_2= 'Exclude'
                     {
-                    lv_include_0_2=(Token)match(input,26,FOLLOW_26_in_ruleInclude1443); 
+                    lv_include_0_2=(Token)match(input,39,FOLLOW_39_in_ruleInclude2852); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_include_0_2, grammarAccess.getIncludeAccess().getIncludeExcludeKeyword_0_0_1());
-                        
+                              newLeafNode(lv_include_0_2, grammarAccess.getIncludeAccess().getIncludeExcludeKeyword_0_0_1());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getIncludeRule());
-                    	        }
-                           		setWithLastConsumed(current, "include", lv_include_0_2, null);
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getIncludeRule());
+                      	        }
+                             		setWithLastConsumed(current, "include", lv_include_0_2, null);
+                      	    
+                    }
 
                     }
                     break;
@@ -1560,100 +3362,120 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:659:2: ( ( ruleFQN ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:660:1: ( ruleFQN )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1324:2: ( ( ruleFQN ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1325:1: ( ruleFQN )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:660:1: ( ruleFQN )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:661:3: ruleFQN
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1325:1: ( ruleFQN )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:3: ruleFQN
             {
+            if ( state.backtracking==0 ) {
 
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getIncludeRule());
-            	        }
-                    
-             
-            	        newCompositeNode(grammarAccess.getIncludeAccess().getEntityEntityCrossReference_1_0()); 
-            	    
-            pushFollow(FOLLOW_ruleFQN_in_ruleInclude1482);
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getIncludeRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getIncludeAccess().getEntityEntityCrossReference_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFQN_in_ruleInclude2891);
             ruleFQN();
 
             state._fsp--;
-
-             
-            	        afterParserOrEnumRuleCall();
-            	    
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:674:2: (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:674:4: otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1339:2: (otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1339:4: otherlv_2= 'with' otherlv_3= '{' ( (otherlv_4= RULE_ID ) ) (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )* otherlv_7= '}'
             {
-            otherlv_2=(Token)match(input,27,FOLLOW_27_in_ruleInclude1495); 
+            otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleInclude2904); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getIncludeAccess().getWithKeyword_2_0());
-                
-            otherlv_3=(Token)match(input,12,FOLLOW_12_in_ruleInclude1507); 
+                  	newLeafNode(otherlv_2, grammarAccess.getIncludeAccess().getWithKeyword_2_0());
+                  
+            }
+            otherlv_3=(Token)match(input,12,FOLLOW_12_in_ruleInclude2916); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_3, grammarAccess.getIncludeAccess().getLeftCurlyBracketKeyword_2_1());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:682:1: ( (otherlv_4= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:683:1: (otherlv_4= RULE_ID )
+                  	newLeafNode(otherlv_3, grammarAccess.getIncludeAccess().getLeftCurlyBracketKeyword_2_1());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1347:1: ( (otherlv_4= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1348:1: (otherlv_4= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:683:1: (otherlv_4= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:684:3: otherlv_4= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1348:1: (otherlv_4= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1349:3: otherlv_4= RULE_ID
             {
+            if ( state.backtracking==0 ) {
 
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getIncludeRule());
-            	        }
-                    
-            otherlv_4=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInclude1527); 
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getIncludeRule());
+              	        }
+                      
+            }
+            otherlv_4=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInclude2936); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            		newLeafNode(otherlv_4, grammarAccess.getIncludeAccess().getFieldsPropertyCrossReference_2_2_0()); 
-            	
+              		newLeafNode(otherlv_4, grammarAccess.getIncludeAccess().getFieldsPropertyCrossReference_2_2_0()); 
+              	
+            }
 
             }
 
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:695:2: (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )*
-            loop11:
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1360:2: (otherlv_5= ',' ( (otherlv_6= RULE_ID ) ) )*
+            loop16:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( (LA11_0==17) ) {
-                    alt11=1;
+                if ( (LA16_0==17) ) {
+                    alt16=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt16) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:695:4: otherlv_5= ',' ( (otherlv_6= RULE_ID ) )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1360:4: otherlv_5= ',' ( (otherlv_6= RULE_ID ) )
             	    {
-            	    otherlv_5=(Token)match(input,17,FOLLOW_17_in_ruleInclude1540); 
+            	    otherlv_5=(Token)match(input,17,FOLLOW_17_in_ruleInclude2949); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-            	        	newLeafNode(otherlv_5, grammarAccess.getIncludeAccess().getCommaKeyword_2_3_0());
-            	        
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:699:1: ( (otherlv_6= RULE_ID ) )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:700:1: (otherlv_6= RULE_ID )
+            	          	newLeafNode(otherlv_5, grammarAccess.getIncludeAccess().getCommaKeyword_2_3_0());
+            	          
+            	    }
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1364:1: ( (otherlv_6= RULE_ID ) )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1365:1: (otherlv_6= RULE_ID )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:700:1: (otherlv_6= RULE_ID )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:701:3: otherlv_6= RULE_ID
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1365:1: (otherlv_6= RULE_ID )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1366:3: otherlv_6= RULE_ID
             	    {
+            	    if ( state.backtracking==0 ) {
 
-            	    			if (current==null) {
-            	    	            current = createModelElement(grammarAccess.getIncludeRule());
-            	    	        }
-            	            
-            	    otherlv_6=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInclude1560); 
+            	      			if (current==null) {
+            	      	            current = createModelElement(grammarAccess.getIncludeRule());
+            	      	        }
+            	              
+            	    }
+            	    otherlv_6=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInclude2969); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-            	    		newLeafNode(otherlv_6, grammarAccess.getIncludeAccess().getFieldsPropertyCrossReference_2_3_1_0()); 
-            	    	
+            	      		newLeafNode(otherlv_6, grammarAccess.getIncludeAccess().getFieldsPropertyCrossReference_2_3_1_0()); 
+            	      	
+            	    }
 
             	    }
 
@@ -1665,14 +3487,16 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop16;
                 }
             } while (true);
 
-            otherlv_7=(Token)match(input,13,FOLLOW_13_in_ruleInclude1574); 
+            otherlv_7=(Token)match(input,13,FOLLOW_13_in_ruleInclude2983); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_7, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_2_4());
-                
+                  	newLeafNode(otherlv_7, grammarAccess.getIncludeAccess().getRightCurlyBracketKeyword_2_4());
+                  
+            }
 
             }
 
@@ -1682,7 +3506,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1697,7 +3523,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumDeclaration"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:724:1: entryRuleEnumDeclaration returns [EObject current=null] : iv_ruleEnumDeclaration= ruleEnumDeclaration EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1389:1: entryRuleEnumDeclaration returns [EObject current=null] : iv_ruleEnumDeclaration= ruleEnumDeclaration EOF ;
     public final EObject entryRuleEnumDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -1705,17 +3531,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:725:2: (iv_ruleEnumDeclaration= ruleEnumDeclaration EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:726:2: iv_ruleEnumDeclaration= ruleEnumDeclaration EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1390:2: (iv_ruleEnumDeclaration= ruleEnumDeclaration EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1391:2: iv_ruleEnumDeclaration= ruleEnumDeclaration EOF
             {
-             newCompositeNode(grammarAccess.getEnumDeclarationRule()); 
-            pushFollow(FOLLOW_ruleEnumDeclaration_in_entryRuleEnumDeclaration1611);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getEnumDeclarationRule()); 
+            }
+            pushFollow(FOLLOW_ruleEnumDeclaration_in_entryRuleEnumDeclaration3020);
             iv_ruleEnumDeclaration=ruleEnumDeclaration();
 
             state._fsp--;
-
-             current =iv_ruleEnumDeclaration; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumDeclaration1621); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleEnumDeclaration; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumDeclaration3030); if (state.failed) return current;
 
             }
 
@@ -1733,7 +3563,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnumDeclaration"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:733:1: ruleEnumDeclaration returns [EObject current=null] : (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1398:1: ruleEnumDeclaration returns [EObject current=null] : (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' ) ;
     public final EObject ruleEnumDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -1748,115 +3578,135 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:736:28: ( (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:737:1: (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1401:28: ( (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1402:1: (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:737:1: (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:737:3: otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1402:1: (otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1402:3: otherlv_0= 'Enumeration' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' this_ID_5= RULE_ID )* otherlv_6= '}'
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_28_in_ruleEnumDeclaration1658); 
+            otherlv_0=(Token)match(input,41,FOLLOW_41_in_ruleEnumDeclaration3067); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getEnumDeclarationAccess().getEnumerationKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:741:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:742:1: (lv_name_1_0= RULE_ID )
+                  	newLeafNode(otherlv_0, grammarAccess.getEnumDeclarationAccess().getEnumerationKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1406:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1407:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:742:1: (lv_name_1_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:743:3: lv_name_1_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1407:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1408:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumDeclaration1675); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumDeclaration3084); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getEnumDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
-            		
+              			newLeafNode(lv_name_1_0, grammarAccess.getEnumDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getEnumDeclarationRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getEnumDeclarationRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleEnumDeclaration1692); 
+            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleEnumDeclaration3101); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getEnumDeclarationAccess().getLeftCurlyBracketKeyword_2());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:763:1: ( (lv_values_3_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:764:1: (lv_values_3_0= RULE_ID )
+                  	newLeafNode(otherlv_2, grammarAccess.getEnumDeclarationAccess().getLeftCurlyBracketKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1428:1: ( (lv_values_3_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1429:1: (lv_values_3_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:764:1: (lv_values_3_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:765:3: lv_values_3_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1429:1: (lv_values_3_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1430:3: lv_values_3_0= RULE_ID
             {
-            lv_values_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumDeclaration1709); 
+            lv_values_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumDeclaration3118); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_values_3_0, grammarAccess.getEnumDeclarationAccess().getValuesIDTerminalRuleCall_3_0()); 
-            		
+              			newLeafNode(lv_values_3_0, grammarAccess.getEnumDeclarationAccess().getValuesIDTerminalRuleCall_3_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getEnumDeclarationRule());
-            	        }
-                   		addWithLastConsumed(
-                   			current, 
-                   			"values",
-                    		lv_values_3_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getEnumDeclarationRule());
+              	        }
+                     		addWithLastConsumed(
+                     			current, 
+                     			"values",
+                      		lv_values_3_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:781:2: (otherlv_4= ',' this_ID_5= RULE_ID )*
-            loop12:
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1446:2: (otherlv_4= ',' this_ID_5= RULE_ID )*
+            loop17:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt17=2;
+                int LA17_0 = input.LA(1);
 
-                if ( (LA12_0==17) ) {
-                    alt12=1;
+                if ( (LA17_0==17) ) {
+                    alt17=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt17) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:781:4: otherlv_4= ',' this_ID_5= RULE_ID
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1446:4: otherlv_4= ',' this_ID_5= RULE_ID
             	    {
-            	    otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleEnumDeclaration1727); 
+            	    otherlv_4=(Token)match(input,17,FOLLOW_17_in_ruleEnumDeclaration3136); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-            	        	newLeafNode(otherlv_4, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_4_0());
-            	        
-            	    this_ID_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumDeclaration1738); 
-            	     
-            	        newLeafNode(this_ID_5, grammarAccess.getEnumDeclarationAccess().getIDTerminalRuleCall_4_1()); 
-            	        
+            	          	newLeafNode(otherlv_4, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_4_0());
+            	          
+            	    }
+            	    this_ID_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumDeclaration3147); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+            	       
+            	          newLeafNode(this_ID_5, grammarAccess.getEnumDeclarationAccess().getIDTerminalRuleCall_4_1()); 
+            	          
+            	    }
 
             	    }
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop17;
                 }
             } while (true);
 
-            otherlv_6=(Token)match(input,13,FOLLOW_13_in_ruleEnumDeclaration1751); 
+            otherlv_6=(Token)match(input,13,FOLLOW_13_in_ruleEnumDeclaration3160); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_6, grammarAccess.getEnumDeclarationAccess().getRightCurlyBracketKeyword_5());
-                
+                  	newLeafNode(otherlv_6, grammarAccess.getEnumDeclarationAccess().getRightCurlyBracketKeyword_5());
+                  
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1871,7 +3721,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFQN"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:801:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1466:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
     public final String entryRuleFQN() throws RecognitionException {
         String current = null;
 
@@ -1879,17 +3729,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:802:2: (iv_ruleFQN= ruleFQN EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:803:2: iv_ruleFQN= ruleFQN EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1467:2: (iv_ruleFQN= ruleFQN EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1468:2: iv_ruleFQN= ruleFQN EOF
             {
-             newCompositeNode(grammarAccess.getFQNRule()); 
-            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN1788);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getFQNRule()); 
+            }
+            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN3197);
             iv_ruleFQN=ruleFQN();
 
             state._fsp--;
-
-             current =iv_ruleFQN.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN1799); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleFQN.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN3208); if (state.failed) return current;
 
             }
 
@@ -1907,7 +3761,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFQN"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:810:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1475:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleFQN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1918,52 +3772,62 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:813:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:814:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1478:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1479:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:814:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:814:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1479:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1479:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN1839); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN3248); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            		current.merge(this_ID_0);
-                
-             
-                newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:821:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop13:
+              		current.merge(this_ID_0);
+                  
+            }
+            if ( state.backtracking==0 ) {
+               
+                  newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1486:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop18:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( (LA13_0==29) ) {
-                    alt13=1;
+                if ( (LA18_0==42) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt13) {
+                switch (alt18) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:822:2: kw= '.' this_ID_2= RULE_ID
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1487:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,29,FOLLOW_29_in_ruleFQN1858); 
+            	    kw=(Token)match(input,42,FOLLOW_42_in_ruleFQN3267); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-            	            current.merge(kw);
-            	            newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
-            	        
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN1873); 
+            	              current.merge(kw);
+            	              newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
+            	          
+            	    }
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN3282); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-            	    		current.merge(this_ID_2);
-            	        
-            	     
-            	        newLeafNode(this_ID_2, grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
-            	        
+            	      		current.merge(this_ID_2);
+            	          
+            	    }
+            	    if ( state.backtracking==0 ) {
+            	       
+            	          newLeafNode(this_ID_2, grammarAccess.getFQNAccess().getIDTerminalRuleCall_1_1()); 
+            	          
+            	    }
 
             	    }
             	    break;
 
             	default :
-            	    break loop13;
+            	    break loop18;
                 }
             } while (true);
 
@@ -1973,7 +3837,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -1988,7 +3854,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEntity"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:842:1: entryRuleEntity returns [EObject current=null] : iv_ruleEntity= ruleEntity EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1507:1: entryRuleEntity returns [EObject current=null] : iv_ruleEntity= ruleEntity EOF ;
     public final EObject entryRuleEntity() throws RecognitionException {
         EObject current = null;
 
@@ -1996,17 +3862,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:843:2: (iv_ruleEntity= ruleEntity EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:844:2: iv_ruleEntity= ruleEntity EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1508:2: (iv_ruleEntity= ruleEntity EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1509:2: iv_ruleEntity= ruleEntity EOF
             {
-             newCompositeNode(grammarAccess.getEntityRule()); 
-            pushFollow(FOLLOW_ruleEntity_in_entryRuleEntity1920);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getEntityRule()); 
+            }
+            pushFollow(FOLLOW_ruleEntity_in_entryRuleEntity3329);
             iv_ruleEntity=ruleEntity();
 
             state._fsp--;
-
-             current =iv_ruleEntity; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEntity1930); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleEntity; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEntity3339); if (state.failed) return current;
 
             }
 
@@ -2024,7 +3894,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEntity"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:851:1: ruleEntity returns [EObject current=null] : (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1516:1: ruleEntity returns [EObject current=null] : (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' ) ;
     public final EObject ruleEntity() throws RecognitionException {
         EObject current = null;
 
@@ -2038,83 +3908,95 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:854:28: ( (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:855:1: (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1519:28: ( (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1520:1: (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:855:1: (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:855:3: otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1520:1: (otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1520:3: otherlv_0= 'Entity' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_properties_3_0= ruleProperty ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleEntity1967); 
+            otherlv_0=(Token)match(input,43,FOLLOW_43_in_ruleEntity3376); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getEntityAccess().getEntityKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:859:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:860:1: (lv_name_1_0= RULE_ID )
+                  	newLeafNode(otherlv_0, grammarAccess.getEntityAccess().getEntityKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1524:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1525:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:860:1: (lv_name_1_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:861:3: lv_name_1_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1525:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1526:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEntity1984); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEntity3393); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
-            		
+              			newLeafNode(lv_name_1_0, grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getEntityRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getEntityRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleEntity2001); 
+            otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleEntity3410); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_2());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:881:1: ( (lv_properties_3_0= ruleProperty ) )*
-            loop14:
+                  	newLeafNode(otherlv_2, grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1546:1: ( (lv_properties_3_0= ruleProperty ) )*
+            loop19:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA14_0==33||LA14_0==39) ) {
-                    alt14=1;
+                if ( (LA19_0==46||LA19_0==48) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt19) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:882:1: (lv_properties_3_0= ruleProperty )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1547:1: (lv_properties_3_0= ruleProperty )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:882:1: (lv_properties_3_0= ruleProperty )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:883:3: lv_properties_3_0= ruleProperty
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1547:1: (lv_properties_3_0= ruleProperty )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1548:3: lv_properties_3_0= ruleProperty
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getEntityAccess().getPropertiesPropertyParserRuleCall_3_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleProperty_in_ruleEntity2022);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getEntityAccess().getPropertiesPropertyParserRuleCall_3_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleProperty_in_ruleEntity3431);
             	    lv_properties_3_0=ruleProperty();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getEntityRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"properties",
-            	            		lv_properties_3_0, 
-            	            		"Property");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getEntityRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"properties",
+            	              		lv_properties_3_0, 
+            	              		"Property");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -2123,21 +4005,25 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop19;
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,13,FOLLOW_13_in_ruleEntity2035); 
+            otherlv_4=(Token)match(input,13,FOLLOW_13_in_ruleEntity3444); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_4, grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_4());
-                
+                  	newLeafNode(otherlv_4, grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_4());
+                  
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -2152,7 +4038,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDomain"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:911:1: entryRuleDomain returns [EObject current=null] : iv_ruleDomain= ruleDomain EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1576:1: entryRuleDomain returns [EObject current=null] : iv_ruleDomain= ruleDomain EOF ;
     public final EObject entryRuleDomain() throws RecognitionException {
         EObject current = null;
 
@@ -2160,17 +4046,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:912:2: (iv_ruleDomain= ruleDomain EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:913:2: iv_ruleDomain= ruleDomain EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1577:2: (iv_ruleDomain= ruleDomain EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1578:2: iv_ruleDomain= ruleDomain EOF
             {
-             newCompositeNode(grammarAccess.getDomainRule()); 
-            pushFollow(FOLLOW_ruleDomain_in_entryRuleDomain2071);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getDomainRule()); 
+            }
+            pushFollow(FOLLOW_ruleDomain_in_entryRuleDomain3480);
             iv_ruleDomain=ruleDomain();
 
             state._fsp--;
-
-             current =iv_ruleDomain; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDomain2081); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleDomain; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDomain3490); if (state.failed) return current;
 
             }
 
@@ -2188,7 +4078,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDomain"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:920:1: ruleDomain returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1585:1: ruleDomain returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' ) ;
     public final EObject ruleDomain() throws RecognitionException {
         EObject current = null;
 
@@ -2206,49 +4096,53 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:923:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:924:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1588:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1589:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:924:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:924:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1589:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1589:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'Domain' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'Description: ' ( (lv_description_4_0= RULE_STRING ) ) otherlv_5= '{' ( (lv_entities_6_0= ruleEntity ) )+ otherlv_7= '}'
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:924:2: ( (lv_imports_0_0= ruleImport ) )*
-            loop15:
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1589:2: ( (lv_imports_0_0= ruleImport ) )*
+            loop20:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt20=2;
+                int LA20_0 = input.LA(1);
 
-                if ( (LA15_0==22) ) {
-                    alt15=1;
+                if ( (LA20_0==35) ) {
+                    alt20=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt20) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:925:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1590:1: (lv_imports_0_0= ruleImport )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:925:1: (lv_imports_0_0= ruleImport )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:926:3: lv_imports_0_0= ruleImport
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1590:1: (lv_imports_0_0= ruleImport )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1591:3: lv_imports_0_0= ruleImport
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getDomainAccess().getImportsImportParserRuleCall_0_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleImport_in_ruleDomain2127);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getDomainAccess().getImportsImportParserRuleCall_0_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleImport_in_ruleDomain3536);
             	    lv_imports_0_0=ruleImport();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getDomainRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"imports",
-            	            		lv_imports_0_0, 
-            	            		"Import");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getDomainRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"imports",
+            	              		lv_imports_0_0, 
+            	              		"Import");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -2257,112 +4151,130 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop20;
                 }
             } while (true);
 
-            otherlv_1=(Token)match(input,31,FOLLOW_31_in_ruleDomain2140); 
+            otherlv_1=(Token)match(input,44,FOLLOW_44_in_ruleDomain3549); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_1, grammarAccess.getDomainAccess().getDomainKeyword_1());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:946:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:947:1: (lv_name_2_0= RULE_ID )
+                  	newLeafNode(otherlv_1, grammarAccess.getDomainAccess().getDomainKeyword_1());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1611:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1612:1: (lv_name_2_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:947:1: (lv_name_2_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:948:3: lv_name_2_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1612:1: (lv_name_2_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1613:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDomain2157); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleDomain3566); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_2_0, grammarAccess.getDomainAccess().getNameIDTerminalRuleCall_2_0()); 
-            		
+              			newLeafNode(lv_name_2_0, grammarAccess.getDomainAccess().getNameIDTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getDomainRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_2_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getDomainRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_2_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_3=(Token)match(input,32,FOLLOW_32_in_ruleDomain2174); 
+            otherlv_3=(Token)match(input,45,FOLLOW_45_in_ruleDomain3583); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_3, grammarAccess.getDomainAccess().getDescriptionKeyword_3());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:968:1: ( (lv_description_4_0= RULE_STRING ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:969:1: (lv_description_4_0= RULE_STRING )
+                  	newLeafNode(otherlv_3, grammarAccess.getDomainAccess().getDescriptionKeyword_3());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1633:1: ( (lv_description_4_0= RULE_STRING ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1634:1: (lv_description_4_0= RULE_STRING )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:969:1: (lv_description_4_0= RULE_STRING )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:970:3: lv_description_4_0= RULE_STRING
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1634:1: (lv_description_4_0= RULE_STRING )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1635:3: lv_description_4_0= RULE_STRING
             {
-            lv_description_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleDomain2191); 
+            lv_description_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleDomain3600); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_description_4_0, grammarAccess.getDomainAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
-            		
+              			newLeafNode(lv_description_4_0, grammarAccess.getDomainAccess().getDescriptionSTRINGTerminalRuleCall_4_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getDomainRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"description",
-                    		lv_description_4_0, 
-                    		"STRING");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getDomainRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"description",
+                      		lv_description_4_0, 
+                      		"STRING");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_5=(Token)match(input,12,FOLLOW_12_in_ruleDomain2208); 
+            otherlv_5=(Token)match(input,12,FOLLOW_12_in_ruleDomain3617); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_5, grammarAccess.getDomainAccess().getLeftCurlyBracketKeyword_5());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:990:1: ( (lv_entities_6_0= ruleEntity ) )+
-            int cnt16=0;
-            loop16:
+                  	newLeafNode(otherlv_5, grammarAccess.getDomainAccess().getLeftCurlyBracketKeyword_5());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1655:1: ( (lv_entities_6_0= ruleEntity ) )+
+            int cnt21=0;
+            loop21:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA16_0==30) ) {
-                    alt16=1;
+                if ( (LA21_0==43) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt21) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:991:1: (lv_entities_6_0= ruleEntity )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1656:1: (lv_entities_6_0= ruleEntity )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:991:1: (lv_entities_6_0= ruleEntity )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:992:3: lv_entities_6_0= ruleEntity
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1656:1: (lv_entities_6_0= ruleEntity )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1657:3: lv_entities_6_0= ruleEntity
             	    {
-            	     
-            	    	        newCompositeNode(grammarAccess.getDomainAccess().getEntitiesEntityParserRuleCall_6_0()); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleEntity_in_ruleDomain2229);
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getDomainAccess().getEntitiesEntityParserRuleCall_6_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleEntity_in_ruleDomain3638);
             	    lv_entities_6_0=ruleEntity();
 
             	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
 
-
-            	    	        if (current==null) {
-            	    	            current = createModelElementForParent(grammarAccess.getDomainRule());
-            	    	        }
-            	           		add(
-            	           			current, 
-            	           			"entities",
-            	            		lv_entities_6_0, 
-            	            		"Entity");
-            	    	        afterParserOrEnumRuleCall();
-            	    	    
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getDomainRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"entities",
+            	              		lv_entities_6_0, 
+            	              		"Entity");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
 
             	    }
 
@@ -2371,25 +4283,30 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt16 >= 1 ) break loop16;
+            	    if ( cnt21 >= 1 ) break loop21;
+            	    if (state.backtracking>0) {state.failed=true; return current;}
                         EarlyExitException eee =
-                            new EarlyExitException(16, input);
+                            new EarlyExitException(21, input);
                         throw eee;
                 }
-                cnt16++;
+                cnt21++;
             } while (true);
 
-            otherlv_7=(Token)match(input,13,FOLLOW_13_in_ruleDomain2242); 
+            otherlv_7=(Token)match(input,13,FOLLOW_13_in_ruleDomain3651); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_7, grammarAccess.getDomainAccess().getRightCurlyBracketKeyword_7());
-                
+                  	newLeafNode(otherlv_7, grammarAccess.getDomainAccess().getRightCurlyBracketKeyword_7());
+                  
+            }
 
             }
 
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -2404,7 +4321,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProperty"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1020:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1685:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
     public final EObject entryRuleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2412,17 +4329,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1021:2: (iv_ruleProperty= ruleProperty EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1022:2: iv_ruleProperty= ruleProperty EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1686:2: (iv_ruleProperty= ruleProperty EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1687:2: iv_ruleProperty= ruleProperty EOF
             {
-             newCompositeNode(grammarAccess.getPropertyRule()); 
-            pushFollow(FOLLOW_ruleProperty_in_entryRuleProperty2278);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getPropertyRule()); 
+            }
+            pushFollow(FOLLOW_ruleProperty_in_entryRuleProperty3687);
             iv_ruleProperty=ruleProperty();
 
             state._fsp--;
-
-             current =iv_ruleProperty; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleProperty2288); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleProperty; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleProperty3697); if (state.failed) return current;
 
             }
 
@@ -2440,7 +4361,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProperty"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1029:1: ruleProperty returns [EObject current=null] : (this_Field_0= ruleField | this_Association_1= ruleAssociation ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1694:1: ruleProperty returns [EObject current=null] : (this_Field_0= ruleField | this_Association_1= ruleAssociation ) ;
     public final EObject ruleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2452,59 +4373,68 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1032:28: ( (this_Field_0= ruleField | this_Association_1= ruleAssociation ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1033:1: (this_Field_0= ruleField | this_Association_1= ruleAssociation )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1697:28: ( (this_Field_0= ruleField | this_Association_1= ruleAssociation ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1698:1: (this_Field_0= ruleField | this_Association_1= ruleAssociation )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1033:1: (this_Field_0= ruleField | this_Association_1= ruleAssociation )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1698:1: (this_Field_0= ruleField | this_Association_1= ruleAssociation )
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA17_0==39) ) {
-                alt17=1;
+            if ( (LA22_0==48) ) {
+                alt22=1;
             }
-            else if ( (LA17_0==33) ) {
-                alt17=2;
+            else if ( (LA22_0==46) ) {
+                alt22=2;
             }
             else {
+                if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt22) {
                 case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1034:5: this_Field_0= ruleField
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1699:5: this_Field_0= ruleField
                     {
-                     
-                            newCompositeNode(grammarAccess.getPropertyAccess().getFieldParserRuleCall_0()); 
-                        
-                    pushFollow(FOLLOW_ruleField_in_ruleProperty2335);
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getPropertyAccess().getFieldParserRuleCall_0()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleField_in_ruleProperty3744);
                     this_Field_0=ruleField();
 
                     state._fsp--;
-
-                     
-                            current = this_Field_0; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_Field_0; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
                 case 2 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1044:5: this_Association_1= ruleAssociation
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1709:5: this_Association_1= ruleAssociation
                     {
-                     
-                            newCompositeNode(grammarAccess.getPropertyAccess().getAssociationParserRuleCall_1()); 
-                        
-                    pushFollow(FOLLOW_ruleAssociation_in_ruleProperty2362);
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getPropertyAccess().getAssociationParserRuleCall_1()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleAssociation_in_ruleProperty3771);
                     this_Association_1=ruleAssociation();
 
                     state._fsp--;
-
-                     
-                            current = this_Association_1; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_Association_1; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
@@ -2514,7 +4444,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -2529,7 +4461,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAssociation"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1060:1: entryRuleAssociation returns [EObject current=null] : iv_ruleAssociation= ruleAssociation EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1725:1: entryRuleAssociation returns [EObject current=null] : iv_ruleAssociation= ruleAssociation EOF ;
     public final EObject entryRuleAssociation() throws RecognitionException {
         EObject current = null;
 
@@ -2537,17 +4469,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1061:2: (iv_ruleAssociation= ruleAssociation EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1062:2: iv_ruleAssociation= ruleAssociation EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1726:2: (iv_ruleAssociation= ruleAssociation EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1727:2: iv_ruleAssociation= ruleAssociation EOF
             {
-             newCompositeNode(grammarAccess.getAssociationRule()); 
-            pushFollow(FOLLOW_ruleAssociation_in_entryRuleAssociation2397);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getAssociationRule()); 
+            }
+            pushFollow(FOLLOW_ruleAssociation_in_entryRuleAssociation3806);
             iv_ruleAssociation=ruleAssociation();
 
             state._fsp--;
-
-             current =iv_ruleAssociation; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAssociation2407); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleAssociation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAssociation3816); if (state.failed) return current;
 
             }
 
@@ -2565,112 +4501,130 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAssociation"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1069:1: ruleAssociation returns [EObject current=null] : (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1734:1: ruleAssociation returns [EObject current=null] : (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) ) ;
     public final EObject ruleAssociation() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        EObject lv_multiplicity_4_0 = null;
+        Enumerator lv_multiplicity_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1072:28: ( (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1073:1: (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1737:28: ( (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1738:1: (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1073:1: (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1073:3: otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1738:1: (otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1738:3: otherlv_0= 'Relation' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( ( ruleFQN ) ) ( (lv_multiplicity_4_0= ruleMultiplicty ) )
             {
-            otherlv_0=(Token)match(input,33,FOLLOW_33_in_ruleAssociation2444); 
+            otherlv_0=(Token)match(input,46,FOLLOW_46_in_ruleAssociation3853); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getAssociationAccess().getRelationKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1077:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1078:1: (lv_name_1_0= RULE_ID )
+                  	newLeafNode(otherlv_0, grammarAccess.getAssociationAccess().getRelationKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1742:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1743:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1078:1: (lv_name_1_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1079:3: lv_name_1_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1743:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1744:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAssociation2461); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAssociation3870); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getAssociationAccess().getNameIDTerminalRuleCall_1_0()); 
-            		
+              			newLeafNode(lv_name_1_0, grammarAccess.getAssociationAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getAssociationRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getAssociationRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleAssociation2478); 
+            otherlv_2=(Token)match(input,47,FOLLOW_47_in_ruleAssociation3887); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getAssociationAccess().getColonKeyword_2());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1099:1: ( ( ruleFQN ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1100:1: ( ruleFQN )
+                  	newLeafNode(otherlv_2, grammarAccess.getAssociationAccess().getColonKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1764:1: ( ( ruleFQN ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1765:1: ( ruleFQN )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1100:1: ( ruleFQN )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1101:3: ruleFQN
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1765:1: ( ruleFQN )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1766:3: ruleFQN
             {
+            if ( state.backtracking==0 ) {
 
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getAssociationRule());
-            	        }
-                    
-             
-            	        newCompositeNode(grammarAccess.getAssociationAccess().getTypeEntityCrossReference_3_0()); 
-            	    
-            pushFollow(FOLLOW_ruleFQN_in_ruleAssociation2501);
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getAssociationRule());
+              	        }
+                      
+            }
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getAssociationAccess().getTypeEntityCrossReference_3_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleFQN_in_ruleAssociation3910);
             ruleFQN();
 
             state._fsp--;
-
-             
-            	        afterParserOrEnumRuleCall();
-            	    
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1114:2: ( (lv_multiplicity_4_0= ruleMultiplicty ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1115:1: (lv_multiplicity_4_0= ruleMultiplicty )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1779:2: ( (lv_multiplicity_4_0= ruleMultiplicty ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1780:1: (lv_multiplicity_4_0= ruleMultiplicty )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1115:1: (lv_multiplicity_4_0= ruleMultiplicty )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1116:3: lv_multiplicity_4_0= ruleMultiplicty
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1780:1: (lv_multiplicity_4_0= ruleMultiplicty )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1781:3: lv_multiplicity_4_0= ruleMultiplicty
             {
-             
-            	        newCompositeNode(grammarAccess.getAssociationAccess().getMultiplicityMultiplictyParserRuleCall_4_0()); 
-            	    
-            pushFollow(FOLLOW_ruleMultiplicty_in_ruleAssociation2522);
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getAssociationAccess().getMultiplicityMultiplictyEnumRuleCall_4_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleMultiplicty_in_ruleAssociation3931);
             lv_multiplicity_4_0=ruleMultiplicty();
 
             state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getAssociationRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"multiplicity",
-                    		lv_multiplicity_4_0, 
-                    		"Multiplicty");
-            	        afterParserOrEnumRuleCall();
-            	    
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getAssociationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"multiplicity",
+                      		lv_multiplicity_4_0, 
+                      		"Multiplicty");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
@@ -2683,7 +4637,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -2697,291 +4653,8 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAssociation"
 
 
-    // $ANTLR start "entryRuleMultiplicty"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1140:1: entryRuleMultiplicty returns [EObject current=null] : iv_ruleMultiplicty= ruleMultiplicty EOF ;
-    public final EObject entryRuleMultiplicty() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleMultiplicty = null;
-
-
-        try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1141:2: (iv_ruleMultiplicty= ruleMultiplicty EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1142:2: iv_ruleMultiplicty= ruleMultiplicty EOF
-            {
-             newCompositeNode(grammarAccess.getMultiplictyRule()); 
-            pushFollow(FOLLOW_ruleMultiplicty_in_entryRuleMultiplicty2558);
-            iv_ruleMultiplicty=ruleMultiplicty();
-
-            state._fsp--;
-
-             current =iv_ruleMultiplicty; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMultiplicty2568); 
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleMultiplicty"
-
-
-    // $ANTLR start "ruleMultiplicty"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1149:1: ruleMultiplicty returns [EObject current=null] : ( ( () ( (lv_name_1_0= '1..N' ) ) ) | ( () ( (lv_name_3_0= '0..N' ) ) ) | ( () ( (lv_name_5_0= '1' ) ) ) | ( () ( (lv_name_7_0= '1..0' ) ) ) ) ;
-    public final EObject ruleMultiplicty() throws RecognitionException {
-        EObject current = null;
-
-        Token lv_name_1_0=null;
-        Token lv_name_3_0=null;
-        Token lv_name_5_0=null;
-        Token lv_name_7_0=null;
-
-         enterRule(); 
-            
-        try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1152:28: ( ( ( () ( (lv_name_1_0= '1..N' ) ) ) | ( () ( (lv_name_3_0= '0..N' ) ) ) | ( () ( (lv_name_5_0= '1' ) ) ) | ( () ( (lv_name_7_0= '1..0' ) ) ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1153:1: ( ( () ( (lv_name_1_0= '1..N' ) ) ) | ( () ( (lv_name_3_0= '0..N' ) ) ) | ( () ( (lv_name_5_0= '1' ) ) ) | ( () ( (lv_name_7_0= '1..0' ) ) ) )
-            {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1153:1: ( ( () ( (lv_name_1_0= '1..N' ) ) ) | ( () ( (lv_name_3_0= '0..N' ) ) ) | ( () ( (lv_name_5_0= '1' ) ) ) | ( () ( (lv_name_7_0= '1..0' ) ) ) )
-            int alt18=4;
-            switch ( input.LA(1) ) {
-            case 35:
-                {
-                alt18=1;
-                }
-                break;
-            case 36:
-                {
-                alt18=2;
-                }
-                break;
-            case 37:
-                {
-                alt18=3;
-                }
-                break;
-            case 38:
-                {
-                alt18=4;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
-
-                throw nvae;
-            }
-
-            switch (alt18) {
-                case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1153:2: ( () ( (lv_name_1_0= '1..N' ) ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1153:2: ( () ( (lv_name_1_0= '1..N' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1153:3: () ( (lv_name_1_0= '1..N' ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1153:3: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1154:5: 
-                    {
-
-                            current = forceCreateModelElement(
-                                grammarAccess.getMultiplictyAccess().getMultiplictyAction_0_0(),
-                                current);
-                        
-
-                    }
-
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1159:2: ( (lv_name_1_0= '1..N' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1160:1: (lv_name_1_0= '1..N' )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1160:1: (lv_name_1_0= '1..N' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1161:3: lv_name_1_0= '1..N'
-                    {
-                    lv_name_1_0=(Token)match(input,35,FOLLOW_35_in_ruleMultiplicty2621); 
-
-                            newLeafNode(lv_name_1_0, grammarAccess.getMultiplictyAccess().getName1NKeyword_0_1_0());
-                        
-
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getMultiplictyRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_1_0, "1..N");
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1175:6: ( () ( (lv_name_3_0= '0..N' ) ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1175:6: ( () ( (lv_name_3_0= '0..N' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1175:7: () ( (lv_name_3_0= '0..N' ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1175:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1176:5: 
-                    {
-
-                            current = forceCreateModelElement(
-                                grammarAccess.getMultiplictyAccess().getMultiplictyAction_1_0(),
-                                current);
-                        
-
-                    }
-
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1181:2: ( (lv_name_3_0= '0..N' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1182:1: (lv_name_3_0= '0..N' )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1182:1: (lv_name_3_0= '0..N' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1183:3: lv_name_3_0= '0..N'
-                    {
-                    lv_name_3_0=(Token)match(input,36,FOLLOW_36_in_ruleMultiplicty2669); 
-
-                            newLeafNode(lv_name_3_0, grammarAccess.getMultiplictyAccess().getName0NKeyword_1_1_0());
-                        
-
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getMultiplictyRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_3_0, "0..N");
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1197:6: ( () ( (lv_name_5_0= '1' ) ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1197:6: ( () ( (lv_name_5_0= '1' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1197:7: () ( (lv_name_5_0= '1' ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1197:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1198:5: 
-                    {
-
-                            current = forceCreateModelElement(
-                                grammarAccess.getMultiplictyAccess().getMultiplictyAction_2_0(),
-                                current);
-                        
-
-                    }
-
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1203:2: ( (lv_name_5_0= '1' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1204:1: (lv_name_5_0= '1' )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1204:1: (lv_name_5_0= '1' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1205:3: lv_name_5_0= '1'
-                    {
-                    lv_name_5_0=(Token)match(input,37,FOLLOW_37_in_ruleMultiplicty2717); 
-
-                            newLeafNode(lv_name_5_0, grammarAccess.getMultiplictyAccess().getName1Keyword_2_1_0());
-                        
-
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getMultiplictyRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_5_0, "1");
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1219:6: ( () ( (lv_name_7_0= '1..0' ) ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1219:6: ( () ( (lv_name_7_0= '1..0' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1219:7: () ( (lv_name_7_0= '1..0' ) )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1219:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1220:5: 
-                    {
-
-                            current = forceCreateModelElement(
-                                grammarAccess.getMultiplictyAccess().getMultiplictyAction_3_0(),
-                                current);
-                        
-
-                    }
-
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1225:2: ( (lv_name_7_0= '1..0' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1226:1: (lv_name_7_0= '1..0' )
-                    {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1226:1: (lv_name_7_0= '1..0' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1227:3: lv_name_7_0= '1..0'
-                    {
-                    lv_name_7_0=(Token)match(input,38,FOLLOW_38_in_ruleMultiplicty2765); 
-
-                            newLeafNode(lv_name_7_0, grammarAccess.getMultiplictyAccess().getName10Keyword_3_1_0());
-                        
-
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getMultiplictyRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_7_0, "1..0");
-                    	    
-
-                    }
-
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-             leaveRule(); 
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleMultiplicty"
-
-
     // $ANTLR start "entryRuleField"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1248:1: entryRuleField returns [EObject current=null] : iv_ruleField= ruleField EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1805:1: entryRuleField returns [EObject current=null] : iv_ruleField= ruleField EOF ;
     public final EObject entryRuleField() throws RecognitionException {
         EObject current = null;
 
@@ -2989,17 +4662,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1249:2: (iv_ruleField= ruleField EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1250:2: iv_ruleField= ruleField EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1806:2: (iv_ruleField= ruleField EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1807:2: iv_ruleField= ruleField EOF
             {
-             newCompositeNode(grammarAccess.getFieldRule()); 
-            pushFollow(FOLLOW_ruleField_in_entryRuleField2815);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getFieldRule()); 
+            }
+            pushFollow(FOLLOW_ruleField_in_entryRuleField3967);
             iv_ruleField=ruleField();
 
             state._fsp--;
-
-             current =iv_ruleField; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleField2825); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleField; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleField3977); if (state.failed) return current;
 
             }
 
@@ -3017,7 +4694,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleField"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1257:1: ruleField returns [EObject current=null] : (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1814:1: ruleField returns [EObject current=null] : (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) ) ;
     public final EObject ruleField() throws RecognitionException {
         EObject current = null;
 
@@ -3030,71 +4707,83 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1260:28: ( (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1261:1: (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1817:28: ( (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1818:1: (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1261:1: (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1261:3: otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1818:1: (otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1818:3: otherlv_0= 'Field' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (lv_literal_3_0= ruleLiteral ) )
             {
-            otherlv_0=(Token)match(input,39,FOLLOW_39_in_ruleField2862); 
+            otherlv_0=(Token)match(input,48,FOLLOW_48_in_ruleField4014); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getFieldAccess().getFieldKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1265:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1266:1: (lv_name_1_0= RULE_ID )
+                  	newLeafNode(otherlv_0, grammarAccess.getFieldAccess().getFieldKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1822:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1823:1: (lv_name_1_0= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1266:1: (lv_name_1_0= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1267:3: lv_name_1_0= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1823:1: (lv_name_1_0= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1824:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleField2879); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleField4031); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getFieldAccess().getNameIDTerminalRuleCall_1_0()); 
-            		
+              			newLeafNode(lv_name_1_0, grammarAccess.getFieldAccess().getNameIDTerminalRuleCall_1_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
 
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getFieldRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_1_0, 
-                    		"ID");
-            	    
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getFieldRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ID");
+              	    
+            }
 
             }
 
 
             }
 
-            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleField2896); 
+            otherlv_2=(Token)match(input,47,FOLLOW_47_in_ruleField4048); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_2, grammarAccess.getFieldAccess().getColonKeyword_2());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1287:1: ( (lv_literal_3_0= ruleLiteral ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1288:1: (lv_literal_3_0= ruleLiteral )
+                  	newLeafNode(otherlv_2, grammarAccess.getFieldAccess().getColonKeyword_2());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1844:1: ( (lv_literal_3_0= ruleLiteral ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1845:1: (lv_literal_3_0= ruleLiteral )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1288:1: (lv_literal_3_0= ruleLiteral )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1289:3: lv_literal_3_0= ruleLiteral
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1845:1: (lv_literal_3_0= ruleLiteral )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1846:3: lv_literal_3_0= ruleLiteral
             {
-             
-            	        newCompositeNode(grammarAccess.getFieldAccess().getLiteralLiteralParserRuleCall_3_0()); 
-            	    
-            pushFollow(FOLLOW_ruleLiteral_in_ruleField2917);
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getFieldAccess().getLiteralLiteralParserRuleCall_3_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleLiteral_in_ruleField4069);
             lv_literal_3_0=ruleLiteral();
 
             state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-
-            	        if (current==null) {
-            	            current = createModelElementForParent(grammarAccess.getFieldRule());
-            	        }
-                   		set(
-                   			current, 
-                   			"literal",
-                    		lv_literal_3_0, 
-                    		"Literal");
-            	        afterParserOrEnumRuleCall();
-            	    
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getFieldRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"literal",
+                      		lv_literal_3_0, 
+                      		"Literal");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
 
             }
 
@@ -3107,7 +4796,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -3122,7 +4813,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteral"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1313:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1870:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
     public final EObject entryRuleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3130,17 +4821,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1314:2: (iv_ruleLiteral= ruleLiteral EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1315:2: iv_ruleLiteral= ruleLiteral EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1871:2: (iv_ruleLiteral= ruleLiteral EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1872:2: iv_ruleLiteral= ruleLiteral EOF
             {
-             newCompositeNode(grammarAccess.getLiteralRule()); 
-            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral2953);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getLiteralRule()); 
+            }
+            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral4105);
             iv_ruleLiteral=ruleLiteral();
 
             state._fsp--;
-
-             current =iv_ruleLiteral; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral2963); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleLiteral; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral4115); if (state.failed) return current;
 
             }
 
@@ -3158,7 +4853,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1322:1: ruleLiteral returns [EObject current=null] : ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1879:1: ruleLiteral returns [EObject current=null] : ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum ) ;
     public final EObject ruleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3173,83 +4868,90 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1325:28: ( ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:1: ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1882:28: ( ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1883:1: ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:1: ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum )
-            int alt19=6;
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1883:1: ( ( () ( (lv_name_1_0= 'Decimal' ) ) ) | ( () ( (lv_name_3_0= 'Money' ) ) ) | ( () ( (lv_name_5_0= 'Text' ) ) ) | ( () ( (lv_name_7_0= 'Boolean' ) ) ) | ( () ( (lv_name_9_0= 'Int' ) ) ) | this_Enum_10= ruleEnum )
+            int alt23=6;
             switch ( input.LA(1) ) {
-            case 40:
+            case 49:
                 {
-                alt19=1;
+                alt23=1;
                 }
                 break;
-            case 41:
+            case 50:
                 {
-                alt19=2;
+                alt23=2;
                 }
                 break;
-            case 42:
+            case 51:
                 {
-                alt19=3;
+                alt23=3;
                 }
                 break;
-            case 43:
+            case 52:
                 {
-                alt19=4;
+                alt23=4;
                 }
                 break;
-            case 44:
+            case 53:
                 {
-                alt19=5;
+                alt23=5;
                 }
                 break;
-            case 45:
+            case 54:
                 {
-                alt19=6;
+                alt23=6;
                 }
                 break;
             default:
+                if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 19, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt19) {
+            switch (alt23) {
                 case 1 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:2: ( () ( (lv_name_1_0= 'Decimal' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1883:2: ( () ( (lv_name_1_0= 'Decimal' ) ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:2: ( () ( (lv_name_1_0= 'Decimal' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:3: () ( (lv_name_1_0= 'Decimal' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1883:2: ( () ( (lv_name_1_0= 'Decimal' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1883:3: () ( (lv_name_1_0= 'Decimal' ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1326:3: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1327:5: 
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1883:3: ()
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1884:5: 
                     {
+                    if ( state.backtracking==0 ) {
 
-                            current = forceCreateModelElement(
-                                grammarAccess.getLiteralAccess().getLiteralAction_0_0(),
-                                current);
-                        
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getLiteralAction_0_0(),
+                                  current);
+                          
+                    }
 
                     }
 
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1332:2: ( (lv_name_1_0= 'Decimal' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1333:1: (lv_name_1_0= 'Decimal' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1889:2: ( (lv_name_1_0= 'Decimal' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1890:1: (lv_name_1_0= 'Decimal' )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1333:1: (lv_name_1_0= 'Decimal' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1334:3: lv_name_1_0= 'Decimal'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1890:1: (lv_name_1_0= 'Decimal' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1891:3: lv_name_1_0= 'Decimal'
                     {
-                    lv_name_1_0=(Token)match(input,40,FOLLOW_40_in_ruleLiteral3016); 
+                    lv_name_1_0=(Token)match(input,49,FOLLOW_49_in_ruleLiteral4168); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_name_1_0, grammarAccess.getLiteralAccess().getNameDecimalKeyword_0_1_0());
-                        
+                              newLeafNode(lv_name_1_0, grammarAccess.getLiteralAccess().getNameDecimalKeyword_0_1_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getLiteralRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_1_0, "Decimal");
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getLiteralRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_1_0, "Decimal");
+                      	    
+                    }
 
                     }
 
@@ -3263,38 +4965,44 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1348:6: ( () ( (lv_name_3_0= 'Money' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1905:6: ( () ( (lv_name_3_0= 'Money' ) ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1348:6: ( () ( (lv_name_3_0= 'Money' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1348:7: () ( (lv_name_3_0= 'Money' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1905:6: ( () ( (lv_name_3_0= 'Money' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1905:7: () ( (lv_name_3_0= 'Money' ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1348:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1349:5: 
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1905:7: ()
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1906:5: 
                     {
+                    if ( state.backtracking==0 ) {
 
-                            current = forceCreateModelElement(
-                                grammarAccess.getLiteralAccess().getLiteralAction_1_0(),
-                                current);
-                        
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getLiteralAction_1_0(),
+                                  current);
+                          
+                    }
 
                     }
 
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1354:2: ( (lv_name_3_0= 'Money' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1355:1: (lv_name_3_0= 'Money' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:2: ( (lv_name_3_0= 'Money' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1912:1: (lv_name_3_0= 'Money' )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1355:1: (lv_name_3_0= 'Money' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1356:3: lv_name_3_0= 'Money'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1912:1: (lv_name_3_0= 'Money' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1913:3: lv_name_3_0= 'Money'
                     {
-                    lv_name_3_0=(Token)match(input,41,FOLLOW_41_in_ruleLiteral3064); 
+                    lv_name_3_0=(Token)match(input,50,FOLLOW_50_in_ruleLiteral4216); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_name_3_0, grammarAccess.getLiteralAccess().getNameMoneyKeyword_1_1_0());
-                        
+                              newLeafNode(lv_name_3_0, grammarAccess.getLiteralAccess().getNameMoneyKeyword_1_1_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getLiteralRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_3_0, "Money");
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getLiteralRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_3_0, "Money");
+                      	    
+                    }
 
                     }
 
@@ -3308,38 +5016,44 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1370:6: ( () ( (lv_name_5_0= 'Text' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1927:6: ( () ( (lv_name_5_0= 'Text' ) ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1370:6: ( () ( (lv_name_5_0= 'Text' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1370:7: () ( (lv_name_5_0= 'Text' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1927:6: ( () ( (lv_name_5_0= 'Text' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1927:7: () ( (lv_name_5_0= 'Text' ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1370:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1371:5: 
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1927:7: ()
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1928:5: 
                     {
+                    if ( state.backtracking==0 ) {
 
-                            current = forceCreateModelElement(
-                                grammarAccess.getLiteralAccess().getLiteralAction_2_0(),
-                                current);
-                        
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getLiteralAction_2_0(),
+                                  current);
+                          
+                    }
 
                     }
 
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1376:2: ( (lv_name_5_0= 'Text' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1377:1: (lv_name_5_0= 'Text' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1933:2: ( (lv_name_5_0= 'Text' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1934:1: (lv_name_5_0= 'Text' )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1377:1: (lv_name_5_0= 'Text' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1378:3: lv_name_5_0= 'Text'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1934:1: (lv_name_5_0= 'Text' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1935:3: lv_name_5_0= 'Text'
                     {
-                    lv_name_5_0=(Token)match(input,42,FOLLOW_42_in_ruleLiteral3112); 
+                    lv_name_5_0=(Token)match(input,51,FOLLOW_51_in_ruleLiteral4264); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_name_5_0, grammarAccess.getLiteralAccess().getNameTextKeyword_2_1_0());
-                        
+                              newLeafNode(lv_name_5_0, grammarAccess.getLiteralAccess().getNameTextKeyword_2_1_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getLiteralRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_5_0, "Text");
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getLiteralRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_5_0, "Text");
+                      	    
+                    }
 
                     }
 
@@ -3353,38 +5067,44 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1392:6: ( () ( (lv_name_7_0= 'Boolean' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1949:6: ( () ( (lv_name_7_0= 'Boolean' ) ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1392:6: ( () ( (lv_name_7_0= 'Boolean' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1392:7: () ( (lv_name_7_0= 'Boolean' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1949:6: ( () ( (lv_name_7_0= 'Boolean' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1949:7: () ( (lv_name_7_0= 'Boolean' ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1392:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1393:5: 
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1949:7: ()
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1950:5: 
                     {
+                    if ( state.backtracking==0 ) {
 
-                            current = forceCreateModelElement(
-                                grammarAccess.getLiteralAccess().getLiteralAction_3_0(),
-                                current);
-                        
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getLiteralAction_3_0(),
+                                  current);
+                          
+                    }
 
                     }
 
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1398:2: ( (lv_name_7_0= 'Boolean' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1399:1: (lv_name_7_0= 'Boolean' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1955:2: ( (lv_name_7_0= 'Boolean' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1956:1: (lv_name_7_0= 'Boolean' )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1399:1: (lv_name_7_0= 'Boolean' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1400:3: lv_name_7_0= 'Boolean'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1956:1: (lv_name_7_0= 'Boolean' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1957:3: lv_name_7_0= 'Boolean'
                     {
-                    lv_name_7_0=(Token)match(input,43,FOLLOW_43_in_ruleLiteral3160); 
+                    lv_name_7_0=(Token)match(input,52,FOLLOW_52_in_ruleLiteral4312); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_name_7_0, grammarAccess.getLiteralAccess().getNameBooleanKeyword_3_1_0());
-                        
+                              newLeafNode(lv_name_7_0, grammarAccess.getLiteralAccess().getNameBooleanKeyword_3_1_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getLiteralRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_7_0, "Boolean");
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getLiteralRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_7_0, "Boolean");
+                      	    
+                    }
 
                     }
 
@@ -3398,38 +5118,44 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1414:6: ( () ( (lv_name_9_0= 'Int' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1971:6: ( () ( (lv_name_9_0= 'Int' ) ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1414:6: ( () ( (lv_name_9_0= 'Int' ) ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1414:7: () ( (lv_name_9_0= 'Int' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1971:6: ( () ( (lv_name_9_0= 'Int' ) ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1971:7: () ( (lv_name_9_0= 'Int' ) )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1414:7: ()
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1415:5: 
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1971:7: ()
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1972:5: 
                     {
+                    if ( state.backtracking==0 ) {
 
-                            current = forceCreateModelElement(
-                                grammarAccess.getLiteralAccess().getLiteralAction_4_0(),
-                                current);
-                        
+                              current = forceCreateModelElement(
+                                  grammarAccess.getLiteralAccess().getLiteralAction_4_0(),
+                                  current);
+                          
+                    }
 
                     }
 
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1420:2: ( (lv_name_9_0= 'Int' ) )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1421:1: (lv_name_9_0= 'Int' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1977:2: ( (lv_name_9_0= 'Int' ) )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1978:1: (lv_name_9_0= 'Int' )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1421:1: (lv_name_9_0= 'Int' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1422:3: lv_name_9_0= 'Int'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1978:1: (lv_name_9_0= 'Int' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1979:3: lv_name_9_0= 'Int'
                     {
-                    lv_name_9_0=(Token)match(input,44,FOLLOW_44_in_ruleLiteral3208); 
+                    lv_name_9_0=(Token)match(input,53,FOLLOW_53_in_ruleLiteral4360); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-                            newLeafNode(lv_name_9_0, grammarAccess.getLiteralAccess().getNameIntKeyword_4_1_0());
-                        
+                              newLeafNode(lv_name_9_0, grammarAccess.getLiteralAccess().getNameIntKeyword_4_1_0());
+                          
+                    }
+                    if ( state.backtracking==0 ) {
 
-                    	        if (current==null) {
-                    	            current = createModelElement(grammarAccess.getLiteralRule());
-                    	        }
-                           		setWithLastConsumed(current, "name", lv_name_9_0, "Int");
-                    	    
+                      	        if (current==null) {
+                      	            current = createModelElement(grammarAccess.getLiteralRule());
+                      	        }
+                             		setWithLastConsumed(current, "name", lv_name_9_0, "Int");
+                      	    
+                    }
 
                     }
 
@@ -3443,20 +5169,24 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1437:5: this_Enum_10= ruleEnum
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1994:5: this_Enum_10= ruleEnum
                     {
-                     
-                            newCompositeNode(grammarAccess.getLiteralAccess().getEnumParserRuleCall_5()); 
-                        
-                    pushFollow(FOLLOW_ruleEnum_in_ruleLiteral3250);
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getLiteralAccess().getEnumParserRuleCall_5()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleEnum_in_ruleLiteral4402);
                     this_Enum_10=ruleEnum();
 
                     state._fsp--;
-
-                     
-                            current = this_Enum_10; 
-                            afterParserOrEnumRuleCall();
-                        
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_Enum_10; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
 
                     }
                     break;
@@ -3466,7 +5196,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -3481,7 +5213,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnum"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1453:1: entryRuleEnum returns [EObject current=null] : iv_ruleEnum= ruleEnum EOF ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2010:1: entryRuleEnum returns [EObject current=null] : iv_ruleEnum= ruleEnum EOF ;
     public final EObject entryRuleEnum() throws RecognitionException {
         EObject current = null;
 
@@ -3489,17 +5221,21 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1454:2: (iv_ruleEnum= ruleEnum EOF )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1455:2: iv_ruleEnum= ruleEnum EOF
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2011:2: (iv_ruleEnum= ruleEnum EOF )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2012:2: iv_ruleEnum= ruleEnum EOF
             {
-             newCompositeNode(grammarAccess.getEnumRule()); 
-            pushFollow(FOLLOW_ruleEnum_in_entryRuleEnum3285);
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getEnumRule()); 
+            }
+            pushFollow(FOLLOW_ruleEnum_in_entryRuleEnum4437);
             iv_ruleEnum=ruleEnum();
 
             state._fsp--;
-
-             current =iv_ruleEnum; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnum3295); 
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleEnum; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnum4447); if (state.failed) return current;
 
             }
 
@@ -3517,7 +5253,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnum"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1462:1: ruleEnum returns [EObject current=null] : (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2019:1: ruleEnum returns [EObject current=null] : (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleEnum() throws RecognitionException {
         EObject current = null;
 
@@ -3527,31 +5263,37 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1465:28: ( (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1466:1: (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2022:28: ( (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2023:1: (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1466:1: (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1466:3: otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2023:1: (otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2023:3: otherlv_0= 'Enum' ( (otherlv_1= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,45,FOLLOW_45_in_ruleEnum3332); 
+            otherlv_0=(Token)match(input,54,FOLLOW_54_in_ruleEnum4484); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-                	newLeafNode(otherlv_0, grammarAccess.getEnumAccess().getEnumKeyword_0());
-                
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1470:1: ( (otherlv_1= RULE_ID ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1471:1: (otherlv_1= RULE_ID )
+                  	newLeafNode(otherlv_0, grammarAccess.getEnumAccess().getEnumKeyword_0());
+                  
+            }
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2027:1: ( (otherlv_1= RULE_ID ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2028:1: (otherlv_1= RULE_ID )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1471:1: (otherlv_1= RULE_ID )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1472:3: otherlv_1= RULE_ID
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2028:1: (otherlv_1= RULE_ID )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2029:3: otherlv_1= RULE_ID
             {
+            if ( state.backtracking==0 ) {
 
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getEnumRule());
-            	        }
-                    
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnum3352); 
+              			if (current==null) {
+              	            current = createModelElement(grammarAccess.getEnumRule());
+              	        }
+                      
+            }
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnum4504); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
 
-            		newLeafNode(otherlv_1, grammarAccess.getEnumAccess().getTypeEnumDeclarationCrossReference_1_0()); 
-            	
+              		newLeafNode(otherlv_1, grammarAccess.getEnumAccess().getTypeEnumDeclarationCrossReference_1_0()); 
+              	
+            }
 
             }
 
@@ -3564,7 +5306,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-             leaveRule(); 
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
         }
          
             catch (RecognitionException re) { 
@@ -3577,34 +5321,367 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleEnum"
 
+
+    // $ANTLR start "ruleBoolean"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2048:1: ruleBoolean returns [Enumerator current=null] : ( (enumLiteral_0= 'J' ) | (enumLiteral_1= 'F' ) ) ;
+    public final Enumerator ruleBoolean() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+         enterRule(); 
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2050:28: ( ( (enumLiteral_0= 'J' ) | (enumLiteral_1= 'F' ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2051:1: ( (enumLiteral_0= 'J' ) | (enumLiteral_1= 'F' ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2051:1: ( (enumLiteral_0= 'J' ) | (enumLiteral_1= 'F' ) )
+            int alt24=2;
+            int LA24_0 = input.LA(1);
+
+            if ( (LA24_0==55) ) {
+                alt24=1;
+            }
+            else if ( (LA24_0==56) ) {
+                alt24=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 24, 0, input);
+
+                throw nvae;
+            }
+            switch (alt24) {
+                case 1 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2051:2: (enumLiteral_0= 'J' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2051:2: (enumLiteral_0= 'J' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2051:4: enumLiteral_0= 'J'
+                    {
+                    enumLiteral_0=(Token)match(input,55,FOLLOW_55_in_ruleBoolean4554); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBooleanAccess().getTrueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_0, grammarAccess.getBooleanAccess().getTrueEnumLiteralDeclaration_0()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2057:6: (enumLiteral_1= 'F' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2057:6: (enumLiteral_1= 'F' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2057:8: enumLiteral_1= 'F'
+                    {
+                    enumLiteral_1=(Token)match(input,56,FOLLOW_56_in_ruleBoolean4571); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBooleanAccess().getFalseEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_1, grammarAccess.getBooleanAccess().getFalseEnumLiteralDeclaration_1()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBoolean"
+
+
+    // $ANTLR start "ruleBREType"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2067:1: ruleBREType returns [Enumerator current=null] : ( (enumLiteral_0= 'BizToBiz' ) | (enumLiteral_1= 'SrcToBiz' ) | (enumLiteral_2= 'BizToOut' ) ) ;
+    public final Enumerator ruleBREType() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+
+         enterRule(); 
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2069:28: ( ( (enumLiteral_0= 'BizToBiz' ) | (enumLiteral_1= 'SrcToBiz' ) | (enumLiteral_2= 'BizToOut' ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2070:1: ( (enumLiteral_0= 'BizToBiz' ) | (enumLiteral_1= 'SrcToBiz' ) | (enumLiteral_2= 'BizToOut' ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2070:1: ( (enumLiteral_0= 'BizToBiz' ) | (enumLiteral_1= 'SrcToBiz' ) | (enumLiteral_2= 'BizToOut' ) )
+            int alt25=3;
+            switch ( input.LA(1) ) {
+            case 57:
+                {
+                alt25=1;
+                }
+                break;
+            case 58:
+                {
+                alt25=2;
+                }
+                break;
+            case 59:
+                {
+                alt25=3;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 25, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt25) {
+                case 1 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2070:2: (enumLiteral_0= 'BizToBiz' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2070:2: (enumLiteral_0= 'BizToBiz' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2070:4: enumLiteral_0= 'BizToBiz'
+                    {
+                    enumLiteral_0=(Token)match(input,57,FOLLOW_57_in_ruleBREType4616); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBRETypeAccess().getBizToBizEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_0, grammarAccess.getBRETypeAccess().getBizToBizEnumLiteralDeclaration_0()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2076:6: (enumLiteral_1= 'SrcToBiz' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2076:6: (enumLiteral_1= 'SrcToBiz' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2076:8: enumLiteral_1= 'SrcToBiz'
+                    {
+                    enumLiteral_1=(Token)match(input,58,FOLLOW_58_in_ruleBREType4633); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBRETypeAccess().getSrcToBizEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_1, grammarAccess.getBRETypeAccess().getSrcToBizEnumLiteralDeclaration_1()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2082:6: (enumLiteral_2= 'BizToOut' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2082:6: (enumLiteral_2= 'BizToOut' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2082:8: enumLiteral_2= 'BizToOut'
+                    {
+                    enumLiteral_2=(Token)match(input,59,FOLLOW_59_in_ruleBREType4650); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getBRETypeAccess().getBizToOutEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_2, grammarAccess.getBRETypeAccess().getBizToOutEnumLiteralDeclaration_2()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBREType"
+
+
+    // $ANTLR start "ruleMultiplicty"
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2092:1: ruleMultiplicty returns [Enumerator current=null] : ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) ) ;
+    public final Enumerator ruleMultiplicty() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+
+         enterRule(); 
+        try {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2094:28: ( ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2095:1: ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) )
+            {
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2095:1: ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) )
+            int alt26=3;
+            switch ( input.LA(1) ) {
+            case 60:
+                {
+                alt26=1;
+                }
+                break;
+            case 61:
+                {
+                alt26=2;
+                }
+                break;
+            case 62:
+                {
+                alt26=3;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 26, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt26) {
+                case 1 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2095:2: (enumLiteral_0= '1..N' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2095:2: (enumLiteral_0= '1..N' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2095:4: enumLiteral_0= '1..N'
+                    {
+                    enumLiteral_0=(Token)match(input,60,FOLLOW_60_in_ruleMultiplicty4695); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getMultiplictyAccess().getOneToManyEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_0, grammarAccess.getMultiplictyAccess().getOneToManyEnumLiteralDeclaration_0()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2101:6: (enumLiteral_1= '0..N' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2101:6: (enumLiteral_1= '0..N' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2101:8: enumLiteral_1= '0..N'
+                    {
+                    enumLiteral_1=(Token)match(input,61,FOLLOW_61_in_ruleMultiplicty4712); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getMultiplictyAccess().getZeroToManyEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_1, grammarAccess.getMultiplictyAccess().getZeroToManyEnumLiteralDeclaration_1()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2107:6: (enumLiteral_2= '1' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2107:6: (enumLiteral_2= '1' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:2107:8: enumLiteral_2= '1'
+                    {
+                    enumLiteral_2=(Token)match(input,62,FOLLOW_62_in_ruleMultiplicty4729); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getMultiplictyAccess().getOneToOneEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_2, grammarAccess.getMultiplictyAccess().getOneToOneEnumLiteralDeclaration_2()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMultiplicty"
+
     // Delegated rules
 
 
     protected DFA1 dfa1 = new DFA1(this);
+    protected DFA8 dfa8 = new DFA8(this);
     static final String DFA1_eotS =
-        "\13\uffff";
+        "\14\uffff";
     static final String DFA1_eofS =
-        "\13\uffff";
+        "\14\uffff";
     static final String DFA1_minS =
-        "\1\13\1\uffff\1\4\4\uffff\1\13\1\4\2\13";
+        "\1\13\1\uffff\1\4\5\uffff\1\13\1\4\2\13";
     static final String DFA1_maxS =
-        "\1\37\1\uffff\1\4\4\uffff\1\37\1\4\2\37";
+        "\1\54\1\uffff\1\4\5\uffff\1\54\1\4\2\54";
     static final String DFA1_acceptS =
-        "\1\uffff\1\1\1\uffff\1\2\1\3\1\4\1\5\4\uffff";
+        "\1\uffff\1\1\1\uffff\1\2\1\3\1\4\1\5\1\6\4\uffff";
     static final String DFA1_specialS =
-        "\13\uffff}>";
+        "\14\uffff}>";
     static final String[] DFA1_transitionS = {
-            "\1\5\11\uffff\1\6\1\2\1\uffff\1\3\3\uffff\1\1\2\uffff\1\4",
+            "\1\5\12\uffff\1\6\11\uffff\1\7\2\uffff\1\2\1\uffff\1\3\3\uffff\1\1\2\uffff\1\4",
             "",
-            "\1\7",
-            "",
-            "",
+            "\1\10",
             "",
             "",
-            "\1\5\12\uffff\1\2\1\11\1\3\4\uffff\1\10\1\uffff\1\4",
-            "\1\12",
-            "\1\5\12\uffff\1\2\1\uffff\1\3\6\uffff\1\4",
-            "\1\5\12\uffff\1\2\1\11\1\3\4\uffff\1\10\1\uffff\1\4"
+            "",
+            "",
+            "",
+            "\1\5\12\uffff\1\6\14\uffff\1\2\1\12\1\3\4\uffff\1\11\1\uffff\1\4",
+            "\1\13",
+            "\1\5\12\uffff\1\6\14\uffff\1\2\1\uffff\1\3\6\uffff\1\4",
+            "\1\5\12\uffff\1\6\14\uffff\1\2\1\12\1\3\4\uffff\1\11\1\uffff\1\4"
     };
 
     static final short[] DFA1_eot = DFA.unpackEncodedString(DFA1_eotS);
@@ -3637,7 +5714,77 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             this.transition = DFA1_transition;
         }
         public String getDescription() {
-            return "119:1: (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule )";
+            return "120:1: (this_EnumDeclaration_0= ruleEnumDeclaration | this_Diagram_1= ruleDiagram | this_Domain_2= ruleDomain | this_Flow_3= ruleFlow | this_BusinessRule_4= ruleBusinessRule | this_System_5= ruleSystem )";
+        }
+    }
+    static final String DFA8_eotS =
+        "\26\uffff";
+    static final String DFA8_eofS =
+        "\26\uffff";
+    static final String DFA8_minS =
+        "\1\4\1\14\1\4\1\32\1\14\1\33\1\67\2\21\1\34\1\33\1\67\2\21\1\35\1\33\1\67\2\4\1\36\2\uffff";
+    static final String DFA8_maxS =
+        "\1\4\1\52\1\4\1\32\1\52\1\33\1\70\2\21\1\34\1\33\1\70\2\21\1\35\1\33\1\70\2\22\1\37\2\uffff";
+    static final String DFA8_acceptS =
+        "\24\uffff\1\2\1\1";
+    static final String DFA8_specialS =
+        "\26\uffff}>";
+    static final String[] DFA8_transitionS = {
+            "\1\1",
+            "\1\3\35\uffff\1\2",
+            "\1\4",
+            "\1\5",
+            "\1\3\35\uffff\1\2",
+            "\1\6",
+            "\1\7\1\10",
+            "\1\11",
+            "\1\11",
+            "\1\12",
+            "\1\13",
+            "\1\14\1\15",
+            "\1\16",
+            "\1\16",
+            "\1\17",
+            "\1\20",
+            "\1\21\1\22",
+            "\1\25\10\uffff\1\24\3\uffff\1\23\1\25",
+            "\1\25\10\uffff\1\24\3\uffff\1\23\1\25",
+            "\1\25\1\24",
+            "",
+            ""
+    };
+
+    static final short[] DFA8_eot = DFA.unpackEncodedString(DFA8_eotS);
+    static final short[] DFA8_eof = DFA.unpackEncodedString(DFA8_eofS);
+    static final char[] DFA8_min = DFA.unpackEncodedStringToUnsignedChars(DFA8_minS);
+    static final char[] DFA8_max = DFA.unpackEncodedStringToUnsignedChars(DFA8_maxS);
+    static final short[] DFA8_accept = DFA.unpackEncodedString(DFA8_acceptS);
+    static final short[] DFA8_special = DFA.unpackEncodedString(DFA8_specialS);
+    static final short[][] DFA8_transition;
+
+    static {
+        int numStates = DFA8_transitionS.length;
+        DFA8_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA8_transition[i] = DFA.unpackEncodedString(DFA8_transitionS[i]);
+        }
+    }
+
+    class DFA8 extends DFA {
+
+        public DFA8(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 8;
+            this.eot = DFA8_eot;
+            this.eof = DFA8_eof;
+            this.min = DFA8_min;
+            this.max = DFA8_max;
+            this.accept = DFA8_accept;
+            this.special = DFA8_special;
+            this.transition = DFA8_transition;
+        }
+        public String getDescription() {
+            return "499:1: (lv_systemInputs_8_1= ruleBreSystemEntityInput | lv_systemInputs_8_2= ruleBreEntityInput )";
         }
     }
  
@@ -3652,128 +5799,202 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleDomain_in_ruleElement276 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFlow_in_ruleElement303 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBusinessRule_in_ruleElement330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFlow_in_entryRuleFlow365 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFlow375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_ruleFlow421 = new BitSet(new long[]{0x0000000000400800L});
-    public static final BitSet FOLLOW_11_in_ruleFlow434 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFlow451 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleFlow468 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_ruleActivity_in_ruleFlow489 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_13_in_ruleFlow502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleActivity_in_entryRuleActivity538 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleActivity548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleActivity585 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleActivity602 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleActivity619 = new BitSet(new long[]{0x0000000000188000L});
-    public static final BitSet FOLLOW_15_in_ruleActivity632 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_16_in_ruleActivity644 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleActivity664 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_17_in_ruleActivity677 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleActivity697 = new BitSet(new long[]{0x0000000000060000L});
-    public static final BitSet FOLLOW_18_in_ruleActivity711 = new BitSet(new long[]{0x0000000000180000L});
-    public static final BitSet FOLLOW_19_in_ruleActivity726 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleActivity749 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleActivity763 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleActivity780 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_ruleActivity797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBusinessRule_in_entryRuleBusinessRule833 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBusinessRule843 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleBusinessRule880 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleBusinessRule897 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleBusinessRule914 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_13_in_ruleBusinessRule926 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport962 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleImport972 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleImport1009 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFqnWithWildCard_in_ruleImport1030 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFqnWithWildCard_in_entryRuleFqnWithWildCard1067 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFqnWithWildCard1078 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleFqnWithWildCard1125 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_23_in_ruleFqnWithWildCard1144 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDiagram_in_entryRuleDiagram1186 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDiagram1196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_ruleDiagram1242 = new BitSet(new long[]{0x0000000001400800L});
-    public static final BitSet FOLLOW_24_in_ruleDiagram1255 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDiagram1272 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleDiagram1289 = new BitSet(new long[]{0x0000000006002000L});
-    public static final BitSet FOLLOW_ruleInclude_in_ruleDiagram1310 = new BitSet(new long[]{0x0000000006002000L});
-    public static final BitSet FOLLOW_13_in_ruleDiagram1323 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInclude_in_entryRuleInclude1359 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInclude1369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleInclude1414 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_26_in_ruleInclude1443 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleInclude1482 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_ruleInclude1495 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleInclude1507 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleInclude1527 = new BitSet(new long[]{0x0000000000022000L});
-    public static final BitSet FOLLOW_17_in_ruleInclude1540 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleInclude1560 = new BitSet(new long[]{0x0000000000022000L});
-    public static final BitSet FOLLOW_13_in_ruleInclude1574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumDeclaration_in_entryRuleEnumDeclaration1611 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumDeclaration1621 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleEnumDeclaration1658 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumDeclaration1675 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleEnumDeclaration1692 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumDeclaration1709 = new BitSet(new long[]{0x0000000000022000L});
-    public static final BitSet FOLLOW_17_in_ruleEnumDeclaration1727 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumDeclaration1738 = new BitSet(new long[]{0x0000000000022000L});
-    public static final BitSet FOLLOW_13_in_ruleEnumDeclaration1751 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN1788 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFQN1799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN1839 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_29_in_ruleFQN1858 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN1873 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_ruleEntity_in_entryRuleEntity1920 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEntity1930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleEntity1967 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEntity1984 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleEntity2001 = new BitSet(new long[]{0x0000008200002000L});
-    public static final BitSet FOLLOW_ruleProperty_in_ruleEntity2022 = new BitSet(new long[]{0x0000008200002000L});
-    public static final BitSet FOLLOW_13_in_ruleEntity2035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDomain_in_entryRuleDomain2071 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDomain2081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_ruleDomain2127 = new BitSet(new long[]{0x0000000080400800L});
-    public static final BitSet FOLLOW_31_in_ruleDomain2140 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleDomain2157 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_32_in_ruleDomain2174 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleDomain2191 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleDomain2208 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_ruleEntity_in_ruleDomain2229 = new BitSet(new long[]{0x0000000040002000L});
-    public static final BitSet FOLLOW_13_in_ruleDomain2242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_entryRuleProperty2278 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleProperty2288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleField_in_ruleProperty2335 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAssociation_in_ruleProperty2362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAssociation_in_entryRuleAssociation2397 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAssociation2407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_ruleAssociation2444 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAssociation2461 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleAssociation2478 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleAssociation2501 = new BitSet(new long[]{0x0000007800000000L});
-    public static final BitSet FOLLOW_ruleMultiplicty_in_ruleAssociation2522 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMultiplicty_in_entryRuleMultiplicty2558 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMultiplicty2568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleMultiplicty2621 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleMultiplicty2669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleMultiplicty2717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleMultiplicty2765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleField_in_entryRuleField2815 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleField2825 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ruleField2862 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleField2879 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleField2896 = new BitSet(new long[]{0x00003F0000000000L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleField2917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral2953 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral2963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleLiteral3016 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ruleLiteral3064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_ruleLiteral3112 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_ruleLiteral3160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_ruleLiteral3208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_ruleLiteral3250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum3285 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnum3295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_ruleEnum3332 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum3352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSystem_in_ruleElement357 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFlow_in_entryRuleFlow392 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFlow402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_ruleFlow448 = new BitSet(new long[]{0x0000000800000800L});
+    public static final BitSet FOLLOW_11_in_ruleFlow461 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFlow478 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleFlow495 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_ruleActivity_in_ruleFlow516 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_13_in_ruleFlow529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleActivity_in_entryRuleActivity565 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleActivity575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_ruleActivity612 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleActivity629 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleActivity646 = new BitSet(new long[]{0x0000000000188000L});
+    public static final BitSet FOLLOW_15_in_ruleActivity659 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleActivity671 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleActivity691 = new BitSet(new long[]{0x0000000000060000L});
+    public static final BitSet FOLLOW_17_in_ruleActivity704 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleActivity724 = new BitSet(new long[]{0x0000000000060000L});
+    public static final BitSet FOLLOW_18_in_ruleActivity738 = new BitSet(new long[]{0x0000000000180000L});
+    public static final BitSet FOLLOW_19_in_ruleActivity753 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleActivity776 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_ruleActivity790 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_ruleActivity808 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_ruleActivity841 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleActivity854 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBusinessRule_in_entryRuleBusinessRule890 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBusinessRule900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_ruleBusinessRule946 = new BitSet(new long[]{0x0000000800400800L});
+    public static final BitSet FOLLOW_22_in_ruleBusinessRule959 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleBusinessRule976 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleBusinessRule993 = new BitSet(new long[]{0x0E00000000000000L});
+    public static final BitSet FOLLOW_ruleBREType_in_ruleBusinessRule1014 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleBusinessRule1026 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleBusinessRule1038 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleBusinessRule1050 = new BitSet(new long[]{0x0000000000040010L});
+    public static final BitSet FOLLOW_ruleBreSystemEntityInput_in_ruleBusinessRule1073 = new BitSet(new long[]{0x0000000000040010L});
+    public static final BitSet FOLLOW_ruleBreEntityInput_in_ruleBusinessRule1092 = new BitSet(new long[]{0x0000000000040010L});
+    public static final BitSet FOLLOW_18_in_ruleBusinessRule1108 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_ruleBusinessRule1120 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleBusinessRule1132 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleBusinessRule1155 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_ruleBusinessRule1167 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleBusinessRule1179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBreSystemEntityInput_in_entryRuleBreSystemEntityInput1215 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBreSystemEntityInput1225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleBreSystemEntityInput1273 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ruleSystemEntityConfiguration_in_ruleBreSystemEntityInput1294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBreEntityInput_in_entryRuleBreEntityInput1330 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleBreEntityInput1340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleBreEntityInput1388 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_ruleEntityConfiguration_in_ruleBreEntityInput1409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSystemEntityConfiguration_in_entryRuleSystemEntityConfiguration1445 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSystemEntityConfiguration1455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_ruleSystemEntityConfiguration1501 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleSystemEntityConfiguration1513 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleSystemEntityConfiguration1525 = new BitSet(new long[]{0x0180000000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleSystemEntityConfiguration1546 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleSystemEntityConfiguration1558 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleSystemEntityConfiguration1570 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleSystemEntityConfiguration1582 = new BitSet(new long[]{0x0180000000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleSystemEntityConfiguration1603 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleSystemEntityConfiguration1615 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleSystemEntityConfiguration1627 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleSystemEntityConfiguration1639 = new BitSet(new long[]{0x0180000000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleSystemEntityConfiguration1660 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_17_in_ruleSystemEntityConfiguration1673 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_30_in_ruleSystemEntityConfiguration1685 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleSystemEntityConfiguration1697 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleSystemEntityConfiguration1714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEntityConfiguration_in_entryRuleEntityConfiguration1757 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEntityConfiguration1767 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_ruleEntityConfiguration1813 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleEntityConfiguration1825 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleEntityConfiguration1837 = new BitSet(new long[]{0x0180000000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleEntityConfiguration1858 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleEntityConfiguration1870 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleEntityConfiguration1882 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleEntityConfiguration1894 = new BitSet(new long[]{0x0180000000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleEntityConfiguration1915 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleEntityConfiguration1927 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleEntityConfiguration1939 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleEntityConfiguration1951 = new BitSet(new long[]{0x0180000000000000L});
+    public static final BitSet FOLLOW_ruleBoolean_in_ruleEntityConfiguration1972 = new BitSet(new long[]{0x0000000000022000L});
+    public static final BitSet FOLLOW_17_in_ruleEntityConfiguration1985 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_31_in_ruleEntityConfiguration1997 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_27_in_ruleEntityConfiguration2009 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleEntityConfiguration2032 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleEntityConfiguration2046 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSystem_in_entryRuleSystem2082 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSystem2092 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleSystem2129 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSystem2146 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleSystem2163 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_ruleSystemEntity_in_ruleSystem2184 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleSystem2196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSystemEntity_in_entryRuleSystemEntity2232 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSystemEntity2242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_ruleSystemEntity2279 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSystemEntity2296 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleSystemEntity2313 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleSystemEntity2330 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport2371 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleImport2381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleImport2418 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFqnWithWildCard_in_ruleImport2439 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFqnWithWildCard_in_entryRuleFqnWithWildCard2476 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFqnWithWildCard2487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleFqnWithWildCard2534 = new BitSet(new long[]{0x0000001000000002L});
+    public static final BitSet FOLLOW_36_in_ruleFqnWithWildCard2553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDiagram_in_entryRuleDiagram2595 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDiagram2605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_ruleDiagram2651 = new BitSet(new long[]{0x0000002800000800L});
+    public static final BitSet FOLLOW_37_in_ruleDiagram2664 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDiagram2681 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleDiagram2698 = new BitSet(new long[]{0x000000C000002000L});
+    public static final BitSet FOLLOW_ruleInclude_in_ruleDiagram2719 = new BitSet(new long[]{0x000000C000002000L});
+    public static final BitSet FOLLOW_13_in_ruleDiagram2732 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInclude_in_entryRuleInclude2768 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInclude2778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleInclude2823 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_39_in_ruleInclude2852 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleInclude2891 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_40_in_ruleInclude2904 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleInclude2916 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInclude2936 = new BitSet(new long[]{0x0000000000022000L});
+    public static final BitSet FOLLOW_17_in_ruleInclude2949 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInclude2969 = new BitSet(new long[]{0x0000000000022000L});
+    public static final BitSet FOLLOW_13_in_ruleInclude2983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumDeclaration_in_entryRuleEnumDeclaration3020 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumDeclaration3030 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_ruleEnumDeclaration3067 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumDeclaration3084 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleEnumDeclaration3101 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumDeclaration3118 = new BitSet(new long[]{0x0000000000022000L});
+    public static final BitSet FOLLOW_17_in_ruleEnumDeclaration3136 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumDeclaration3147 = new BitSet(new long[]{0x0000000000022000L});
+    public static final BitSet FOLLOW_13_in_ruleEnumDeclaration3160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN3197 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFQN3208 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN3248 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_42_in_ruleFQN3267 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN3282 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_ruleEntity_in_entryRuleEntity3329 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEntity3339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_ruleEntity3376 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEntity3393 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleEntity3410 = new BitSet(new long[]{0x0001400000002000L});
+    public static final BitSet FOLLOW_ruleProperty_in_ruleEntity3431 = new BitSet(new long[]{0x0001400000002000L});
+    public static final BitSet FOLLOW_13_in_ruleEntity3444 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDomain_in_entryRuleDomain3480 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDomain3490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_ruleDomain3536 = new BitSet(new long[]{0x0000100800000800L});
+    public static final BitSet FOLLOW_44_in_ruleDomain3549 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleDomain3566 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_45_in_ruleDomain3583 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleDomain3600 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleDomain3617 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_ruleEntity_in_ruleDomain3638 = new BitSet(new long[]{0x0000080000002000L});
+    public static final BitSet FOLLOW_13_in_ruleDomain3651 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProperty_in_entryRuleProperty3687 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleProperty3697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleField_in_ruleProperty3744 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAssociation_in_ruleProperty3771 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAssociation_in_entryRuleAssociation3806 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAssociation3816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_ruleAssociation3853 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAssociation3870 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_ruleAssociation3887 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleAssociation3910 = new BitSet(new long[]{0x7000000000000000L});
+    public static final BitSet FOLLOW_ruleMultiplicty_in_ruleAssociation3931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleField_in_entryRuleField3967 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleField3977 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleField4014 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleField4031 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_47_in_ruleField4048 = new BitSet(new long[]{0x007E000000000000L});
+    public static final BitSet FOLLOW_ruleLiteral_in_ruleField4069 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral4105 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral4115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleLiteral4168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleLiteral4216 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_51_in_ruleLiteral4264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_ruleLiteral4312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_53_in_ruleLiteral4360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnum_in_ruleLiteral4402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum4437 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnum4447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_ruleEnum4484 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum4504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_ruleBoolean4554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_ruleBoolean4571 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_ruleBREType4616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_ruleBREType4633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_59_in_ruleBREType4650 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_ruleMultiplicty4695 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_61_in_ruleMultiplicty4712 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_ruleMultiplicty4729 = new BitSet(new long[]{0x0000000000000002L});
 
 }

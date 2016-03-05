@@ -7,6 +7,20 @@
     editorPluginID="org.pklose.espl.dsl.editor" runtimeVersion="2.11">
   <genPackages prefix="Esplm" basePackage="org.pklose.espl" disposableProviderFactory="true"
       fileExtensions="esplm" ecorePackage="Esplm.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Esplm.ecore#//Boolean">
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Boolean/true"/>
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Boolean/false"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Esplm.ecore#//BREType">
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//BREType/BizToBiz"/>
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//BREType/SrcToBiz"/>
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//BREType/BizToOut"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Esplm.ecore#//Multiplicty">
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/OneToMany"/>
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/ZeroToMany"/>
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/OneToOne"/>
+    </genEnums>
     <genClasses ecoreClass="Esplm.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//Model/elements"/>
     </genClasses>
@@ -23,7 +37,39 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Activity/businessRule"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Activity/description"/>
     </genClasses>
-    <genClasses ecoreClass="Esplm.ecore#//BusinessRule"/>
+    <genClasses ecoreClass="Esplm.ecore#//BusinessRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/imports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//BusinessRule/typ"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/systemInputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/output"/>
+    </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//BreSystemEntityInput">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//BreSystemEntityInput/inputElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BreSystemEntityInput/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//BreEntityInput">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//BreEntityInput/inputElement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BreEntityInput/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//SystemEntityConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//SystemEntityConfiguration/primary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//SystemEntityConfiguration/obligatorisch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//SystemEntityConfiguration/multiple"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//SystemEntityConfiguration/joinCriteria"/>
+    </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//EntityConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//EntityConfiguration/primary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//EntityConfiguration/obligatorisch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//EntityConfiguration/multiple"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//EntityConfiguration/path"/>
+    </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//System">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//System/srcEntities"/>
+    </genClasses>
+    <genClasses ecoreClass="Esplm.ecore#//SystemEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//SystemEntity/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//SystemEntity/format"/>
+    </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Import/importedNamespace"/>
     </genClasses>
@@ -53,10 +99,7 @@
     </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//Association">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Esplm.ecore#//Association/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//Association/multiplicity"/>
-    </genClasses>
-    <genClasses ecoreClass="Esplm.ecore#//Multiplicty">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Multiplicty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//Association/multiplicity"/>
     </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//Field">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//Field/literal"/>

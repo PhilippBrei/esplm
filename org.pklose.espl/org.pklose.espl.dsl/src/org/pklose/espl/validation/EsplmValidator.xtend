@@ -3,6 +3,11 @@
  */
 package org.pklose.espl.validation
 
+import org.eclipse.xtext.validation.Check
+import org.pklose.espl.esplm.BusinessRule
+import org.pklose.espl.esplm.BREType
+import org.pklose.espl.esplm.BreEntityInput
+
 //import org.eclipse.xtext.validation.Check
 
 /**
@@ -22,4 +27,13 @@ class EsplmValidator extends AbstractEsplmValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+	@Check
+	def checkBREInputTypesMatch (BusinessRule businessRule) {
+		if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {			
+			if (!businessRule.systemInputs.forall[it instanceof BreEntityInput]) {
+				
+			}
+		}
+	}
 }
