@@ -27,7 +27,7 @@ public class Link {
     _builder.append("\", relationship:\"association\", targetRole:\"");
     String _name_2 = this.association.getName();
     _builder.append(_name_2, "");
-    _builder.append("\"\" }");
+    _builder.append("\" }");
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }

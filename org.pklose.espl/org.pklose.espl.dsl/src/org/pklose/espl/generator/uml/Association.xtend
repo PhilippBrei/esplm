@@ -15,7 +15,7 @@ public class Link {
 	
 	public def toJSON () {
 		return '''
-			 { from: "«entity.name»", to:"«association.type.name»", relationship:"association", targetRole:"«association.name»"" }
+			 { from: "«entity.name»", to:"«association.type.name»", relationship:"association", targetRole:"«association.name»" }
 		'''
 	}
 }
