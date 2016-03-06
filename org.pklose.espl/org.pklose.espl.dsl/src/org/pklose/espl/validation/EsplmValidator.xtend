@@ -4,12 +4,14 @@
 package org.pklose.espl.validation
 
 import org.eclipse.xtext.validation.Check
-import org.pklose.espl.esplm.BusinessRule
 import org.pklose.espl.esplm.BREType
 import org.pklose.espl.esplm.BreEntityInput
+import org.pklose.espl.esplm.BusinessRule
 import org.pklose.espl.esplm.EsplmPackage
-import org.pklose.espl.esplm.BreSystemEntityInput
-import org.eclipse.xtend.lib.macro.services.Problem.Severity
+import org.pklose.espl.esplm.Entity
+import org.pklose.espl.esplm.SystemEntity
+import org.eclipse.emf.common.util.EList
+import java.util.List
 
 //import org.eclipse.xtext.validation.Check
 /**
@@ -34,18 +36,20 @@ class EsplmValidator extends AbstractEsplmValidator {
 //	}
 	@Check
 	def checkBREInputTypesMatch(BusinessRule businessRule) {
-		if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {
-			for (bre : businessRule.systemInputs.filter(typeof(BreEntityInput))) {
-				addIssue(BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT,
-					Severity::ERROR.name);
+		var List<BreEntityInput> inputElements = businessRule.systemInputs as List<BreEntityInput>
+		for (BreEntityInput bre : (businessRule.systemInputs as EList<BreEntityInput>)) {
+			if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {
+				if (bre.inputElement instanceof SystemEntity) {
+					error(BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT);
+				}
 			}
-		}
 
-		if (BREType.SRC_TO_BIZ.equals(businessRule.typ)) {
-			for (bre : businessRule.systemInputs.filter(typeof(BreSystemEntityInput))) {
-				addIssue(SRC_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT,
-					Severity::ERROR.name);
+			if (BREType.SRC_TO_BIZ.equals(businessRule.typ)) {
+				if (bre.inputElement instanceof Entity) {
+					error(SRC_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT);
+				}				
 			}
+
 		}
 	}
 }

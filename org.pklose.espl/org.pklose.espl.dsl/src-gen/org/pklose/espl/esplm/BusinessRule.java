@@ -4,8 +4,6 @@ package org.pklose.espl.esplm;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Business Rule</b></em>'.
@@ -74,7 +72,7 @@ public interface BusinessRule extends Element
 
   /**
    * Returns the value of the '<em><b>System Inputs</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
+   * The list contents are of type {@link org.pklose.espl.esplm.BreEntityInput}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>System Inputs</em>' containment reference list isn't clear,
@@ -86,32 +84,32 @@ public interface BusinessRule extends Element
    * @model containment="true"
    * @generated
    */
-  EList<EObject> getSystemInputs();
+  EList<BreEntityInput> getSystemInputs();
 
   /**
-   * Returns the value of the '<em><b>Output</b></em>' reference.
+   * Returns the value of the '<em><b>Output</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Output</em>' reference isn't clear,
+   * If the meaning of the '<em>Output</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Output</em>' reference.
-   * @see #setOutput(EObject)
+   * @return the value of the '<em>Output</em>' containment reference.
+   * @see #setOutput(BreOutPutReference)
    * @see org.pklose.espl.esplm.EsplmPackage#getBusinessRule_Output()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EObject getOutput();
+  BreOutPutReference getOutput();
 
   /**
-   * Sets the value of the '{@link org.pklose.espl.esplm.BusinessRule#getOutput <em>Output</em>}' reference.
+   * Sets the value of the '{@link org.pklose.espl.esplm.BusinessRule#getOutput <em>Output</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Output</em>' reference.
+   * @param value the new value of the '<em>Output</em>' containment reference.
    * @see #getOutput()
    * @generated
    */
-  void setOutput(EObject value);
+  void setOutput(BreOutPutReference value);
 
 } // BusinessRule

@@ -26,30 +26,25 @@
         eType="#//Import" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="typ" eType="#//BREType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemInputs" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        eType="#//BreEntityInput" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//BreOutPutReference"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BreSystemEntityInput">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputElement" eType="#//SystemEntity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" upperBound="-1"
-        eType="#//SystemEntityConfiguration" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BreOutPutReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//ModelElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BreEntityInput">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputElement" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputElement" eType="#//ModelElement"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" upperBound="-1"
         eType="#//EntityConfiguration" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemEntityConfiguration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primary" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obligatorisch" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="joinCriteria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityConfiguration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primary" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obligatorisch" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//Association"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="primary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obligatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Boolean">
     <eLiterals name="true" literal="J"/>
@@ -64,8 +59,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="srcEntities" upperBound="-1"
         eType="#//SystemEntity" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemEntity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemEntity" eSuperTypes="#//ModelElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
@@ -87,8 +81,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Entity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//ModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
   </eClassifiers>

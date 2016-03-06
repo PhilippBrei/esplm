@@ -3,16 +3,16 @@
  */
 package org.pklose.espl.validation;
 
-import com.google.common.collect.Iterables;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend.lib.macro.services.Problem;
 import org.eclipse.xtext.validation.Check;
 import org.pklose.espl.esplm.BREType;
 import org.pklose.espl.esplm.BreEntityInput;
-import org.pklose.espl.esplm.BreSystemEntityInput;
 import org.pklose.espl.esplm.BusinessRule;
+import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.EsplmPackage;
+import org.pklose.espl.esplm.ModelElement;
+import org.pklose.espl.esplm.SystemEntity;
 import org.pklose.espl.validation.AbstractEsplmValidator;
 
 /**
@@ -28,24 +28,27 @@ public class EsplmValidator extends AbstractEsplmValidator {
   
   @Check
   public void checkBREInputTypesMatch(final BusinessRule businessRule) {
-    BREType _typ = businessRule.getTyp();
-    boolean _equals = BREType.BIZ_TO_BIZ.equals(_typ);
-    if (_equals) {
-      EList<EObject> _systemInputs = businessRule.getSystemInputs();
-      Iterable<BreEntityInput> _filter = Iterables.<BreEntityInput>filter(_systemInputs, BreEntityInput.class);
-      for (final BreEntityInput bre : _filter) {
-        String _name = Problem.Severity.ERROR.name();
-        this.addIssue(this.BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT, _name);
-      }
-    }
-    BREType _typ_1 = businessRule.getTyp();
-    boolean _equals_1 = BREType.SRC_TO_BIZ.equals(_typ_1);
-    if (_equals_1) {
-      EList<EObject> _systemInputs_1 = businessRule.getSystemInputs();
-      Iterable<BreSystemEntityInput> _filter_1 = Iterables.<BreSystemEntityInput>filter(_systemInputs_1, BreSystemEntityInput.class);
-      for (final BreSystemEntityInput bre_1 : _filter_1) {
-        String _name_1 = Problem.Severity.ERROR.name();
-        this.addIssue(this.SRC_TO_BIZ_ERROR, bre_1, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT, _name_1);
+    EList<BreEntityInput> _systemInputs = businessRule.getSystemInputs();
+    List<BreEntityInput> inputElements = ((List<BreEntityInput>) _systemInputs);
+    EList<BreEntityInput> _systemInputs_1 = businessRule.getSystemInputs();
+    for (final BreEntityInput bre : ((EList<BreEntityInput>) _systemInputs_1)) {
+      {
+        BREType _typ = businessRule.getTyp();
+        boolean _equals = BREType.BIZ_TO_BIZ.equals(_typ);
+        if (_equals) {
+          ModelElement _inputElement = bre.getInputElement();
+          if ((_inputElement instanceof SystemEntity)) {
+            this.error(this.BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT);
+          }
+        }
+        BREType _typ_1 = businessRule.getTyp();
+        boolean _equals_1 = BREType.SRC_TO_BIZ.equals(_typ_1);
+        if (_equals_1) {
+          ModelElement _inputElement_1 = bre.getInputElement();
+          if ((_inputElement_1 instanceof Entity)) {
+            this.error(this.SRC_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT);
+          }
+        }
       }
     }
   }

@@ -34,12 +34,12 @@ public interface BreEntityInput extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Input Element</em>' reference.
-   * @see #setInputElement(Entity)
+   * @see #setInputElement(ModelElement)
    * @see org.pklose.espl.esplm.EsplmPackage#getBreEntityInput_InputElement()
    * @model
    * @generated
    */
-  Entity getInputElement();
+  ModelElement getInputElement();
 
   /**
    * Sets the value of the '{@link org.pklose.espl.esplm.BreEntityInput#getInputElement <em>Input Element</em>}' reference.
@@ -49,7 +49,7 @@ public interface BreEntityInput extends EObject
    * @see #getInputElement()
    * @generated
    */
-  void setInputElement(Entity value);
+  void setInputElement(ModelElement value);
 
   /**
    * Returns the value of the '<em><b>Configuration</b></em>' containment reference list.

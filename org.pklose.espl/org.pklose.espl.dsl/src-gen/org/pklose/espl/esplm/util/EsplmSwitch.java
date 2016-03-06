@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BreEntityInput;
-import org.pklose.espl.esplm.BreSystemEntityInput;
+import org.pklose.espl.esplm.BreOutPutReference;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -25,9 +25,9 @@ import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
+import org.pklose.espl.esplm.ModelElement;
 import org.pklose.espl.esplm.Property;
 import org.pklose.espl.esplm.SystemEntity;
-import org.pklose.espl.esplm.SystemEntityConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -129,10 +129,17 @@ public class EsplmSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EsplmPackage.BRE_SYSTEM_ENTITY_INPUT:
+      case EsplmPackage.MODEL_ELEMENT:
       {
-        BreSystemEntityInput breSystemEntityInput = (BreSystemEntityInput)theEObject;
-        T result = caseBreSystemEntityInput(breSystemEntityInput);
+        ModelElement modelElement = (ModelElement)theEObject;
+        T result = caseModelElement(modelElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EsplmPackage.BRE_OUT_PUT_REFERENCE:
+      {
+        BreOutPutReference breOutPutReference = (BreOutPutReference)theEObject;
+        T result = caseBreOutPutReference(breOutPutReference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -140,13 +147,6 @@ public class EsplmSwitch<T> extends Switch<T>
       {
         BreEntityInput breEntityInput = (BreEntityInput)theEObject;
         T result = caseBreEntityInput(breEntityInput);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case EsplmPackage.SYSTEM_ENTITY_CONFIGURATION:
-      {
-        SystemEntityConfiguration systemEntityConfiguration = (SystemEntityConfiguration)theEObject;
-        T result = caseSystemEntityConfiguration(systemEntityConfiguration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -169,6 +169,7 @@ public class EsplmSwitch<T> extends Switch<T>
       {
         SystemEntity systemEntity = (SystemEntity)theEObject;
         T result = caseSystemEntity(systemEntity);
+        if (result == null) result = caseModelElement(systemEntity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -206,6 +207,7 @@ public class EsplmSwitch<T> extends Switch<T>
       {
         Entity entity = (Entity)theEObject;
         T result = caseEntity(entity);
+        if (result == null) result = caseModelElement(entity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -340,17 +342,33 @@ public class EsplmSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Bre System Entity Input</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Model Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Bre System Entity Input</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Model Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBreSystemEntityInput(BreSystemEntityInput object)
+  public T caseModelElement(ModelElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Bre Out Put Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Bre Out Put Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBreOutPutReference(BreOutPutReference object)
   {
     return null;
   }
@@ -367,22 +385,6 @@ public class EsplmSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBreEntityInput(BreEntityInput object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>System Entity Configuration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>System Entity Configuration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSystemEntityConfiguration(SystemEntityConfiguration object)
   {
     return null;
   }

@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.pklose.espl.esplm.BreEntityInput;
-import org.pklose.espl.esplm.Entity;
 import org.pklose.espl.esplm.EntityConfiguration;
 import org.pklose.espl.esplm.EsplmPackage;
+import org.pklose.espl.esplm.ModelElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,7 +47,7 @@ public class BreEntityInputImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    * @ordered
    */
-  protected Entity inputElement;
+  protected ModelElement inputElement;
 
   /**
    * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference list.
@@ -85,12 +85,12 @@ public class BreEntityInputImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public Entity getInputElement()
+  public ModelElement getInputElement()
   {
     if (inputElement != null && inputElement.eIsProxy())
     {
       InternalEObject oldInputElement = (InternalEObject)inputElement;
-      inputElement = (Entity)eResolveProxy(oldInputElement);
+      inputElement = (ModelElement)eResolveProxy(oldInputElement);
       if (inputElement != oldInputElement)
       {
         if (eNotificationRequired())
@@ -105,7 +105,7 @@ public class BreEntityInputImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public Entity basicGetInputElement()
+  public ModelElement basicGetInputElement()
   {
     return inputElement;
   }
@@ -115,9 +115,9 @@ public class BreEntityInputImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInputElement(Entity newInputElement)
+  public void setInputElement(ModelElement newInputElement)
   {
-    Entity oldInputElement = inputElement;
+    ModelElement oldInputElement = inputElement;
     inputElement = newInputElement;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.BRE_ENTITY_INPUT__INPUT_ELEMENT, oldInputElement, inputElement));
@@ -184,7 +184,7 @@ public class BreEntityInputImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case EsplmPackage.BRE_ENTITY_INPUT__INPUT_ELEMENT:
-        setInputElement((Entity)newValue);
+        setInputElement((ModelElement)newValue);
         return;
       case EsplmPackage.BRE_ENTITY_INPUT__CONFIGURATION:
         getConfiguration().clear();
@@ -205,7 +205,7 @@ public class BreEntityInputImpl extends MinimalEObjectImpl.Container implements 
     switch (featureID)
     {
       case EsplmPackage.BRE_ENTITY_INPUT__INPUT_ELEMENT:
-        setInputElement((Entity)null);
+        setInputElement((ModelElement)null);
         return;
       case EsplmPackage.BRE_ENTITY_INPUT__CONFIGURATION:
         getConfiguration().clear();

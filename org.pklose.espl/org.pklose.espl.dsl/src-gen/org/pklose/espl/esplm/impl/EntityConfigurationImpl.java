@@ -2,15 +2,15 @@
  */
 package org.pklose.espl.esplm.impl;
 
+import java.lang.Boolean;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.EntityConfiguration;
 import org.pklose.espl.esplm.EsplmPackage;
 
@@ -22,10 +22,9 @@ import org.pklose.espl.esplm.EsplmPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#getPrimary <em>Primary</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#getObligatorisch <em>Obligatorisch</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#getMultiple <em>Multiple</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#isPrimary <em>Primary</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#isObligatory <em>Obligatory</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.impl.EntityConfigurationImpl#isMultiple <em>Multiple</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,74 +32,64 @@ import org.pklose.espl.esplm.EsplmPackage;
 public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implements EntityConfiguration
 {
   /**
-   * The default value of the '{@link #getPrimary() <em>Primary</em>}' attribute.
+   * The default value of the '{@link #isPrimary() <em>Primary</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrimary()
+   * @see #isPrimary()
    * @generated
    * @ordered
    */
-  protected static final org.pklose.espl.esplm.Boolean PRIMARY_EDEFAULT = org.pklose.espl.esplm.Boolean.TRUE;
+  protected static final boolean PRIMARY_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getPrimary() <em>Primary</em>}' attribute.
+   * The cached value of the '{@link #isPrimary() <em>Primary</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrimary()
+   * @see #isPrimary()
    * @generated
    * @ordered
    */
-  protected org.pklose.espl.esplm.Boolean primary = PRIMARY_EDEFAULT;
+  protected boolean primary = PRIMARY_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getObligatorisch() <em>Obligatorisch</em>}' attribute.
+   * The default value of the '{@link #isObligatory() <em>Obligatory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getObligatorisch()
+   * @see #isObligatory()
    * @generated
    * @ordered
    */
-  protected static final org.pklose.espl.esplm.Boolean OBLIGATORISCH_EDEFAULT = org.pklose.espl.esplm.Boolean.TRUE;
+  protected static final boolean OBLIGATORY_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getObligatorisch() <em>Obligatorisch</em>}' attribute.
+   * The cached value of the '{@link #isObligatory() <em>Obligatory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getObligatorisch()
+   * @see #isObligatory()
    * @generated
    * @ordered
    */
-  protected org.pklose.espl.esplm.Boolean obligatorisch = OBLIGATORISCH_EDEFAULT;
+  protected boolean obligatory = OBLIGATORY_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getMultiple() <em>Multiple</em>}' attribute.
+   * The default value of the '{@link #isMultiple() <em>Multiple</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMultiple()
+   * @see #isMultiple()
    * @generated
    * @ordered
    */
-  protected static final org.pklose.espl.esplm.Boolean MULTIPLE_EDEFAULT = org.pklose.espl.esplm.Boolean.TRUE;
+  protected static final boolean MULTIPLE_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getMultiple() <em>Multiple</em>}' attribute.
+   * The cached value of the '{@link #isMultiple() <em>Multiple</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMultiple()
+   * @see #isMultiple()
    * @generated
    * @ordered
    */
-  protected org.pklose.espl.esplm.Boolean multiple = MULTIPLE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPath()
-   * @generated
-   * @ordered
-   */
-  protected Association path;
+  protected boolean multiple = MULTIPLE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,7 +117,7 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.pklose.espl.esplm.Boolean getPrimary()
+  public boolean isPrimary()
   {
     return primary;
   }
@@ -138,10 +127,10 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPrimary(org.pklose.espl.esplm.Boolean newPrimary)
+  public void setPrimary(boolean newPrimary)
   {
-    org.pklose.espl.esplm.Boolean oldPrimary = primary;
-    primary = newPrimary == null ? PRIMARY_EDEFAULT : newPrimary;
+    boolean oldPrimary = primary;
+    primary = newPrimary;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ENTITY_CONFIGURATION__PRIMARY, oldPrimary, primary));
   }
@@ -151,9 +140,9 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.pklose.espl.esplm.Boolean getObligatorisch()
+  public boolean isObligatory()
   {
-    return obligatorisch;
+    return obligatory;
   }
 
   /**
@@ -161,12 +150,12 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setObligatorisch(org.pklose.espl.esplm.Boolean newObligatorisch)
+  public void setObligatory(boolean newObligatory)
   {
-    org.pklose.espl.esplm.Boolean oldObligatorisch = obligatorisch;
-    obligatorisch = newObligatorisch == null ? OBLIGATORISCH_EDEFAULT : newObligatorisch;
+    boolean oldObligatory = obligatory;
+    obligatory = newObligatory;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORISCH, oldObligatorisch, obligatorisch));
+      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORY, oldObligatory, obligatory));
   }
 
   /**
@@ -174,7 +163,7 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.pklose.espl.esplm.Boolean getMultiple()
+  public boolean isMultiple()
   {
     return multiple;
   }
@@ -184,55 +173,12 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMultiple(org.pklose.espl.esplm.Boolean newMultiple)
+  public void setMultiple(boolean newMultiple)
   {
-    org.pklose.espl.esplm.Boolean oldMultiple = multiple;
-    multiple = newMultiple == null ? MULTIPLE_EDEFAULT : newMultiple;
+    boolean oldMultiple = multiple;
+    multiple = newMultiple;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ENTITY_CONFIGURATION__MULTIPLE, oldMultiple, multiple));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Association getPath()
-  {
-    if (path != null && path.eIsProxy())
-    {
-      InternalEObject oldPath = (InternalEObject)path;
-      path = (Association)eResolveProxy(oldPath);
-      if (path != oldPath)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsplmPackage.ENTITY_CONFIGURATION__PATH, oldPath, path));
-      }
-    }
-    return path;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Association basicGetPath()
-  {
-    return path;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPath(Association newPath)
-  {
-    Association oldPath = path;
-    path = newPath;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ENTITY_CONFIGURATION__PATH, oldPath, path));
   }
 
   /**
@@ -246,14 +192,11 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
     switch (featureID)
     {
       case EsplmPackage.ENTITY_CONFIGURATION__PRIMARY:
-        return getPrimary();
-      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORISCH:
-        return getObligatorisch();
+        return isPrimary();
+      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORY:
+        return isObligatory();
       case EsplmPackage.ENTITY_CONFIGURATION__MULTIPLE:
-        return getMultiple();
-      case EsplmPackage.ENTITY_CONFIGURATION__PATH:
-        if (resolve) return getPath();
-        return basicGetPath();
+        return isMultiple();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -269,16 +212,13 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
     switch (featureID)
     {
       case EsplmPackage.ENTITY_CONFIGURATION__PRIMARY:
-        setPrimary((org.pklose.espl.esplm.Boolean)newValue);
+        setPrimary((Boolean)newValue);
         return;
-      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORISCH:
-        setObligatorisch((org.pklose.espl.esplm.Boolean)newValue);
+      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORY:
+        setObligatory((Boolean)newValue);
         return;
       case EsplmPackage.ENTITY_CONFIGURATION__MULTIPLE:
-        setMultiple((org.pklose.espl.esplm.Boolean)newValue);
-        return;
-      case EsplmPackage.ENTITY_CONFIGURATION__PATH:
-        setPath((Association)newValue);
+        setMultiple((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -297,14 +237,11 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
       case EsplmPackage.ENTITY_CONFIGURATION__PRIMARY:
         setPrimary(PRIMARY_EDEFAULT);
         return;
-      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORISCH:
-        setObligatorisch(OBLIGATORISCH_EDEFAULT);
+      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORY:
+        setObligatory(OBLIGATORY_EDEFAULT);
         return;
       case EsplmPackage.ENTITY_CONFIGURATION__MULTIPLE:
         setMultiple(MULTIPLE_EDEFAULT);
-        return;
-      case EsplmPackage.ENTITY_CONFIGURATION__PATH:
-        setPath((Association)null);
         return;
     }
     super.eUnset(featureID);
@@ -322,12 +259,10 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
     {
       case EsplmPackage.ENTITY_CONFIGURATION__PRIMARY:
         return primary != PRIMARY_EDEFAULT;
-      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORISCH:
-        return obligatorisch != OBLIGATORISCH_EDEFAULT;
+      case EsplmPackage.ENTITY_CONFIGURATION__OBLIGATORY:
+        return obligatory != OBLIGATORY_EDEFAULT;
       case EsplmPackage.ENTITY_CONFIGURATION__MULTIPLE:
         return multiple != MULTIPLE_EDEFAULT;
-      case EsplmPackage.ENTITY_CONFIGURATION__PATH:
-        return path != null;
     }
     return super.eIsSet(featureID);
   }
@@ -345,8 +280,8 @@ public class EntityConfigurationImpl extends MinimalEObjectImpl.Container implem
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (primary: ");
     result.append(primary);
-    result.append(", obligatorisch: ");
-    result.append(obligatorisch);
+    result.append(", obligatory: ");
+    result.append(obligatory);
     result.append(", multiple: ");
     result.append(multiple);
     result.append(')');

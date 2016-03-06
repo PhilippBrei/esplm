@@ -19,7 +19,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BreEntityInput;
-import org.pklose.espl.esplm.BreSystemEntityInput;
+import org.pklose.espl.esplm.BreOutPutReference;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -34,7 +34,6 @@ import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
 import org.pklose.espl.esplm.SystemEntity;
-import org.pklose.espl.esplm.SystemEntityConfiguration;
 import org.pklose.espl.services.EsplmGrammarAccess;
 
 @SuppressWarnings("all")
@@ -55,8 +54,8 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case EsplmPackage.BRE_ENTITY_INPUT:
 				sequence_BreEntityInput(context, (BreEntityInput) semanticObject); 
 				return; 
-			case EsplmPackage.BRE_SYSTEM_ENTITY_INPUT:
-				sequence_BreSystemEntityInput(context, (BreSystemEntityInput) semanticObject); 
+			case EsplmPackage.BRE_OUT_PUT_REFERENCE:
+				sequence_BreOutPutReference(context, (BreOutPutReference) semanticObject); 
 				return; 
 			case EsplmPackage.BUSINESS_RULE:
 				sequence_BusinessRule(context, (BusinessRule) semanticObject); 
@@ -103,9 +102,6 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case EsplmPackage.SYSTEM_ENTITY:
 				sequence_SystemEntity(context, (SystemEntity) semanticObject); 
 				return; 
-			case EsplmPackage.SYSTEM_ENTITY_CONFIGURATION:
-				sequence_SystemEntityConfiguration(context, (SystemEntityConfiguration) semanticObject); 
-				return; 
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
@@ -143,7 +139,7 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (inputElement=[Entity|FQN] configuration+=EntityConfiguration)
+	 *     (inputElement=[ModelElement|FQN] configuration+=EntityConfiguration)
 	 */
 	protected void sequence_BreEntityInput(EObject context, BreEntityInput semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -152,18 +148,29 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (inputElement=[SystemEntity|FQN] configuration+=SystemEntityConfiguration)
+	 *     output=[ModelElement|FQN]
 	 */
-	protected void sequence_BreSystemEntityInput(EObject context, BreSystemEntityInput semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_BreOutPutReference(EObject context, BreOutPutReference semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.BRE_OUT_PUT_REFERENCE__OUTPUT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.BRE_OUT_PUT_REFERENCE__OUTPUT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBreOutPutReferenceAccess().getOutputModelElementFQNParserRuleCall_0_1(), semanticObject.getOutput());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
 	 *     (
-	 *         (imports+=Import* name=ID typ=BREType (systemInputs+=BreSystemEntityInput | systemInputs+=BreEntityInput)* output=[Entity|FQN]) | 
-	 *         output=[SystemEntity|FQN]
+	 *         imports+=Import* 
+	 *         name=ID 
+	 *         typ=BREType 
+	 *         systemInputs+=BreEntityInput 
+	 *         systemInputs+=BreEntityInput* 
+	 *         output=BreOutPutReference
 	 *     )
 	 */
 	protected void sequence_BusinessRule(EObject context, BusinessRule semanticObject) {
@@ -191,7 +198,7 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (primary=Boolean obligatorisch=Boolean multiple=Boolean path=[Association|FQN]?)
+	 *     (primary?='primär'? obligatory?='obligatorisch'? multiple?='mehrfach'?)
 	 */
 	protected void sequence_EntityConfiguration(EObject context, EntityConfiguration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -298,21 +305,12 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Constraint:
-	 *     (primary=Boolean obligatorisch=Boolean multiple=Boolean joinCriteria=STRING?)
-	 */
-	protected void sequence_SystemEntityConfiguration(EObject context, SystemEntityConfiguration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (name=ID format=STRING)
 	 */
 	protected void sequence_SystemEntity(EObject context, SystemEntity semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__NAME));
+			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.MODEL_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.MODEL_ELEMENT__NAME));
 			if(transientValues.isValueTransient(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__FORMAT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EsplmPackage.Literals.SYSTEM_ENTITY__FORMAT));
 		}

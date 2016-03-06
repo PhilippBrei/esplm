@@ -4,16 +4,12 @@ package org.pklose.espl.esplm.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -30,34 +26,13 @@ import org.pklose.espl.esplm.Property;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.pklose.espl.esplm.impl.EntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.EntityImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
+public class EntityImpl extends ModelElementImpl implements Entity
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -87,29 +62,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   protected EClass eStaticClass()
   {
     return EsplmPackage.Literals.ENTITY;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.ENTITY__NAME, oldName, name));
   }
 
   /**
@@ -152,8 +104,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case EsplmPackage.ENTITY__NAME:
-        return getName();
       case EsplmPackage.ENTITY__PROPERTIES:
         return getProperties();
     }
@@ -171,9 +121,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case EsplmPackage.ENTITY__NAME:
-        setName((String)newValue);
-        return;
       case EsplmPackage.ENTITY__PROPERTIES:
         getProperties().clear();
         getProperties().addAll((Collection<? extends Property>)newValue);
@@ -192,9 +139,6 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case EsplmPackage.ENTITY__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case EsplmPackage.ENTITY__PROPERTIES:
         getProperties().clear();
         return;
@@ -212,29 +156,10 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case EsplmPackage.ENTITY__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case EsplmPackage.ENTITY__PROPERTIES:
         return properties != null && !properties.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //EntityImpl

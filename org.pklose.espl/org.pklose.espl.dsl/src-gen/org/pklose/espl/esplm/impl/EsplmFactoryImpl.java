@@ -15,7 +15,7 @@ import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BREType;
 import org.pklose.espl.esplm.BreEntityInput;
-import org.pklose.espl.esplm.BreSystemEntityInput;
+import org.pklose.espl.esplm.BreOutPutReference;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -31,10 +31,10 @@ import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
+import org.pklose.espl.esplm.ModelElement;
 import org.pklose.espl.esplm.Multiplicty;
 import org.pklose.espl.esplm.Property;
 import org.pklose.espl.esplm.SystemEntity;
-import org.pklose.espl.esplm.SystemEntityConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -93,9 +93,9 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
       case EsplmPackage.FLOW: return createFlow();
       case EsplmPackage.ACTIVITY: return createActivity();
       case EsplmPackage.BUSINESS_RULE: return createBusinessRule();
-      case EsplmPackage.BRE_SYSTEM_ENTITY_INPUT: return createBreSystemEntityInput();
+      case EsplmPackage.MODEL_ELEMENT: return createModelElement();
+      case EsplmPackage.BRE_OUT_PUT_REFERENCE: return createBreOutPutReference();
       case EsplmPackage.BRE_ENTITY_INPUT: return createBreEntityInput();
-      case EsplmPackage.SYSTEM_ENTITY_CONFIGURATION: return createSystemEntityConfiguration();
       case EsplmPackage.ENTITY_CONFIGURATION: return createEntityConfiguration();
       case EsplmPackage.SYSTEM: return createSystem();
       case EsplmPackage.SYSTEM_ENTITY: return createSystemEntity();
@@ -217,10 +217,21 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public BreSystemEntityInput createBreSystemEntityInput()
+  public ModelElement createModelElement()
   {
-    BreSystemEntityInputImpl breSystemEntityInput = new BreSystemEntityInputImpl();
-    return breSystemEntityInput;
+    ModelElementImpl modelElement = new ModelElementImpl();
+    return modelElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BreOutPutReference createBreOutPutReference()
+  {
+    BreOutPutReferenceImpl breOutPutReference = new BreOutPutReferenceImpl();
+    return breOutPutReference;
   }
 
   /**
@@ -232,17 +243,6 @@ public class EsplmFactoryImpl extends EFactoryImpl implements EsplmFactory
   {
     BreEntityInputImpl breEntityInput = new BreEntityInputImpl();
     return breEntityInput;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SystemEntityConfiguration createSystemEntityConfiguration()
-  {
-    SystemEntityConfigurationImpl systemEntityConfiguration = new SystemEntityConfigurationImpl();
-    return systemEntityConfiguration;
   }
 
   /**

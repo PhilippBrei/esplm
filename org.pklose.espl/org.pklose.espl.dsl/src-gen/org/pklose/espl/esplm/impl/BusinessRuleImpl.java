@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -19,6 +18,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.pklose.espl.esplm.BREType;
+import org.pklose.espl.esplm.BreEntityInput;
+import org.pklose.espl.esplm.BreOutPutReference;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.EsplmPackage;
 import org.pklose.espl.esplm.Import;
@@ -79,17 +80,17 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * @generated
    * @ordered
    */
-  protected EList<EObject> systemInputs;
+  protected EList<BreEntityInput> systemInputs;
 
   /**
-   * The cached value of the '{@link #getOutput() <em>Output</em>}' reference.
+   * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOutput()
    * @generated
    * @ordered
    */
-  protected EObject output;
+  protected BreOutPutReference output;
 
   /**
    * <!-- begin-user-doc -->
@@ -154,11 +155,11 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EObject> getSystemInputs()
+  public EList<BreEntityInput> getSystemInputs()
   {
     if (systemInputs == null)
     {
-      systemInputs = new EObjectContainmentEList<EObject>(EObject.class, this, EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS);
+      systemInputs = new EObjectContainmentEList<BreEntityInput>(BreEntityInput.class, this, EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS);
     }
     return systemInputs;
   }
@@ -168,27 +169,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getOutput()
-  {
-    if (output != null && output.eIsProxy())
-    {
-      InternalEObject oldOutput = (InternalEObject)output;
-      output = eResolveProxy(oldOutput);
-      if (output != oldOutput)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsplmPackage.BUSINESS_RULE__OUTPUT, oldOutput, output));
-      }
-    }
-    return output;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EObject basicGetOutput()
+  public BreOutPutReference getOutput()
   {
     return output;
   }
@@ -198,12 +179,37 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOutput(EObject newOutput)
+  public NotificationChain basicSetOutput(BreOutPutReference newOutput, NotificationChain msgs)
   {
-    EObject oldOutput = output;
+    BreOutPutReference oldOutput = output;
     output = newOutput;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.BUSINESS_RULE__OUTPUT, oldOutput, output));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsplmPackage.BUSINESS_RULE__OUTPUT, oldOutput, newOutput);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOutput(BreOutPutReference newOutput)
+  {
+    if (newOutput != output)
+    {
+      NotificationChain msgs = null;
+      if (output != null)
+        msgs = ((InternalEObject)output).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsplmPackage.BUSINESS_RULE__OUTPUT, null, msgs);
+      if (newOutput != null)
+        msgs = ((InternalEObject)newOutput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsplmPackage.BUSINESS_RULE__OUTPUT, null, msgs);
+      msgs = basicSetOutput(newOutput, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EsplmPackage.BUSINESS_RULE__OUTPUT, newOutput, newOutput));
   }
 
   /**
@@ -220,6 +226,8 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
         return ((InternalEList<?>)getSystemInputs()).basicRemove(otherEnd, msgs);
+      case EsplmPackage.BUSINESS_RULE__OUTPUT:
+        return basicSetOutput(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -241,8 +249,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
       case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
         return getSystemInputs();
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
-        if (resolve) return getOutput();
-        return basicGetOutput();
+        return getOutput();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -267,10 +274,10 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         return;
       case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
         getSystemInputs().clear();
-        getSystemInputs().addAll((Collection<? extends EObject>)newValue);
+        getSystemInputs().addAll((Collection<? extends BreEntityInput>)newValue);
         return;
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
-        setOutput((EObject)newValue);
+        setOutput((BreOutPutReference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -296,7 +303,7 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         getSystemInputs().clear();
         return;
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
-        setOutput((EObject)null);
+        setOutput((BreOutPutReference)null);
         return;
     }
     super.eUnset(featureID);

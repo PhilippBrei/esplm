@@ -10,6 +10,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
@@ -21,11 +22,21 @@ import org.pklose.espl.services.EsplmGrammarAccess;
 public class EsplmSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EsplmGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__a;
+	protected AbstractElementAlias match_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__p;
+	protected AbstractElementAlias match_EntityConfiguration___RightCurlyBracketKeyword_2_1_LeftCurlyBracketKeyword_0_0_a__p;
+	protected AbstractElementAlias match_EntityConfiguration___RightCurlyBracketKeyword_2_1_a_LeftCurlyBracketKeyword_0_0__p;
+	protected AbstractElementAlias match_EntityConfiguration___RightCurlyBracketKeyword_2_1_p_LeftCurlyBracketKeyword_0_0_p__p;
 	protected AbstractElementAlias match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EsplmGrammarAccess) access;
+		match_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getEntityConfigurationAccess().getLeftCurlyBracketKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getEntityConfigurationAccess().getRightCurlyBracketKeyword_2_1()));
+		match_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__p = new AlternativeAlias(true, false, new TokenAlias(false, false, grammarAccess.getEntityConfigurationAccess().getLeftCurlyBracketKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getEntityConfigurationAccess().getRightCurlyBracketKeyword_2_1()));
+		match_EntityConfiguration___RightCurlyBracketKeyword_2_1_LeftCurlyBracketKeyword_0_0_a__p = new GroupAlias(true, false, new TokenAlias(false, false, grammarAccess.getEntityConfigurationAccess().getRightCurlyBracketKeyword_2_1()), new TokenAlias(true, true, grammarAccess.getEntityConfigurationAccess().getLeftCurlyBracketKeyword_0_0()));
+		match_EntityConfiguration___RightCurlyBracketKeyword_2_1_a_LeftCurlyBracketKeyword_0_0__p = new GroupAlias(true, false, new TokenAlias(true, true, grammarAccess.getEntityConfigurationAccess().getRightCurlyBracketKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getEntityConfigurationAccess().getLeftCurlyBracketKeyword_0_0()));
+		match_EntityConfiguration___RightCurlyBracketKeyword_2_1_p_LeftCurlyBracketKeyword_0_0_p__p = new GroupAlias(true, false, new TokenAlias(true, false, grammarAccess.getEntityConfigurationAccess().getRightCurlyBracketKeyword_2_1()), new TokenAlias(true, false, grammarAccess.getEntityConfigurationAccess().getLeftCurlyBracketKeyword_0_0()));
 		match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getEnumDeclarationAccess().getIDTerminalRuleCall_4_1()));
 	}
 	
@@ -51,12 +62,89 @@ public class EsplmSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a.equals(syntax))
+			if(match_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__a.equals(syntax))
+				emit_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__p.equals(syntax))
+				emit_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityConfiguration___RightCurlyBracketKeyword_2_1_LeftCurlyBracketKeyword_0_0_a__p.equals(syntax))
+				emit_EntityConfiguration___RightCurlyBracketKeyword_2_1_LeftCurlyBracketKeyword_0_0_a__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityConfiguration___RightCurlyBracketKeyword_2_1_a_LeftCurlyBracketKeyword_0_0__p.equals(syntax))
+				emit_EntityConfiguration___RightCurlyBracketKeyword_2_1_a_LeftCurlyBracketKeyword_0_0__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EntityConfiguration___RightCurlyBracketKeyword_2_1_p_LeftCurlyBracketKeyword_0_0_p__p.equals(syntax))
+				emit_EntityConfiguration___RightCurlyBracketKeyword_2_1_p_LeftCurlyBracketKeyword_0_0_p__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a.equals(syntax))
 				emit_EnumDeclaration___CommaKeyword_4_0_IDTerminalRuleCall_4_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('{' | '}')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 *     (rule start) (ambiguity) multiple?='mehrfach'
+	 *     (rule start) (ambiguity) obligatory?='obligatorisch'
+	 *     obligatory?='obligatorisch' (ambiguity) (rule end)
+	 *     obligatory?='obligatorisch' (ambiguity) multiple?='mehrfach'
+	 *     obligatory?='obligatorisch' (ambiguity) obligatory?='obligatorisch'
+	 *     primary?='primär' (ambiguity) (rule end)
+	 *     primary?='primär' (ambiguity) multiple?='mehrfach'
+	 *     primary?='primär' (ambiguity) obligatory?='obligatorisch'
+	 */
+	protected void emit_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('{' | '}')+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 */
+	protected void emit_EntityConfiguration___LeftCurlyBracketKeyword_0_0_or_RightCurlyBracketKeyword_2_1__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' '{'*)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     multiple?='mehrfach' (ambiguity) (rule end)
+	 *     multiple?='mehrfach' (ambiguity) multiple?='mehrfach'
+	 *     multiple?='mehrfach' (ambiguity) obligatory?='obligatorisch'
+	 */
+	protected void emit_EntityConfiguration___RightCurlyBracketKeyword_2_1_LeftCurlyBracketKeyword_0_0_a__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}'* '{')+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) primary?='primär'
+	 *     obligatory?='obligatorisch' (ambiguity) primary?='primär'
+	 *     primary?='primär' (ambiguity) primary?='primär'
+	 */
+	protected void emit_EntityConfiguration___RightCurlyBracketKeyword_2_1_a_LeftCurlyBracketKeyword_0_0__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}'+ '{'+)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     multiple?='mehrfach' (ambiguity) primary?='primär'
+	 */
+	protected void emit_EntityConfiguration___RightCurlyBracketKeyword_2_1_p_LeftCurlyBracketKeyword_0_0_p__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     (',' ID)*

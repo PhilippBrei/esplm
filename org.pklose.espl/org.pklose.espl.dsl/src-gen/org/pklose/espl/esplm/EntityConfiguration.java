@@ -13,10 +13,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#getPrimary <em>Primary</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#getObligatorisch <em>Obligatorisch</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#getMultiple <em>Multiple</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#getPath <em>Path</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#isPrimary <em>Primary</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#isObligatory <em>Obligatory</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.EntityConfiguration#isMultiple <em>Multiple</em>}</li>
  * </ul>
  *
  * @see org.pklose.espl.esplm.EsplmPackage#getEntityConfiguration()
@@ -27,7 +26,6 @@ public interface EntityConfiguration extends EObject
 {
   /**
    * Returns the value of the '<em><b>Primary</b></em>' attribute.
-   * The literals are from the enumeration {@link org.pklose.espl.esplm.Boolean}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Primary</em>' attribute isn't clear,
@@ -35,57 +33,51 @@ public interface EntityConfiguration extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Primary</em>' attribute.
-   * @see org.pklose.espl.esplm.Boolean
-   * @see #setPrimary(org.pklose.espl.esplm.Boolean)
+   * @see #setPrimary(boolean)
    * @see org.pklose.espl.esplm.EsplmPackage#getEntityConfiguration_Primary()
    * @model
    * @generated
    */
-  org.pklose.espl.esplm.Boolean getPrimary();
+  boolean isPrimary();
 
   /**
-   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#getPrimary <em>Primary</em>}' attribute.
+   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#isPrimary <em>Primary</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Primary</em>' attribute.
-   * @see org.pklose.espl.esplm.Boolean
-   * @see #getPrimary()
+   * @see #isPrimary()
    * @generated
    */
-  void setPrimary(org.pklose.espl.esplm.Boolean value);
+  void setPrimary(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Obligatorisch</b></em>' attribute.
-   * The literals are from the enumeration {@link org.pklose.espl.esplm.Boolean}.
+   * Returns the value of the '<em><b>Obligatory</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Obligatorisch</em>' attribute isn't clear,
+   * If the meaning of the '<em>Obligatory</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Obligatorisch</em>' attribute.
-   * @see org.pklose.espl.esplm.Boolean
-   * @see #setObligatorisch(org.pklose.espl.esplm.Boolean)
-   * @see org.pklose.espl.esplm.EsplmPackage#getEntityConfiguration_Obligatorisch()
+   * @return the value of the '<em>Obligatory</em>' attribute.
+   * @see #setObligatory(boolean)
+   * @see org.pklose.espl.esplm.EsplmPackage#getEntityConfiguration_Obligatory()
    * @model
    * @generated
    */
-  org.pklose.espl.esplm.Boolean getObligatorisch();
+  boolean isObligatory();
 
   /**
-   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#getObligatorisch <em>Obligatorisch</em>}' attribute.
+   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#isObligatory <em>Obligatory</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Obligatorisch</em>' attribute.
-   * @see org.pklose.espl.esplm.Boolean
-   * @see #getObligatorisch()
+   * @param value the new value of the '<em>Obligatory</em>' attribute.
+   * @see #isObligatory()
    * @generated
    */
-  void setObligatorisch(org.pklose.espl.esplm.Boolean value);
+  void setObligatory(boolean value);
 
   /**
    * Returns the value of the '<em><b>Multiple</b></em>' attribute.
-   * The literals are from the enumeration {@link org.pklose.espl.esplm.Boolean}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Multiple</em>' attribute isn't clear,
@@ -93,49 +85,21 @@ public interface EntityConfiguration extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Multiple</em>' attribute.
-   * @see org.pklose.espl.esplm.Boolean
-   * @see #setMultiple(org.pklose.espl.esplm.Boolean)
+   * @see #setMultiple(boolean)
    * @see org.pklose.espl.esplm.EsplmPackage#getEntityConfiguration_Multiple()
    * @model
    * @generated
    */
-  org.pklose.espl.esplm.Boolean getMultiple();
+  boolean isMultiple();
 
   /**
-   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#getMultiple <em>Multiple</em>}' attribute.
+   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#isMultiple <em>Multiple</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Multiple</em>' attribute.
-   * @see org.pklose.espl.esplm.Boolean
-   * @see #getMultiple()
+   * @see #isMultiple()
    * @generated
    */
-  void setMultiple(org.pklose.espl.esplm.Boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Path</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Path</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Path</em>' reference.
-   * @see #setPath(Association)
-   * @see org.pklose.espl.esplm.EsplmPackage#getEntityConfiguration_Path()
-   * @model
-   * @generated
-   */
-  Association getPath();
-
-  /**
-   * Sets the value of the '{@link org.pklose.espl.esplm.EntityConfiguration#getPath <em>Path</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Path</em>' reference.
-   * @see #getPath()
-   * @generated
-   */
-  void setPath(Association value);
+  void setMultiple(boolean value);
 
 } // EntityConfiguration

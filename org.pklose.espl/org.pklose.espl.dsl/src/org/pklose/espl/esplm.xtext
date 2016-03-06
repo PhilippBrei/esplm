@@ -29,38 +29,33 @@ BusinessRule:
 	imports += Import*
 	'BusinessRule' name=ID 'type' typ = BREType '{'
 		 'Input' '[' 
-		   (systemInputs += (BreSystemEntityInput | BreEntityInput))* 
+		   systemInputs += BreEntityInput (',' systemInputs+= BreEntityInput)* 
 		 ']'
 		 'Output' '['
-		 	output = [Entity|FQN] | output = [SystemEntity|FQN]
+		 	output = BreOutPutReference 
 		 ']'
 	'}'
 ;
 
-BreSystemEntityInput:
-	inputElement = [SystemEntity|FQN]
-	configuration += SystemEntityConfiguration
+ModelElement:
+	Entity | SystemEntity
 ;
 
+BreOutPutReference:
+	output = [ModelElement|FQN]
+;
+
+
 BreEntityInput:
-	inputElement = [Entity|FQN]
+	inputElement = [ModelElement|FQN]
 	configuration += EntityConfiguration
 ;
 
-SystemEntityConfiguration:
-	{SystemEntityConfiguration}  '{''primär' '=' primary = Boolean ',' 
-								 'obligatorisch' '=' obligatorisch = Boolean ',' 
-								 'mehrfach' '=' multiple = Boolean 
-								 (',''join Pfad' '=' joinCriteria = STRING)?
+EntityConfiguration:
+	 '{'primary ?= 'primär'? & obligatory ?= 'obligatorisch'? & multiple ?= 'mehrfach'? '}'
 ;
 
-EntityConfiguration:
-	{EntityConfiguration}  '{''primär' '=' primary = Boolean 
-							',''obligatorisch' '=' obligatorisch = Boolean 
-							',''mehrfach' '=' multiple = Boolean 
-							(',''Pfad' '=' path = [Association|FQN])?						
-							'}'
-;
+
 
 
 enum Boolean: 

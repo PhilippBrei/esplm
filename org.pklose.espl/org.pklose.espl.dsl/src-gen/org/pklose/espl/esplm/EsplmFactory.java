@@ -68,13 +68,22 @@ public interface EsplmFactory extends EFactory
   BusinessRule createBusinessRule();
 
   /**
-   * Returns a new object of class '<em>Bre System Entity Input</em>'.
+   * Returns a new object of class '<em>Model Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Bre System Entity Input</em>'.
+   * @return a new object of class '<em>Model Element</em>'.
    * @generated
    */
-  BreSystemEntityInput createBreSystemEntityInput();
+  ModelElement createModelElement();
+
+  /**
+   * Returns a new object of class '<em>Bre Out Put Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bre Out Put Reference</em>'.
+   * @generated
+   */
+  BreOutPutReference createBreOutPutReference();
 
   /**
    * Returns a new object of class '<em>Bre Entity Input</em>'.
@@ -84,15 +93,6 @@ public interface EsplmFactory extends EFactory
    * @generated
    */
   BreEntityInput createBreEntityInput();
-
-  /**
-   * Returns a new object of class '<em>System Entity Configuration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>System Entity Configuration</em>'.
-   * @generated
-   */
-  SystemEntityConfiguration createSystemEntityConfiguration();
 
   /**
    * Returns a new object of class '<em>Entity Configuration</em>'.

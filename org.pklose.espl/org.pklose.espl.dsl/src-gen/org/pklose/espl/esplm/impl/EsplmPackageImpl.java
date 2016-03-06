@@ -14,7 +14,7 @@ import org.pklose.espl.esplm.Activity;
 import org.pklose.espl.esplm.Association;
 import org.pklose.espl.esplm.BREType;
 import org.pklose.espl.esplm.BreEntityInput;
-import org.pklose.espl.esplm.BreSystemEntityInput;
+import org.pklose.espl.esplm.BreOutPutReference;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Diagram;
 import org.pklose.espl.esplm.Domain;
@@ -30,10 +30,10 @@ import org.pklose.espl.esplm.Import;
 import org.pklose.espl.esplm.Include;
 import org.pklose.espl.esplm.Literal;
 import org.pklose.espl.esplm.Model;
+import org.pklose.espl.esplm.ModelElement;
 import org.pklose.espl.esplm.Multiplicty;
 import org.pklose.espl.esplm.Property;
 import org.pklose.espl.esplm.SystemEntity;
-import org.pklose.espl.esplm.SystemEntityConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,7 +83,14 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass breSystemEntityInputEClass = null;
+  private EClass modelElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass breOutPutReferenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -91,13 +98,6 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * @generated
    */
   private EClass breEntityInputEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass systemEntityConfigurationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -456,9 +456,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getBreSystemEntityInput()
+  public EClass getModelElement()
   {
-    return breSystemEntityInputEClass;
+    return modelElementEClass;
   }
 
   /**
@@ -466,9 +466,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBreSystemEntityInput_InputElement()
+  public EAttribute getModelElement_Name()
   {
-    return (EReference)breSystemEntityInputEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)modelElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -476,9 +476,19 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBreSystemEntityInput_Configuration()
+  public EClass getBreOutPutReference()
   {
-    return (EReference)breSystemEntityInputEClass.getEStructuralFeatures().get(1);
+    return breOutPutReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBreOutPutReference_Output()
+  {
+    return (EReference)breOutPutReferenceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -516,56 +526,6 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSystemEntityConfiguration()
-  {
-    return systemEntityConfigurationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSystemEntityConfiguration_Primary()
-  {
-    return (EAttribute)systemEntityConfigurationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSystemEntityConfiguration_Obligatorisch()
-  {
-    return (EAttribute)systemEntityConfigurationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSystemEntityConfiguration_Multiple()
-  {
-    return (EAttribute)systemEntityConfigurationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSystemEntityConfiguration_JoinCriteria()
-  {
-    return (EAttribute)systemEntityConfigurationEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getEntityConfiguration()
   {
     return entityConfigurationEClass;
@@ -586,7 +546,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityConfiguration_Obligatorisch()
+  public EAttribute getEntityConfiguration_Obligatory()
   {
     return (EAttribute)entityConfigurationEClass.getEStructuralFeatures().get(1);
   }
@@ -599,16 +559,6 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
   public EAttribute getEntityConfiguration_Multiple()
   {
     return (EAttribute)entityConfigurationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEntityConfiguration_Path()
-  {
-    return (EReference)entityConfigurationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -646,19 +596,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSystemEntity_Name()
-  {
-    return (EAttribute)systemEntityEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getSystemEntity_Format()
   {
-    return (EAttribute)systemEntityEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)systemEntityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -786,19 +726,9 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntity_Name()
-  {
-    return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getEntity_Properties()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(1);
+    return (EReference)entityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1033,31 +963,25 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     createEReference(businessRuleEClass, BUSINESS_RULE__SYSTEM_INPUTS);
     createEReference(businessRuleEClass, BUSINESS_RULE__OUTPUT);
 
-    breSystemEntityInputEClass = createEClass(BRE_SYSTEM_ENTITY_INPUT);
-    createEReference(breSystemEntityInputEClass, BRE_SYSTEM_ENTITY_INPUT__INPUT_ELEMENT);
-    createEReference(breSystemEntityInputEClass, BRE_SYSTEM_ENTITY_INPUT__CONFIGURATION);
+    modelElementEClass = createEClass(MODEL_ELEMENT);
+    createEAttribute(modelElementEClass, MODEL_ELEMENT__NAME);
+
+    breOutPutReferenceEClass = createEClass(BRE_OUT_PUT_REFERENCE);
+    createEReference(breOutPutReferenceEClass, BRE_OUT_PUT_REFERENCE__OUTPUT);
 
     breEntityInputEClass = createEClass(BRE_ENTITY_INPUT);
     createEReference(breEntityInputEClass, BRE_ENTITY_INPUT__INPUT_ELEMENT);
     createEReference(breEntityInputEClass, BRE_ENTITY_INPUT__CONFIGURATION);
 
-    systemEntityConfigurationEClass = createEClass(SYSTEM_ENTITY_CONFIGURATION);
-    createEAttribute(systemEntityConfigurationEClass, SYSTEM_ENTITY_CONFIGURATION__PRIMARY);
-    createEAttribute(systemEntityConfigurationEClass, SYSTEM_ENTITY_CONFIGURATION__OBLIGATORISCH);
-    createEAttribute(systemEntityConfigurationEClass, SYSTEM_ENTITY_CONFIGURATION__MULTIPLE);
-    createEAttribute(systemEntityConfigurationEClass, SYSTEM_ENTITY_CONFIGURATION__JOIN_CRITERIA);
-
     entityConfigurationEClass = createEClass(ENTITY_CONFIGURATION);
     createEAttribute(entityConfigurationEClass, ENTITY_CONFIGURATION__PRIMARY);
-    createEAttribute(entityConfigurationEClass, ENTITY_CONFIGURATION__OBLIGATORISCH);
+    createEAttribute(entityConfigurationEClass, ENTITY_CONFIGURATION__OBLIGATORY);
     createEAttribute(entityConfigurationEClass, ENTITY_CONFIGURATION__MULTIPLE);
-    createEReference(entityConfigurationEClass, ENTITY_CONFIGURATION__PATH);
 
     systemEClass = createEClass(SYSTEM);
     createEReference(systemEClass, SYSTEM__SRC_ENTITIES);
 
     systemEntityEClass = createEClass(SYSTEM_ENTITY);
-    createEAttribute(systemEntityEClass, SYSTEM_ENTITY__NAME);
     createEAttribute(systemEntityEClass, SYSTEM_ENTITY__FORMAT);
 
     importEClass = createEClass(IMPORT);
@@ -1076,7 +1000,6 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     createEAttribute(enumDeclarationEClass, ENUM_DECLARATION__VALUES);
 
     entityEClass = createEClass(ENTITY);
-    createEAttribute(entityEClass, ENTITY__NAME);
     createEReference(entityEClass, ENTITY__PROPERTIES);
 
     domainEClass = createEClass(DOMAIN);
@@ -1138,8 +1061,10 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     flowEClass.getESuperTypes().add(this.getElement());
     businessRuleEClass.getESuperTypes().add(this.getElement());
     systemEClass.getESuperTypes().add(this.getElement());
+    systemEntityEClass.getESuperTypes().add(this.getModelElement());
     diagramEClass.getESuperTypes().add(this.getElement());
     enumDeclarationEClass.getESuperTypes().add(this.getElement());
+    entityEClass.getESuperTypes().add(this.getModelElement());
     domainEClass.getESuperTypes().add(this.getElement());
     associationEClass.getESuperTypes().add(this.getProperty());
     fieldEClass.getESuperTypes().add(this.getProperty());
@@ -1165,34 +1090,28 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     initEClass(businessRuleEClass, BusinessRule.class, "BusinessRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBusinessRule_Imports(), this.getImport(), null, "imports", null, 0, -1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBusinessRule_Typ(), this.getBREType(), "typ", null, 0, 1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBusinessRule_SystemInputs(), ecorePackage.getEObject(), null, "systemInputs", null, 0, -1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBusinessRule_Output(), ecorePackage.getEObject(), null, "output", null, 0, 1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBusinessRule_SystemInputs(), this.getBreEntityInput(), null, "systemInputs", null, 0, -1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBusinessRule_Output(), this.getBreOutPutReference(), null, "output", null, 0, 1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(breSystemEntityInputEClass, BreSystemEntityInput.class, "BreSystemEntityInput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBreSystemEntityInput_InputElement(), this.getSystemEntity(), null, "inputElement", null, 0, 1, BreSystemEntityInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBreSystemEntityInput_Configuration(), this.getSystemEntityConfiguration(), null, "configuration", null, 0, -1, BreSystemEntityInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(modelElementEClass, ModelElement.class, "ModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModelElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(breOutPutReferenceEClass, BreOutPutReference.class, "BreOutPutReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBreOutPutReference_Output(), this.getModelElement(), null, "output", null, 0, 1, BreOutPutReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(breEntityInputEClass, BreEntityInput.class, "BreEntityInput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBreEntityInput_InputElement(), this.getEntity(), null, "inputElement", null, 0, 1, BreEntityInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBreEntityInput_InputElement(), this.getModelElement(), null, "inputElement", null, 0, 1, BreEntityInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBreEntityInput_Configuration(), this.getEntityConfiguration(), null, "configuration", null, 0, -1, BreEntityInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(systemEntityConfigurationEClass, SystemEntityConfiguration.class, "SystemEntityConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSystemEntityConfiguration_Primary(), this.getBoolean(), "primary", null, 0, 1, SystemEntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSystemEntityConfiguration_Obligatorisch(), this.getBoolean(), "obligatorisch", null, 0, 1, SystemEntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSystemEntityConfiguration_Multiple(), this.getBoolean(), "multiple", null, 0, 1, SystemEntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSystemEntityConfiguration_JoinCriteria(), ecorePackage.getEString(), "joinCriteria", null, 0, 1, SystemEntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(entityConfigurationEClass, EntityConfiguration.class, "EntityConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEntityConfiguration_Primary(), this.getBoolean(), "primary", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEntityConfiguration_Obligatorisch(), this.getBoolean(), "obligatorisch", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEntityConfiguration_Multiple(), this.getBoolean(), "multiple", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityConfiguration_Path(), this.getAssociation(), null, "path", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityConfiguration_Primary(), ecorePackage.getEBoolean(), "primary", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityConfiguration_Obligatory(), ecorePackage.getEBoolean(), "obligatory", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityConfiguration_Multiple(), ecorePackage.getEBoolean(), "multiple", null, 0, 1, EntityConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(systemEClass, org.pklose.espl.esplm.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSystem_SrcEntities(), this.getSystemEntity(), null, "srcEntities", null, 0, -1, org.pklose.espl.esplm.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(systemEntityEClass, SystemEntity.class, "SystemEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSystemEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, SystemEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSystemEntity_Format(), ecorePackage.getEString(), "format", null, 0, 1, SystemEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1211,7 +1130,6 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     initEAttribute(getEnumDeclaration_Values(), ecorePackage.getEString(), "values", null, 0, -1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Properties(), this.getProperty(), null, "properties", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
