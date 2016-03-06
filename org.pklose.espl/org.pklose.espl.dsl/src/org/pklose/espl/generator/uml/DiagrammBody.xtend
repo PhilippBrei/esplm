@@ -158,15 +158,20 @@ public class DiagrammBody {
             }
             myDiagram.linkTemplate =
                     $(go.Link,
-                            { routing: go.Link.Orthogonal },
+                            { routing: go.Link.AvoidsNodes,
+                                curve: go.Link.JumpGap
+                            },
                             new go.Binding("isLayoutPositioned", "relationship", convertIsTreeLink),
                             $(go.Shape),
                             $(go.Shape, { scale: 1.3, fill: "white" },
                                     new go.Binding("fromArrow", "relationship", convertFromArrow)),
                             $(go.Shape, { scale: 1.3, fill: "white" },
-                                    new go.Binding("toArrow", "relationship", convertToArrow))
+                                    new go.Binding("toArrow", "relationship", convertToArrow)),
+                            $(go.TextBlock, { segmentIndex: 0, segmentFraction: 0.4 },
+                                new go.Binding("text", "sourceRole")),
+                            $(go.TextBlock, { segmentIndex: 3, segmentFraction: 0.6 },
+                                new go.Binding("text", "targetRole"))
                     );
-            // setup a few example class nodes and relationships
             var nodedata = [
                 «FOR node : nodes SEPARATOR ","»
                    «node.asJson»
