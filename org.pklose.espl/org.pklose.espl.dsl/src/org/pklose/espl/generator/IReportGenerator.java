@@ -1,7 +1,9 @@
 package org.pklose.espl.generator;
 
-import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.emf.ecore.resource.Resource;
 
-public interface IReportGenerator extends IGenerator{
+public interface IReportGenerator {
+	
+    public void createBREReport(Resource resource);
 
 }
