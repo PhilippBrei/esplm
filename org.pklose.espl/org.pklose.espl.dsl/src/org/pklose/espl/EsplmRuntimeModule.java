@@ -3,9 +3,19 @@
  */
 package org.pklose.espl;
 
+import org.pklose.espl.generator.IReportGenerator;
+import org.pklose.espl.generator.ReportGeneratorImpl;
+
+import com.google.inject.Singleton;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class EsplmRuntimeModule extends org.pklose.espl.AbstractEsplmRuntimeModule {
+	
+	@Singleton
+	public Class<? extends IReportGenerator> bindIReportGenerator () {
+		return ReportGeneratorImpl.class;
+	}
 
 }

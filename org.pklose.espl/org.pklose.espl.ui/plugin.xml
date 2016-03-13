@@ -54,6 +54,10 @@
 				</and>
             </activeWhen>
         </handler>
+        <handler
+              class="org.pklose.espl.ui.EsplmExecutableExtensionFactory:org.pklose.espl.ui.handlers.CreateBreReport"
+              commandId="org.pklose.espl.ui.commands.sampleCommand">
+        </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
         <definition id="org.pklose.espl.Esplm.Editor.opened">
@@ -139,6 +143,15 @@
             description="Copy the qualified name for the selected element"
             name="Copy Qualified Name">
       </command>
+      <category
+            id="org.pklose.espl.ui.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="org.pklose.espl.ui.commands.category"
+            id="org.pklose.espl.ui.commands.sampleCommand"
+            name="Sample Command">
+      </command>
     </extension>
     <extension point="org.eclipse.ui.menus">
         <menuContribution
@@ -183,6 +196,31 @@
 					</and>
 				</visibleWhen>
 			</command>
+         </menuContribution>
+         <menuContribution
+               locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+            <menu
+                  id="org.pklose.espl.ui.menus.sampleMenu"
+                  label="Sample Menu"
+                  mnemonic="M">
+               <command
+                     commandId="org.pklose.espl.ui.commands.sampleCommand"
+                     id="org.pklose.espl.ui.menus.sampleCommand"
+                     mnemonic="S">
+               </command>
+            </menu>
+         </menuContribution>
+         <menuContribution
+               locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+            <toolbar
+                  id="org.pklose.espl.ui.toolbars.sampleToolbar">
+               <command
+                     commandId="org.pklose.espl.ui.commands.sampleCommand"
+                     icon="icons/sample.gif"
+                     id="org.pklose.espl.ui.toolbars.sampleCommand"
+                     tooltip="Say hello world">
+               </command>
+            </toolbar>
          </menuContribution>
     </extension>
     <extension point="org.eclipse.ui.menus">
@@ -420,6 +458,32 @@
             extension="esplm"
             type="text">
     </fileTypes>
+  </extension>
+  <extension
+        point="org.eclipse.ui.bindings">
+     <key
+           commandId="org.pklose.espl.ui.commands.sampleCommand"
+           contextId="org.eclipse.ui.contexts.window"
+           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+           sequence="M1+6">
+     </key>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="org.pklose.espl.ui.reports">
+        <toolbar
+              id="org.pklose.espl.ui.reportbar"
+              label="Reports">
+           <command
+                 commandId="org.pklose.espl.ui.createBreReport"
+                 icon="icons/sample.gif"
+                 label="Create Bre Report"
+                 style="push">
+           </command>
+        </toolbar>
+     </menuContribution>
   </extension>
 
 </plugin>
