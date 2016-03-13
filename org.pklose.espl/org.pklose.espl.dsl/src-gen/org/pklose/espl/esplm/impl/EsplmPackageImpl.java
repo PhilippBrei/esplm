@@ -1167,6 +1167,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     addEEnumLiteral(multiplictyEEnum, Multiplicty.ONE_TO_MANY);
     addEEnumLiteral(multiplictyEEnum, Multiplicty.ZERO_TO_MANY);
     addEEnumLiteral(multiplictyEEnum, Multiplicty.ONE_TO_ONE);
+    addEEnumLiteral(multiplictyEEnum, Multiplicty.ZERO_TO_ONE);
 
     // Create resource
     createResource(eNS_URI);

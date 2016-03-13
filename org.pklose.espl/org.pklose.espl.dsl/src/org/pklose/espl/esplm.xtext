@@ -133,7 +133,7 @@ Association:
 ;
 
 enum Multiplicty:
-	OneToMany = '1..N' | ZeroToMany = '0..N' | OneToOne= '1' 
+	OneToMany = '1..N' | ZeroToMany = '0..N' | OneToOne= '1..1'  | ZeroToOne = '0..1'
 ;
 
 

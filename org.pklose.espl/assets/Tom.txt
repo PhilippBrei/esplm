@@ -1,0 +1,63 @@
+Domain Tom Description: "Alle Klassen die in Tom benötigt werden" {
+	Entity Darlehen {
+		Field AktivePassive:Enum AktivePassive
+		Field DeckungsfeahiferBetrag:Money
+		Field KontoNummer:Int
+		Relation kreditSaldo:KreditSaldo 1..1
+		Relation rahmen:Rahmen 0..1		
+		Relation konditionen:Konditionen 1..N
+	}
+	
+	Entity KreditSaldo{
+		Field KapitalSaldo:Money
+		Field OffeneZusage:Money
+		Field Summe_faelligerForderungen:Money
+	}
+	
+	Entity Rahmen {
+		Field Befristungsdatum:Decimal
+		Field Gesamtzusage:Money
+		Field istRevolvierend:Boolean
+		Relation ziehungen:Darlehen 1..N
+		Relation konsortialInformationen:KonsortialInformation 0..1		
+	}
+	
+	Entity KonsortialInformation {
+		Field KonsortialFuehrer:Boolean
+		Field Konsortialbetrag_Mandant:Money
+		Field Offene_Zusage_Mandant:Money
+		Relation rahmen:Rahmen 1..1
+		Relation syndizierungsVereinbarung:Syndizierungsvereinbarung 1..N
+	}
+	
+	Entity Syndizierungsvereinbarung {
+		Field Fremdanteil:Decimal
+		Field FremdfinanzierterBetrag:Money
+	}
+	
+	Entity Konditionen {
+		Field von:Decimal
+		Field bis:Decimal
+		Relation zinskonditionen:Zinskonditionen 1..N
+		Relation tilgungskonditionen:Tilgungskonditionen 1..N
+		Relation entgeldKonditionen:EntgeldKonditionen 1..N
+	}
+	
+	Entity Zinskonditionen {
+		Field nominalZins:Decimal
+		Field referenzZinsName:Text
+	}
+	
+	Entity Tilgungskonditionen {
+		Field tilgungsBetrag:Money
+	}
+	
+	Entity EntgeldKonditionen {
+		Field EntgeldBetrag:Money
+		Field EntgeldAnteil:Decimal
+	}
+	
+	
+	
+	
+}

@@ -47,7 +47,17 @@ public enum Multiplicty implements Enumerator
    * @generated
    * @ordered
    */
-  ONE_TO_ONE(2, "OneToOne", "1");
+  ONE_TO_ONE(2, "OneToOne", "1..1"),
+
+  /**
+   * The '<em><b>Zero To One</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #ZERO_TO_ONE_VALUE
+   * @generated
+   * @ordered
+   */
+  ZERO_TO_ONE(3, "ZeroToOne", "0..1");
 
   /**
    * The '<em><b>One To Many</b></em>' literal value.
@@ -88,11 +98,26 @@ public enum Multiplicty implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #ONE_TO_ONE
-   * @model name="OneToOne" literal="1"
+   * @model name="OneToOne" literal="1..1"
    * @generated
    * @ordered
    */
   public static final int ONE_TO_ONE_VALUE = 2;
+
+  /**
+   * The '<em><b>Zero To One</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>Zero To One</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #ZERO_TO_ONE
+   * @model name="ZeroToOne" literal="0..1"
+   * @generated
+   * @ordered
+   */
+  public static final int ZERO_TO_ONE_VALUE = 3;
 
   /**
    * An array of all the '<em><b>Multiplicty</b></em>' enumerators.
@@ -106,6 +131,7 @@ public enum Multiplicty implements Enumerator
       ONE_TO_MANY,
       ZERO_TO_MANY,
       ONE_TO_ONE,
+      ZERO_TO_ONE,
     };
 
   /**
@@ -173,6 +199,7 @@ public enum Multiplicty implements Enumerator
       case ONE_TO_MANY_VALUE: return ONE_TO_MANY;
       case ZERO_TO_MANY_VALUE: return ZERO_TO_MANY;
       case ONE_TO_ONE_VALUE: return ONE_TO_ONE;
+      case ZERO_TO_ONE_VALUE: return ZERO_TO_ONE;
     }
     return null;
   }

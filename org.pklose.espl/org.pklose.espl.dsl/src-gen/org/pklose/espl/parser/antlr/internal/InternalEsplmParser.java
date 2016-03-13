@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalEsplmParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Flow'", "'{'", "'}'", "'Activity'", "'Successors'", "'['", "','", "']'", "'Calls'", "'Description'", "'BusinessRule'", "'type'", "'Input'", "'Output'", "'prim\\u00E4r'", "'obligatorisch'", "'mehrfach'", "'SourceSystem'", "'SystemEntit\\u00E4t'", "'Format'", "'Import'", "'.*'", "'Diagram'", "'Include'", "'Exclude'", "'with'", "'Enumeration'", "'.'", "'Entity'", "'Domain'", "'Description: '", "'Relation'", "':'", "'Field'", "'Decimal'", "'Money'", "'Text'", "'Boolean'", "'Int'", "'Enum'", "'BizToBiz'", "'SrcToBiz'", "'BizToOut'", "'1..N'", "'0..N'", "'1'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Flow'", "'{'", "'}'", "'Activity'", "'Successors'", "'['", "','", "']'", "'Calls'", "'Description'", "'BusinessRule'", "'type'", "'Input'", "'Output'", "'prim\\u00E4r'", "'obligatorisch'", "'mehrfach'", "'SourceSystem'", "'SystemEntit\\u00E4t'", "'Format'", "'Import'", "'.*'", "'Diagram'", "'Include'", "'Exclude'", "'with'", "'Enumeration'", "'.'", "'Entity'", "'Domain'", "'Description: '", "'Relation'", "':'", "'Field'", "'Decimal'", "'Money'", "'Text'", "'Boolean'", "'Int'", "'Enum'", "'BizToBiz'", "'SrcToBiz'", "'BizToOut'", "'1..N'", "'0..N'", "'1..1'", "'0..1'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -35,6 +35,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     public static final int T__12=12;
     public static final int T__56=56;
     public static final int T__13=13;
+    public static final int T__57=57;
     public static final int T__14=14;
     public static final int T__51=51;
     public static final int T__52=52;
@@ -4533,21 +4534,22 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicty"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1896:1: ruleMultiplicty returns [Enumerator current=null] : ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1896:1: ruleMultiplicty returns [Enumerator current=null] : ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1..1' ) | (enumLiteral_3= '0..1' ) ) ;
     public final Enumerator ruleMultiplicty() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
         Token enumLiteral_2=null;
+        Token enumLiteral_3=null;
 
          enterRule(); 
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1898:28: ( ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1899:1: ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1898:28: ( ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1..1' ) | (enumLiteral_3= '0..1' ) ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1899:1: ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1..1' ) | (enumLiteral_3= '0..1' ) )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1899:1: ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1' ) )
-            int alt25=3;
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1899:1: ( (enumLiteral_0= '1..N' ) | (enumLiteral_1= '0..N' ) | (enumLiteral_2= '1..1' ) | (enumLiteral_3= '0..1' ) )
+            int alt25=4;
             switch ( input.LA(1) ) {
             case 54:
                 {
@@ -4562,6 +4564,11 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             case 56:
                 {
                 alt25=3;
+                }
+                break;
+            case 57:
+                {
+                alt25=4;
                 }
                 break;
             default:
@@ -4607,15 +4614,32 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:6: (enumLiteral_2= '1' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:6: (enumLiteral_2= '1..1' )
                     {
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:6: (enumLiteral_2= '1' )
-                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:8: enumLiteral_2= '1'
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:6: (enumLiteral_2= '1..1' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1911:8: enumLiteral_2= '1..1'
                     {
                     enumLiteral_2=(Token)match(input,56,FOLLOW_56_in_ruleMultiplicty4381); 
 
                             current = grammarAccess.getMultiplictyAccess().getOneToOneEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                             newLeafNode(enumLiteral_2, grammarAccess.getMultiplictyAccess().getOneToOneEnumLiteralDeclaration_2()); 
+                        
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1917:6: (enumLiteral_3= '0..1' )
+                    {
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1917:6: (enumLiteral_3= '0..1' )
+                    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:1917:8: enumLiteral_3= '0..1'
+                    {
+                    enumLiteral_3=(Token)match(input,57,FOLLOW_57_in_ruleMultiplicty4398); 
+
+                            current = grammarAccess.getMultiplictyAccess().getZeroToOneEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                            newLeafNode(enumLiteral_3, grammarAccess.getMultiplictyAccess().getZeroToOneEnumLiteralDeclaration_3()); 
                         
 
                     }
@@ -4859,7 +4883,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_42_in_ruleAssociation3565 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleAssociation3582 = new BitSet(new long[]{0x0000080000000000L});
     public static final BitSet FOLLOW_43_in_ruleAssociation3599 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleAssociation3622 = new BitSet(new long[]{0x01C0000000000000L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleAssociation3622 = new BitSet(new long[]{0x03C0000000000000L});
     public static final BitSet FOLLOW_ruleMultiplicty_in_ruleAssociation3643 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleField_in_entryRuleField3679 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleField3689 = new BitSet(new long[]{0x0000000000000002L});
@@ -4885,5 +4909,6 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_54_in_ruleMultiplicty4347 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_55_in_ruleMultiplicty4364 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_56_in_ruleMultiplicty4381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_ruleMultiplicty4398 = new BitSet(new long[]{0x0000000000000002L});
 
 }

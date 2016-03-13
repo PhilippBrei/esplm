@@ -1205,13 +1205,15 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cZeroToManyEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
 		private final Keyword cZeroToMany0NKeyword_1_0 = (Keyword)cZeroToManyEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cOneToOneEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cOneToOne1Keyword_2_0 = (Keyword)cOneToOneEnumLiteralDeclaration_2.eContents().get(0);
+		private final Keyword cOneToOne11Keyword_2_0 = (Keyword)cOneToOneEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cZeroToOneEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cZeroToOne01Keyword_3_0 = (Keyword)cZeroToOneEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum Multiplicty:
-		//	OneToMany="1..N" | ZeroToMany="0..N" | OneToOne="1";
+		//	OneToMany="1..N" | ZeroToMany="0..N" | OneToOne="1..1" | ZeroToOne="0..1";
 		public EnumRule getRule() { return rule; }
 
-		//OneToMany="1..N" | ZeroToMany="0..N" | OneToOne="1"
+		//OneToMany="1..N" | ZeroToMany="0..N" | OneToOne="1..1" | ZeroToOne="0..1"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//OneToMany="1..N"
@@ -1226,11 +1228,17 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 		//"0..N"
 		public Keyword getZeroToMany0NKeyword_1_0() { return cZeroToMany0NKeyword_1_0; }
 
-		//OneToOne="1"
+		//OneToOne="1..1"
 		public EnumLiteralDeclaration getOneToOneEnumLiteralDeclaration_2() { return cOneToOneEnumLiteralDeclaration_2; }
 
-		//"1"
-		public Keyword getOneToOne1Keyword_2_0() { return cOneToOne1Keyword_2_0; }
+		//"1..1"
+		public Keyword getOneToOne11Keyword_2_0() { return cOneToOne11Keyword_2_0; }
+
+		//ZeroToOne="0..1"
+		public EnumLiteralDeclaration getZeroToOneEnumLiteralDeclaration_3() { return cZeroToOneEnumLiteralDeclaration_3; }
+
+		//"0..1"
+		public Keyword getZeroToOne01Keyword_3_0() { return cZeroToOne01Keyword_3_0; }
 	}
 	
 	private final ModelElements pModel;
@@ -1559,7 +1567,7 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum Multiplicty:
-	//	OneToMany="1..N" | ZeroToMany="0..N" | OneToOne="1";
+	//	OneToMany="1..N" | ZeroToMany="0..N" | OneToOne="1..1" | ZeroToOne="0..1";
 	public MultiplictyElements getMultiplictyAccess() {
 		return unknownRuleMultiplicty;
 	}

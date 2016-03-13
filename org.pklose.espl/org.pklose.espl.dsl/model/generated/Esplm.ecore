@@ -102,7 +102,8 @@
   <eClassifiers xsi:type="ecore:EEnum" name="Multiplicty">
     <eLiterals name="OneToMany" literal="1..N"/>
     <eLiterals name="ZeroToMany" value="1" literal="0..N"/>
-    <eLiterals name="OneToOne" value="2" literal="1"/>
+    <eLiterals name="OneToOne" value="2" literal="1..1"/>
+    <eLiterals name="ZeroToOne" value="3" literal="0..1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EReference" name="literal" eType="#//Literal"

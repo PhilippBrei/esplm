@@ -23,6 +23,7 @@ public class InternalEsplmLexer extends Lexer {
     public static final int T__12=12;
     public static final int T__56=56;
     public static final int T__13=13;
+    public static final int T__57=57;
     public static final int T__14=14;
     public static final int T__51=51;
     public static final int T__52=52;
@@ -232,10 +233,11 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:18:7: ( '1' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:18:9: '1'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:18:7: ( '1..1' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:18:9: '1..1'
             {
-            match('1'); 
+            match("1..1"); 
+
 
             }
 
@@ -252,10 +254,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:19:7: ( 'Flow' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:19:9: 'Flow'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:19:7: ( '0..1' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:19:9: '0..1'
             {
-            match("Flow"); 
+            match("0..1"); 
 
 
             }
@@ -273,10 +275,11 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:20:7: ( '{' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:20:9: '{'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:20:7: ( 'Flow' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:20:9: 'Flow'
             {
-            match('{'); 
+            match("Flow"); 
+
 
             }
 
@@ -293,10 +296,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:21:7: ( '}' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:21:9: '}'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:21:7: ( '{' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:21:9: '{'
             {
-            match('}'); 
+            match('{'); 
 
             }
 
@@ -313,11 +316,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:22:7: ( 'Activity' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:22:9: 'Activity'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:22:7: ( '}' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:22:9: '}'
             {
-            match("Activity"); 
-
+            match('}'); 
 
             }
 
@@ -334,10 +336,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:23:7: ( 'Description' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:23:9: 'Description'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:23:7: ( 'Activity' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:23:9: 'Activity'
             {
-            match("Description"); 
+            match("Activity"); 
 
 
             }
@@ -355,10 +357,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:24:7: ( 'Successors' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:24:9: 'Successors'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:24:7: ( 'Description' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:24:9: 'Description'
             {
-            match("Successors"); 
+            match("Description"); 
 
 
             }
@@ -376,10 +378,11 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:25:7: ( '[' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:25:9: '['
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:25:7: ( 'Successors' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:25:9: 'Successors'
             {
-            match('['); 
+            match("Successors"); 
+
 
             }
 
@@ -396,10 +399,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:26:7: ( ']' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:26:9: ']'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:26:7: ( '[' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:26:9: '['
             {
-            match(']'); 
+            match('['); 
 
             }
 
@@ -416,10 +419,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:27:7: ( ',' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:27:9: ','
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:27:7: ( ']' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:27:9: ']'
             {
-            match(','); 
+            match(']'); 
 
             }
 
@@ -436,11 +439,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:28:7: ( 'Calls' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:28:9: 'Calls'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:28:7: ( ',' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:28:9: ','
             {
-            match("Calls"); 
-
+            match(','); 
 
             }
 
@@ -457,10 +459,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:29:7: ( 'BusinessRule' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:29:9: 'BusinessRule'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:29:7: ( 'Calls' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:29:9: 'Calls'
             {
-            match("BusinessRule"); 
+            match("Calls"); 
 
 
             }
@@ -478,10 +480,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:30:7: ( 'type' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:30:9: 'type'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:30:7: ( 'BusinessRule' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:30:9: 'BusinessRule'
             {
-            match("type"); 
+            match("BusinessRule"); 
 
 
             }
@@ -499,10 +501,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:31:7: ( 'Input' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:31:9: 'Input'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:31:7: ( 'type' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:31:9: 'type'
             {
-            match("Input"); 
+            match("type"); 
 
 
             }
@@ -520,10 +522,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:32:7: ( 'Output' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:32:9: 'Output'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:32:7: ( 'Input' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:32:9: 'Input'
             {
-            match("Output"); 
+            match("Input"); 
 
 
             }
@@ -541,10 +543,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:33:7: ( 'SourceSystem' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:33:9: 'SourceSystem'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:33:7: ( 'Output' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:33:9: 'Output'
             {
-            match("SourceSystem"); 
+            match("Output"); 
 
 
             }
@@ -562,10 +564,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:34:7: ( 'SystemEntit\\u00E4t' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:34:9: 'SystemEntit\\u00E4t'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:34:7: ( 'SourceSystem' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:34:9: 'SourceSystem'
             {
-            match("SystemEntit\u00E4t"); 
+            match("SourceSystem"); 
 
 
             }
@@ -583,10 +585,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:35:7: ( 'Format' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:35:9: 'Format'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:35:7: ( 'SystemEntit\\u00E4t' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:35:9: 'SystemEntit\\u00E4t'
             {
-            match("Format"); 
+            match("SystemEntit\u00E4t"); 
 
 
             }
@@ -604,10 +606,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:36:7: ( 'Import' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:36:9: 'Import'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:36:7: ( 'Format' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:36:9: 'Format'
             {
-            match("Import"); 
+            match("Format"); 
 
 
             }
@@ -625,10 +627,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:37:7: ( '.*' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:37:9: '.*'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:37:7: ( 'Import' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:37:9: 'Import'
             {
-            match(".*"); 
+            match("Import"); 
 
 
             }
@@ -646,10 +648,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:38:7: ( 'Diagram' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:38:9: 'Diagram'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:38:7: ( '.*' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:38:9: '.*'
             {
-            match("Diagram"); 
+            match(".*"); 
 
 
             }
@@ -667,10 +669,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:39:7: ( 'with' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:39:9: 'with'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:39:7: ( 'Diagram' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:39:9: 'Diagram'
             {
-            match("with"); 
+            match("Diagram"); 
 
 
             }
@@ -688,10 +690,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:40:7: ( 'Enumeration' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:40:9: 'Enumeration'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:40:7: ( 'with' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:40:9: 'with'
             {
-            match("Enumeration"); 
+            match("with"); 
 
 
             }
@@ -709,10 +711,11 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:41:7: ( '.' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:41:9: '.'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:41:7: ( 'Enumeration' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:41:9: 'Enumeration'
             {
-            match('.'); 
+            match("Enumeration"); 
+
 
             }
 
@@ -729,11 +732,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:42:7: ( 'Entity' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:42:9: 'Entity'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:42:7: ( '.' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:42:9: '.'
             {
-            match("Entity"); 
-
+            match('.'); 
 
             }
 
@@ -750,10 +752,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:43:7: ( 'Domain' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:43:9: 'Domain'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:43:7: ( 'Entity' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:43:9: 'Entity'
             {
-            match("Domain"); 
+            match("Entity"); 
 
 
             }
@@ -771,10 +773,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:44:7: ( 'Description: ' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:44:9: 'Description: '
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:44:7: ( 'Domain' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:44:9: 'Domain'
             {
-            match("Description: "); 
+            match("Domain"); 
 
 
             }
@@ -792,10 +794,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:45:7: ( 'Relation' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:45:9: 'Relation'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:45:7: ( 'Description: ' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:45:9: 'Description: '
             {
-            match("Relation"); 
+            match("Description: "); 
 
 
             }
@@ -813,10 +815,11 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:46:7: ( ':' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:46:9: ':'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:46:7: ( 'Relation' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:46:9: 'Relation'
             {
-            match(':'); 
+            match("Relation"); 
+
 
             }
 
@@ -833,11 +836,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:47:7: ( 'Field' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:47:9: 'Field'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:47:7: ( ':' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:47:9: ':'
             {
-            match("Field"); 
-
+            match(':'); 
 
             }
 
@@ -854,10 +856,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:48:7: ( 'Enum' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:48:9: 'Enum'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:48:7: ( 'Field' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:48:9: 'Field'
             {
-            match("Enum"); 
+            match("Field"); 
 
 
             }
@@ -875,10 +877,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:49:7: ( 'prim\\u00E4r' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:49:9: 'prim\\u00E4r'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:49:7: ( 'Enum' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:49:9: 'Enum'
             {
-            match("prim\u00E4r"); 
+            match("Enum"); 
 
 
             }
@@ -896,10 +898,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:50:7: ( 'obligatorisch' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:50:9: 'obligatorisch'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:50:7: ( 'prim\\u00E4r' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:50:9: 'prim\\u00E4r'
             {
-            match("obligatorisch"); 
+            match("prim\u00E4r"); 
 
 
             }
@@ -917,10 +919,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:51:7: ( 'mehrfach' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:51:9: 'mehrfach'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:51:7: ( 'obligatorisch' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:51:9: 'obligatorisch'
             {
-            match("mehrfach"); 
+            match("obligatorisch"); 
 
 
             }
@@ -938,10 +940,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:52:7: ( 'Decimal' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:52:9: 'Decimal'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:52:7: ( 'mehrfach' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:52:9: 'mehrfach'
             {
-            match("Decimal"); 
+            match("mehrfach"); 
 
 
             }
@@ -959,10 +961,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:53:7: ( 'Money' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:53:9: 'Money'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:53:7: ( 'Decimal' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:53:9: 'Decimal'
             {
-            match("Money"); 
+            match("Decimal"); 
 
 
             }
@@ -980,10 +982,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:54:7: ( 'Text' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:54:9: 'Text'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:54:7: ( 'Money' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:54:9: 'Money'
             {
-            match("Text"); 
+            match("Money"); 
 
 
             }
@@ -1001,10 +1003,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:55:7: ( 'Boolean' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:55:9: 'Boolean'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:55:7: ( 'Text' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:55:9: 'Text'
             {
-            match("Boolean"); 
+            match("Text"); 
 
 
             }
@@ -1022,10 +1024,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:56:7: ( 'Int' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:56:9: 'Int'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:56:7: ( 'Boolean' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:56:9: 'Boolean'
             {
-            match("Int"); 
+            match("Boolean"); 
 
 
             }
@@ -1038,15 +1040,36 @@ public class InternalEsplmLexer extends Lexer {
     }
     // $ANTLR end "T__56"
 
+    // $ANTLR start "T__57"
+    public final void mT__57() throws RecognitionException {
+        try {
+            int _type = T__57;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:57:7: ( 'Int' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:57:9: 'Int'
+            {
+            match("Int"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__57"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5847:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5847:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5854:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5854:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5847:11: ( '^' )?
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5854:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1055,7 +1078,7 @@ public class InternalEsplmLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5847:11: '^'
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5854:11: '^'
                     {
                     match('^'); 
 
@@ -1073,7 +1096,7 @@ public class InternalEsplmLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5847:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5854:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1122,10 +1145,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5849:10: ( ( '0' .. '9' )+ )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5849:12: ( '0' .. '9' )+
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5856:10: ( ( '0' .. '9' )+ )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5856:12: ( '0' .. '9' )+
             {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5849:12: ( '0' .. '9' )+
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5856:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1139,7 +1162,7 @@ public class InternalEsplmLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5849:13: '0' .. '9'
+            	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5856:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1171,10 +1194,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1192,10 +1215,10 @@ public class InternalEsplmLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1211,7 +1234,7 @@ public class InternalEsplmLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:21: '\\\\' .
+                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1219,7 +1242,7 @@ public class InternalEsplmLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1244,10 +1267,10 @@ public class InternalEsplmLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1263,7 +1286,7 @@ public class InternalEsplmLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:54: '\\\\' .
+                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1271,7 +1294,7 @@ public class InternalEsplmLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5851:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5858:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1314,12 +1337,12 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5853:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5853:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5860:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5860:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5853:24: ( options {greedy=false; } : . )*
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5860:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1344,7 +1367,7 @@ public class InternalEsplmLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5853:52: .
+            	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5860:52: .
             	    {
             	    matchAny(); 
 
@@ -1374,12 +1397,12 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1392,7 +1415,7 @@ public class InternalEsplmLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1412,7 +1435,7 @@ public class InternalEsplmLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:40: ( ( '\\r' )? '\\n' )?
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1421,9 +1444,9 @@ public class InternalEsplmLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:41: ( '\\r' )? '\\n'
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:41: ( '\\r' )?
+                    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1432,7 +1455,7 @@ public class InternalEsplmLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5855:41: '\\r'
+                            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5862:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1464,10 +1487,10 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5857:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5857:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5864:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5864:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5857:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5864:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1521,8 +1544,8 @@ public class InternalEsplmLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5859:16: ( . )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5859:18: .
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5866:16: ( . )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5866:18: .
             {
             matchAny(); 
 
@@ -1537,8 +1560,8 @@ public class InternalEsplmLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=53;
+        // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=54;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1864,49 +1887,56 @@ public class InternalEsplmLexer extends Lexer {
                 }
                 break;
             case 47 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:286: RULE_ID
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:286: T__57
+                {
+                mT__57(); 
+
+                }
+                break;
+            case 48 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:292: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 48 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:294: RULE_INT
+            case 49 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:300: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 49 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:303: RULE_STRING
+            case 50 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:309: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 50 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:315: RULE_ML_COMMENT
+            case 51 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:321: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 51 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:331: RULE_SL_COMMENT
+            case 52 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:337: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 52 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:347: RULE_WS
+            case 53 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:353: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 53 :
-                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:355: RULE_ANY_OTHER
+            case 54 :
+                // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1:361: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1920,86 +1950,88 @@ public class InternalEsplmLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\4\45\1\60\1\61\1\45\2\uffff\2\45\3\uffff\3\45\1\103\2"+
-        "\45\1\uffff\5\45\1\42\2\uffff\3\42\2\uffff\2\45\1\uffff\11\45\4"+
-        "\uffff\3\45\2\uffff\4\45\3\uffff\3\45\2\uffff\2\45\1\uffff\5\45"+
-        "\4\uffff\2\45\1\162\37\45\1\uffff\2\45\1\u0095\10\45\1\u009e\10"+
-        "\45\1\u00a7\1\45\1\u00a9\5\45\1\u00af\1\45\1\u00b1\3\45\1\uffff"+
-        "\10\45\1\uffff\1\45\1\u00bf\5\45\1\u00c5\1\uffff\1\45\1\uffff\1"+
-        "\45\1\uffff\2\45\1\u00ca\1\uffff\1\45\1\uffff\1\u00cc\2\45\1\u00cf"+
-        "\10\45\1\u00d8\1\uffff\4\45\1\u00dd\1\uffff\1\u00de\3\45\1\uffff"+
-        "\1\u00e2\1\uffff\1\u00e3\1\45\1\uffff\3\45\1\u00e8\4\45\1\uffff"+
-        "\2\45\1\u00ef\1\u00f0\2\uffff\3\45\2\uffff\1\45\1\u00f5\1\u00f6"+
-        "\1\45\1\uffff\1\u00f8\3\45\1\u00fc\1\45\2\uffff\1\u00fe\1\45\1\u0100"+
-        "\1\45\2\uffff\1\45\1\uffff\3\45\1\uffff\1\45\1\uffff\1\45\1\uffff"+
-        "\2\45\1\u010a\4\45\1\u010f\1\45\1\uffff\2\45\1\u0114\1\45\1\uffff"+
-        "\1\u0116\1\u0117\3\uffff\1\45\2\uffff\1\u0119\1\uffff";
+        "\1\uffff\4\45\2\60\1\45\2\uffff\2\45\3\uffff\3\45\1\102\2\45\1"+
+        "\uffff\5\45\1\42\2\uffff\3\42\2\uffff\2\45\1\uffff\11\45\3\uffff"+
+        "\3\45\2\uffff\4\45\3\uffff\3\45\2\uffff\2\45\1\uffff\5\45\4\uffff"+
+        "\2\45\1\163\13\45\2\uffff\24\45\1\uffff\2\45\1\u009a\10\45\4\uffff"+
+        "\1\u00a3\10\45\1\u00ac\1\45\1\u00ae\5\45\1\u00b4\1\45\1\u00b6\3"+
+        "\45\1\uffff\10\45\1\uffff\1\45\1\u00c4\5\45\1\u00ca\1\uffff\1\45"+
+        "\1\uffff\1\45\1\uffff\2\45\1\u00cf\1\uffff\1\45\1\uffff\1\u00d1"+
+        "\2\45\1\u00d4\10\45\1\u00dd\1\uffff\4\45\1\u00e2\1\uffff\1\u00e3"+
+        "\3\45\1\uffff\1\u00e7\1\uffff\1\u00e8\1\45\1\uffff\3\45\1\u00ed"+
+        "\4\45\1\uffff\2\45\1\u00f4\1\u00f5\2\uffff\3\45\2\uffff\1\45\1\u00fa"+
+        "\1\u00fb\1\45\1\uffff\1\u00fd\3\45\1\u0101\1\45\2\uffff\1\u0103"+
+        "\1\45\1\u0105\1\45\2\uffff\1\45\1\uffff\3\45\1\uffff\1\45\1\uffff"+
+        "\1\45\1\uffff\2\45\1\u010f\4\45\1\u0114\1\45\1\uffff\2\45\1\u0119"+
+        "\1\45\1\uffff\1\u011b\1\u011c\3\uffff\1\45\2\uffff\1\u011e\1\uffff";
     static final String DFA12_eofS =
-        "\u011a\uffff";
+        "\u011f\uffff";
     static final String DFA12_minS =
         "\1\0\1\155\1\156\1\151\1\157\2\56\1\151\2\uffff\1\143\1\145\3\uffff"+
         "\1\141\1\171\1\165\1\52\1\151\1\145\1\uffff\1\162\1\142\1\145\1"+
         "\157\1\145\1\101\2\uffff\2\0\1\52\2\uffff\1\143\1\160\1\uffff\1"+
-        "\143\1\164\1\172\1\163\1\157\2\143\1\165\1\163\4\uffff\1\157\1\162"+
-        "\1\145\2\uffff\1\164\1\143\1\141\1\155\3\uffff\1\154\1\160\1\164"+
-        "\2\uffff\1\164\1\154\1\uffff\1\151\1\154\1\150\1\156\1\170\4\uffff"+
-        "\1\154\1\165\1\60\1\157\1\154\1\155\1\151\1\124\1\151\1\154\1\124"+
-        "\1\143\1\162\1\164\1\167\1\155\1\154\1\151\1\143\1\151\1\147\1\141"+
-        "\1\154\1\145\1\160\1\150\1\141\1\155\1\151\1\162\1\145\1\164\1\165"+
-        "\1\164\1\uffff\1\162\1\165\1\60\1\164\1\157\1\156\1\145\1\157\1"+
-        "\145\1\143\1\145\1\60\1\141\1\144\1\166\1\162\1\155\1\162\1\151"+
-        "\1\163\1\60\1\165\1\60\1\164\1\u00e4\1\147\1\146\1\171\1\60\1\144"+
-        "\1\60\1\164\1\144\1\162\1\uffff\1\171\1\102\1\145\1\141\1\102\1"+
-        "\163\1\145\1\155\1\uffff\1\164\1\60\2\151\2\141\1\156\1\60\1\uffff"+
-        "\1\164\1\uffff\1\151\1\uffff\2\141\1\60\1\uffff\1\145\1\uffff\1"+
-        "\60\1\145\1\141\1\60\1\151\1\165\1\163\1\156\1\151\1\163\1\123\1"+
-        "\105\1\60\1\uffff\1\164\1\160\1\154\1\155\1\60\1\uffff\1\60\1\157"+
-        "\1\164\1\143\1\uffff\1\60\1\uffff\1\60\1\164\1\uffff\1\172\1\164"+
-        "\1\163\1\60\1\172\1\157\1\171\1\156\1\uffff\1\171\1\164\2\60\2\uffff"+
-        "\1\156\1\157\1\150\2\uffff\1\151\2\60\1\122\1\uffff\1\60\1\162\1"+
-        "\163\1\164\1\60\1\151\2\uffff\1\60\1\162\1\60\1\157\2\uffff\1\165"+
-        "\1\uffff\1\163\1\164\1\151\1\uffff\1\157\1\uffff\1\151\1\uffff\1"+
-        "\156\1\154\1\60\1\145\1\164\1\156\1\163\1\60\1\145\1\uffff\1\155"+
-        "\1\u00e4\1\60\1\143\1\uffff\2\60\3\uffff\1\150\2\uffff\1\60\1\uffff";
-    static final String DFA12_maxS =
-        "\1\uffff\1\156\1\170\1\165\1\171\1\71\1\56\1\157\2\uffff\1\143"+
-        "\1\157\3\uffff\1\141\1\171\1\165\1\52\1\151\1\145\1\uffff\1\162"+
-        "\1\142\1\145\1\157\1\145\1\172\2\uffff\2\uffff\1\57\2\uffff\1\164"+
-        "\1\160\1\uffff\1\143\1\165\1\172\1\163\1\157\2\143\1\165\1\163\4"+
-        "\uffff\1\157\1\162\1\145\2\uffff\1\164\1\163\1\141\1\155\3\uffff"+
-        "\1\154\1\160\1\164\2\uffff\1\164\1\154\1\uffff\1\151\1\154\1\150"+
-        "\1\156\1\170\4\uffff\1\154\1\165\1\172\1\157\1\154\1\155\1\151\1"+
-        "\124\1\151\1\154\1\124\1\143\1\162\1\164\1\167\1\155\1\154\1\151"+
+        "\143\1\164\1\172\1\163\1\157\2\143\1\165\1\163\1\56\1\uffff\1\56"+
+        "\1\157\1\162\1\145\2\uffff\1\164\1\143\1\141\1\155\3\uffff\1\154"+
+        "\1\160\1\164\2\uffff\1\164\1\154\1\uffff\1\151\1\154\1\150\1\156"+
+        "\1\170\4\uffff\1\154\1\165\1\60\1\157\1\154\1\155\1\151\1\124\1"+
+        "\151\1\154\1\124\1\143\1\162\1\164\2\61\1\167\1\155\1\154\1\151"+
         "\1\143\1\151\1\147\1\141\1\154\1\145\1\160\1\150\1\141\1\155\1\151"+
-        "\1\162\1\145\1\164\1\165\1\164\1\uffff\1\162\1\165\1\172\1\164\1"+
-        "\157\1\156\1\145\1\157\1\145\1\143\1\145\1\172\1\141\1\144\1\166"+
-        "\1\162\1\155\1\162\1\151\1\163\1\172\1\165\1\172\1\164\1\u00e4\1"+
-        "\147\1\146\1\171\1\172\1\144\1\172\1\164\1\144\1\162\1\uffff\1\171"+
-        "\1\117\1\145\1\141\1\102\1\163\1\145\1\155\1\uffff\1\164\1\172\2"+
-        "\151\2\141\1\156\1\172\1\uffff\1\164\1\uffff\1\151\1\uffff\2\141"+
-        "\1\172\1\uffff\1\145\1\uffff\1\172\1\145\1\141\1\172\1\151\1\165"+
-        "\1\163\1\156\1\151\1\163\1\123\1\105\1\172\1\uffff\1\164\1\160\1"+
-        "\154\1\155\1\172\1\uffff\1\172\1\157\1\164\1\143\1\uffff\1\172\1"+
-        "\uffff\1\172\1\164\1\uffff\1\172\1\164\1\163\2\172\1\157\1\171\1"+
-        "\156\1\uffff\1\171\1\164\2\172\2\uffff\1\156\1\157\1\150\2\uffff"+
-        "\1\151\2\172\1\122\1\uffff\1\172\1\162\1\163\1\164\1\172\1\151\2"+
-        "\uffff\1\172\1\162\1\172\1\157\2\uffff\1\165\1\uffff\1\163\1\164"+
-        "\1\151\1\uffff\1\157\1\uffff\1\151\1\uffff\1\156\1\154\1\172\1\145"+
-        "\1\164\1\156\1\163\1\172\1\145\1\uffff\1\155\1\u00e4\1\172\1\143"+
-        "\1\uffff\2\172\3\uffff\1\150\2\uffff\1\172\1\uffff";
+        "\1\162\1\145\1\164\1\165\1\164\1\uffff\1\162\1\165\1\60\1\164\1"+
+        "\157\1\156\1\145\1\157\1\145\1\143\1\145\4\uffff\1\60\1\141\1\144"+
+        "\1\166\1\162\1\155\1\162\1\151\1\163\1\60\1\165\1\60\1\164\1\u00e4"+
+        "\1\147\1\146\1\171\1\60\1\144\1\60\1\164\1\144\1\162\1\uffff\1\171"+
+        "\1\102\1\145\1\141\1\102\1\163\1\145\1\155\1\uffff\1\164\1\60\2"+
+        "\151\2\141\1\156\1\60\1\uffff\1\164\1\uffff\1\151\1\uffff\2\141"+
+        "\1\60\1\uffff\1\145\1\uffff\1\60\1\145\1\141\1\60\1\151\1\165\1"+
+        "\163\1\156\1\151\1\163\1\123\1\105\1\60\1\uffff\1\164\1\160\1\154"+
+        "\1\155\1\60\1\uffff\1\60\1\157\1\164\1\143\1\uffff\1\60\1\uffff"+
+        "\1\60\1\164\1\uffff\1\172\1\164\1\163\1\60\1\172\1\157\1\171\1\156"+
+        "\1\uffff\1\171\1\164\2\60\2\uffff\1\156\1\157\1\150\2\uffff\1\151"+
+        "\2\60\1\122\1\uffff\1\60\1\162\1\163\1\164\1\60\1\151\2\uffff\1"+
+        "\60\1\162\1\60\1\157\2\uffff\1\165\1\uffff\1\163\1\164\1\151\1\uffff"+
+        "\1\157\1\uffff\1\151\1\uffff\1\156\1\154\1\60\1\145\1\164\1\156"+
+        "\1\163\1\60\1\145\1\uffff\1\155\1\u00e4\1\60\1\143\1\uffff\2\60"+
+        "\3\uffff\1\150\2\uffff\1\60\1\uffff";
+    static final String DFA12_maxS =
+        "\1\uffff\1\156\1\170\1\165\1\171\2\56\1\157\2\uffff\1\143\1\157"+
+        "\3\uffff\1\141\1\171\1\165\1\52\1\151\1\145\1\uffff\1\162\1\142"+
+        "\1\145\1\157\1\145\1\172\2\uffff\2\uffff\1\57\2\uffff\1\164\1\160"+
+        "\1\uffff\1\143\1\165\1\172\1\163\1\157\2\143\1\165\1\163\1\56\1"+
+        "\uffff\1\56\1\157\1\162\1\145\2\uffff\1\164\1\163\1\141\1\155\3"+
+        "\uffff\1\154\1\160\1\164\2\uffff\1\164\1\154\1\uffff\1\151\1\154"+
+        "\1\150\1\156\1\170\4\uffff\1\154\1\165\1\172\1\157\1\154\1\155\1"+
+        "\151\1\124\1\151\1\154\1\124\1\143\1\162\1\164\2\116\1\167\1\155"+
+        "\1\154\1\151\1\143\1\151\1\147\1\141\1\154\1\145\1\160\1\150\1\141"+
+        "\1\155\1\151\1\162\1\145\1\164\1\165\1\164\1\uffff\1\162\1\165\1"+
+        "\172\1\164\1\157\1\156\1\145\1\157\1\145\1\143\1\145\4\uffff\1\172"+
+        "\1\141\1\144\1\166\1\162\1\155\1\162\1\151\1\163\1\172\1\165\1\172"+
+        "\1\164\1\u00e4\1\147\1\146\1\171\1\172\1\144\1\172\1\164\1\144\1"+
+        "\162\1\uffff\1\171\1\117\1\145\1\141\1\102\1\163\1\145\1\155\1\uffff"+
+        "\1\164\1\172\2\151\2\141\1\156\1\172\1\uffff\1\164\1\uffff\1\151"+
+        "\1\uffff\2\141\1\172\1\uffff\1\145\1\uffff\1\172\1\145\1\141\1\172"+
+        "\1\151\1\165\1\163\1\156\1\151\1\163\1\123\1\105\1\172\1\uffff\1"+
+        "\164\1\160\1\154\1\155\1\172\1\uffff\1\172\1\157\1\164\1\143\1\uffff"+
+        "\1\172\1\uffff\1\172\1\164\1\uffff\1\172\1\164\1\163\2\172\1\157"+
+        "\1\171\1\156\1\uffff\1\171\1\164\2\172\2\uffff\1\156\1\157\1\150"+
+        "\2\uffff\1\151\2\172\1\122\1\uffff\1\172\1\162\1\163\1\164\1\172"+
+        "\1\151\2\uffff\1\172\1\162\1\172\1\157\2\uffff\1\165\1\uffff\1\163"+
+        "\1\164\1\151\1\uffff\1\157\1\uffff\1\151\1\uffff\1\156\1\154\1\172"+
+        "\1\145\1\164\1\156\1\163\1\172\1\145\1\uffff\1\155\1\u00e4\1\172"+
+        "\1\143\1\uffff\2\172\3\uffff\1\150\2\uffff\1\172\1\uffff";
     static final String DFA12_acceptS =
-        "\10\uffff\1\12\1\13\2\uffff\1\17\1\20\1\21\6\uffff\1\44\6\uffff"+
-        "\1\57\1\60\3\uffff\1\64\1\65\2\uffff\1\57\11\uffff\1\6\1\10\1\60"+
-        "\1\7\3\uffff\1\12\1\13\4\uffff\1\17\1\20\1\21\3\uffff\1\33\1\37"+
-        "\2\uffff\1\44\5\uffff\1\61\1\62\1\63\1\64\42\uffff\1\56\42\uffff"+
-        "\1\46\10\uffff\1\11\10\uffff\1\24\1\uffff\1\35\1\uffff\1\47\3\uffff"+
-        "\1\54\1\uffff\1\25\15\uffff\1\45\5\uffff\1\22\4\uffff\1\53\1\uffff"+
-        "\1\32\2\uffff\1\40\10\uffff\1\31\4\uffff\1\41\1\26\3\uffff\1\1\1"+
-        "\2\4\uffff\1\55\6\uffff\1\52\1\34\4\uffff\1\3\1\5\1\uffff\1\4\3"+
-        "\uffff\1\14\1\uffff\1\43\1\uffff\1\51\11\uffff\1\16\4\uffff\1\36"+
-        "\2\uffff\1\30\1\42\1\15\1\uffff\1\23\1\27\1\uffff\1\50";
+        "\10\uffff\1\13\1\14\2\uffff\1\20\1\21\1\22\6\uffff\1\45\6\uffff"+
+        "\1\60\1\61\3\uffff\1\65\1\66\2\uffff\1\60\12\uffff\1\61\4\uffff"+
+        "\1\13\1\14\4\uffff\1\20\1\21\1\22\3\uffff\1\34\1\40\2\uffff\1\45"+
+        "\5\uffff\1\62\1\63\1\64\1\65\44\uffff\1\57\13\uffff\1\6\1\10\1\7"+
+        "\1\11\27\uffff\1\47\10\uffff\1\12\10\uffff\1\25\1\uffff\1\36\1\uffff"+
+        "\1\50\3\uffff\1\55\1\uffff\1\26\15\uffff\1\46\5\uffff\1\23\4\uffff"+
+        "\1\54\1\uffff\1\33\2\uffff\1\41\10\uffff\1\32\4\uffff\1\42\1\27"+
+        "\3\uffff\1\1\1\2\4\uffff\1\56\6\uffff\1\53\1\35\4\uffff\1\3\1\5"+
+        "\1\uffff\1\4\3\uffff\1\15\1\uffff\1\44\1\uffff\1\52\11\uffff\1\17"+
+        "\4\uffff\1\37\2\uffff\1\31\1\43\1\16\1\uffff\1\24\1\30\1\uffff\1"+
+        "\51";
     static final String DFA12_specialS =
-        "\1\2\35\uffff\1\0\1\1\u00fa\uffff}>";
+        "\1\2\35\uffff\1\1\1\0\u00ff\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\42\2\41\2\42\1\41\22\42\1\41\1\42\1\36\4\42\1\37\4\42\1"+
             "\16\1\42\1\22\1\40\1\6\1\5\10\35\1\25\6\42\1\12\1\3\1\17\1\13"+
@@ -2010,41 +2042,42 @@ public class InternalEsplmLexer extends Lexer {
             "\1\47\11\uffff\1\46",
             "\1\50\5\uffff\1\52\5\uffff\1\51",
             "\1\55\2\uffff\1\53\2\uffff\1\54\3\uffff\1\56",
-            "\1\57\1\uffff\12\61",
-            "\1\62",
-            "\1\65\2\uffff\1\63\2\uffff\1\64",
+            "\1\57",
+            "\1\61",
+            "\1\64\2\uffff\1\62\2\uffff\1\63",
             "",
             "",
-            "\1\70",
-            "\1\71\3\uffff\1\72\5\uffff\1\73",
+            "\1\67",
+            "\1\70\3\uffff\1\71\5\uffff\1\72",
             "",
             "",
             "",
+            "\1\76",
             "\1\77",
             "\1\100",
             "\1\101",
-            "\1\102",
+            "\1\103",
             "\1\104",
-            "\1\105",
             "",
+            "\1\106",
             "\1\107",
             "\1\110",
             "\1\111",
             "\1\112",
-            "\1\113",
             "\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "",
-            "\0\114",
-            "\0\114",
-            "\1\115\4\uffff\1\116",
+            "\0\113",
+            "\0\113",
+            "\1\114\4\uffff\1\115",
             "",
             "",
-            "\1\120\14\uffff\1\121\3\uffff\1\122",
+            "\1\117\14\uffff\1\120\3\uffff\1\121",
+            "\1\122",
+            "",
             "\1\123",
-            "",
-            "\1\124",
-            "\1\126\1\125",
+            "\1\125\1\124",
+            "\1\126",
             "\1\127",
             "\1\130",
             "\1\131",
@@ -2053,42 +2086,39 @@ public class InternalEsplmLexer extends Lexer {
             "\1\134",
             "\1\135",
             "",
-            "",
-            "",
-            "",
             "\1\136",
             "\1\137",
             "\1\140",
-            "",
-            "",
             "\1\141",
-            "\1\143\17\uffff\1\142",
-            "\1\144",
+            "",
+            "",
+            "\1\142",
+            "\1\144\17\uffff\1\143",
             "\1\145",
-            "",
-            "",
-            "",
             "\1\146",
+            "",
+            "",
+            "",
             "\1\147",
             "\1\150",
-            "",
-            "",
             "\1\151",
-            "\1\152",
             "",
+            "",
+            "\1\152",
             "\1\153",
+            "",
             "\1\154",
             "\1\155",
             "\1\156",
             "\1\157",
-            "",
-            "",
-            "",
-            "",
             "\1\160",
+            "",
+            "",
+            "",
+            "",
             "\1\161",
+            "\1\162",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\163",
             "\1\164",
             "\1\165",
             "\1\166",
@@ -2100,10 +2130,8 @@ public class InternalEsplmLexer extends Lexer {
             "\1\174",
             "\1\175",
             "\1\176",
-            "\1\177",
-            "\1\u0080",
-            "\1\u0081",
-            "\1\u0082",
+            "\1\u0080\34\uffff\1\177",
+            "\1\u0082\34\uffff\1\u0081",
             "\1\u0083",
             "\1\u0084",
             "\1\u0085",
@@ -2119,171 +2147,180 @@ public class InternalEsplmLexer extends Lexer {
             "\1\u008f",
             "\1\u0090",
             "\1\u0091",
-            "",
             "\1\u0092",
             "\1\u0093",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\4\45\1\u0094\25"+
-            "\45",
+            "\1\u0094",
+            "\1\u0095",
             "\1\u0096",
+            "",
             "\1\u0097",
             "\1\u0098",
-            "\1\u0099",
-            "\1\u009a",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\4\45\1\u0099\25"+
+            "\45",
             "\1\u009b",
             "\1\u009c",
             "\1\u009d",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u009e",
             "\1\u009f",
             "\1\u00a0",
             "\1\u00a1",
             "\1\u00a2",
-            "\1\u00a3",
+            "",
+            "",
+            "",
+            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00a4",
             "\1\u00a5",
             "\1\u00a6",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00a7",
             "\1\u00a8",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00a9",
             "\1\u00aa",
             "\1\u00ab",
-            "\1\u00ac",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00ad",
-            "\1\u00ae",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00af",
             "\1\u00b0",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00b1",
             "\1\u00b2",
             "\1\u00b3",
-            "\1\u00b4",
-            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00b5",
-            "\1\u00b6\14\uffff\1\u00b7",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00b7",
             "\1\u00b8",
             "\1\u00b9",
-            "\1\u00ba",
-            "\1\u00bb",
-            "\1\u00bc",
-            "\1\u00bd",
             "",
+            "\1\u00ba",
+            "\1\u00bb\14\uffff\1\u00bc",
+            "\1\u00bd",
             "\1\u00be",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00bf",
             "\1\u00c0",
             "\1\u00c1",
             "\1\u00c2",
+            "",
             "\1\u00c3",
-            "\1\u00c4",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "",
+            "\1\u00c5",
             "\1\u00c6",
-            "",
             "\1\u00c7",
-            "",
             "\1\u00c8",
             "\1\u00c9",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "\1\u00cb",
             "",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00cc",
+            "",
             "\1\u00cd",
             "\1\u00ce",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "",
             "\1\u00d0",
-            "\1\u00d1",
+            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00d2",
             "\1\u00d3",
-            "\1\u00d4",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00d5",
             "\1\u00d6",
             "\1\u00d7",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "",
+            "\1\u00d8",
             "\1\u00d9",
             "\1\u00da",
             "\1\u00db",
             "\1\u00dc",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00de",
             "\1\u00df",
             "\1\u00e0",
             "\1\u00e1",
-            "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00e4",
-            "",
             "\1\u00e5",
             "\1\u00e6",
-            "\1\u00e7",
+            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00e9",
+            "",
             "\1\u00ea",
             "\1\u00eb",
             "\1\u00ec",
-            "",
-            "\1\u00ed",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00ee",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "",
-            "",
+            "\1\u00ef",
+            "\1\u00f0",
             "\1\u00f1",
+            "",
             "\1\u00f2",
             "\1\u00f3",
-            "",
-            "",
-            "\1\u00f4",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "",
+            "",
+            "\1\u00f6",
             "\1\u00f7",
+            "\1\u00f8",
             "",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "",
             "\1\u00f9",
-            "\1\u00fa",
-            "\1\u00fb",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u00fd",
-            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00fc",
             "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00fe",
             "\1\u00ff",
+            "\1\u0100",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u0101",
-            "",
-            "",
             "\1\u0102",
             "",
-            "\1\u0103",
-            "\1\u0104",
-            "\1\u0105",
             "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u0104",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0106",
+            "",
             "",
             "\1\u0107",
             "",
             "\1\u0108",
             "\1\u0109",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u010a",
+            "",
             "\1\u010b",
+            "",
             "\1\u010c",
+            "",
             "\1\u010d",
             "\1\u010e",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0110",
-            "",
             "\1\u0111",
             "\1\u0112",
-            "\12\45\1\u0113\6\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u0113",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0115",
             "",
+            "\1\u0116",
+            "\1\u0117",
+            "\12\45\1\u0118\6\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u011a",
+            "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "",
             "",
-            "\1\u0118",
+            "\1\u011d",
             "",
             "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
@@ -2320,27 +2357,27 @@ public class InternalEsplmLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_30 = input.LA(1);
+                        int LA12_31 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_30>='\u0000' && LA12_30<='\uFFFF')) ) {s = 76;}
+                        if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFF')) ) {s = 75;}
 
                         else s = 34;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA12_31 = input.LA(1);
+                        int LA12_30 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFF')) ) {s = 76;}
+                        if ( ((LA12_30>='\u0000' && LA12_30<='\uFFFF')) ) {s = 75;}
 
                         else s = 34;
 

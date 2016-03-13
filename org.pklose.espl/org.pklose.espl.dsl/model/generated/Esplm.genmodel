@@ -20,6 +20,7 @@
       <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/OneToMany"/>
       <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/ZeroToMany"/>
       <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/OneToOne"/>
+      <genEnumLiterals ecoreEnumLiteral="Esplm.ecore#//Multiplicty/ZeroToOne"/>
     </genEnums>
     <genClasses ecoreClass="Esplm.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//Model/elements"/>
