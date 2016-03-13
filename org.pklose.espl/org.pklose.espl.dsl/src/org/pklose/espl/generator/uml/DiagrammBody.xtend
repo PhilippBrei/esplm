@@ -21,7 +21,7 @@ public class DiagrammBody {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Entity Relationship</title>
+    <title>«title»</title>
     <meta name="description" content="Interactive entity-relationship diagram or data model diagram implemented by GoJS in JavaScript for HTML." />
     <!-- Copyright 1998-2016 by Northwoods Software Corporation. -->
     <meta charset="UTF-8">

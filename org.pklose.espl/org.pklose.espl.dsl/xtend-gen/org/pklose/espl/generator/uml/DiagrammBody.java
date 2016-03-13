@@ -30,8 +30,10 @@ public class DiagrammBody {
     _builder.append("<head>");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("<title>Entity Relationship</title>");
-    _builder.newLine();
+    _builder.append("<title>");
+    _builder.append(this.title, "    ");
+    _builder.append("</title>");
+    _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("<meta name=\"description\" content=\"Interactive entity-relationship diagram or data model diagram implemented by GoJS in JavaScript for HTML.\" />");
     _builder.newLine();
