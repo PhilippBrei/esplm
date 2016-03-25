@@ -20,23 +20,21 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
- org.pklose.espl.abinition;bundle-version="1.0.0"
+ com.google.gson
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.pklose.espl,
- org.pklose.espl.services,
  org.pklose.espl.esplm,
  org.pklose.espl.esplm.impl,
  org.pklose.espl.esplm.util,
- org.pklose.espl.serializer,
+ org.pklose.espl.formatting,
+ org.pklose.espl.generator,
+ org.pklose.espl.generator.flow,
+ org.pklose.espl.generator.reports.bre,
+ org.pklose.espl.generator.uml,
  org.pklose.espl.parser.antlr,
  org.pklose.espl.parser.antlr.internal,
- org.pklose.espl.validation,
  org.pklose.espl.scoping,
- org.pklose.espl.generator,
-  org.pklose.espl.generator.uml,
- org.pklose.espl.formatting
-Bundle-ClassPath: lib/gs-core-1.3.jar,
- .,
- lib/gs-core-1.3-javadoc.jar,
- lib/gs-core-1.3-sources.jar
+ org.pklose.espl.serializer,
+ org.pklose.espl.services,
+ org.pklose.espl.validation

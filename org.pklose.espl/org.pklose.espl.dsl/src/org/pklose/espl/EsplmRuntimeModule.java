@@ -3,8 +3,10 @@
  */
 package org.pklose.espl;
 
+import org.pklose.espl.abinitio.service.AbinitionBREService;
+import org.pklose.espl.abinitio.service.impl.AbinitionBREServiceFileSystemBasedImpl;
 import org.pklose.espl.generator.IReportGenerator;
-import org.pklose.espl.generator.ReportGeneratorImpl;
+import org.pklose.espl.generator.ReportBreGeneratorImpl;
 
 import com.google.inject.Singleton;
 
@@ -13,9 +15,15 @@ import com.google.inject.Singleton;
  */
 public class EsplmRuntimeModule extends org.pklose.espl.AbstractEsplmRuntimeModule {
 	
+	
 	@Singleton
 	public Class<? extends IReportGenerator> bindIReportGenerator () {
-		return ReportGeneratorImpl.class;
+		return ReportBreGeneratorImpl.class;
+	}
+	
+	@Singleton
+	public Class<? extends AbinitionBREService> bindAbinitionBREService () {
+		return AbinitionBREServiceFileSystemBasedImpl.class;
 	}
 
 }
