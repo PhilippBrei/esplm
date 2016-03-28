@@ -23,6 +23,8 @@ public class ReportBreGeneratorImpl implements IReportGenerator {
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<BusinessRule> _filter = Iterables.<BusinessRule>filter(_iterable, BusinessRule.class);
     final List<BusinessRule> bres = IterableExtensions.<BusinessRule>toList(_filter);
+    for (final BusinessRule bre : bres) {
+    }
     this.breService.getBusinessRuleMetaInformation("");
     return;
   }

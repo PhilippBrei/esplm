@@ -8,14 +8,23 @@ import com.google.inject.Inject
 class ReportBreGeneratorImpl implements IReportGenerator{
 	
 	@Inject
-	private AbinitionBREService breService// = new AbinitionBREServiceFileSystemBasedImpl();
+	private AbinitionBREService breService
 	
 	override createBREReport(Resource resource) {
-		val bres = resource.allContents.toIterable.filter(typeof(BusinessRule)).toList
+		val bres = resource.allContents.toIterable.filter(typeof(BusinessRule)).toList;
+		
+		for (bre : bres) {
+			
+		}
 		breService.getBusinessRuleMetaInformation("");
 		
 		return;
 	}
+	
+	
+	
+	
+
 	
 	
 	

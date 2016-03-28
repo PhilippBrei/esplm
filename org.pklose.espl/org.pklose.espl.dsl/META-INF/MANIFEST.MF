@@ -38,3 +38,4 @@ Export-Package: org.pklose.espl,
  org.pklose.espl.serializer,
  org.pklose.espl.services,
  org.pklose.espl.validation
+Bundle-ClassPath: libs/org.apache.servicemix.bundles.poi-3.13_1.jar
