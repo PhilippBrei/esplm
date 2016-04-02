@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.apache.poi.ss.usermodel.Cell;
@@ -97,11 +98,13 @@ public class AbinitioBREReport {
             Entity myEntity = ((Entity) entity);
             EList<Property> _properties = myEntity.getProperties();
             Iterable<Property> _filter = Iterables.<Property>filter(_properties, Property.class);
-            for (final Property field : _filter) {
+            List<Property> _list = IterableExtensions.<Property>toList(_filter);
+            for (final Property field : _list) {
               {
                 Row row = sheet.createRow(rowCounter);
                 String _name = field.getName();
-                this.fillBreRule(row, 0, breName, _name, "input");
+                this.fillBreRule(row, rowCounter, breName, _name, "input");
+                rowCounter++;
               }
             }
           }

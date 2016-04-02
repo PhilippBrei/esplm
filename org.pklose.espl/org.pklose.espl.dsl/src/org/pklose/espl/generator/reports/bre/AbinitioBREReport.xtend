@@ -81,9 +81,10 @@ class AbinitioBREReport {
 			for (entity : currentBre.inputs) {
 				if (entity instanceof Entity) {
 					var myEntity = entity as Entity
-					for (field : myEntity.properties.filter(typeof(org.pklose.espl.esplm.Property))) {
+					for (field : myEntity.properties.filter(typeof(org.pklose.espl.esplm.Property)).toList) {
 						var row = sheet.createRow(rowCounter);
-						fillBreRule(row, 0, breName, field.name, "input");
+						fillBreRule(row, rowCounter, breName, field.name, "input");
+						rowCounter++;
 					}
 				}
 				
