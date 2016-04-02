@@ -28,10 +28,10 @@ public class EsplmValidator extends AbstractEsplmValidator {
   
   @Check
   public void checkBREInputTypesMatch(final BusinessRule businessRule) {
-    EList<BreEntityInput> _systemInputs = businessRule.getSystemInputs();
-    List<BreEntityInput> inputElements = ((List<BreEntityInput>) _systemInputs);
-    EList<BreEntityInput> _systemInputs_1 = businessRule.getSystemInputs();
-    for (final BreEntityInput bre : ((EList<BreEntityInput>) _systemInputs_1)) {
+    EList<BreEntityInput> _inputs = businessRule.getInputs();
+    List<BreEntityInput> inputElements = ((List<BreEntityInput>) _inputs);
+    EList<BreEntityInput> _inputs_1 = businessRule.getInputs();
+    for (final BreEntityInput bre : ((EList<BreEntityInput>) _inputs_1)) {
       {
         BREType _typ = businessRule.getTyp();
         boolean _equals = BREType.BIZ_TO_BIZ.equals(_typ);

@@ -5308,31 +5308,31 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BusinessRule__Group__8__Impl"
-    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1945:1: rule__BusinessRule__Group__8__Impl : ( ( rule__BusinessRule__SystemInputsAssignment_8 ) ) ;
+    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1945:1: rule__BusinessRule__Group__8__Impl : ( ( rule__BusinessRule__InputsAssignment_8 ) ) ;
     public final void rule__BusinessRule__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1949:1: ( ( ( rule__BusinessRule__SystemInputsAssignment_8 ) ) )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1950:1: ( ( rule__BusinessRule__SystemInputsAssignment_8 ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1949:1: ( ( ( rule__BusinessRule__InputsAssignment_8 ) ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1950:1: ( ( rule__BusinessRule__InputsAssignment_8 ) )
             {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1950:1: ( ( rule__BusinessRule__SystemInputsAssignment_8 ) )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1951:1: ( rule__BusinessRule__SystemInputsAssignment_8 )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1950:1: ( ( rule__BusinessRule__InputsAssignment_8 ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1951:1: ( rule__BusinessRule__InputsAssignment_8 )
             {
-             before(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_8()); 
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1952:1: ( rule__BusinessRule__SystemInputsAssignment_8 )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1952:2: rule__BusinessRule__SystemInputsAssignment_8
+             before(grammarAccess.getBusinessRuleAccess().getInputsAssignment_8()); 
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1952:1: ( rule__BusinessRule__InputsAssignment_8 )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:1952:2: rule__BusinessRule__InputsAssignment_8
             {
-            pushFollow(FOLLOW_rule__BusinessRule__SystemInputsAssignment_8_in_rule__BusinessRule__Group__8__Impl4007);
-            rule__BusinessRule__SystemInputsAssignment_8();
+            pushFollow(FOLLOW_rule__BusinessRule__InputsAssignment_8_in_rule__BusinessRule__Group__8__Impl4007);
+            rule__BusinessRule__InputsAssignment_8();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_8()); 
+             after(grammarAccess.getBusinessRuleAccess().getInputsAssignment_8()); 
 
             }
 
@@ -6021,31 +6021,31 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BusinessRule__Group_9__1__Impl"
-    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2248:1: rule__BusinessRule__Group_9__1__Impl : ( ( rule__BusinessRule__SystemInputsAssignment_9_1 ) ) ;
+    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2248:1: rule__BusinessRule__Group_9__1__Impl : ( ( rule__BusinessRule__InputsAssignment_9_1 ) ) ;
     public final void rule__BusinessRule__Group_9__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2252:1: ( ( ( rule__BusinessRule__SystemInputsAssignment_9_1 ) ) )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2253:1: ( ( rule__BusinessRule__SystemInputsAssignment_9_1 ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2252:1: ( ( ( rule__BusinessRule__InputsAssignment_9_1 ) ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2253:1: ( ( rule__BusinessRule__InputsAssignment_9_1 ) )
             {
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2253:1: ( ( rule__BusinessRule__SystemInputsAssignment_9_1 ) )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2254:1: ( rule__BusinessRule__SystemInputsAssignment_9_1 )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2253:1: ( ( rule__BusinessRule__InputsAssignment_9_1 ) )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2254:1: ( rule__BusinessRule__InputsAssignment_9_1 )
             {
-             before(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_9_1()); 
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2255:1: ( rule__BusinessRule__SystemInputsAssignment_9_1 )
-            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2255:2: rule__BusinessRule__SystemInputsAssignment_9_1
+             before(grammarAccess.getBusinessRuleAccess().getInputsAssignment_9_1()); 
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2255:1: ( rule__BusinessRule__InputsAssignment_9_1 )
+            // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:2255:2: rule__BusinessRule__InputsAssignment_9_1
             {
-            pushFollow(FOLLOW_rule__BusinessRule__SystemInputsAssignment_9_1_in_rule__BusinessRule__Group_9__1__Impl4586);
-            rule__BusinessRule__SystemInputsAssignment_9_1();
+            pushFollow(FOLLOW_rule__BusinessRule__InputsAssignment_9_1_in_rule__BusinessRule__Group_9__1__Impl4586);
+            rule__BusinessRule__InputsAssignment_9_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_9_1()); 
+             after(grammarAccess.getBusinessRuleAccess().getInputsAssignment_9_1()); 
 
             }
 
@@ -13496,9 +13496,9 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__BusinessRule__TypAssignment_4"
 
 
-    // $ANTLR start "rule__BusinessRule__SystemInputsAssignment_8"
-    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5160:1: rule__BusinessRule__SystemInputsAssignment_8 : ( ruleBreEntityInput ) ;
-    public final void rule__BusinessRule__SystemInputsAssignment_8() throws RecognitionException {
+    // $ANTLR start "rule__BusinessRule__InputsAssignment_8"
+    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5160:1: rule__BusinessRule__InputsAssignment_8 : ( ruleBreEntityInput ) ;
+    public final void rule__BusinessRule__InputsAssignment_8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -13509,13 +13509,13 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
             // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5165:1: ( ruleBreEntityInput )
             // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5166:1: ruleBreEntityInput
             {
-             before(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_8_0()); 
-            pushFollow(FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__SystemInputsAssignment_810480);
+             before(grammarAccess.getBusinessRuleAccess().getInputsBreEntityInputParserRuleCall_8_0()); 
+            pushFollow(FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__InputsAssignment_810480);
             ruleBreEntityInput();
 
             state._fsp--;
 
-             after(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_8_0()); 
+             after(grammarAccess.getBusinessRuleAccess().getInputsBreEntityInputParserRuleCall_8_0()); 
 
             }
 
@@ -13534,12 +13534,12 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__BusinessRule__SystemInputsAssignment_8"
+    // $ANTLR end "rule__BusinessRule__InputsAssignment_8"
 
 
-    // $ANTLR start "rule__BusinessRule__SystemInputsAssignment_9_1"
-    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5175:1: rule__BusinessRule__SystemInputsAssignment_9_1 : ( ruleBreEntityInput ) ;
-    public final void rule__BusinessRule__SystemInputsAssignment_9_1() throws RecognitionException {
+    // $ANTLR start "rule__BusinessRule__InputsAssignment_9_1"
+    // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5175:1: rule__BusinessRule__InputsAssignment_9_1 : ( ruleBreEntityInput ) ;
+    public final void rule__BusinessRule__InputsAssignment_9_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -13550,13 +13550,13 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
             // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5180:1: ( ruleBreEntityInput )
             // ../org.pklose.espl.ui/src-gen/org/pklose/espl/ui/contentassist/antlr/internal/InternalEsplm.g:5181:1: ruleBreEntityInput
             {
-             before(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_9_1_0()); 
-            pushFollow(FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__SystemInputsAssignment_9_110511);
+             before(grammarAccess.getBusinessRuleAccess().getInputsBreEntityInputParserRuleCall_9_1_0()); 
+            pushFollow(FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__InputsAssignment_9_110511);
             ruleBreEntityInput();
 
             state._fsp--;
 
-             after(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_9_1_0()); 
+             after(grammarAccess.getBusinessRuleAccess().getInputsBreEntityInputParserRuleCall_9_1_0()); 
 
             }
 
@@ -13575,7 +13575,7 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__BusinessRule__SystemInputsAssignment_9_1"
+    // $ANTLR end "rule__BusinessRule__InputsAssignment_9_1"
 
 
     // $ANTLR start "rule__BusinessRule__OutputAssignment_13"
@@ -15426,7 +15426,7 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_26_in_rule__BusinessRule__Group__7__Impl3946 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BusinessRule__Group__8__Impl_in_rule__BusinessRule__Group__83977 = new BitSet(new long[]{0x0000000018000000L});
     public static final BitSet FOLLOW_rule__BusinessRule__Group__9_in_rule__BusinessRule__Group__83980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BusinessRule__SystemInputsAssignment_8_in_rule__BusinessRule__Group__8__Impl4007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BusinessRule__InputsAssignment_8_in_rule__BusinessRule__Group__8__Impl4007 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BusinessRule__Group__9__Impl_in_rule__BusinessRule__Group__94037 = new BitSet(new long[]{0x0000000018000000L});
     public static final BitSet FOLLOW_rule__BusinessRule__Group__10_in_rule__BusinessRule__Group__94040 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BusinessRule__Group_9__0_in_rule__BusinessRule__Group__9__Impl4067 = new BitSet(new long[]{0x0000000010000002L});
@@ -15451,7 +15451,7 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__BusinessRule__Group_9__1_in_rule__BusinessRule__Group_9__04500 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_28_in_rule__BusinessRule__Group_9__0__Impl4528 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BusinessRule__Group_9__1__Impl_in_rule__BusinessRule__Group_9__14559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BusinessRule__SystemInputsAssignment_9_1_in_rule__BusinessRule__Group_9__1__Impl4586 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__BusinessRule__InputsAssignment_9_1_in_rule__BusinessRule__Group_9__1__Impl4586 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BreEntityInput__Group__0__Impl_in_rule__BreEntityInput__Group__04620 = new BitSet(new long[]{0x0018000000600000L});
     public static final BitSet FOLLOW_rule__BreEntityInput__Group__1_in_rule__BreEntityInput__Group__04623 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__BreEntityInput__InputElementAssignment_0_in_rule__BreEntityInput__Group__0__Impl4650 = new BitSet(new long[]{0x0000000000000002L});
@@ -15687,8 +15687,8 @@ public class InternalEsplmParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleImport_in_rule__BusinessRule__ImportsAssignment_010387 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__BusinessRule__NameAssignment_210418 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBREType_in_rule__BusinessRule__TypAssignment_410449 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__SystemInputsAssignment_810480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__SystemInputsAssignment_9_110511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__InputsAssignment_810480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBreEntityInput_in_rule__BusinessRule__InputsAssignment_9_110511 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBreOutPutReference_in_rule__BusinessRule__OutputAssignment_1310542 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFQN_in_rule__BreOutPutReference__OutputAssignment10577 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFQN_in_rule__BreEntityInput__InputElementAssignment_010616 = new BitSet(new long[]{0x0000000000000002L});

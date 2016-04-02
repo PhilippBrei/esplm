@@ -41,7 +41,7 @@
     <genClasses ecoreClass="Esplm.ecore#//BusinessRule">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/imports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Esplm.ecore#//BusinessRule/typ"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/systemInputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Esplm.ecore#//BusinessRule/output"/>
     </genClasses>
     <genClasses ecoreClass="Esplm.ecore#//ModelElement">

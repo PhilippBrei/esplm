@@ -960,7 +960,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBusinessRule"
-    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:417:1: ruleBusinessRule returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_systemInputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' ) ;
+    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:417:1: ruleBusinessRule returns [EObject current=null] : ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_inputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' ) ;
     public final EObject ruleBusinessRule() throws RecognitionException {
         EObject current = null;
 
@@ -980,9 +980,9 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
         Enumerator lv_typ_4_0 = null;
 
-        EObject lv_systemInputs_8_0 = null;
+        EObject lv_inputs_8_0 = null;
 
-        EObject lv_systemInputs_10_0 = null;
+        EObject lv_inputs_10_0 = null;
 
         EObject lv_output_14_0 = null;
 
@@ -990,11 +990,11 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:420:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_systemInputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_systemInputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:420:28: ( ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_inputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_inputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_systemInputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_systemInputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}'
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:1: ( ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_inputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}' )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:2: ( (lv_imports_0_0= ruleImport ) )* otherlv_1= 'BusinessRule' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= 'type' ( (lv_typ_4_0= ruleBREType ) ) otherlv_5= '{' otherlv_6= 'Input' otherlv_7= '[' ( (lv_inputs_8_0= ruleBreEntityInput ) ) (otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) ) )* otherlv_11= ']' otherlv_12= 'Output' otherlv_13= '[' ( (lv_output_14_0= ruleBreOutPutReference ) ) otherlv_15= ']' otherlv_16= '}'
             {
             // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:421:2: ( (lv_imports_0_0= ruleImport ) )*
             loop7:
@@ -1122,17 +1122,17 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_7, grammarAccess.getBusinessRuleAccess().getLeftSquareBracketKeyword_7());
                 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:495:1: ( (lv_systemInputs_8_0= ruleBreEntityInput ) )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:496:1: (lv_systemInputs_8_0= ruleBreEntityInput )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:495:1: ( (lv_inputs_8_0= ruleBreEntityInput ) )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:496:1: (lv_inputs_8_0= ruleBreEntityInput )
             {
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:496:1: (lv_systemInputs_8_0= ruleBreEntityInput )
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:497:3: lv_systemInputs_8_0= ruleBreEntityInput
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:496:1: (lv_inputs_8_0= ruleBreEntityInput )
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:497:3: lv_inputs_8_0= ruleBreEntityInput
             {
              
-            	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_8_0()); 
+            	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getInputsBreEntityInputParserRuleCall_8_0()); 
             	    
             pushFollow(FOLLOW_ruleBreEntityInput_in_ruleBusinessRule1041);
-            lv_systemInputs_8_0=ruleBreEntityInput();
+            lv_inputs_8_0=ruleBreEntityInput();
 
             state._fsp--;
 
@@ -1142,8 +1142,8 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	        }
                    		add(
                    			current, 
-                   			"systemInputs",
-                    		lv_systemInputs_8_0, 
+                   			"inputs",
+                    		lv_inputs_8_0, 
                     		"BreEntityInput");
             	        afterParserOrEnumRuleCall();
             	    
@@ -1153,7 +1153,7 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:513:2: (otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) ) )*
+            // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:513:2: (otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1166,23 +1166,23 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:513:4: otherlv_9= ',' ( (lv_systemInputs_10_0= ruleBreEntityInput ) )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:513:4: otherlv_9= ',' ( (lv_inputs_10_0= ruleBreEntityInput ) )
             	    {
             	    otherlv_9=(Token)match(input,17,FOLLOW_17_in_ruleBusinessRule1054); 
 
             	        	newLeafNode(otherlv_9, grammarAccess.getBusinessRuleAccess().getCommaKeyword_9_0());
             	        
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:517:1: ( (lv_systemInputs_10_0= ruleBreEntityInput ) )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:518:1: (lv_systemInputs_10_0= ruleBreEntityInput )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:517:1: ( (lv_inputs_10_0= ruleBreEntityInput ) )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:518:1: (lv_inputs_10_0= ruleBreEntityInput )
             	    {
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:518:1: (lv_systemInputs_10_0= ruleBreEntityInput )
-            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:519:3: lv_systemInputs_10_0= ruleBreEntityInput
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:518:1: (lv_inputs_10_0= ruleBreEntityInput )
+            	    // ../org.pklose.espl.dsl/src-gen/org/pklose/espl/parser/antlr/internal/InternalEsplm.g:519:3: lv_inputs_10_0= ruleBreEntityInput
             	    {
             	     
-            	    	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getSystemInputsBreEntityInputParserRuleCall_9_1_0()); 
+            	    	        newCompositeNode(grammarAccess.getBusinessRuleAccess().getInputsBreEntityInputParserRuleCall_9_1_0()); 
             	    	    
             	    pushFollow(FOLLOW_ruleBreEntityInput_in_ruleBusinessRule1075);
-            	    lv_systemInputs_10_0=ruleBreEntityInput();
+            	    lv_inputs_10_0=ruleBreEntityInput();
 
             	    state._fsp--;
 
@@ -1192,8 +1192,8 @@ public class InternalEsplmParser extends AbstractInternalAntlrParser {
             	    	        }
             	           		add(
             	           			current, 
-            	           			"systemInputs",
-            	            		lv_systemInputs_10_0, 
+            	           			"inputs",
+            	            		lv_inputs_10_0, 
             	            		"BreEntityInput");
             	    	        afterParserOrEnumRuleCall();
             	    	    

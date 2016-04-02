@@ -252,13 +252,13 @@ public interface EsplmPackage extends EPackage
   int BUSINESS_RULE__TYP = ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>System Inputs</b></em>' containment reference list.
+   * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BUSINESS_RULE__SYSTEM_INPUTS = ELEMENT_FEATURE_COUNT + 2;
+  int BUSINESS_RULE__INPUTS = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Output</b></em>' containment reference.
@@ -1108,15 +1108,15 @@ public interface EsplmPackage extends EPackage
   EAttribute getBusinessRule_Typ();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.BusinessRule#getSystemInputs <em>System Inputs</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.pklose.espl.esplm.BusinessRule#getInputs <em>Inputs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>System Inputs</em>'.
-   * @see org.pklose.espl.esplm.BusinessRule#getSystemInputs()
+   * @return the meta object for the containment reference list '<em>Inputs</em>'.
+   * @see org.pklose.espl.esplm.BusinessRule#getInputs()
    * @see #getBusinessRule()
    * @generated
    */
-  EReference getBusinessRule_SystemInputs();
+  EReference getBusinessRule_Inputs();
 
   /**
    * Returns the meta object for the containment reference '{@link org.pklose.espl.esplm.BusinessRule#getOutput <em>Output</em>}'.
@@ -1769,12 +1769,12 @@ public interface EsplmPackage extends EPackage
     EAttribute BUSINESS_RULE__TYP = eINSTANCE.getBusinessRule_Typ();
 
     /**
-     * The meta object literal for the '<em><b>System Inputs</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference BUSINESS_RULE__SYSTEM_INPUTS = eINSTANCE.getBusinessRule_SystemInputs();
+    EReference BUSINESS_RULE__INPUTS = eINSTANCE.getBusinessRule_Inputs();
 
     /**
      * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.

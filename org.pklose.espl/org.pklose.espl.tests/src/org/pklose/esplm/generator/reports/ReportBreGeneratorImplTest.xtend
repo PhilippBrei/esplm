@@ -1,18 +1,20 @@
 package org.pklose.esplm.generator.reports
 
-import org.junit.runner.RunWith
+import com.google.inject.Inject
+import com.google.inject.Provider
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.pklose.espl.EsplmInjectorProvider
-import com.google.inject.Inject
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.pklose.espl.esplm.Model
-import org.junit.Before
-import org.eclipse.xtext.generator.InMemoryFileSystemAccess
-import com.google.inject.Provider
 import org.eclipse.xtext.resource.XtextResourceSet
+import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.pklose.espl.EsplmInjectorProvider
+import org.pklose.espl.esplm.BusinessRule
+import org.pklose.espl.esplm.Model
+import org.pklose.espl.generator.reports.bre.AbinitioBREReport
+import java.util.Arrays
 
 @RunWith(XtextRunner)
 @InjectWith(EsplmInjectorProvider)
@@ -24,9 +26,12 @@ class ReportBreGeneratorImplTest {
 	
 	@Inject Provider<XtextResourceSet> resourceSetProvider
 	
+	var AbinitioBREReport reportService;
+	
+	var BusinessRule businessRule;
+	
 	@Before
-	def createModel () {
-		var fileSystemAcces = new InMemoryFileSystemAccess();
+	def void createModel () {
 		val resourceSet = resourceSetProvider.get;
 		
 		var personMode = 
@@ -40,22 +45,24 @@ class ReportBreGeneratorImplTest {
 		'''
 		parse(personMode, resourceSet);
 		
-		var Bre = 
+		var bre = 
 		'''
 		Import Person.*
-		BusinessRule adasd type BizToBiz {
+		BusinessRule PersonToPerson type BizToBiz {
 			Input [Person.Geschaeftspartner {primär mehrfach}]
 			Output [Person.Geschaeftspartner]
 		}
 		'''
-		val model = parse(Bre, resourceSet);
+		val model = parse(bre, resourceSet);
 		
 		validationTester.assertNoIssues(model);
+		
+		businessRule = model.eAllContents.filter(typeof(BusinessRule)).head;
 	}
 	
 	@Test
-	def void TestReport () {
-		
+	def void TestReport () {		
+		reportService = new AbinitioBREReport(Arrays.asList(businessRule), Arrays.asList(businessRule));
 	}
 	
 }

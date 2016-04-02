@@ -1,19 +1,25 @@
 package org.pklose.espl.generator.reports.bre
 
-import org.pklose.espl.abinitio.service.BusinessRule
+import java.util.Collection
 import java.util.Map
-import java.util.HashMap
+import org.apache.poi.ss.usermodel.Row
+import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.ss.usermodel.Row
+import org.pklose.espl.esplm.BusinessRule
+import org.pklose.espl.esplm.Entity
 
 class AbinitioBREReport {
 	
-	val Map<String, BusinessRule> specifiedBREs = new HashMap()
-	val Map<String, BusinessRule> implementedBREs = new HashMap()
+	val Map<String, BusinessRule> specifiedBREs; 
+	val Map<String, BusinessRule> implementedBREs;
 	
 	val Workbook workBook = new XSSFWorkbook();
+	
+	new (Collection<BusinessRule> specifiedBres, Collection<BusinessRule> implementedBres) {
+		this.specifiedBREs = specifiedBres.toMap[name];
+		this.implementedBREs = implementedBres.toMap[name];
+	}
 	
 	def createReport () {
 		var implementedSheet = initWorkBook("Implemented BREs")
@@ -63,11 +69,13 @@ class AbinitioBREReport {
 		var int rowCounter = 1;
 		for (breName : bres.keySet) {
 			var currentBre = bres.get(breName);			
-			for (entity : currentBre.inputElements) {				
-				for (field : entity.fields) {
-					var currentRow = sheet.createRow(rowCounter);
-					fillBreRule(currentRow, rowCounter, currentBre.name, entity.name, field.name);
-					rowCounter++;		
+			for (entity : currentBre.inputs) {
+				if (entity instanceof Entity) {
+					var myEntity = entity as Entity
+					for (field : myEntity.properties.filter(typeof(org.pklose.espl.esplm.Property))) {
+						var row = sheet.createRow(rowCounter);
+						fillBreRule(row, 0, breName, field.name, "input");
+					}
 				}
 				
 			}		
@@ -75,12 +83,7 @@ class AbinitioBREReport {
 		}
 	}
 	
-	def findFieldOfBre (Map<String, BusinessRule> businessRules, String breName,String entityName, String fieldName) {
-		var bre = businessRules.get(breName);
-		var inputBre = bre.inputElements.findFirst[name.equals(entityName)];
-		var firstField = inputBre.fields.findFirst[name.equals(fieldName)]
-		return firstField;		
-	}
+	
 	
 	def fillBreRule (Row row, int start,String BRENameValue, String BREFieldValue, String BRETypeValue) {
 		var expectedBreName = row.createCell(start);

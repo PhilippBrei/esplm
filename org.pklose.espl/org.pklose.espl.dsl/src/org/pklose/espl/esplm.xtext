@@ -29,7 +29,7 @@ BusinessRule:
 	imports += Import*
 	'BusinessRule' name=ID 'type' typ = BREType '{'
 		 'Input' '[' 
-		   systemInputs += BreEntityInput (',' systemInputs+= BreEntityInput)* 
+		   inputs += BreEntityInput (',' inputs+= BreEntityInput)* 
 		 ']'
 		 'Output' '['
 		 	output = BreOutPutReference 

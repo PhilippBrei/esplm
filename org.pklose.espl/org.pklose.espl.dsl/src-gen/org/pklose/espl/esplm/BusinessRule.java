@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.pklose.espl.esplm.BusinessRule#getImports <em>Imports</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.BusinessRule#getTyp <em>Typ</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.BusinessRule#getSystemInputs <em>System Inputs</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.BusinessRule#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.BusinessRule#getOutput <em>Output</em>}</li>
  * </ul>
  *
@@ -71,20 +71,20 @@ public interface BusinessRule extends Element
   void setTyp(BREType value);
 
   /**
-   * Returns the value of the '<em><b>System Inputs</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
    * The list contents are of type {@link org.pklose.espl.esplm.BreEntityInput}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>System Inputs</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>System Inputs</em>' containment reference list.
-   * @see org.pklose.espl.esplm.EsplmPackage#getBusinessRule_SystemInputs()
+   * @return the value of the '<em>Inputs</em>' containment reference list.
+   * @see org.pklose.espl.esplm.EsplmPackage#getBusinessRule_Inputs()
    * @model containment="true"
    * @generated
    */
-  EList<BreEntityInput> getSystemInputs();
+  EList<BreEntityInput> getInputs();
 
   /**
    * Returns the value of the '<em><b>Output</b></em>' containment reference.

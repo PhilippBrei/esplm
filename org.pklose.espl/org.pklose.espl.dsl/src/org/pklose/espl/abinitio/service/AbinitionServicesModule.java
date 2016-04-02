@@ -9,6 +9,7 @@ public class AbinitionServicesModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		bind(AbinitionBREService.class).to(AbinitionBREServiceFileSystemBasedImpl.class);
+		
 	}
 	
 	

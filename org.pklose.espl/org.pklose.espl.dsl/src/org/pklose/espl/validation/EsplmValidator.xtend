@@ -36,8 +36,8 @@ class EsplmValidator extends AbstractEsplmValidator {
 //	}
 	@Check
 	def checkBREInputTypesMatch(BusinessRule businessRule) {
-		var List<BreEntityInput> inputElements = businessRule.systemInputs as List<BreEntityInput>
-		for (BreEntityInput bre : (businessRule.systemInputs as EList<BreEntityInput>)) {
+		var List<BreEntityInput> inputElements = businessRule.inputs as List<BreEntityInput>
+		for (BreEntityInput bre : (businessRule.inputs as EList<BreEntityInput>)) {
 			if (BREType.BIZ_TO_BIZ.equals(businessRule.typ)) {
 				if (bre.inputElement instanceof SystemEntity) {
 					error(BIZ_TO_BIZ_ERROR, bre, EsplmPackage.Literals.BRE_ENTITY_INPUT__INPUT_ELEMENT);

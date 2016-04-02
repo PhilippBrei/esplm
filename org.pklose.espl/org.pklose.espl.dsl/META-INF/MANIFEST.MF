@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.common.types,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  com.google.gson,
- org.pklose.espl.dsl.dependencies.poi;bundle-version="1.0.0"
+ org.pklose.espl.dsl.dependencies.poi;bundle-version="1.0.0";visibility:=reexport
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.pklose.espl,

@@ -1,7 +1,7 @@
 package org.pklose.espl.generator.reports.bre;
 
-import java.util.HashMap;
-import java.util.List;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import org.apache.poi.ss.usermodel.Cell;
@@ -9,19 +9,34 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.pklose.espl.abinitio.service.BusinessRule;
-import org.pklose.espl.abinitio.service.BusinessRuleEntity;
-import org.pklose.espl.abinitio.service.BusinessRuleField;
+import org.pklose.espl.esplm.BreEntityInput;
+import org.pklose.espl.esplm.BusinessRule;
+import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.Property;
 
 @SuppressWarnings("all")
 public class AbinitioBREReport {
-  private final Map<String, BusinessRule> specifiedBREs = new HashMap<String, BusinessRule>();
+  private final Map<String, BusinessRule> specifiedBREs;
   
-  private final Map<String, BusinessRule> implementedBREs = new HashMap<String, BusinessRule>();
+  private final Map<String, BusinessRule> implementedBREs;
   
   private final Workbook workBook = new XSSFWorkbook();
+  
+  public AbinitioBREReport(final Collection<BusinessRule> specifiedBres, final Collection<BusinessRule> implementedBres) {
+    final Function1<BusinessRule, String> _function = (BusinessRule it) -> {
+      return it.getName();
+    };
+    Map<String, BusinessRule> _map = IterableExtensions.<String, BusinessRule>toMap(specifiedBres, _function);
+    this.specifiedBREs = _map;
+    final Function1<BusinessRule, String> _function_1 = (BusinessRule it) -> {
+      return it.getName();
+    };
+    Map<String, BusinessRule> _map_1 = IterableExtensions.<String, BusinessRule>toMap(implementedBres, _function_1);
+    this.implementedBREs = _map_1;
+  }
   
   public Workbook createReport() {
     Sheet implementedSheet = this.initWorkBook("Implemented BREs");
@@ -62,39 +77,23 @@ public class AbinitioBREReport {
     for (final String breName : _keySet) {
       {
         BusinessRule currentBre = bres.get(breName);
-        List<BusinessRuleEntity> _inputElements = currentBre.getInputElements();
-        for (final BusinessRuleEntity entity : _inputElements) {
-          List<BusinessRuleField> _fields = entity.getFields();
-          for (final BusinessRuleField field : _fields) {
-            {
-              Row currentRow = sheet.createRow(rowCounter);
-              String _name = currentBre.getName();
-              String _name_1 = entity.getName();
-              String _name_2 = field.getName();
-              this.fillBreRule(currentRow, rowCounter, _name, _name_1, _name_2);
-              rowCounter++;
+        EList<BreEntityInput> _inputs = currentBre.getInputs();
+        for (final BreEntityInput entity : _inputs) {
+          if ((entity instanceof Entity)) {
+            Entity myEntity = ((Entity) entity);
+            EList<Property> _properties = myEntity.getProperties();
+            Iterable<Property> _filter = Iterables.<Property>filter(_properties, Property.class);
+            for (final Property field : _filter) {
+              {
+                Row row = sheet.createRow(rowCounter);
+                String _name = field.getName();
+                this.fillBreRule(row, 0, breName, _name, "input");
+              }
             }
           }
         }
       }
     }
-  }
-  
-  public BusinessRuleField findFieldOfBre(final Map<String, BusinessRule> businessRules, final String breName, final String entityName, final String fieldName) {
-    BusinessRule bre = businessRules.get(breName);
-    List<BusinessRuleEntity> _inputElements = bre.getInputElements();
-    final Function1<BusinessRuleEntity, Boolean> _function = (BusinessRuleEntity it) -> {
-      String _name = it.getName();
-      return Boolean.valueOf(_name.equals(entityName));
-    };
-    BusinessRuleEntity inputBre = IterableExtensions.<BusinessRuleEntity>findFirst(_inputElements, _function);
-    List<BusinessRuleField> _fields = inputBre.getFields();
-    final Function1<BusinessRuleField, Boolean> _function_1 = (BusinessRuleField it) -> {
-      String _name = it.getName();
-      return Boolean.valueOf(_name.equals(fieldName));
-    };
-    BusinessRuleField firstField = IterableExtensions.<BusinessRuleField>findFirst(_fields, _function_1);
-    return firstField;
   }
   
   public void fillBreRule(final Row row, final int start, final String BRENameValue, final String BREFieldValue, final String BRETypeValue) {

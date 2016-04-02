@@ -246,12 +246,12 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cInputKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Keyword cLeftSquareBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cSystemInputsAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cSystemInputsBreEntityInputParserRuleCall_8_0 = (RuleCall)cSystemInputsAssignment_8.eContents().get(0);
+		private final Assignment cInputsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cInputsBreEntityInputParserRuleCall_8_0 = (RuleCall)cInputsAssignment_8.eContents().get(0);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
 		private final Keyword cCommaKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cSystemInputsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cSystemInputsBreEntityInputParserRuleCall_9_1_0 = (RuleCall)cSystemInputsAssignment_9_1.eContents().get(0);
+		private final Assignment cInputsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cInputsBreEntityInputParserRuleCall_9_1_0 = (RuleCall)cInputsAssignment_9_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		private final Keyword cOutputKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		private final Keyword cLeftSquareBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
@@ -261,12 +261,12 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
 		
 		//BusinessRule:
-		//	imports+=Import* "BusinessRule" name=ID "type" typ=BREType "{" "Input" "[" systemInputs+=BreEntityInput (","
-		//	systemInputs+=BreEntityInput)* "]" "Output" "[" output=BreOutPutReference "]" "}";
+		//	imports+=Import* "BusinessRule" name=ID "type" typ=BREType "{" "Input" "[" inputs+=BreEntityInput (","
+		//	inputs+=BreEntityInput)* "]" "Output" "[" output=BreOutPutReference "]" "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//imports+=Import* "BusinessRule" name=ID "type" typ=BREType "{" "Input" "[" systemInputs+=BreEntityInput (","
-		//systemInputs+=BreEntityInput)* "]" "Output" "[" output=BreOutPutReference "]" "}"
+		//imports+=Import* "BusinessRule" name=ID "type" typ=BREType "{" "Input" "[" inputs+=BreEntityInput (","
+		//inputs+=BreEntityInput)* "]" "Output" "[" output=BreOutPutReference "]" "}"
 		public Group getGroup() { return cGroup; }
 
 		//imports+=Import*
@@ -302,23 +302,23 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 		//"["
 		public Keyword getLeftSquareBracketKeyword_7() { return cLeftSquareBracketKeyword_7; }
 
-		//systemInputs+=BreEntityInput
-		public Assignment getSystemInputsAssignment_8() { return cSystemInputsAssignment_8; }
+		//inputs+=BreEntityInput
+		public Assignment getInputsAssignment_8() { return cInputsAssignment_8; }
 
 		//BreEntityInput
-		public RuleCall getSystemInputsBreEntityInputParserRuleCall_8_0() { return cSystemInputsBreEntityInputParserRuleCall_8_0; }
+		public RuleCall getInputsBreEntityInputParserRuleCall_8_0() { return cInputsBreEntityInputParserRuleCall_8_0; }
 
-		//("," systemInputs+=BreEntityInput)*
+		//("," inputs+=BreEntityInput)*
 		public Group getGroup_9() { return cGroup_9; }
 
 		//","
 		public Keyword getCommaKeyword_9_0() { return cCommaKeyword_9_0; }
 
-		//systemInputs+=BreEntityInput
-		public Assignment getSystemInputsAssignment_9_1() { return cSystemInputsAssignment_9_1; }
+		//inputs+=BreEntityInput
+		public Assignment getInputsAssignment_9_1() { return cInputsAssignment_9_1; }
 
 		//BreEntityInput
-		public RuleCall getSystemInputsBreEntityInputParserRuleCall_9_1_0() { return cSystemInputsBreEntityInputParserRuleCall_9_1_0; }
+		public RuleCall getInputsBreEntityInputParserRuleCall_9_1_0() { return cInputsBreEntityInputParserRuleCall_9_1_0; }
 
 		//"]"
 		public Keyword getRightSquareBracketKeyword_10() { return cRightSquareBracketKeyword_10; }
@@ -1376,8 +1376,8 @@ public class EsplmGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BusinessRule:
-	//	imports+=Import* "BusinessRule" name=ID "type" typ=BREType "{" "Input" "[" systemInputs+=BreEntityInput (","
-	//	systemInputs+=BreEntityInput)* "]" "Output" "[" output=BreOutPutReference "]" "}";
+	//	imports+=Import* "BusinessRule" name=ID "type" typ=BREType "{" "Input" "[" inputs+=BreEntityInput (","
+	//	inputs+=BreEntityInput)* "]" "Output" "[" output=BreOutPutReference "]" "}";
 	public BusinessRuleElements getBusinessRuleAccess() {
 		return pBusinessRule;
 	}

@@ -436,7 +436,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getBusinessRule_SystemInputs()
+  public EReference getBusinessRule_Inputs()
   {
     return (EReference)businessRuleEClass.getEStructuralFeatures().get(2);
   }
@@ -960,7 +960,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     businessRuleEClass = createEClass(BUSINESS_RULE);
     createEReference(businessRuleEClass, BUSINESS_RULE__IMPORTS);
     createEAttribute(businessRuleEClass, BUSINESS_RULE__TYP);
-    createEReference(businessRuleEClass, BUSINESS_RULE__SYSTEM_INPUTS);
+    createEReference(businessRuleEClass, BUSINESS_RULE__INPUTS);
     createEReference(businessRuleEClass, BUSINESS_RULE__OUTPUT);
 
     modelElementEClass = createEClass(MODEL_ELEMENT);
@@ -1090,7 +1090,7 @@ public class EsplmPackageImpl extends EPackageImpl implements EsplmPackage
     initEClass(businessRuleEClass, BusinessRule.class, "BusinessRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBusinessRule_Imports(), this.getImport(), null, "imports", null, 0, -1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBusinessRule_Typ(), this.getBREType(), "typ", null, 0, 1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBusinessRule_SystemInputs(), this.getBreEntityInput(), null, "systemInputs", null, 0, -1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBusinessRule_Inputs(), this.getBreEntityInput(), null, "inputs", null, 0, -1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBusinessRule_Output(), this.getBreOutPutReference(), null, "output", null, 0, 1, BusinessRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelElementEClass, ModelElement.class, "ModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

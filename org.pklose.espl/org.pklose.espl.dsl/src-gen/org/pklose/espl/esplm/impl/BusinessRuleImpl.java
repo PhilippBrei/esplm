@@ -34,7 +34,7 @@ import org.pklose.espl.esplm.Import;
  * <ul>
  *   <li>{@link org.pklose.espl.esplm.impl.BusinessRuleImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.BusinessRuleImpl#getTyp <em>Typ</em>}</li>
- *   <li>{@link org.pklose.espl.esplm.impl.BusinessRuleImpl#getSystemInputs <em>System Inputs</em>}</li>
+ *   <li>{@link org.pklose.espl.esplm.impl.BusinessRuleImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.pklose.espl.esplm.impl.BusinessRuleImpl#getOutput <em>Output</em>}</li>
  * </ul>
  *
@@ -73,14 +73,14 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
   protected BREType typ = TYP_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSystemInputs() <em>System Inputs</em>}' containment reference list.
+   * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSystemInputs()
+   * @see #getInputs()
    * @generated
    * @ordered
    */
-  protected EList<BreEntityInput> systemInputs;
+  protected EList<BreEntityInput> inputs;
 
   /**
    * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
@@ -155,13 +155,13 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<BreEntityInput> getSystemInputs()
+  public EList<BreEntityInput> getInputs()
   {
-    if (systemInputs == null)
+    if (inputs == null)
     {
-      systemInputs = new EObjectContainmentEList<BreEntityInput>(BreEntityInput.class, this, EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS);
+      inputs = new EObjectContainmentEList<BreEntityInput>(BreEntityInput.class, this, EsplmPackage.BUSINESS_RULE__INPUTS);
     }
-    return systemInputs;
+    return inputs;
   }
 
   /**
@@ -224,8 +224,8 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
     {
       case EsplmPackage.BUSINESS_RULE__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
-        return ((InternalEList<?>)getSystemInputs()).basicRemove(otherEnd, msgs);
+      case EsplmPackage.BUSINESS_RULE__INPUTS:
+        return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
         return basicSetOutput(null, msgs);
     }
@@ -246,8 +246,8 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         return getImports();
       case EsplmPackage.BUSINESS_RULE__TYP:
         return getTyp();
-      case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
-        return getSystemInputs();
+      case EsplmPackage.BUSINESS_RULE__INPUTS:
+        return getInputs();
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
         return getOutput();
     }
@@ -272,9 +272,9 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
       case EsplmPackage.BUSINESS_RULE__TYP:
         setTyp((BREType)newValue);
         return;
-      case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
-        getSystemInputs().clear();
-        getSystemInputs().addAll((Collection<? extends BreEntityInput>)newValue);
+      case EsplmPackage.BUSINESS_RULE__INPUTS:
+        getInputs().clear();
+        getInputs().addAll((Collection<? extends BreEntityInput>)newValue);
         return;
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
         setOutput((BreOutPutReference)newValue);
@@ -299,8 +299,8 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
       case EsplmPackage.BUSINESS_RULE__TYP:
         setTyp(TYP_EDEFAULT);
         return;
-      case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
-        getSystemInputs().clear();
+      case EsplmPackage.BUSINESS_RULE__INPUTS:
+        getInputs().clear();
         return;
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
         setOutput((BreOutPutReference)null);
@@ -323,8 +323,8 @@ public class BusinessRuleImpl extends ElementImpl implements BusinessRule
         return imports != null && !imports.isEmpty();
       case EsplmPackage.BUSINESS_RULE__TYP:
         return typ != TYP_EDEFAULT;
-      case EsplmPackage.BUSINESS_RULE__SYSTEM_INPUTS:
-        return systemInputs != null && !systemInputs.isEmpty();
+      case EsplmPackage.BUSINESS_RULE__INPUTS:
+        return inputs != null && !inputs.isEmpty();
       case EsplmPackage.BUSINESS_RULE__OUTPUT:
         return output != null;
     }

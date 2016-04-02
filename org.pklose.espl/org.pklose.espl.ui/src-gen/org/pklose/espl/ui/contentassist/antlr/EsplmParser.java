@@ -89,8 +89,8 @@ public class EsplmParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBusinessRuleAccess().getImportsAssignment_0(), "rule__BusinessRule__ImportsAssignment_0");
 					put(grammarAccess.getBusinessRuleAccess().getNameAssignment_2(), "rule__BusinessRule__NameAssignment_2");
 					put(grammarAccess.getBusinessRuleAccess().getTypAssignment_4(), "rule__BusinessRule__TypAssignment_4");
-					put(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_8(), "rule__BusinessRule__SystemInputsAssignment_8");
-					put(grammarAccess.getBusinessRuleAccess().getSystemInputsAssignment_9_1(), "rule__BusinessRule__SystemInputsAssignment_9_1");
+					put(grammarAccess.getBusinessRuleAccess().getInputsAssignment_8(), "rule__BusinessRule__InputsAssignment_8");
+					put(grammarAccess.getBusinessRuleAccess().getInputsAssignment_9_1(), "rule__BusinessRule__InputsAssignment_9_1");
 					put(grammarAccess.getBusinessRuleAccess().getOutputAssignment_13(), "rule__BusinessRule__OutputAssignment_13");
 					put(grammarAccess.getBreOutPutReferenceAccess().getOutputAssignment(), "rule__BreOutPutReference__OutputAssignment");
 					put(grammarAccess.getBreEntityInputAccess().getInputElementAssignment_0(), "rule__BreEntityInput__InputElementAssignment_0");

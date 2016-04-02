@@ -168,8 +168,8 @@ public class EsplmSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *         imports+=Import* 
 	 *         name=ID 
 	 *         typ=BREType 
-	 *         systemInputs+=BreEntityInput 
-	 *         systemInputs+=BreEntityInput* 
+	 *         inputs+=BreEntityInput 
+	 *         inputs+=BreEntityInput* 
 	 *         output=BreOutPutReference
 	 *     )
 	 */
