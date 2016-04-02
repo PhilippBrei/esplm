@@ -5,7 +5,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="xtend-gen"/>
-	<classpathentry kind="lib" path="libs/org.apache.servicemix.bundles.poi-3.13_1.jar" sourcepath="libs/org.apache.servicemix.bundles.poi-3.13_1-sources.jar"/>
-	<classpathentry kind="lib" path="libs/org.apache.servicemix.bundles.poi-3.13_1-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

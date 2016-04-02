@@ -15,10 +15,22 @@ class AbinitioBREReport {
 	
 	val Workbook workBook = new XSSFWorkbook();
 	
+	def createReport () {
+		var implementedSheet = initWorkBook("Implemented BREs")
+		createHeadLine(implementedSheet)
+		fill(implementedSheet, implementedBREs)
+		
+		var specifiedSheet = initWorkBook("Specified BREs")
+		createHeadLine(specifiedSheet)
+		fill(specifiedSheet, specifiedBREs)
+		
+		return workBook;
+	}
 	
 	
-	def initWorkBook () {
-		var sheet = workBook.createSheet("Business Rule Report")
+	
+	def initWorkBook (String name) {
+		var sheet = workBook.createSheet(name)
 		sheet.printGridlines = true;
 		sheet.displayGridlines = true;
 		return sheet;
@@ -47,15 +59,14 @@ class AbinitioBREReport {
 		actualType.cellValue = "Actual BRE Type"	
 	}
 	
-	def fill (Sheet sheet) {
+	def fill (Sheet sheet, Map<String,BusinessRule> bres) {
 		var int rowCounter = 1;
-		for (breName : specifiedBREs.keySet) {
-			var currentBre = specifiedBREs.get(breName);			
+		for (breName : bres.keySet) {
+			var currentBre = bres.get(breName);			
 			for (entity : currentBre.inputElements) {				
 				for (field : entity.fields) {
 					var currentRow = sheet.createRow(rowCounter);
 					fillBreRule(currentRow, rowCounter, currentBre.name, entity.name, field.name);
-					fillBreRule()
 					rowCounter++;		
 				}
 				
@@ -66,6 +77,9 @@ class AbinitioBREReport {
 	
 	def findFieldOfBre (Map<String, BusinessRule> businessRules, String breName,String entityName, String fieldName) {
 		var bre = businessRules.get(breName);
+		var inputBre = bre.inputElements.findFirst[name.equals(entityName)];
+		var firstField = inputBre.fields.findFirst[name.equals(fieldName)]
+		return firstField;		
 	}
 	
 	def fillBreRule (Row row, int start,String BRENameValue, String BREFieldValue, String BRETypeValue) {
