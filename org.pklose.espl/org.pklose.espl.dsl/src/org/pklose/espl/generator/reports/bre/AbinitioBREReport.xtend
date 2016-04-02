@@ -8,6 +8,8 @@ import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.pklose.espl.esplm.BusinessRule
 import org.pklose.espl.esplm.Entity
+import java.io.File
+import java.io.FileOutputStream
 
 class AbinitioBREReport {
 	
@@ -21,7 +23,7 @@ class AbinitioBREReport {
 		this.implementedBREs = implementedBres.toMap[name];
 	}
 	
-	def createReport () {
+	def Workbook createReport () {
 		var implementedSheet = initWorkBook("Implemented BREs")
 		createHeadLine(implementedSheet)
 		fill(implementedSheet, implementedBREs)
@@ -31,6 +33,13 @@ class AbinitioBREReport {
 		fill(specifiedSheet, specifiedBREs)
 		
 		return workBook;
+	}
+	
+	def Workbook createReport (File file) {
+		var wb = createReport();
+		var out = new FileOutputStream(file);
+		wb.write(out);		
+		return wb;
 	}
 	
 	

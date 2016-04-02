@@ -3,9 +3,11 @@ package org.pklose.esplm.generator.reports;
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import java.io.File;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -17,6 +19,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -97,5 +100,8 @@ public class ReportBreGeneratorImplTest {
     List<BusinessRule> _asList_1 = Arrays.<BusinessRule>asList(this.businessRule);
     AbinitioBREReport _abinitioBREReport = new AbinitioBREReport(_asList, _asList_1);
     this.reportService = _abinitioBREReport;
+    File _file = new File("myReport.xlsx");
+    Workbook workbook = this.reportService.createReport(_file);
+    Assert.assertNotNull(workbook);
   }
 }

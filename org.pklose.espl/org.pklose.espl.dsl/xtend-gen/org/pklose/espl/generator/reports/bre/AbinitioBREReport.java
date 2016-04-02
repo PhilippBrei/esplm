@@ -1,6 +1,8 @@
 package org.pklose.espl.generator.reports.bre;
 
 import com.google.common.collect.Iterables;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -10,6 +12,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.pklose.espl.esplm.BreEntityInput;
@@ -46,6 +49,17 @@ public class AbinitioBREReport {
     this.createHeadLine(specifiedSheet);
     this.fill(specifiedSheet, this.specifiedBREs);
     return this.workBook;
+  }
+  
+  public Workbook createReport(final File file) {
+    try {
+      Workbook wb = this.createReport();
+      FileOutputStream out = new FileOutputStream(file);
+      wb.write(out);
+      return wb;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   public Sheet initWorkBook(final String name) {

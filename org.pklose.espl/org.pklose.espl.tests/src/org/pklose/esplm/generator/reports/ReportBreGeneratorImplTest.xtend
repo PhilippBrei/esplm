@@ -15,6 +15,8 @@ import org.pklose.espl.esplm.BusinessRule
 import org.pklose.espl.esplm.Model
 import org.pklose.espl.generator.reports.bre.AbinitioBREReport
 import java.util.Arrays
+import org.junit.Assert
+import java.io.File
 
 @RunWith(XtextRunner)
 @InjectWith(EsplmInjectorProvider)
@@ -63,6 +65,9 @@ class ReportBreGeneratorImplTest {
 	@Test
 	def void TestReport () {		
 		reportService = new AbinitioBREReport(Arrays.asList(businessRule), Arrays.asList(businessRule));
+		var workbook = reportService.createReport(new File("myReport.xlsx"))
+		Assert.assertNotNull(workbook);
+		
 	}
 	
 }
