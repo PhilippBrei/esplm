@@ -86,7 +86,7 @@ class AbinitioBREReport {
 					
 					for (field : inputElement.properties.filter(typeof(org.pklose.espl.esplm.Property)).toList) {
 						var row = sheet.createRow(rowCounter);
-						fillBreRule(row, rowCounter, breName, field.name, "input");
+						fillBreRule(row, 0, breName, field.name, "input");
 						rowCounter++;
 					}
 				}

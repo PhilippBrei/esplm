@@ -106,7 +106,7 @@ public class AbinitioBREReport {
               {
                 Row row = sheet.createRow(rowCounter);
                 String _name = field.getName();
-                this.fillBreRule(row, rowCounter, breName, _name, "input");
+                this.fillBreRule(row, 0, breName, _name, "input");
                 rowCounter++;
               }
             }

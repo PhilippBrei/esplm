@@ -324,7 +324,7 @@ public class DiagrammBody {
     _builder.append("font: \"bold 12pt sans-serif\",");
     _builder.newLine();
     _builder.append("                                                ");
-    _builder.append("isMultiline: false, editable: true");
+    _builder.append("isMultiline: false, editable: false");
     _builder.newLine();
     _builder.append("                                            ");
     _builder.append("},");

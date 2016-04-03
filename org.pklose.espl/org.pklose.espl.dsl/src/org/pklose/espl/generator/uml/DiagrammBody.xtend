@@ -118,7 +118,7 @@ public class DiagrammBody {
                                             {
                                                 row: 0, margin: 3, alignment: go.Spot.Center,
                                                 font: "bold 12pt sans-serif",
-                                                isMultiline: false, editable: true
+                                                isMultiline: false, editable: false
                                             },
                                             new go.Binding("text", "name").makeTwoWay()),
                                     // properties

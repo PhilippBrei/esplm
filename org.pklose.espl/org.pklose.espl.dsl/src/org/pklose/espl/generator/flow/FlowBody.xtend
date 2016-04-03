@@ -25,79 +25,62 @@ public class FlowBody implements HTMLGenerator {
 <!DOCTYPE html>
 <html>
 <head>
-<title>«flowName»</title>
-<meta name="description" content="A finite state machine chart with editable and interactive features." />
-<!-- /* Copyright 1998-2016 by Northwoods Software Corporation. */ -->
-<meta charset="UTF-8">
-<script src="http://gojs.net/latest/release/go.js"></script>
-<script id="code">
-  function init() {
-    var $ = go.GraphObject.make;  // for conciseness in defining templates
-    myDiagram =
-      $(go.Diagram, "«flowName»",  // must name or refer to the DIV HTML element
-        {
-          // start everything in the middle of the viewport
-          initialContentAlignment: go.Spot.Left,
-          layout: $(go.LayeredDigraphLayout)
-        });
-    // define the Node template
-    myDiagram.nodeTemplate =
-      $(go.Node, "Auto",
-        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
-        // define the node's outer shape, which will surround the TextBlock
-        $(go.Shape, "RoundedRectangle",
-          {
-            parameter1: 20,  // the corner has a large radius
-            fill: $(go.Brush, "Linear", { 0: "rgb(254, 201, 0)", 1: "rgb(254, 162, 0)" }),
-            stroke: "black",
-            portId: "",
-            fromLinkable: true,
-            fromLinkableSelfNode: true,
-            fromLinkableDuplicates: true,
-            toLinkable: true,
-            toLinkableSelfNode: true,
-            toLinkableDuplicates: true,
-            cursor: "pointer"
-          }),
-        $(go.TextBlock,
-          {
-            font: "bold 11pt helvetica, bold arial, sans-serif",
-            editable: false
-          },
-          new go.Binding("text", "text").makeTwoWay())
-      );
+    <title>ImportStuffForMoney</title>
+    <meta name="description" content="A finite state machine chart with editable and interactive features." />
+    <!-- /* Copyright 1998-2016 by Northwoods Software Corporation. */ -->
+    <meta charset="UTF-8">
+    <script src="http://gojs.net/latest/release/go.js"></script>
+    <script id="code">
+        function init() {
+            var $ = go.GraphObject.make;  // for conciseness in defining templates
+            myDiagram =
+                    $(go.Diagram, "ImportStuffForMoney",  // must name or refer to the DIV HTML element
+                            {
+                                // start everything in the middle of the viewport
+                                initialContentAlignment: go.Spot.Left,
+                                layout: $(go.LayeredDigraphLayout)
+                            });
+            // define the Node template
+            myDiagram.nodeTemplate =
+                    $(go.Node, "Auto",
+                            new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+                            // define the node's outer shape, which will surround the TextBlock
+                            $(go.Shape, "RoundedRectangle",
+                                    {
+                                        parameter1: 20,  // the corner has a large radius
+                                        fill: $(go.Brush, "Linear", { 0: "rgb(254, 201, 0)", 1: "rgb(254, 162, 0)" }),
+                                        stroke: "black",
+                                        portId: "",
+                                        fromLinkable: false,
+                                        fromLinkableSelfNode: false,
+                                        fromLinkableDuplicates: false,
+                                        toLinkable: false,
+                                        toLinkableSelfNode: false,
+                                        toLinkableDuplicates: false,
+                                        cursor: "pointer"
+                                    }),
+                            $(go.TextBlock,
+                                    {
+                                        font: "bold 11pt helvetica, bold arial, sans-serif",
+                                        editable: false
+                                    },
+                                    new go.Binding("text", "text"))
+                    );
 
-    // replace the default Link template in the linkTemplateMap
-    myDiagram.linkTemplate =
-      $(go.Link,  // the whole link panel
-        { curve: go.Link.Bezier, adjusting: go.Link.Stretch, reshapable: true },
-        new go.Binding("curviness", "curviness"),
-        new go.Binding("points").makeTwoWay(),
-        $(go.Shape,  // the link shape
-          { strokeWidth: 1.5 }),
-        $(go.Shape,  // the arrowhead
-          { toArrow: "standard", stroke: null }),
-        $(go.Panel, "Auto",
-          $(go.Shape,  // the link shape
-            {
-              fill: $(go.Brush, "Radial",
-                      { 0: "rgb(240, 240, 240)", 0.3: "rgb(240, 240, 240)", 1: "rgba(240, 240, 240, 0)" }),
-              stroke: null
-            }),
-          $(go.TextBlock, "transition",  // the label
-            {
-              textAlign: "center",
-              font: "10pt helvetica, arial, sans-serif",
-              stroke: "black",
-              margin: 4,
-              editable: false  // editing the text automatically updates the model data
-            },
-            new go.Binding("text", "text").makeTwoWay())
-        )
-      );
-    // read in the JSON-format data from the "mySavedModel" element
-    load();
-  }
+            // replace the default Link template in the linkTemplateMap
+            myDiagram.linkTemplate =
+                    $(go.Link,  // the whole link panel
+                            { curve: go.Link.Bezier, adjusting: go.Link.Stretch, reshapable: false },
+                            new go.Binding("curviness", "curviness"),
+                            new go.Binding("points").makeTwoWay(),
+                            $(go.Shape,  // the link shape
+                                    { strokeWidth: 1.5 }),
+                            $(go.Shape,  // the arrowhead
+                                    { toArrow: "standard", stroke: null })
+                    );
+            // read in the JSON-format data from the "mySavedModel" element
+            load();
+        }
   function load() {
     myDiagram.model = go.Model.fromJson(
   { "nodeKeyProperty": "id",
