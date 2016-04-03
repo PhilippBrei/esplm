@@ -34,7 +34,7 @@ public class FlowBody implements HTMLGenerator {
         function init() {
             var $ = go.GraphObject.make;  // for conciseness in defining templates
             myDiagram =
-                    $(go.Diagram, "ImportStuffForMoney",  // must name or refer to the DIV HTML element
+                    $(go.Diagram, "«flowName»",  // must name or refer to the DIV HTML element
                             {
                                 // start everything in the middle of the viewport
                                 initialContentAlignment: go.Spot.Left,

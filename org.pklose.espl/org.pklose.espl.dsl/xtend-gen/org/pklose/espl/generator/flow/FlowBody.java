@@ -62,8 +62,10 @@ public class FlowBody implements HTMLGenerator {
     _builder.append("myDiagram =");
     _builder.newLine();
     _builder.append("                    ");
-    _builder.append("$(go.Diagram, \"ImportStuffForMoney\",  // must name or refer to the DIV HTML element");
-    _builder.newLine();
+    _builder.append("$(go.Diagram, \"");
+    _builder.append(this.flowName, "                    ");
+    _builder.append("\",  // must name or refer to the DIV HTML element");
+    _builder.newLineIfNotEmpty();
     _builder.append("                            ");
     _builder.append("{");
     _builder.newLine();
