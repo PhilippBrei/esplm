@@ -19,6 +19,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.pklose.espl.esplm.BreEntityInput;
 import org.pklose.espl.esplm.BusinessRule;
 import org.pklose.espl.esplm.Entity;
+import org.pklose.espl.esplm.ModelElement;
 import org.pklose.espl.esplm.Property;
 
 @SuppressWarnings("all")
@@ -94,9 +95,11 @@ public class AbinitioBREReport {
         BusinessRule currentBre = bres.get(breName);
         EList<BreEntityInput> _inputs = currentBre.getInputs();
         for (final BreEntityInput entity : _inputs) {
-          if ((entity instanceof Entity)) {
-            Entity myEntity = ((Entity) entity);
-            EList<Property> _properties = myEntity.getProperties();
+          if ((entity instanceof BreEntityInput)) {
+            BreEntityInput breEntity = ((BreEntityInput) entity);
+            ModelElement _inputElement = breEntity.getInputElement();
+            Entity inputElement = ((Entity) _inputElement);
+            EList<Property> _properties = inputElement.getProperties();
             Iterable<Property> _filter = Iterables.<Property>filter(_properties, Property.class);
             List<Property> _list = IterableExtensions.<Property>toList(_filter);
             for (final Property field : _list) {

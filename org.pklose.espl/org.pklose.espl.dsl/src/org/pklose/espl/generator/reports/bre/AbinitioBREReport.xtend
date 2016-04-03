@@ -10,6 +10,7 @@ import org.pklose.espl.esplm.BusinessRule
 import org.pklose.espl.esplm.Entity
 import java.io.File
 import java.io.FileOutputStream
+import org.pklose.espl.esplm.BreEntityInput
 
 class AbinitioBREReport {
 	
@@ -79,9 +80,11 @@ class AbinitioBREReport {
 		for (breName : bres.keySet) {
 			var currentBre = bres.get(breName);			
 			for (entity : currentBre.inputs) {
-				if (entity instanceof Entity) {
-					var myEntity = entity as Entity
-					for (field : myEntity.properties.filter(typeof(org.pklose.espl.esplm.Property)).toList) {
+				if (entity instanceof BreEntityInput) {
+					var breEntity = entity as BreEntityInput
+					var inputElement  = breEntity.inputElement as Entity;
+					
+					for (field : inputElement.properties.filter(typeof(org.pklose.espl.esplm.Property)).toList) {
 						var row = sheet.createRow(rowCounter);
 						fillBreRule(row, rowCounter, breName, field.name, "input");
 						rowCounter++;
